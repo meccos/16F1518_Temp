@@ -1,0 +1,911 @@
+%CMF
+# %PSECTS Section
+# For each object file, details of its psects are enumerated here.
+# The begining of the section is indicated by %PSECTS.  The first
+# line indicates the name of the first object file, e.g.
+#    $foo.obj
+# Each line that follows describes a psect in that object file, until
+# the next object file.  The lines that describe a psect have the
+# format:
+#    <psect name> <class name> <space> <link address> <load addresses> <length> <delta>
+# All addresses and the length are given in unqualified hexadecimal
+# in delta units.  Any other numeric values are decimal.
+%PSECTS
+$C:\Users\dell\AppData\Local\Temp\sfeg.o
+reset_vec CODE 0 0 0 2 2
+end_init CODE 0 79 79 2 2
+config CONFIG 0 8007 8007 2 2
+$dist/default/debug\16F1518_Temp.X.debug.o
+cinit CODE 0 7B 7B 2E 2
+text1 CODE 0 48F 48F B 2
+text2 CODE 0 49A 49A B 2
+text3 CODE 0 4A5 4A5 B 2
+text4 CODE 0 4C3 4C3 8 2
+text5 CODE 0 1A5 1A5 D1 2
+text6 CODE 0 385 385 2A 2
+text7 CODE 0 276 276 56 2
+text8 CODE 0 3FC 3FC 21 2
+text9 CODE 0 2CC 2CC 50 2
+text10 CODE 0 4DE 4DE 5 2
+text11 CODE 0 4B0 4B0 B 2
+text12 CODE 0 453 453 18 2
+text13 CODE 0 31C 31C 3C 2
+text14 CODE 0 4D2 4D2 6 2
+text15 CODE 0 358 358 2D 2
+text16 CODE 0 4D8 4D8 6 2
+text17 CODE 0 41D 41D 1C 2
+text19 CODE 0 46B 46B 18 2
+text20 CODE 0 3D9 3D9 23 2
+text21 CODE 0 3AF 3AF 2A 2
+maintext CODE 0 A9 A9 FC 2
+cstackCOMMON COMMON 1 70 70 E 1
+cstackBANK0 BANK0 1 3E 3E 1B 1
+cstackBANK1 BANK1 1 A0 A0 C 1
+stringtext1 STRCODE 0 439 439 1A 2
+stringtext2 STRCODE 0 4CB 4CB 7 2
+intentry CODE 0 4 4 75 2
+bssBANK0 BANK0 1 20 20 1E 1
+idataBANK0 CODE 0 4BB 4BB 8 2
+dataBANK0 BANK0 1 59 59 8 1
+clrtext CODE 0 483 483 C 2
+# %UNUSED Section
+# This section enumerates the unused ranges of each CLASS. Each entry
+# is described on a single line as follows:
+#    <class name> <range> <delta>
+# Addresses given in the range are in hexadecimal and units of delta.
+%UNUSED
+RAM 61-6F 1
+RAM AC-EF 1
+RAM 120-16F 1
+RAM 1A0-1EF 1
+RAM 220-26F 1
+RAM 2A0-2EF 1
+RAM 320-36F 1
+RAM 3A0-3EF 1
+RAM 420-46F 1
+RAM 4A0-4EF 1
+RAM 520-527 1
+BANK0 61-6F 1
+BANK1 AC-EF 1
+BANK2 120-16F 1
+BANK3 1A0-1EF 1
+BANK4 220-26F 1
+BANK5 2A0-2EF 1
+BANK6 320-36F 1
+BANK7 3A0-3EF 1
+BANK8 420-46F 1
+BANK9 4A0-4EF 1
+CONST 2-3 2
+CONST 4E3-3FFF 2
+ENTRY 2-3 2
+ENTRY 4E3-3FFF 2
+IDLOC 8000-8003 2
+SFR10 500-51F 1
+SFR11 580-59F 1
+SFR12 600-61F 1
+SFR13 680-6EF 1
+SFR14 700-76F 1
+SFR15 780-7EF 1
+SFR16 800-86F 1
+SFR17 880-8EF 1
+SFR18 900-96F 1
+SFR19 980-9EF 1
+SFR20 A00-A6F 1
+SFR21 A80-AEF 1
+SFR22 B00-B6F 1
+SFR23 B80-BEF 1
+SFR24 C00-C6F 1
+SFR25 C80-CEF 1
+SFR26 D00-D6F 1
+SFR27 D80-DEF 1
+SFR28 E00-E6F 1
+SFR29 E80-EEF 1
+SFR30 F00-F6F 1
+SFR31 F80-FEF 1
+STACK 205C-2327 1
+CODE 2-3 2
+CODE 4E3-3FFF 2
+SFR0 0-1F 1
+SFR1 80-9F 1
+SFR2 100-11F 1
+SFR3 180-19F 1
+SFR4 200-21F 1
+SFR5 280-29F 1
+SFR6 300-31F 1
+SFR7 380-39F 1
+SFR8 400-41F 1
+SFR9 480-49F 1
+BANK10 520-527 1
+BIGRAM 2000-23EF 1
+STRCODE 2-3 2
+STRCODE 4E3-3FFF 2
+STRING 2-3 2
+STRING 4E3-3FFF 2
+# %LINETAB Section
+# This section enumerates the file/line to address mappings.
+# The beginning of the section is indicated by %LINETAB.
+# The first line indicates the name of the first object file, e.g.
+#   $foo.obj
+# Each line that follows describes a single mapping until the next
+# object file.  Mappings have the following format:
+#    <address> <psect name> <class name> ><line number>:<file name>
+# The address is absolute and given given in unqualified hex 
+# in delta units of the psect. All mappings within an object file
+# are in ascending order of addresses.
+# All other numeric values are in decimal.
+%LINETAB
+$dist/default/debug\16F1518_Temp.X.debug.o
+7B cinit CODE >721:C:\Users\dell\AppData\Local\Temp\sfeg.
+7B cinit CODE >724:C:\Users\dell\AppData\Local\Temp\sfeg.
+7B cinit CODE >763:C:\Users\dell\AppData\Local\Temp\sfeg.
+7C cinit CODE >764:C:\Users\dell\AppData\Local\Temp\sfeg.
+7D cinit CODE >765:C:\Users\dell\AppData\Local\Temp\sfeg.
+7E cinit CODE >766:C:\Users\dell\AppData\Local\Temp\sfeg.
+7F cinit CODE >767:C:\Users\dell\AppData\Local\Temp\sfeg.
+80 cinit CODE >768:C:\Users\dell\AppData\Local\Temp\sfeg.
+81 cinit CODE >769:C:\Users\dell\AppData\Local\Temp\sfeg.
+82 cinit CODE >770:C:\Users\dell\AppData\Local\Temp\sfeg.
+83 cinit CODE >771:C:\Users\dell\AppData\Local\Temp\sfeg.
+84 cinit CODE >772:C:\Users\dell\AppData\Local\Temp\sfeg.
+85 cinit CODE >773:C:\Users\dell\AppData\Local\Temp\sfeg.
+86 cinit CODE >774:C:\Users\dell\AppData\Local\Temp\sfeg.
+87 cinit CODE >775:C:\Users\dell\AppData\Local\Temp\sfeg.
+88 cinit CODE >776:C:\Users\dell\AppData\Local\Temp\sfeg.
+89 cinit CODE >777:C:\Users\dell\AppData\Local\Temp\sfeg.
+8A cinit CODE >778:C:\Users\dell\AppData\Local\Temp\sfeg.
+8B cinit CODE >779:C:\Users\dell\AppData\Local\Temp\sfeg.
+8C cinit CODE >780:C:\Users\dell\AppData\Local\Temp\sfeg.
+8D cinit CODE >781:C:\Users\dell\AppData\Local\Temp\sfeg.
+8E cinit CODE >782:C:\Users\dell\AppData\Local\Temp\sfeg.
+8F cinit CODE >805:C:\Users\dell\AppData\Local\Temp\sfeg.
+90 cinit CODE >806:C:\Users\dell\AppData\Local\Temp\sfeg.
+91 cinit CODE >807:C:\Users\dell\AppData\Local\Temp\sfeg.
+92 cinit CODE >808:C:\Users\dell\AppData\Local\Temp\sfeg.
+93 cinit CODE >809:C:\Users\dell\AppData\Local\Temp\sfeg.
+94 cinit CODE >810:C:\Users\dell\AppData\Local\Temp\sfeg.
+95 cinit CODE >811:C:\Users\dell\AppData\Local\Temp\sfeg.
+96 cinit CODE >812:C:\Users\dell\AppData\Local\Temp\sfeg.
+97 cinit CODE >813:C:\Users\dell\AppData\Local\Temp\sfeg.
+9A cinit CODE >817:C:\Users\dell\AppData\Local\Temp\sfeg.
+9B cinit CODE >818:C:\Users\dell\AppData\Local\Temp\sfeg.
+9C cinit CODE >819:C:\Users\dell\AppData\Local\Temp\sfeg.
+9D cinit CODE >820:C:\Users\dell\AppData\Local\Temp\sfeg.
+9E cinit CODE >821:C:\Users\dell\AppData\Local\Temp\sfeg.
+9F cinit CODE >822:C:\Users\dell\AppData\Local\Temp\sfeg.
+A0 cinit CODE >823:C:\Users\dell\AppData\Local\Temp\sfeg.
+A1 cinit CODE >824:C:\Users\dell\AppData\Local\Temp\sfeg.
+A2 cinit CODE >825:C:\Users\dell\AppData\Local\Temp\sfeg.
+A5 cinit CODE >831:C:\Users\dell\AppData\Local\Temp\sfeg.
+A5 cinit CODE >833:C:\Users\dell\AppData\Local\Temp\sfeg.
+A6 cinit CODE >834:C:\Users\dell\AppData\Local\Temp\sfeg.
+A7 cinit CODE >835:C:\Users\dell\AppData\Local\Temp\sfeg.
+4 intentry CODE >175:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+6 intentry CODE >177:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+B intentry CODE >184:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+C intentry CODE >185:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+11 intentry CODE >188:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+13 intentry CODE >189:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+15 intentry CODE >190:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+15 intentry CODE >191:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+20 intentry CODE >194:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+25 intentry CODE >196:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+2C intentry CODE >197:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+31 intentry CODE >198:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+32 intentry CODE >199:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+33 intentry CODE >202:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+33 intentry CODE >203:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+34 intentry CODE >204:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+34 intentry CODE >206:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+3F intentry CODE >209:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+45 intentry CODE >211:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+4C intentry CODE >212:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+51 intentry CODE >213:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+52 intentry CODE >214:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+52 intentry CODE >216:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+55 intentry CODE >217:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+55 intentry CODE >218:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+55 intentry CODE >219:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+5A intentry CODE >222:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+5B intentry CODE >223:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+61 intentry CODE >225:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+64 intentry CODE >226:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+65 intentry CODE >227:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+66 intentry CODE >228:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+66 intentry CODE >230:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+66 intentry CODE >231:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+6B intentry CODE >233:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+77 intentry CODE >234:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+77 intentry CODE >235:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+3AF text21 CODE >7:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\strcpy.c
+3AF text21 CODE >13:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\strcpy.c
+3B4 text21 CODE >14:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\strcpy.c
+3B8 text21 CODE >15:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\strcpy.c
+3D8 text21 CODE >18:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\strcpy.c
+3D9 text20 CODE >12:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\strlen.c
+3D9 text20 CODE >14:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\strlen.c
+3DD text20 CODE >16:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\strlen.c
+3DE text20 CODE >17:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\strlen.c
+3E3 text20 CODE >16:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\strlen.c
+3E3 text20 CODE >18:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\strlen.c
+3ED text20 CODE >25:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\strlen.c
+3FB text20 CODE >26:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\strlen.c
+46B text19 CODE >3:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\strcat.c
+46B text19 CODE >5:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\strcat.c
+482 text19 CODE >6:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\strcat.c
+482 text19 CODE >7:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\strcat.c
+41D text17 CODE >61:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+41D text17 CODE >63:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+424 text17 CODE >65:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+428 text17 CODE >66:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+429 text17 CODE >67:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+429 text17 CODE >69:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+42E text17 CODE >70:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+42E text17 CODE >71:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+433 text17 CODE >74:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+435 text17 CODE >75:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+438 text17 CODE >76:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+438 text17 CODE >77:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+4D8 text16 CODE >122:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+4D8 text16 CODE >124:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+4DA text16 CODE >125:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+4DB text16 CODE >126:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+4DC text16 CODE >127:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+4DD text16 CODE >128:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+358 text15 CODE >137:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+358 text15 CODE >139:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+35A text15 CODE >140:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+35B text15 CODE >142:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+35E text15 CODE >144:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+363 text15 CODE >145:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+364 text15 CODE >148:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+365 text15 CODE >149:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+367 text15 CODE >150:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+373 text15 CODE >151:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+374 text15 CODE >152:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+378 text15 CODE >154:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+37A text15 CODE >155:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+37C text15 CODE >145:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+37C text15 CODE >156:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+384 text15 CODE >157:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+4D2 text14 CODE >129:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+4D2 text14 CODE >131:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+4D4 text14 CODE >132:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+4D5 text14 CODE >133:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+4D6 text14 CODE >134:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+4D7 text14 CODE >135:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+31C text13 CODE >63:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+31E text13 CODE >65:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+31F text13 CODE >66:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+330 text13 CODE >67:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+340 text13 CODE >68:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+349 text13 CODE >69:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+351 text13 CODE >70:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+353 text13 CODE >71:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+355 text13 CODE >72:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+357 text13 CODE >73:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+453 text12 CODE >113:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+455 text12 CODE >115:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+458 text12 CODE >116:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+45A text12 CODE >117:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+45B text12 CODE >118:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+465 text12 CODE >119:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+46A text12 CODE >120:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+4B0 text11 CODE >107:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+4B2 text11 CODE >109:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+4B5 text11 CODE >110:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+4BA text11 CODE >111:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+4DE text10 CODE >220:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+4DE text10 CODE >222:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+4E2 text10 CODE >223:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+2CC text9 CODE >7:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+2CC text9 CODE >10:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+2CE text9 CODE >11:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+2CF text9 CODE >12:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+2D0 text9 CODE >13:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+2D2 text9 CODE >14:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+2D3 text9 CODE >15:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+2D4 text9 CODE >18:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+2DC text9 CODE >19:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+2E0 text9 CODE >20:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+2E9 text9 CODE >21:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+2ED text9 CODE >22:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+2F0 text9 CODE >23:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+2F4 text9 CODE >24:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+2F8 text9 CODE >25:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+2FC text9 CODE >26:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+300 text9 CODE >27:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+304 text9 CODE >28:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+309 text9 CODE >29:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+30D text9 CODE >30:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+311 text9 CODE >32:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+314 text9 CODE >33:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+318 text9 CODE >34:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+31B text9 CODE >36:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+3FC text8 CODE >229:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+3FE text8 CODE >231:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+401 text8 CODE >233:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+404 text8 CODE >234:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+406 text8 CODE >235:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+407 text8 CODE >236:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+412 text8 CODE >237:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+417 text8 CODE >238:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+41C text8 CODE >239:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+276 text7 CODE >75:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+278 text7 CODE >77:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+27B text7 CODE >78:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+27D text7 CODE >79:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+27E text7 CODE >80:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+27F text7 CODE >82:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+27F text7 CODE >83:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+283 text7 CODE >84:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+284 text7 CODE >85:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+284 text7 CODE >86:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+288 text7 CODE >87:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+289 text7 CODE >88:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+289 text7 CODE >89:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+28D text7 CODE >90:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+28E text7 CODE >91:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+28E text7 CODE >92:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+292 text7 CODE >93:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+293 text7 CODE >94:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+293 text7 CODE >95:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+294 text7 CODE >96:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+2AC text7 CODE >97:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+2AF text7 CODE >98:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+2B2 text7 CODE >99:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+2B4 text7 CODE >100:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+2B5 text7 CODE >101:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+2BF text7 CODE >102:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+2C4 text7 CODE >103:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+2C6 text7 CODE >104:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+2CB text7 CODE >105:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+385 text6 CODE >38:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+385 text6 CODE >40:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+387 text6 CODE >41:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+388 text6 CODE >43:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+397 text6 CODE >44:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+39D text6 CODE >41:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+39D text6 CODE >45:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+3AE text6 CODE >46:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+1A5 text5 CODE >4:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\memset.c
+1A5 text5 CODE >6:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\memset.c
+1AA text5 CODE >13:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\memset.c
+1B2 text5 CODE >14:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\memset.c
+1B8 text5 CODE >15:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\memset.c
+1CA text5 CODE >16:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\memset.c
+1D5 text5 CODE >17:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\memset.c
+1E1 text5 CODE >18:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\memset.c
+1ED text5 CODE >19:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\memset.c
+1FF text5 CODE >20:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\memset.c
+211 text5 CODE >21:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\memset.c
+21C text5 CODE >22:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\memset.c
+228 text5 CODE >23:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\memset.c
+23A text5 CODE >24:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\memset.c
+245 text5 CODE >31:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\memset.c
+252 text5 CODE >32:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\memset.c
+256 text5 CODE >33:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\memset.c
+25A text5 CODE >34:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\memset.c
+25E text5 CODE >86:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\memset.c
+275 text5 CODE >90:C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\memset.c
+4C3 text4 CODE >224:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+4C3 text4 CODE >226:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+4C7 text4 CODE >227:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+4CA text4 CODE >228:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+4A5 text3 CODE >163:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+4A5 text3 CODE >165:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+4AB text3 CODE >166:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+4AF text3 CODE >167:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+49A text2 CODE >178:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+49A text2 CODE >180:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+4A0 text2 CODE >181:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+4A4 text2 CODE >182:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+48F text1 CODE >173:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+48F text1 CODE >175:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+495 text1 CODE >176:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+499 text1 CODE >177:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+A9 maintext CODE >79:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+A9 maintext CODE >81:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+B8 maintext CODE >83:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+BB maintext CODE >84:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+BD maintext CODE >85:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+BE maintext CODE >86:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+C0 maintext CODE >88:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+CE maintext CODE >89:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+D0 maintext CODE >90:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+D1 maintext CODE >92:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+D3 maintext CODE >93:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+D5 maintext CODE >95:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+D6 maintext CODE >96:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+D8 maintext CODE >97:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+DA maintext CODE >98:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+DB maintext CODE >103:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+E0 maintext CODE >104:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+E2 maintext CODE >105:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+E3 maintext CODE >106:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+E4 maintext CODE >107:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+E5 maintext CODE >108:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+E6 maintext CODE >109:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+E7 maintext CODE >110:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+E8 maintext CODE >111:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+E9 maintext CODE >112:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+EA maintext CODE >113:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+EB maintext CODE >115:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+EC maintext CODE >116:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+EE maintext CODE >117:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+EF maintext CODE >119:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+F0 maintext CODE >121:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+F3 maintext CODE >122:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+F6 maintext CODE >123:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+102 maintext CODE >124:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+105 maintext CODE >125:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+111 maintext CODE >126:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+114 maintext CODE >127:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+120 maintext CODE >128:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+123 maintext CODE >129:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+12F maintext CODE >130:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+132 maintext CODE >131:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+13E maintext CODE >133:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+146 maintext CODE >135:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+153 maintext CODE >137:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+156 maintext CODE >138:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+165 maintext CODE >139:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+169 maintext CODE >140:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+169 maintext CODE >142:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+16D maintext CODE >143:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+176 maintext CODE >144:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+180 maintext CODE >147:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+183 maintext CODE >152:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+18A maintext CODE >153:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+191 maintext CODE >155:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+194 maintext CODE >156:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+194 maintext CODE >169:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+1A2 maintext CODE >170:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+1A3 maintext CODE >172:C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+483 clrtext CODE >788:C:\Users\dell\AppData\Local\Temp\sfeg.
+483 clrtext CODE >789:C:\Users\dell\AppData\Local\Temp\sfeg.
+484 clrtext CODE >790:C:\Users\dell\AppData\Local\Temp\sfeg.
+484 clrtext CODE >791:C:\Users\dell\AppData\Local\Temp\sfeg.
+485 clrtext CODE >792:C:\Users\dell\AppData\Local\Temp\sfeg.
+486 clrtext CODE >793:C:\Users\dell\AppData\Local\Temp\sfeg.
+487 clrtext CODE >794:C:\Users\dell\AppData\Local\Temp\sfeg.
+488 clrtext CODE >795:C:\Users\dell\AppData\Local\Temp\sfeg.
+489 clrtext CODE >796:C:\Users\dell\AppData\Local\Temp\sfeg.
+48A clrtext CODE >797:C:\Users\dell\AppData\Local\Temp\sfeg.
+48B clrtext CODE >798:C:\Users\dell\AppData\Local\Temp\sfeg.
+48C clrtext CODE >799:C:\Users\dell\AppData\Local\Temp\sfeg.
+48D clrtext CODE >800:C:\Users\dell\AppData\Local\Temp\sfeg.
+48E clrtext CODE >801:C:\Users\dell\AppData\Local\Temp\sfeg.
+# %SYMTAB Section
+# An enumeration of all symbols in the program.
+# The beginning of the section is indicated by %SYMTAB.
+# Each line describes a single symbol as follows:
+#    <label> <value> [-]<load-adj> <class> <space> <psect> <file-name>
+# The value and load-adj are both in unqualified hexadecimal.
+# All other numeric values are in decimal.  The load-adj is the
+# quantity one needs to add to the symbol value in order to obtain the load
+# address of the symbol.  This value may be signed. If the symbol
+# was defined in a psect then <psect> will be "-". File-name
+# is the name of the object file in which the symbol was defined.
+%SYMTAB
+___latbits 3 0 ABS 0 - dist/default/debug\16F1518_Temp.X.debug.o
+__LdataBANK0 0 0 ABS 0 dataBANK0 -
+__end_of_writeInsNoChk 8D6 0 CODE 0 text12 dist/default/debug\16F1518_Temp.X.debug.o
+__Hspace_0 8009 0 ABS 0 - -
+__Hspace_1 AC 0 ABS 0 - -
+__Hspace_2 0 0 ABS 0 - -
+__Hspace_3 0 0 ABS 0 - -
+__CFG_IESO$OFF 0 0 ABS 0 - dist/default/debug\16F1518_Temp.X.debug.o
+__HidataBANK0 0 0 ABS 0 idataBANK0 -
+__size_of_waitLCDBusy 0 0 ABS 0 - dist/default/debug\16F1518_Temp.X.debug.o
+_SetToReadDataFromLCD 9B0 0 CODE 0 text16 dist/default/debug\16F1518_Temp.X.debug.o
+__Heeprom_data 0 0 EEDATA 3 eeprom_data -
+__Hstrings 0 0 ABS 0 strings -
+___sp 0 0 STACK 2 stack C:\Users\dell\AppData\Local\Temp\sfeg.o
+_main 152 0 CODE 0 maintext dist/default/debug\16F1518_Temp.X.debug.o
+btemp 7E 0 ABS 0 - dist/default/debug\16F1518_Temp.X.debug.o
+start F2 0 CODE 0 init C:\Users\dell\AppData\Local\Temp\sfeg.o
+writeTxtChk@iOpCode 50 0 BANK0 1 cstackBANK0 dist/default/debug\16F1518_Temp.X.debug.o
+__size_of_main 0 0 ABS 0 - dist/default/debug\16F1518_Temp.X.debug.o
+__end_of_powerOnLcd 960 0 CODE 0 text3 dist/default/debug\16F1518_Temp.X.debug.o
+__CFG_CLKOUTEN$ON 0 0 ABS 0 - dist/default/debug\16F1518_Temp.X.debug.o
+__LidataBANK0 0 0 ABS 0 idataBANK0 -
+_mCursorDisplayShiftReg 28 0 BANK0 1 bssBANK0 dist/default/debug\16F1518_Temp.X.debug.o
+__Hpowerup 0 0 CODE 0 powerup -
+__size_of_setNotBlinkingCursor 0 0 ABS 0 - dist/default/debug\16F1518_Temp.X.debug.o
+lcdWriteText@iText 51 0 BANK0 1 cstackBANK0 dist/default/debug\16F1518_Temp.X.debug.o
+intlevel0 0 0 ENTRY 0 functab C:\Users\dell\AppData\Local\Temp\sfeg.o
+intlevel1 0 0 ENTRY 0 functab C:\Users\dell\AppData\Local\Temp\sfeg.o
+intlevel2 0 0 ENTRY 0 functab C:\Users\dell\AppData\Local\Temp\sfeg.o
+intlevel3 0 0 ENTRY 0 functab C:\Users\dell\AppData\Local\Temp\sfeg.o
+intlevel4 0 0 ENTRY 0 functab C:\Users\dell\AppData\Local\Temp\sfeg.o
+intlevel5 0 0 ENTRY 0 functab C:\Users\dell\AppData\Local\Temp\sfeg.o
+_lcdWriteText 70A 0 CODE 0 text6 dist/default/debug\16F1518_Temp.X.debug.o
+_setCursorOff 934 0 CODE 0 text2 dist/default/debug\16F1518_Temp.X.debug.o
+strcat@dest 42 0 BANK0 1 cstackBANK0 dist/default/debug\16F1518_Temp.X.debug.o
+__size_of_setData 0 0 ABS 0 - dist/default/debug\16F1518_Temp.X.debug.o
+_OSCCONbits 99 0 ABS 0 - dist/default/debug\16F1518_Temp.X.debug.o
+wtemp0 7E 0 ABS 0 - dist/default/debug\16F1518_Temp.X.debug.o
+__Hfunctab 0 0 ENTRY 0 functab -
+_wI2CTxBufferSize 26 0 BANK0 1 bssBANK0 dist/default/debug\16F1518_Temp.X.debug.o
+__end_of_setNotBlinkingCursor 934 0 CODE 0 text1 dist/default/debug\16F1518_Temp.X.debug.o
+__end_of_moveCursorToHome 996 0 CODE 0 text4 dist/default/debug\16F1518_Temp.X.debug.o
+__Hclrtext 0 0 ABS 0 clrtext -
+_wI2CTxBuffer 2A 0 BANK0 1 bssBANK0 dist/default/debug\16F1518_Temp.X.debug.o
+__size_of_moveCursorToHome 0 0 ABS 0 - dist/default/debug\16F1518_Temp.X.debug.o
+_ANSELA 18C 0 ABS 0 - dist/default/debug\16F1518_Temp.X.debug.o
+_writeInsChk 960 0 CODE 0 text11 dist/default/debug\16F1518_Temp.X.debug.o
+__size_of_initLCD 0 0 ABS 0 - dist/default/debug\16F1518_Temp.X.debug.o
+writeInsChk@iOpCode 4C 0 BANK0 1 cstackBANK0 dist/default/debug\16F1518_Temp.X.debug.o
+__size_of_lcdWriteText 0 0 ABS 0 - dist/default/debug\16F1518_Temp.X.debug.o
+__size_of_setCursorOff 0 0 ABS 0 - dist/default/debug\16F1518_Temp.X.debug.o
+__Lmaintext 0 0 ABS 0 maintext -
+?_strlen 70 0 COMMON 1 cstackCOMMON dist/default/debug\16F1518_Temp.X.debug.o
+__size_of_myint 0 0 ABS 0 - dist/default/debug\16F1518_Temp.X.debug.o
+__end_of_lcdWriteText 75E 0 CODE 0 text6 dist/default/debug\16F1518_Temp.X.debug.o
+__size_of_SetToSendDataToLCD 0 0 ABS 0 - dist/default/debug\16F1518_Temp.X.debug.o
+__end_of_setCursorOff 94A 0 CODE 0 text2 dist/default/debug\16F1518_Temp.X.debug.o
+_writeTxtChk 4EC 0 CODE 0 text7 dist/default/debug\16F1518_Temp.X.debug.o
+__CFG_FCMEN$OFF 0 0 ABS 0 - dist/default/debug\16F1518_Temp.X.debug.o
+__CFG_MCLRE$OFF 0 0 ABS 0 - dist/default/debug\16F1518_Temp.X.debug.o
+start_initialization F6 0 CODE 0 cinit dist/default/debug\16F1518_Temp.X.debug.o
+__end_of_setData 6B0 0 CODE 0 text13 dist/default/debug\16F1518_Temp.X.debug.o
+waitLCDBusy@busyFlag 4A 0 BANK0 1 cstackBANK0 dist/default/debug\16F1518_Temp.X.debug.o
+_TRISAbits 8C 0 ABS 0 - dist/default/debug\16F1518_Temp.X.debug.o
+main@wCounter AA 0 BANK1 1 cstackBANK1 dist/default/debug\16F1518_Temp.X.debug.o
+__CFG_STVREN$OFF 0 0 ABS 0 - dist/default/debug\16F1518_Temp.X.debug.o
+__end_of_memset 4EC 0 CODE 0 text5 dist/default/debug\16F1518_Temp.X.debug.o
+_waitLCDBusy 6B0 0 CODE 0 text15 dist/default/debug\16F1518_Temp.X.debug.o
+_mWritingPosition 27 0 BANK0 1 bssBANK0 dist/default/debug\16F1518_Temp.X.debug.o
+clear_ram0 906 0 CODE 0 clrtext dist/default/debug\16F1518_Temp.X.debug.o
+__pcstackBANK0 3E 0 BANK0 1 cstackBANK0 dist/default/debug\16F1518_Temp.X.debug.o
+__pcstackBANK1 A0 0 BANK1 1 cstackBANK1 dist/default/debug\16F1518_Temp.X.debug.o
+_SSPADD 212 0 ABS 0 - dist/default/debug\16F1518_Temp.X.debug.o
+_SSPBUF 211 0 ABS 0 - dist/default/debug\16F1518_Temp.X.debug.o
+__size_of_powerOnLcd 0 0 ABS 0 - dist/default/debug\16F1518_Temp.X.debug.o
+__end_of_initLCD 638 0 CODE 0 text9 dist/default/debug\16F1518_Temp.X.debug.o
+___int_sp 0 0 STACK 2 stack C:\Users\dell\AppData\Local\Temp\sfeg.o
+__Hbank0 0 0 ABS 0 bank0 -
+__Hbank1 0 0 ABS 0 bank1 -
+__Hbank2 0 0 ABS 0 bank2 -
+__Hbank3 0 0 ABS 0 bank3 -
+__Hbank4 0 0 ABS 0 bank4 -
+__Hbank5 0 0 ABS 0 bank5 -
+__Hbank6 0 0 ABS 0 bank6 -
+__Hbank7 0 0 ABS 0 bank7 -
+__Hbank8 0 0 ABS 0 bank8 -
+__Hbank9 0 0 ABS 0 bank9 -
+__Hcinit 152 0 CODE 0 cinit -
+__end_of_strcat 906 0 CODE 0 text19 dist/default/debug\16F1518_Temp.X.debug.o
+__end_of_strcpy 7B2 0 CODE 0 text21 dist/default/debug\16F1518_Temp.X.debug.o
+__end_of_strlen 7F8 0 CODE 0 text20 dist/default/debug\16F1518_Temp.X.debug.o
+__Hidloc 0 0 IDLOC 0 idloc -
+__Hsfr10 0 0 ABS 0 sfr10 -
+__Hsfr11 0 0 ABS 0 sfr11 -
+__Hsfr12 0 0 ABS 0 sfr12 -
+__Hsfr13 0 0 ABS 0 sfr13 -
+__Hsfr14 0 0 ABS 0 sfr14 -
+__Hsfr15 0 0 ABS 0 sfr15 -
+__Hsfr16 0 0 ABS 0 sfr16 -
+__Hsfr17 0 0 ABS 0 sfr17 -
+__Hsfr18 0 0 ABS 0 sfr18 -
+__Hsfr19 0 0 ABS 0 sfr19 -
+__Hsfr20 0 0 ABS 0 sfr20 -
+__Hsfr21 0 0 ABS 0 sfr21 -
+__Hsfr22 0 0 ABS 0 sfr22 -
+__Hsfr23 0 0 ABS 0 sfr23 -
+__Hsfr24 0 0 ABS 0 sfr24 -
+__Hsfr25 0 0 ABS 0 sfr25 -
+__Hsfr26 0 0 ABS 0 sfr26 -
+__Hsfr27 0 0 ABS 0 sfr27 -
+__Hsfr28 0 0 ABS 0 sfr28 -
+__Hsfr29 0 0 ABS 0 sfr29 -
+__Hsfr30 0 0 ABS 0 sfr30 -
+__Hsfr31 0 0 ABS 0 sfr31 -
+__Hstack 0 0 STACK 2 stack -
+__Hbank10 0 0 ABS 0 bank10 -
+__Hbank11 0 0 ABS 0 bank11 -
+__Hbank12 0 0 ABS 0 bank12 -
+__Hbank13 0 0 BANK13 1 bank13 -
+__Hbank14 0 0 BANK14 1 bank14 -
+__Hbank15 0 0 BANK15 1 bank15 -
+__Hbank16 0 0 BANK16 1 bank16 -
+__Hbank17 0 0 BANK17 1 bank17 -
+__Hbank18 0 0 BANK18 1 bank18 -
+__Hbank19 0 0 BANK19 1 bank19 -
+__Hbank20 0 0 BANK20 1 bank20 -
+__Hbank21 0 0 BANK21 1 bank21 -
+__Hbank22 0 0 BANK22 1 bank22 -
+__Hbank23 0 0 BANK23 1 bank23 -
+__Hbank24 0 0 BANK24 1 bank24 -
+__Hbank25 0 0 BANK25 1 bank25 -
+__Hbank26 0 0 BANK26 1 bank26 -
+__Hbank27 0 0 BANK27 1 bank27 -
+__Hbank28 0 0 BANK28 1 bank28 -
+__Hbank29 0 0 BANK29 1 bank29 -
+__Hbank30 0 0 BANK30 1 bank30 -
+__Hbank31 0 0 BANK31 1 bank31 -
+__Hbigram 0 0 ABS 0 bigram -
+__Hmaintext 0 0 ABS 0 maintext -
+__CFG_FOSC$INTOSC 0 0 ABS 0 - dist/default/debug\16F1518_Temp.X.debug.o
+__Hcommon 0 0 ABS 0 common -
+__Hconfig 10012 0 CONFIG 0 config -
+__Lbank0 0 0 ABS 0 bank0 -
+__Lbank1 0 0 ABS 0 bank1 -
+__Lbank2 0 0 ABS 0 bank2 -
+__Lbank3 0 0 ABS 0 bank3 -
+__Lbank4 0 0 ABS 0 bank4 -
+__Lbank5 0 0 ABS 0 bank5 -
+__Lbank6 0 0 ABS 0 bank6 -
+__Lbank7 0 0 ABS 0 bank7 -
+__Lbank8 0 0 ABS 0 bank8 -
+__Lbank9 0 0 ABS 0 bank9 -
+__Lcinit F6 0 CODE 0 cinit -
+__Lidloc 0 0 IDLOC 0 idloc -
+__Lsfr10 0 0 ABS 0 sfr10 -
+__Lsfr11 0 0 ABS 0 sfr11 -
+__Lsfr12 0 0 ABS 0 sfr12 -
+__Lsfr13 0 0 ABS 0 sfr13 -
+__Lsfr14 0 0 ABS 0 sfr14 -
+__Lsfr15 0 0 ABS 0 sfr15 -
+__Lsfr16 0 0 ABS 0 sfr16 -
+__Lsfr17 0 0 ABS 0 sfr17 -
+__Lsfr18 0 0 ABS 0 sfr18 -
+__Lsfr19 0 0 ABS 0 sfr19 -
+__Lsfr20 0 0 ABS 0 sfr20 -
+__Lsfr21 0 0 ABS 0 sfr21 -
+__Lsfr22 0 0 ABS 0 sfr22 -
+__Lsfr23 0 0 ABS 0 sfr23 -
+__Lsfr24 0 0 ABS 0 sfr24 -
+__Lsfr25 0 0 ABS 0 sfr25 -
+__Lsfr26 0 0 ABS 0 sfr26 -
+__Lsfr27 0 0 ABS 0 sfr27 -
+__Lsfr28 0 0 ABS 0 sfr28 -
+__Lsfr29 0 0 ABS 0 sfr29 -
+__Lsfr30 0 0 ABS 0 sfr30 -
+__Lsfr31 0 0 ABS 0 sfr31 -
+__Lstack 0 0 STACK 2 stack -
+_clearDisplay 9BC 0 CODE 0 text10 dist/default/debug\16F1518_Temp.X.debug.o
+_PORTAbits C 0 ABS 0 - dist/default/debug\16F1518_Temp.X.debug.o
+_INTCONbits B 0 ABS 0 - dist/default/debug\16F1518_Temp.X.debug.o
+__Habs1 0 0 ABS 0 abs1 -
+__Hcode 0 0 ABS 0 code -
+__Hinit F2 0 CODE 0 init -
+__Hsfr0 0 0 ABS 0 sfr0 -
+__Hsfr1 0 0 ABS 0 sfr1 -
+__Hsfr2 0 0 ABS 0 sfr2 -
+__Hsfr3 0 0 ABS 0 sfr3 -
+__Hsfr4 0 0 ABS 0 sfr4 -
+__Hsfr5 0 0 ABS 0 sfr5 -
+__Hsfr6 0 0 ABS 0 sfr6 -
+__Hsfr7 0 0 ABS 0 sfr7 -
+__Hsfr8 0 0 ABS 0 sfr8 -
+__Hsfr9 0 0 ABS 0 sfr9 -
+__Htext 0 0 ABS 0 text -
+__Labs1 0 0 ABS 0 abs1 -
+__Lcode 0 0 ABS 0 code -
+__Linit F2 0 CODE 0 init -
+__Lsfr0 0 0 ABS 0 sfr0 -
+__Lsfr1 0 0 ABS 0 sfr1 -
+__Lsfr2 0 0 ABS 0 sfr2 -
+__Lsfr3 0 0 ABS 0 sfr3 -
+__Lsfr4 0 0 ABS 0 sfr4 -
+__Lsfr5 0 0 ABS 0 sfr5 -
+__Lsfr6 0 0 ABS 0 sfr6 -
+__Lsfr7 0 0 ABS 0 sfr7 -
+__Lsfr8 0 0 ABS 0 sfr8 -
+__Lsfr9 0 0 ABS 0 sfr9 -
+__Ltext 0 0 ABS 0 text -
+__pstringtext1 872 0 STRCODE 0 stringtext1 dist/default/debug\16F1518_Temp.X.debug.o
+__pstringtext2 996 0 STRCODE 0 stringtext2 dist/default/debug\16F1518_Temp.X.debug.o
+__pstringtext3 0 0 STRCODE 0 stringtext3 dist/default/debug\16F1518_Temp.X.debug.o
+memset@dest 47 0 BANK0 1 cstackBANK0 dist/default/debug\16F1518_Temp.X.debug.o
+memset@c 49 0 BANK0 1 cstackBANK0 dist/default/debug\16F1518_Temp.X.debug.o
+memset@k 51 0 BANK0 1 cstackBANK0 dist/default/debug\16F1518_Temp.X.debug.o
+memset@n 4B 0 BANK0 1 cstackBANK0 dist/default/debug\16F1518_Temp.X.debug.o
+memset@s 53 0 BANK0 1 cstackBANK0 dist/default/debug\16F1518_Temp.X.debug.o
+__LcstackBANK0 0 0 ABS 0 cstackBANK0 -
+__LcstackBANK1 0 0 ABS 0 cstackBANK1 -
+int$flags 7E 0 ABS 0 - dist/default/debug\16F1518_Temp.X.debug.o
+__size_of_setCursorPosition 0 0 ABS 0 - dist/default/debug\16F1518_Temp.X.debug.o
+__HcstackCOMMON 0 0 ABS 0 cstackCOMMON -
+__S0 8009 0 ABS 0 - -
+__S1 AC 0 ABS 0 - -
+__S2 0 0 ABS 0 - -
+_mDisplayOnOffReg 29 0 BANK0 1 bssBANK0 dist/default/debug\16F1518_Temp.X.debug.o
+__size_of_WakeTemp 0 0 ABS 0 - dist/default/debug\16F1518_Temp.X.debug.o
+__size_of_clearDisplay 0 0 ABS 0 - dist/default/debug\16F1518_Temp.X.debug.o
+__CFG_BOREN$ON 0 0 ABS 0 - dist/default/debug\16F1518_Temp.X.debug.o
+__size_of_SetToReadDataFromLCD 0 0 ABS 0 - dist/default/debug\16F1518_Temp.X.debug.o
+__Lintentry 8 0 CODE 0 intentry -
+strcpy@d 40 0 BANK0 1 cstackBANK0 dist/default/debug\16F1518_Temp.X.debug.o
+strcpy@s 3E 0 BANK0 1 cstackBANK0 dist/default/debug\16F1518_Temp.X.debug.o
+reset_vec 0 0 CODE 0 reset_vec C:\Users\dell\AppData\Local\Temp\sfeg.o
+strlen@a 74 0 COMMON 1 cstackCOMMON dist/default/debug\16F1518_Temp.X.debug.o
+strlen@s 70 0 COMMON 1 cstackCOMMON dist/default/debug\16F1518_Temp.X.debug.o
+lcdWriteText@wCharReadingPos 56 0 BANK0 1 cstackBANK0 dist/default/debug\16F1518_Temp.X.debug.o
+__pdataBANK0 59 0 BANK0 1 dataBANK0 dist/default/debug\16F1518_Temp.X.debug.o
+__LbssBANK0 0 0 ABS 0 bssBANK0 -
+_setNotBlinkingCursor 91E 0 CODE 0 text1 dist/default/debug\16F1518_Temp.X.debug.o
+__Lstringtext1 0 0 ABS 0 stringtext1 -
+__Lstringtext2 0 0 ABS 0 stringtext2 -
+__Lstringtext3 0 0 ABS 0 stringtext3 -
+_PIE1bits 91 0 ABS 0 - dist/default/debug\16F1518_Temp.X.debug.o
+_PIE2bits 92 0 ABS 0 - dist/default/debug\16F1518_Temp.X.debug.o
+__end_of_SetToReadDataFromLCD 9BC 0 CODE 0 text16 dist/default/debug\16F1518_Temp.X.debug.o
+__end_of_writeInsChk 976 0 CODE 0 text11 dist/default/debug\16F1518_Temp.X.debug.o
+_memset 34A 0 CODE 0 text5 dist/default/debug\16F1518_Temp.X.debug.o
+writeInsNoChk@iOpCode 4B 0 BANK0 1 cstackBANK0 dist/default/debug\16F1518_Temp.X.debug.o
+__end_of_clearDisplay 9C6 0 CODE 0 text10 dist/default/debug\16F1518_Temp.X.debug.o
+__ptext10 9BC 0 CODE 0 text10 dist/default/debug\16F1518_Temp.X.debug.o
+__ptext11 960 0 CODE 0 text11 dist/default/debug\16F1518_Temp.X.debug.o
+__ptext12 8A6 0 CODE 0 text12 dist/default/debug\16F1518_Temp.X.debug.o
+__ptext13 638 0 CODE 0 text13 dist/default/debug\16F1518_Temp.X.debug.o
+__ptext14 9A4 0 CODE 0 text14 dist/default/debug\16F1518_Temp.X.debug.o
+__ptext15 6B0 0 CODE 0 text15 dist/default/debug\16F1518_Temp.X.debug.o
+__ptext16 9B0 0 CODE 0 text16 dist/default/debug\16F1518_Temp.X.debug.o
+__ptext17 83A 0 CODE 0 text17 dist/default/debug\16F1518_Temp.X.debug.o
+__ptext19 8D6 0 CODE 0 text19 dist/default/debug\16F1518_Temp.X.debug.o
+__ptext20 7B2 0 CODE 0 text20 dist/default/debug\16F1518_Temp.X.debug.o
+__ptext21 75E 0 CODE 0 text21 dist/default/debug\16F1518_Temp.X.debug.o
+setCursorPosition@iPosition 4D 0 BANK0 1 cstackBANK0 dist/default/debug\16F1518_Temp.X.debug.o
+__Lbank10 0 0 ABS 0 bank10 -
+__Lbank11 0 0 ABS 0 bank11 -
+__Lbank12 0 0 ABS 0 bank12 -
+__Lbank13 0 0 BANK13 1 bank13 -
+__Lbank14 0 0 BANK14 1 bank14 -
+__Lbank15 0 0 BANK15 1 bank15 -
+__Lbank16 0 0 BANK16 1 bank16 -
+__Lbank17 0 0 BANK17 1 bank17 -
+__Lbank18 0 0 BANK18 1 bank18 -
+__Lbank19 0 0 BANK19 1 bank19 -
+__Lbank20 0 0 BANK20 1 bank20 -
+__Lbank21 0 0 BANK21 1 bank21 -
+__Lbank22 0 0 BANK22 1 bank22 -
+__Lbank23 0 0 BANK23 1 bank23 -
+__Lbank24 0 0 BANK24 1 bank24 -
+__Lbank25 0 0 BANK25 1 bank25 -
+__Lbank26 0 0 BANK26 1 bank26 -
+__Lbank27 0 0 BANK27 1 bank27 -
+__Lbank28 0 0 BANK28 1 bank28 -
+__Lbank29 0 0 BANK29 1 bank29 -
+__Lbank30 0 0 BANK30 1 bank30 -
+__Lbank31 0 0 BANK31 1 bank31 -
+__pmaintext 152 0 CODE 0 maintext dist/default/debug\16F1518_Temp.X.debug.o
+__Lbigram 0 0 ABS 0 bigram -
+__CFG_BORV$LO 0 0 ABS 0 - dist/default/debug\16F1518_Temp.X.debug.o
+__Lcommon 0 0 ABS 0 common -
+__Lconfig 1000E 0 CONFIG 0 config -
+__CFG_CP$OFF 0 0 ABS 0 - dist/default/debug\16F1518_Temp.X.debug.o
+_WakeTemp 83A 0 CODE 0 text17 dist/default/debug\16F1518_Temp.X.debug.o
+__CFG_WDTE$OFF 0 0 ABS 0 - dist/default/debug\16F1518_Temp.X.debug.o
+setData@iValue 49 0 BANK0 1 cstackBANK0 dist/default/debug\16F1518_Temp.X.debug.o
+main@F2177 59 0 BANK0 1 dataBANK0 dist/default/debug\16F1518_Temp.X.debug.o
+_strcat 8D6 0 CODE 0 text19 dist/default/debug\16F1518_Temp.X.debug.o
+_strcpy 75E 0 CODE 0 text21 dist/default/debug\16F1518_Temp.X.debug.o
+_strlen 7B2 0 CODE 0 text20 dist/default/debug\16F1518_Temp.X.debug.o
+main@wConv A0 0 BANK1 1 cstackBANK1 dist/default/debug\16F1518_Temp.X.debug.o
+__end_of_WakeTemp 872 0 CODE 0 text17 dist/default/debug\16F1518_Temp.X.debug.o
+main@wTemp A8 0 BANK1 1 cstackBANK1 dist/default/debug\16F1518_Temp.X.debug.o
+__CFG_VCAPEN$OFF 0 0 ABS 0 - dist/default/debug\16F1518_Temp.X.debug.o
+stackhi 2327 0 ABS 0 - C:\Users\dell\AppData\Local\Temp\sfeg.o
+stacklo 205C 0 ABS 0 - C:\Users\dell\AppData\Local\Temp\sfeg.o
+_setData 638 0 CODE 0 text13 dist/default/debug\16F1518_Temp.X.debug.o
+__CFG_LVP$OFF 0 0 ABS 0 - dist/default/debug\16F1518_Temp.X.debug.o
+__pbssBIGRAM 2328 0 ABS 0 - dist/default/debug\16F1518_Temp.X.debug.o
+strcpy@dest 76 0 COMMON 1 cstackCOMMON dist/default/debug\16F1518_Temp.X.debug.o
+strcat@src 44 0 BANK0 1 cstackBANK0 dist/default/debug\16F1518_Temp.X.debug.o
+__Lspace_0 0 0 ABS 0 - -
+__Lspace_1 0 0 ABS 0 - -
+__Lspace_2 0 0 ABS 0 - -
+__Lspace_3 0 0 ABS 0 - -
+__end_of_writeTxtChk 598 0 CODE 0 text7 dist/default/debug\16F1518_Temp.X.debug.o
+__size_of_memset 0 0 ABS 0 - dist/default/debug\16F1518_Temp.X.debug.o
+__end_of_setCursorPosition 83A 0 CODE 0 text8 dist/default/debug\16F1518_Temp.X.debug.o
+__HcstackBANK0 0 0 ABS 0 cstackBANK0 -
+__HcstackBANK1 0 0 ABS 0 cstackBANK1 -
+_PIR1bits 11 0 ABS 0 - dist/default/debug\16F1518_Temp.X.debug.o
+_PIR2bits 12 0 ABS 0 - dist/default/debug\16F1518_Temp.X.debug.o
+__Lend_init F2 0 CODE 0 end_init -
+__LcstackCOMMON 0 0 ABS 0 cstackCOMMON -
+end_of_initialization 14A 0 CODE 0 cinit dist/default/debug\16F1518_Temp.X.debug.o
+_writeInsNoChk 8A6 0 CODE 0 text12 dist/default/debug\16F1518_Temp.X.debug.o
+__Hintentry F2 0 CODE 0 intentry -
+_wInterruptText 2328 0 ABS 1 - dist/default/debug\16F1518_Temp.X.debug.o
+__Lstrings 0 0 ABS 0 strings -
+__end_of_waitLCDBusy 70A 0 CODE 0 text15 dist/default/debug\16F1518_Temp.X.debug.o
+__Hreset_vec 4 0 CODE 0 reset_vec -
+__HbssBANK0 0 0 ABS 0 bssBANK0 -
+_initLCD 598 0 CODE 0 text9 dist/default/debug\16F1518_Temp.X.debug.o
+__size_of_strcat 0 0 ABS 0 - dist/default/debug\16F1518_Temp.X.debug.o
+__size_of_strcpy 0 0 ABS 0 - dist/default/debug\16F1518_Temp.X.debug.o
+__size_of_strlen 0 0 ABS 0 - dist/default/debug\16F1518_Temp.X.debug.o
+_SSPCON1bits 215 0 ABS 0 - dist/default/debug\16F1518_Temp.X.debug.o
+_SSPCON2bits 216 0 ABS 0 - dist/default/debug\16F1518_Temp.X.debug.o
+_SSPCON3bits 217 0 ABS 0 - dist/default/debug\16F1518_Temp.X.debug.o
+__ptext1 91E 0 CODE 0 text1 dist/default/debug\16F1518_Temp.X.debug.o
+__ptext2 934 0 CODE 0 text2 dist/default/debug\16F1518_Temp.X.debug.o
+__ptext3 94A 0 CODE 0 text3 dist/default/debug\16F1518_Temp.X.debug.o
+__ptext4 986 0 CODE 0 text4 dist/default/debug\16F1518_Temp.X.debug.o
+__ptext5 34A 0 CODE 0 text5 dist/default/debug\16F1518_Temp.X.debug.o
+__ptext6 70A 0 CODE 0 text6 dist/default/debug\16F1518_Temp.X.debug.o
+__ptext7 4EC 0 CODE 0 text7 dist/default/debug\16F1518_Temp.X.debug.o
+__ptext8 7F8 0 CODE 0 text8 dist/default/debug\16F1518_Temp.X.debug.o
+__ptext9 598 0 CODE 0 text9 dist/default/debug\16F1518_Temp.X.debug.o
+__Lpowerup 0 0 CODE 0 powerup -
+__Leeprom_data 0 0 EEDATA 3 eeprom_data -
+__Lreset_vec 0 0 CODE 0 reset_vec -
+__Hstringtext1 0 0 ABS 0 stringtext1 -
+__Hstringtext2 0 0 ABS 0 stringtext2 -
+__Hstringtext3 0 0 ABS 0 stringtext3 -
+__CFG_LPBOR$OFF 0 0 ABS 0 - dist/default/debug\16F1518_Temp.X.debug.o
+strcpy@src 78 0 COMMON 1 cstackCOMMON dist/default/debug\16F1518_Temp.X.debug.o
+__end_of__initialization 14A 0 CODE 0 cinit dist/default/debug\16F1518_Temp.X.debug.o
+__Lfunctab 0 0 ENTRY 0 functab -
+__end_of_SetToSendDataToLCD 9B0 0 CODE 0 text14 dist/default/debug\16F1518_Temp.X.debug.o
+__pidataBANK0 976 0 CODE 0 idataBANK0 dist/default/debug\16F1518_Temp.X.debug.o
+__Lclrtext 0 0 ABS 0 clrtext -
+__size_of_writeInsChk 0 0 ABS 0 - dist/default/debug\16F1518_Temp.X.debug.o
+_wI2CTxSendPos 25 0 BANK0 1 bssBANK0 dist/default/debug\16F1518_Temp.X.debug.o
+__CFG_PWRTE$ON 0 0 ABS 0 - dist/default/debug\16F1518_Temp.X.debug.o
+__pcstackCOMMON 70 0 COMMON 1 cstackCOMMON dist/default/debug\16F1518_Temp.X.debug.o
+_setCursorPosition 7F8 0 CODE 0 text8 dist/default/debug\16F1518_Temp.X.debug.o
+__Hend_init F6 0 CODE 0 end_init -
+__end_of_main 34A 0 CODE 0 maintext dist/default/debug\16F1518_Temp.X.debug.o
+_PORTA C 0 ABS 0 - dist/default/debug\16F1518_Temp.X.debug.o
+__end_of_myint F2 0 CODE 0 intentry dist/default/debug\16F1518_Temp.X.debug.o
+_TRISA 8C 0 ABS 0 - dist/default/debug\16F1518_Temp.X.debug.o
+_TRISC 8E 0 ABS 0 - dist/default/debug\16F1518_Temp.X.debug.o
+__Hram 0 0 ABS 0 ram -
+__Lram 0 0 ABS 0 ram -
+_myint 8 0 CODE 0 intentry dist/default/debug\16F1518_Temp.X.debug.o
+__size_of_writeInsNoChk 0 0 ABS 0 - dist/default/debug\16F1518_Temp.X.debug.o
+_SSPSTATbits 214 0 ABS 0 - dist/default/debug\16F1518_Temp.X.debug.o
+__pintentry 8 0 CODE 0 intentry dist/default/debug\16F1518_Temp.X.debug.o
+_SetToSendDataToLCD 9A4 0 CODE 0 text14 dist/default/debug\16F1518_Temp.X.debug.o
+_powerOnLcd 94A 0 CODE 0 text3 dist/default/debug\16F1518_Temp.X.debug.o
+__HdataBANK0 0 0 ABS 0 dataBANK0 -
+__initialization F6 0 CODE 0 cinit dist/default/debug\16F1518_Temp.X.debug.o
+__pbssBANK0 20 0 BANK0 1 bssBANK0 dist/default/debug\16F1518_Temp.X.debug.o
+__CFG_WRT$OFF 0 0 ABS 0 - dist/default/debug\16F1518_Temp.X.debug.o
+__size_of_writeTxtChk 0 0 ABS 0 - dist/default/debug\16F1518_Temp.X.debug.o
+_moveCursorToHome 986 0 CODE 0 text4 dist/default/debug\16F1518_Temp.X.debug.o
+_ANSELCbits 18E 0 ABS 0 - dist/default/debug\16F1518_Temp.X.debug.o
+# %SPLITSTAB Section
+# This section enumerates all the psect splits performed by the assembler.
+# The beginning of the section is indicated by %SPLITSTAB.
+# Each line is a record a particular split, where the parent psect is on
+# the left and the child on the right.  Note that a child psect is always
+# split form the top of the parent psect. All splits from a given parent
+# are listed in the order in which they occurred.
+%SPLITSTAB
+# %DABS Section
+# This section contains a table of all usuage of the assember
+# directive DABS in the program. Each line has the following format:
+#   <name> <space> <address> <size>
+# If the DABS was originally labelled then that shall be <name>,
+# otherwise name will be "-".  The <space> number is in decimal.
+# <address> and <size> are in byte units as unqaulified hexadecimal
+%DABS
+_wInterruptText 1 2328 0
+- 1 620 30
+- 1 5A0 50
+- 1 528 48
+- 1 7E 2
+# %SEGMENTS Section
+# This sections enumerates the segments of the program.  Each segment
+# is described on a single line as follows:
+#    <name> <space> <link address> <file address> <size> <delta>
+# Addresses and size are in unqualified hexadecimal.  The link address
+# and size are in units of delta. The file address is in units of bytes.
+# All other numeric quantities are in decimal.
+%SEGMENTS
+text12 0 453 8A6 78 2
+text14 0 4D2 9A4 11 2
+cstackCOMMON 1 70 70 E 1
+cstackBANK1 1 A0 A0 C 1
+stringtext1 0 439 872 1A 2
+stringtext2 0 4CB 996 7 2
+intentry 0 4 8 435 2
+reset_vec 0 0 0 2 2
+bssBANK0 1 20 20 41 1
+config 0 8007 1000E 2 2
