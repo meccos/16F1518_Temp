@@ -3354,6 +3354,10 @@ void __attribute__((picinterrupt(""))) myint(void)
                 SSPCON2bits.ACKSTAT = 0;
                 if(wI2CTxSendPos != 0)
                 {
+                  SSPCON2bits.RSEN = 1;
+                }
+                else
+                {
                   SSPCON2bits.PEN = 1;
                 }
             }

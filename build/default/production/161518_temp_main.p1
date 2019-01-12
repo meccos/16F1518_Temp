@@ -1,5 +1,27 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"3501 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1518.h
+"497 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1518.h
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1518.h: 497:     struct {
+[s S36 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S36 . RB0 RB1 RB2 RB3 RB4 RB5 RB6 RB7 ]
+"496
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1518.h: 496: typedef union {
+[u S35 `S36 1 ]
+[n S35 . . ]
+"508
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1518.h: 508: extern volatile PORTBbits_t PORTBbits __attribute__((address(0x00D)));
+[v _PORTBbits `VS35 ~T0 @X0 0 e@13 ]
+"1251
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1518.h: 1251:     struct {
+[s S71 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S71 . TMR1IE TMR2IE CCP1IE SSPIE TXIE RCIE ADIE TMR1GIE ]
+"1250
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1518.h: 1250: typedef union {
+[u S70 `S71 1 ]
+[n S70 . . ]
+"1262
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1518.h: 1262: extern volatile PIE1bits_t PIE1bits __attribute__((address(0x091)));
+[v _PIE1bits `VS70 ~T0 @X0 0 e@145 ]
+"3501
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1518.h: 3501:     struct {
 [s S189 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S189 . DHEN AHEN SBCDE SDAHT BOEN SCIE PCIE ACKTIM ]
@@ -21,10 +43,19 @@ Version 4.0 HI-TECH Software Intermediate Code
 "3390
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1518.h: 3390: extern volatile SSPCON2bits_t SSPCON2bits __attribute__((address(0x216)));
 [v _SSPCON2bits `VS184 ~T0 @X0 0 e@534 ]
-[p mainexit ]
-"29 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\c99\string.h
+"54 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\c99\string.h
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\c99\string.h: 54: size_t strlen (const char *);
+[v _strlen `(ui ~T0 @X0 0 ef1`*Cuc ]
+"36
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\c99\string.h: 36: char *strcat (char *restrict, const char *restrict);
+[v _strcat `(*uc ~T0 @X0 0 ef2`*uc`*Cuc ]
+"29
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\c99\string.h: 29: void *memset (void *, int, size_t);
 [v _memset `(*v ~T0 @X0 0 ef3`*v`i`ui ]
+"19 ./LCD_hd44780u_qy_2004a.h
+[; ;./LCD_hd44780u_qy_2004a.h: 19: void lcdWriteText(char *iText);
+[v _lcdWriteText `(v ~T0 @X0 0 ef1`*uc ]
+[p mainexit ]
 "1546 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1518.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1518.h: 1546:     struct {
 [s S83 :2 `uc 1 :1 `uc 1 :4 `uc 1 ]
@@ -58,6 +89,15 @@ Version 4.0 HI-TECH Software Intermediate Code
 "429
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1518.h: 429: extern volatile unsigned char PORTA __attribute__((address(0x00C)));
 [v _PORTA `Vuc ~T0 @X0 0 e@12 ]
+"491
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1518.h: 491: extern volatile unsigned char PORTB __attribute__((address(0x00D)));
+[v _PORTB `Vuc ~T0 @X0 0 e@13 ]
+"2211
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1518.h: 2211: extern volatile unsigned char ANSELB __attribute__((address(0x18D)));
+[v _ANSELB `Vuc ~T0 @X0 0 e@397 ]
+"1114
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1518.h: 1114: extern volatile unsigned char TRISB __attribute__((address(0x08D)));
+[v _TRISB `Vuc ~T0 @X0 0 e@141 ]
 "2158
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1518.h: 2158: extern volatile unsigned char ANSELA __attribute__((address(0x18C)));
 [v _ANSELA `Vuc ~T0 @X0 0 e@396 ]
@@ -107,17 +147,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 "3064
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1518.h: 3064: extern volatile SSPSTATbits_t SSPSTATbits __attribute__((address(0x214)));
 [v _SSPSTATbits `VS171 ~T0 @X0 0 e@532 ]
-"1251
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1518.h: 1251:     struct {
-[s S71 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S71 . TMR1IE TMR2IE CCP1IE SSPIE TXIE RCIE ADIE TMR1GIE ]
-"1250
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1518.h: 1250: typedef union {
-[u S70 `S71 1 ]
-[n S70 . . ]
-"1262
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1518.h: 1262: extern volatile PIE1bits_t PIE1bits __attribute__((address(0x091)));
-[v _PIE1bits `VS70 ~T0 @X0 0 e@145 ]
 "1313
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1518.h: 1313:     struct {
 [s S73 :1 `uc 1 :2 `uc 1 :1 `uc 1 :3 `uc 1 :1 `uc 1 ]
@@ -129,34 +158,28 @@ Version 4.0 HI-TECH Software Intermediate Code
 "1321
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1518.h: 1321: extern volatile PIE2bits_t PIE2bits __attribute__((address(0x092)));
 [v _PIE2bits `VS72 ~T0 @X0 0 e@146 ]
-"7 ./LCD_hd44780u_qy_2004a.h
-[; ;./LCD_hd44780u_qy_2004a.h: 7: void initLCD(void);
+"10 ./LCD_hd44780u_qy_2004a.h
+[; ;./LCD_hd44780u_qy_2004a.h: 10: void initLCD(void);
 [v _initLCD `(v ~T0 @X0 0 ef ]
-"31
-[; ;./LCD_hd44780u_qy_2004a.h: 31: void clearDisplay();
+"34
+[; ;./LCD_hd44780u_qy_2004a.h: 34: void clearDisplay();
 [v _clearDisplay `(v ~T0 @X0 0 e? ]
 [v F1633 `(v ~T0 @X0 1 tf1`ul ]
 "92 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic.h
 [v __delay `JF1633 ~T0 @X0 0 e ]
 [p i __delay ]
-"19 ./LCD_hd44780u_qy_2004a.h
-[; ;./LCD_hd44780u_qy_2004a.h: 19: void powerOnLcd();
+"22 ./LCD_hd44780u_qy_2004a.h
+[; ;./LCD_hd44780u_qy_2004a.h: 22: void powerOnLcd();
 [v _powerOnLcd `(v ~T0 @X0 0 e? ]
-"22
-[; ;./LCD_hd44780u_qy_2004a.h: 22: void setCursorOff();
+"25
+[; ;./LCD_hd44780u_qy_2004a.h: 25: void setCursorOff();
 [v _setCursorOff `(v ~T0 @X0 0 e? ]
-"32
-[; ;./LCD_hd44780u_qy_2004a.h: 32: void moveCursorToHome();
+"35
+[; ;./LCD_hd44780u_qy_2004a.h: 35: void moveCursorToHome();
 [v _moveCursorToHome `(v ~T0 @X0 0 e? ]
-"21
-[; ;./LCD_hd44780u_qy_2004a.h: 21: void setNotBlinkingCursor();
+"24
+[; ;./LCD_hd44780u_qy_2004a.h: 24: void setNotBlinkingCursor();
 [v _setNotBlinkingCursor `(v ~T0 @X0 0 e? ]
-"16
-[; ;./LCD_hd44780u_qy_2004a.h: 16: void lcdWriteText(char *iText);
-[v _lcdWriteText `(v ~T0 @X0 0 ef1`*uc ]
-"26
-[; ;./LCD_hd44780u_qy_2004a.h: 26: void setCursorPosition(char iPosition);
-[v _setCursorPosition `(v ~T0 @X0 0 ef1`uc ]
 [t ~ __interrupt . k ]
 [t T1 __interrupt ]
 "642 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1518.h
@@ -170,7 +193,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 "653
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1518.h: 653: extern volatile PIR1bits_t PIR1bits __attribute__((address(0x011)));
 [v _PIR1bits `VS41 ~T0 @X0 0 e@17 ]
-"2928
+"115 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\c99\stdio.h
+[v _sprintf `(i ~T0 @X0 0 e1v`*uc`*Cuc ]
+"2928 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1518.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1518.h: 2928: extern volatile unsigned char SSPBUF __attribute__((address(0x211)));
 [v _SSPBUF `Vuc ~T0 @X0 0 e@529 ]
 "704
@@ -184,9 +209,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 "712
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1518.h: 712: extern volatile PIR2bits_t PIR2bits __attribute__((address(0x012)));
 [v _PIR2bits `VS43 ~T0 @X0 0 e@18 ]
-"36 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\c99\string.h
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\c99\string.h: 36: char *strcat (char *restrict, const char *restrict);
-[v _strcat `(*uc ~T0 @X0 0 ef2`*uc`*Cuc ]
 "54 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1518.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1518.h: 54: __asm("INDF0 equ 00h");
 [; <" INDF0 equ 00h ;# ">
@@ -520,14 +542,20 @@ Version 4.0 HI-TECH Software Intermediate Code
 "4258
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1518.h: 4258: __asm("TOSH equ 0FEFh");
 [; <" TOSH equ 0FEFh ;# ">
-"37 ./LCD_hd44780u_qy_2004a.h
-[; ;./LCD_hd44780u_qy_2004a.h: 37: char mDisplayOnOffReg;
+"6 ./LCD_hd44780u_qy_2004a.h
+[; ;./LCD_hd44780u_qy_2004a.h: 6: int test =0;
+[v _test `i ~T0 @X0 1 e ]
+[i _test
+-> 0 `i
+]
+"40
+[; ;./LCD_hd44780u_qy_2004a.h: 40: char mDisplayOnOffReg;
 [v _mDisplayOnOffReg `uc ~T0 @X0 1 e ]
-"38
-[; ;./LCD_hd44780u_qy_2004a.h: 38: char mCursorDisplayShiftReg;
+"41
+[; ;./LCD_hd44780u_qy_2004a.h: 41: char mCursorDisplayShiftReg;
 [v _mCursorDisplayShiftReg `uc ~T0 @X0 1 e ]
-"39
-[; ;./LCD_hd44780u_qy_2004a.h: 39: char mWritingPosition;
+"42
+[; ;./LCD_hd44780u_qy_2004a.h: 42: char mWritingPosition;
 [v _mWritingPosition `uc ~T0 @X0 1 e ]
 "21 161518_temp_main.c
 [p x FOSC = INTOSC ]
@@ -560,349 +588,617 @@ Version 4.0 HI-TECH Software Intermediate Code
 "37
 [p x LVP = OFF ]
 "40
-[v _wInterruptText `uc ~T0 @X0 -> 200 `i e ]
+[v _wInterruptText `uc ~T0 @X0 -> 75 `i e ]
+"41
+[v _wReceptionBuffer `uc ~T0 @X0 -> 30 `i e ]
 "42
-[v _wI2CTxBuffer `uc ~T0 @X0 -> 20 `i e ]
-"43
-[v _wI2CTxBufferSize `uc ~T0 @X0 1 e ]
+[v _wReceptionBufferPosition `uc ~T0 @X0 1 e ]
 "44
-[v _wI2CTxSendPos `uc ~T0 @X0 1 e ]
+[v _wI2CTxBuffer `uc ~T0 @X0 -> 20 `i e ]
 "45
-[v _wHexTemp `uc ~T0 @X0 -> 5 `i e ]
+[v _wI2CTxBufferSize `uc ~T0 @X0 1 e ]
+"46
+[v _wI2CRxBufferSize `uc ~T0 @X0 1 e ]
+"47
+[v _wI2CTxSendPos `uc ~T0 @X0 1 e ]
 "48
-[v _GetTemp `(v ~T0 @X0 1 ef1`*i ]
-"49
-{
-[e :U _GetTemp ]
-"48
-[v _oTempValue `*i ~T0 @X0 1 r1 ]
-"49
-[f ]
-"50
-[e $ ! == -> _wI2CTxBufferSize `i -> 0 `i 241  ]
+[v _wHexTemp `uc ~T0 @X0 -> 20 `i e ]
 "51
-{
+[v _ToggleBitRB5 `(v ~T0 @X0 1 ef ]
 "52
-[e = . . _SSPCON3bits 0 7 -> -> 1 `i `uc ]
+{
+[e :U _ToggleBitRB5 ]
+[f ]
 "53
-[e = *U + &U _wI2CTxBuffer * -> -> -> 0 `i `ui `ux -> -> # *U &U _wI2CTxBuffer `ui `ux -> -> 184 `i `uc ]
+[e $ ! == -> . . _PORTBbits 0 5 `i -> 1 `i 241  ]
 "54
-[e = *U + &U _wI2CTxBuffer * -> -> -> 1 `i `ui `ux -> -> # *U &U _wI2CTxBuffer `ui `ux -> -> 3 `i `uc ]
+{
 "55
-[e = *U + &U _wI2CTxBuffer * -> -> -> 2 `i `ui `ux -> -> # *U &U _wI2CTxBuffer `ui `ux -> -> 0 `i `uc ]
+[e = . . _PORTBbits 0 5 -> -> 0 `i `uc ]
 "56
-[e = *U + &U _wI2CTxBuffer * -> -> -> 3 `i `ui `ux -> -> # *U &U _wI2CTxBuffer `ui `ux -> -> 4 `i `uc ]
-"57
-[e = _wI2CTxBufferSize -> -> 4 `i `uc ]
-"58
-[e = . . _SSPCON2bits 0 0 -> -> 1 `i `uc ]
-"59
 }
+[e $U 242  ]
+"57
 [e :U 241 ]
+"58
+{
+"59
+[e = . . _PORTBbits 0 5 -> -> 1 `i `uc ]
 "60
+}
+[e :U 242 ]
+"61
 [e :UE 240 ]
 }
-"61
-[v _WakeTemp `(v ~T0 @X0 1 ef ]
 "62
+[v _SetToGetTemp `(v ~T0 @X0 1 ef ]
+"63
+{
+[e :U _SetToGetTemp ]
+[f ]
+"64
+[e $ ! == -> _wI2CTxBufferSize `i -> 0 `i 244  ]
+"65
+{
+"66
+[e = . . _PIE1bits 0 3 -> -> 1 `i `uc ]
+"67
+[e = . . _SSPCON3bits 0 7 -> -> 1 `i `uc ]
+"68
+[e = *U + &U _wI2CTxBuffer * -> -> -> 0 `i `ui `ux -> -> # *U &U _wI2CTxBuffer `ui `ux -> -> 184 `i `uc ]
+"69
+[e = *U + &U _wI2CTxBuffer * -> -> -> 1 `i `ui `ux -> -> # *U &U _wI2CTxBuffer `ui `ux -> -> 3 `i `uc ]
+"70
+[e = *U + &U _wI2CTxBuffer * -> -> -> 2 `i `ui `ux -> -> # *U &U _wI2CTxBuffer `ui `ux -> -> 0 `i `uc ]
+"71
+[e = *U + &U _wI2CTxBuffer * -> -> -> 3 `i `ui `ux -> -> # *U &U _wI2CTxBuffer `ui `ux -> -> 4 `i `uc ]
+"72
+[e = _wI2CTxBufferSize -> -> 4 `i `uc ]
+"73
+[e = . . _SSPCON2bits 0 0 -> -> 1 `i `uc ]
+"74
+}
+[e :U 244 ]
+"75
+[e :UE 243 ]
+}
+"77
+[v _Add_Trace `(v ~T0 @X0 1 ef3`*uc`uc`*uc ]
+"78
+{
+[e :U _Add_Trace ]
+"77
+[v _oText `*uc ~T0 @X0 1 r1 ]
+[v _iSizeOfoText `uc ~T0 @X0 1 r2 ]
+[v _iText `*uc ~T0 @X0 1 r3 ]
+"78
+[f ]
+"79
+[e $ ! > - -> + -> _iSizeOfoText `i -> 1 `i `ui ( _strlen (1 -> _oText `*Cuc ( _strlen (1 -> _iText `*Cuc 246  ]
+"80
+{
+"81
+[e ( _strcat (2 , _oText -> _iText `*Cuc ]
+"82
+}
+[e :U 246 ]
+"83
+[e :UE 245 ]
+}
+"85
+[v _GetTemp `(v ~T0 @X0 1 ef ]
+"86
+{
+[e :U _GetTemp ]
+[f ]
+"87
+[e $ ! == -> _wI2CTxBufferSize `i -> 0 `i 248  ]
+"88
+{
+"89
+[e = . . _PIE1bits 0 3 -> -> 1 `i `uc ]
+"90
+[e ( _memset (3 , , -> &U _wReceptionBuffer `*v -> 0 `i -> # _wReceptionBuffer `ui ]
+"91
+[e = _wReceptionBufferPosition -> -> 0 `i `uc ]
+"92
+[e = *U + &U _wI2CTxBuffer * -> -> -> 0 `i `ui `ux -> -> # *U &U _wI2CTxBuffer `ui `ux -> -> 185 `i `uc ]
+"93
+[e = _wI2CRxBufferSize -> -> 8 `i `uc ]
+"94
+[e = _wI2CTxBufferSize -> -> 1 `i `uc ]
+"95
+[e = . . _SSPCON2bits 0 0 -> -> 1 `i `uc ]
+"96
+}
+[e :U 248 ]
+"97
+[e :UE 247 ]
+}
+"98
+[v _WakeTemp `(v ~T0 @X0 1 ef ]
+"99
 {
 [e :U _WakeTemp ]
 [f ]
-"63
-[e $ ! != -> *U + &U _wI2CTxBuffer * -> -> -> 0 `i `ui `ux -> -> # *U &U _wI2CTxBuffer `ui `ux `i -> 185 `i 243  ]
-"64
+"100
+[e = . . _PIE1bits 0 3 -> -> 1 `i `uc ]
+"101
+[e $ ! == -> _wI2CTxBufferSize `i -> 0 `i 250  ]
+"102
 {
-"65
-[e = *U + &U _wI2CTxBuffer * -> -> -> 0 `i `ui `ux -> -> # *U &U _wI2CTxBuffer `ui `ux -> -> 185 `i `uc ]
-"66
-}
-[e $U 244  ]
-"67
-[e :U 243 ]
-"68
-{
-"69
+"103
 [e = *U + &U _wI2CTxBuffer * -> -> -> 0 `i `ui `ux -> -> # *U &U _wI2CTxBuffer `ui `ux -> -> 184 `i `uc ]
-"70
-}
-[e :U 244 ]
-"71
-[e $ ! == -> _wI2CTxBufferSize `i -> 0 `i 245  ]
-"72
-{
-"74
+"104
 [e = _wI2CTxBufferSize -> -> 1 `i `uc ]
-"75
+"105
 [e = . . _SSPCON2bits 0 0 -> -> 1 `i `uc ]
-"76
+"106
 }
-[e :U 245 ]
-"77
-[e :UE 242 ]
+[e :U 250 ]
+"107
+[e :UE 249 ]
+}
+"108
+[v _PrintLog `(v ~T0 @X0 1 ef1`*uc ]
+"109
+{
+[e :U _PrintLog ]
+"108
+[v _iText `*uc ~T0 @X0 1 r1 ]
+"109
+[f ]
+"110
+[v _wInterruptTextLen `uc ~T0 @X0 1 a ]
+[e = _wInterruptTextLen -> ( _strlen (1 -> _iText `*Cuc `uc ]
+"112
+[e $ ! != -> _wInterruptTextLen `i -> 0 `i 252  ]
+"113
+{
+"114
+[e ( _lcdWriteText (1 _iText ]
+"115
+[e ( _memset (3 , , -> _iText `*v -> 0 `i -> # _wInterruptTextLen `ui ]
+"116
+}
+[e :U 252 ]
+"117
+[e :UE 251 ]
 }
 [v $root$_main `(v ~T0 @X0 0 e ]
-"79
+"118
 [v _main `(v ~T0 @X0 1 ef ]
-"80
+"119
 {
 [e :U _main ]
 [f ]
-"81
+"120
 [e ( _memset (3 , , -> &U _wInterruptText `*v -> 0 `i -> # _wInterruptText `ui ]
-"83
-[e = . . _OSCCONbits 0 2 -> -> 15 `i `uc ]
-"84
-[e = . . _OSCCONbits 0 0 -> -> 3 `i `uc ]
-"85
-[e = . . _INTCONbits 0 7 -> -> 0 `i `uc ]
-"86
-[e = _PORTA -> -> 0 `i `uc ]
-"88
-[e ( _memset (3 , , -> &U _wI2CTxBuffer `*v -> 0 `i -> # _wI2CTxBuffer `ui ]
-"89
-[e = _wI2CTxBufferSize -> -> 0 `i `uc ]
-"90
-[e = _wI2CTxSendPos -> -> 0 `i `uc ]
-"92
-[e = _ANSELA -> -> 0 `i `uc ]
-"93
-[e = _TRISA -> -> 0 `i `uc ]
-"95
-[e = _TRISC -> -> 0 `i `uc ]
-"96
-[e = _TRISC -> -> 255 `i `uc ]
-"97
-[e = . . _ANSELCbits 0 3 -> -> 0 `i `uc ]
-"98
-[e = . . _ANSELCbits 0 4 -> -> 0 `i `uc ]
-"103
-[e = . . _SSPCON1bits 0 0 -> -> 8 `i `uc ]
-"104
-[e = _SSPADD -> -> 31 `i `uc ]
-"105
-[e = . . _SSPCON1bits 0 2 -> -> 1 `i `uc ]
-"106
-[e = . . _SSPCON2bits 0 7 -> -> 0 `i `uc ]
-"107
-[e = . . _SSPCON2bits 0 4 -> -> 1 `i `uc ]
-"108
-[e = . . _SSPCON3bits 0 6 -> -> 1 `i `uc ]
-"109
-[e = . . _SSPCON3bits 0 5 -> -> 1 `i `uc ]
-"110
-[e = . . _SSPCON3bits 0 3 -> -> 1 `i `uc ]
-"111
-[e = . . _SSPCON3bits 0 1 -> -> 0 `i `uc ]
-"112
-[e = . . _SSPCON3bits 0 0 -> -> 0 `i `uc ]
-"113
-[e = . . _SSPSTATbits 0 6 -> -> 0 `i `uc ]
-"115
-[e = . . _INTCONbits 0 6 -> -> 1 `i `uc ]
-"116
-[e = . . _PIE1bits 0 3 -> -> 1 `i `uc ]
-"117
-[e = . . _PIE2bits 0 2 -> -> 1 `i `uc ]
-"119
-[e = . . _INTCONbits 0 7 -> -> 1 `i `uc ]
-"121
-[e ( _initLCD ..  ]
 "122
-[e ( _clearDisplay ..  ]
+[e = . . _OSCCONbits 0 2 -> -> 15 `i `uc ]
 "123
-[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+[e = . . _OSCCONbits 0 0 -> -> 3 `i `uc ]
 "124
-[e ( _powerOnLcd ..  ]
+[e = . . _INTCONbits 0 7 -> -> 0 `i `uc ]
 "125
-[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-"126
-[e ( _setCursorOff ..  ]
+[e = _PORTA -> -> 0 `i `uc ]
 "127
-[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+[e = _PORTB -> -> 0 `i `uc ]
 "128
-[e ( _moveCursorToHome ..  ]
+[e = _ANSELB -> -> 0 `i `uc ]
 "129
-[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-"130
-[e ( _setNotBlinkingCursor ..  ]
+[e = _TRISB -> -> 0 `i `uc ]
 "131
-[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+[e ( _memset (3 , , -> &U _wI2CTxBuffer `*v -> 0 `i -> # _wI2CTxBuffer `ui ]
+"132
+[e = _wI2CTxBufferSize -> -> 0 `i `uc ]
 "133
-[e ( _lcdWriteText (1 :s 1C ]
+[e = _wI2CTxSendPos -> -> 0 `i `uc ]
 "135
-[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-"137
+[e = _ANSELA -> -> 0 `i `uc ]
+"136
+[e = _TRISA -> -> 0 `i `uc ]
+"138
+[e = _TRISC -> -> 0 `i `uc ]
+"139
+[e = _TRISC -> -> 255 `i `uc ]
+"140
+[e = . . _ANSELCbits 0 3 -> -> 0 `i `uc ]
+"141
+[e = . . _ANSELCbits 0 4 -> -> 0 `i `uc ]
+"146
+[e = . . _SSPCON1bits 0 0 -> -> 8 `i `uc ]
+"147
+[e = _SSPADD -> -> 31 `i `uc ]
+"148
+[e = . . _SSPCON1bits 0 2 -> -> 1 `i `uc ]
+"149
+[e = . . _SSPCON2bits 0 7 -> -> 0 `i `uc ]
+"150
+[e = . . _SSPCON2bits 0 4 -> -> 1 `i `uc ]
+"151
+[e = . . _SSPCON3bits 0 6 -> -> 1 `i `uc ]
+"152
+[e = . . _SSPCON3bits 0 5 -> -> 1 `i `uc ]
+"153
+[e = . . _SSPCON3bits 0 3 -> -> 1 `i `uc ]
+"154
+[e = . . _SSPCON3bits 0 1 -> -> 0 `i `uc ]
+"155
+[e = . . _SSPCON3bits 0 0 -> -> 0 `i `uc ]
+"156
+[e = . . _SSPSTATbits 0 6 -> -> 0 `i `uc ]
+"158
+[e = . . _INTCONbits 0 6 -> -> 1 `i `uc ]
+"159
+[e = . . _PIE1bits 0 3 -> -> 1 `i `uc ]
+"160
+[e = . . _PIE2bits 0 2 -> -> 1 `i `uc ]
+"162
+[e = . . _INTCONbits 0 7 -> -> 1 `i `uc ]
+"165
+[e ( _initLCD ..  ]
+"166
+[e ( _clearDisplay ..  ]
+"167
+[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+"168
+[e ( _powerOnLcd ..  ]
+"169
+[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+"170
+[e ( _setCursorOff ..  ]
+"171
+[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+"172
+[e ( _moveCursorToHome ..  ]
+"173
+[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+"174
+[e ( _setNotBlinkingCursor ..  ]
+"175
+[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+"201
 [v _wCounter `i ~T0 @X0 1 a ]
 [e = _wCounter -> 0 `i ]
-[v F2177 `uc ~T0 @X0 -> 8 `i s ]
-[i F2177
+[v F2190 `uc ~T0 @X0 -> 4 `i s ]
+[i F2190
 :U ..
-"138
--> -> 47 `ui `uc
+"202
+-> -> 43 `ui `uc
 -> -> 0 `i `uc
--> -> 45 `ui `uc
--> -> 0 `i `uc
--> -> 108 `i `uc
--> -> 0 `i `uc
--> -> 124 `ui `uc
+-> -> 120 `ui `uc
 -> -> 0 `i `uc
 ..
 ]
-[v _wConv `uc ~T0 @X0 -> 8 `i a ]
-[e = _wConv F2177 ]
-"139
+[v _wConv `uc ~T0 @X0 -> 4 `i a ]
+[e = _wConv F2190 ]
+"203
 [v _wTemp `i ~T0 @X0 1 a ]
 [e = _wTemp -> 0 `i ]
-"140
-[e :U 248 ]
-"141
-{
-"142
-[e ( _setCursorPosition (1 -> -> 103 `i `uc ]
-"143
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-"144
-[e ( _lcdWriteText (1 &U *U + &U _wConv * -> -> _wCounter `ui `ux -> -> # *U &U _wConv `ui `ux ]
-"147
-[e ( _WakeTemp ..  ]
-"152
-[e = _wCounter + _wCounter -> 2 `i ]
-"153
-[e $ ! == _wCounter -> 8 `i 250  ]
-"154
-{
-"155
-[e = _wCounter -> 0 `i ]
-"156
-}
-[e :U 250 ]
-"169
-[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-"170
-}
-[e :U 247 ]
-[e $U 248  ]
-[e :U 249 ]
-"171
-[e $UE 246  ]
-"172
-[e :UE 246 ]
-}
-[v $root$_myint `(v ~T0 @X0 0 e ]
-"175
-[v _myint `(v ~T1 @X0 1 ef ]
-"176
-{
-[e :U _myint ]
-[f ]
-"177
-[e $ ! == -> . . _PIR1bits 0 3 `i -> 1 `i 252  ]
-"178
-{
-"184
-[e = . . _PIR1bits 0 3 -> -> 0 `i `uc ]
-"185
-[e $ ! != -> . . _SSPSTATbits 0 4 `i -> 0 `i 253  ]
-"186
-{
-"188
-[e = _wI2CTxBufferSize -> -> 0 `i `uc ]
-"189
-[e = _wI2CTxSendPos -> -> 0 `i `uc ]
-"190
-}
-[e :U 253 ]
-"191
-[e $ ! && != -> . . _SSPSTATbits 0 3 `i -> 0 `i == -> _wI2CTxSendPos `i -> 0 `i 254  ]
-"192
-{
-"194
-[e $ ! != -> _wI2CTxBufferSize `i -> 0 `i 255  ]
-"195
-{
-"196
-[e = _SSPBUF -> *U + &U _wI2CTxBuffer * -> _wI2CTxSendPos `ux -> -> # *U &U _wI2CTxBuffer `ui `ux `uc ]
-"197
-[e ++ _wI2CTxSendPos -> -> 1 `i `uc ]
-"198
-}
-[e $U 256  ]
-"199
-[e :U 255 ]
-"200
-{
-"202
-}
-[e :U 256 ]
-"203
-}
-[e $U 257  ]
 "204
-[e :U 254 ]
+[e $U 254  ]
+[e :U 255 ]
 "205
 {
 "206
-[e $ ! && == -> . . _SSPCON2bits 0 6 `i -> 0 `i != -> _wI2CTxSendPos `i -> 0 `i 258  ]
+[e ( _clearDisplay ..  ]
 "207
-{
-"209
-[e $ ! < -> _wI2CTxSendPos `i -> _wI2CTxBufferSize `i 259  ]
+[e ( _moveCursorToHome ..  ]
+"208
+[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
 "210
-{
+[e ( _Add_Trace (3 , , &U _wInterruptText -> -> # _wInterruptText `ui `uc :s 1C ]
 "211
-[e = _SSPBUF -> *U + &U _wI2CTxBuffer * -> _wI2CTxSendPos `ux -> -> # *U &U _wI2CTxBuffer `ui `ux `uc ]
+[e ( _WakeTemp ..  ]
 "212
-[e ++ _wI2CTxSendPos -> -> 1 `i `uc ]
-"213
-}
-[e $U 260  ]
+[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 16000000 `l `d .4000000.0 `ul ]
 "214
-[e :U 259 ]
+[e ( _Add_Trace (3 , , &U _wInterruptText -> -> # _wInterruptText `ui `uc :s 2C ]
 "215
-{
+[e ( _PrintLog (1 &U _wInterruptText ]
 "216
-[e = . . _SSPCON2bits 0 2 -> -> 1 `i `uc ]
+[e ( _SetToGetTemp ..  ]
 "217
-}
-[e :U 260 ]
-"218
-}
-[e :U 258 ]
+[e ( __delay (1 -> * -> -> 1500 `i `d / -> -> 16000000 `l `d .4000000.0 `ul ]
 "219
-[e $ ! == -> . . _SSPCON2bits 0 6 `i -> 1 `i 261  ]
-"220
-{
+[e ( _PrintLog (1 &U _wInterruptText ]
+"221
+[e ( _Add_Trace (3 , , &U _wInterruptText -> -> # _wInterruptText `ui `uc :s 3C ]
 "222
-[e = . . _SSPCON2bits 0 6 -> -> 0 `i `uc ]
-"223
-[e $ ! != -> _wI2CTxSendPos `i -> 0 `i 262  ]
+[e ( _GetTemp ..  ]
 "224
-{
+[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
 "225
-[e = . . _SSPCON2bits 0 2 -> -> 1 `i `uc ]
-"226
-}
-[e :U 262 ]
+[e ( _PrintLog (1 &U _wInterruptText ]
 "227
-}
-[e :U 261 ]
+[e = _wCounter + _wCounter -> 2 `i ]
 "228
+[e $ ! == _wCounter -> 4 `i 257  ]
+"229
+{
+"230
+[e = _wCounter -> 0 `i ]
+"231
 }
 [e :U 257 ]
-"230
-}
-[e :U 252 ]
-"231
-[e $ ! == -> . . _PIR2bits 0 2 `i -> 1 `i 263  ]
-"232
-{
-"233
-[e ( _strcat (2 , &U _wInterruptText :s 2C ]
 "234
-}
-[e :U 263 ]
+[e ( _lcdWriteText (1 &U *U + &U _wConv * -> -> _wCounter `ui `ux -> -> # *U &U _wConv `ui `ux ]
 "235
-[e :UE 251 ]
+[e ( __delay (1 -> * -> -> 10000 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+"236
+[e = _test -> 0 `i ]
+"237
 }
-[a 2C 44 66 67 76 73 70 0 ]
-[a 1C 84 101 109 112 32 67 111 109 109 117 110 105 99 97 116 105 111 110 32 116 101 115 116 32 58 0 ]
+[e :U 254 ]
+"204
+[e $ == -> . . _INTCONbits 0 7 `i -> 1 `i 255  ]
+[e :U 256 ]
+"238
+[e $UE 253  ]
+"239
+[e :UE 253 ]
+}
+"241
+[v _wCounter2 `uc ~T0 @X0 1 e ]
+[i _wCounter2
+-> -> 0 `i `uc
+]
+[v $root$_myint `(v ~T0 @X0 0 e ]
+"242
+[v _myint `(v ~T1 @X0 1 ef ]
+"243
+{
+[e :U _myint ]
+[f ]
+"245
+[e $ ! == -> . . _PIR1bits 0 3 `i -> 1 `i 259  ]
+"246
+{
+"247
+[e = . . _PIR1bits 0 3 -> -> 0 `i `uc ]
+"248
+[e $ ! != -> _wI2CTxBufferSize `i -> 0 `i 260  ]
+"249
+{
+"250
+[e $ ! != -> . . _SSPSTATbits 0 4 `i -> 0 `i 261  ]
+"251
+{
+"252
+[e ( _Add_Trace (3 , , &U _wInterruptText -> -> # _wInterruptText `ui `uc :s 4C ]
+"253
+[e = . . _PIE1bits 0 3 -> -> 0 `i `uc ]
+"254
+[e = _wI2CTxBufferSize -> -> 0 `i `uc ]
+"255
+[e = _wI2CTxSendPos -> -> 0 `i `uc ]
+"256
+}
+[e $U 262  ]
+"257
+[e :U 261 ]
+[e $ ! && == -> . . _SSPSTATbits 0 0 `i -> 1 `i == & -> *U + &U _wI2CTxBuffer * -> -> -> 0 `i `ui `ux -> -> # *U &U _wI2CTxBuffer `ui `ux `i -> 1 `i -> 1 `i 263  ]
+"258
+{
+"259
+[e ( _sprintf (1 , (. , &U _wHexTemp :s 5C -> _SSPBUF `i ]
+"260
+[e ( _Add_Trace (3 , , &U _wInterruptText -> -> # _wInterruptText `ui `uc &U _wHexTemp ]
+"261
+[e = *U + &U _wReceptionBuffer * -> _wReceptionBufferPosition `ux -> -> # *U &U _wReceptionBuffer `ui `ux -> _SSPBUF `uc ]
+"262
+[e $ ! == -> _wReceptionBufferPosition `i -> 0 `i 264  ]
+"263
+{
+"264
+[e ( _ToggleBitRB5 ..  ]
+"265
+}
+[e :U 264 ]
+"266
+[e ++ _wReceptionBufferPosition -> -> 1 `i `uc ]
+"268
+[e = . . _SSPSTATbits 0 0 -> -> 0 `i `uc ]
+"269
+[e $ ! < -> _wReceptionBufferPosition `i -> _wI2CRxBufferSize `i 265  ]
+"270
+{
+"271
+[e = . . _SSPCON2bits 0 5 -> -> 0 `i `uc ]
+"272
+}
+[e $U 266  ]
+"273
+[e :U 265 ]
+"274
+{
+"275
+[e = . . _SSPCON2bits 0 5 -> -> 1 `i `uc ]
+"276
+}
+[e :U 266 ]
+"277
+[e = . . _SSPCON2bits 0 4 -> -> 1 `i `uc ]
+"278
+}
+[e $U 267  ]
+"279
+[e :U 263 ]
+[e $ ! && != -> . . _SSPSTATbits 0 3 `i -> 0 `i == -> _wI2CTxSendPos `i -> 0 `i 268  ]
+"280
+{
+"281
+[e ( _Add_Trace (3 , , &U _wInterruptText -> -> # _wInterruptText `ui `uc :s 6C ]
+"282
+[e $ ! != -> _wI2CTxBufferSize `i -> 0 `i 269  ]
+"283
+{
+"284
+[e = _SSPBUF -> *U + &U _wI2CTxBuffer * -> _wI2CTxSendPos `ux -> -> # *U &U _wI2CTxBuffer `ui `ux `uc ]
+"285
+[e ++ _wI2CTxSendPos -> -> 1 `i `uc ]
+"286
+}
+[e $U 270  ]
+"287
+[e :U 269 ]
+"288
+{
+"289
+[e ( _Add_Trace (3 , , &U _wInterruptText -> -> # _wInterruptText `ui `uc :s 7C ]
+"290
+}
+[e :U 270 ]
+"291
+}
+[e $U 271  ]
+"292
+[e :U 268 ]
+"293
+{
+"294
+[e $ ! && == -> . . _SSPCON2bits 0 6 `i -> 0 `i != -> _wI2CTxSendPos `i -> 0 `i 272  ]
+"295
+{
+"296
+[e ( _Add_Trace (3 , , &U _wInterruptText -> -> # _wInterruptText `ui `uc :s 8C ]
+"298
+[e $ ! < -> _wI2CTxSendPos `i -> _wI2CTxBufferSize `i 273  ]
+"299
+{
+"300
+[e = _SSPBUF -> *U + &U _wI2CTxBuffer * -> _wI2CTxSendPos `ux -> -> # *U &U _wI2CTxBuffer `ui `ux `uc ]
+"301
+[e ++ _wI2CTxSendPos -> -> 1 `i `uc ]
+"302
+}
+[e $U 274  ]
+"303
+[e :U 273 ]
+"304
+{
+"305
+[e $ ! == & -> *U + &U _wI2CTxBuffer * -> -> -> 0 `i `ui `ux -> -> # *U &U _wI2CTxBuffer `ui `ux `i -> 1 `i -> 1 `i 275  ]
+"306
+{
+"307
+[e $ ! < -> _wReceptionBufferPosition `i -> _wI2CRxBufferSize `i 276  ]
+"308
+{
+"309
+[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 16000000 `l `d .4000000.0 `ul ]
+"310
+[e = . . _SSPCON2bits 0 3 -> -> 1 `i `uc ]
+"311
+[e ( _Add_Trace (3 , , &U _wInterruptText -> -> # _wInterruptText `ui `uc :s 9C ]
+"313
+}
+[e $U 277  ]
+"314
+[e :U 276 ]
+"315
+{
+"316
+[e = . . _SSPCON2bits 0 2 -> -> 1 `i `uc ]
+"317
+}
+[e :U 277 ]
+"318
+}
+[e $U 278  ]
+"319
+[e :U 275 ]
+"320
+{
+"321
+[e = . . _SSPCON2bits 0 2 -> -> 1 `i `uc ]
+"322
+}
+[e :U 278 ]
+"323
+}
+[e :U 274 ]
+"324
+}
+[e $U 279  ]
+"325
+[e :U 272 ]
+[e $ ! == -> . . _SSPCON2bits 0 6 `i -> 1 `i 280  ]
+"326
+{
+"327
+[e ( _Add_Trace (3 , , &U _wInterruptText -> -> # _wInterruptText `ui `uc :s 10C ]
+"328
+[e = . . _SSPCON2bits 0 6 -> -> 0 `i `uc ]
+"329
+[e $ ! != -> _wI2CTxSendPos `i -> 0 `i 281  ]
+"330
+{
+"331
+[e = . . _SSPCON2bits 0 2 -> -> 1 `i `uc ]
+"332
+}
+[e $U 282  ]
+"333
+[e :U 281 ]
+"334
+{
+"335
+[e = . . _SSPCON2bits 0 2 -> -> 1 `i `uc ]
+"336
+}
+[e :U 282 ]
+"337
+}
+[e $U 283  ]
+"338
+[e :U 280 ]
+"339
+{
+"340
+[e ( _Add_Trace (3 , , &U _wInterruptText -> -> # _wInterruptText `ui `uc :s 11C ]
+"341
+}
+[e :U 283 ]
+[e :U 279 ]
+"342
+}
+[e :U 271 ]
+[e :U 267 ]
+[e :U 262 ]
+"343
+}
+[e :U 260 ]
+"344
+}
+[e :U 259 ]
+"345
+[e $ ! == -> . . _PIR2bits 0 2 `i -> 1 `i 284  ]
+"346
+{
+"347
+[e ( _ToggleBitRB5 ..  ]
+"348
+[e = . . _PIR2bits 0 2 -> -> 0 `i `uc ]
+"349
+[e ( _Add_Trace (3 , , &U _wInterruptText -> -> # _wInterruptText `ui `uc :s 12C ]
+"350
+}
+[e :U 284 ]
+"351
+[e :UE 258 ]
+}
+[p f _sprintf 8388736 ]
+[a 6C 44 83 0 ]
+[a 9C 82 0 ]
+[a 4C 44 80 0 ]
+[a 12C 44 66 67 76 73 70 0 ]
+[a 7C 44 73 83 69 0 ]
+[a 10C 44 78 65 0 ]
+[a 8C 65 0 ]
+[a 1C 87 84 58 0 ]
+[a 2C 44 83 84 58 0 ]
+[a 3C 71 84 58 0 ]
+[a 11C 44 78 56 0 ]
+[a 5C 32 37 105 32 0 ]

@@ -2923,6 +2923,9 @@ extern __bank0 __bit __timeout;
 
 
 
+int test =0;
+
+
 
 void initLCD(void);
 
@@ -2943,7 +2946,7 @@ void setCursorOff();
 void setCursorOn();
 void setCursorMovingRight();
 void setCursorMovingLeft();
-void setCursorPosition(char iPosition);
+void setCursorPosition(char iLine, char iPosition);
 void setDisplayMovingRight();
 void setDisplayMovingLeft();
 void moveCursorRight();
@@ -3180,18 +3183,33 @@ void *memccpy (void *restrict, const void *restrict, int, size_t);
 #pragma config LVP = OFF
 
 
-char wInterruptText[200];
+char wInterruptText[75];
+char wReceptionBuffer[30];
+char wReceptionBufferPosition;
 
 char wI2CTxBuffer[20];
 char wI2CTxBufferSize;
+char wI2CRxBufferSize;
 char wI2CTxSendPos;
-char wHexTemp[5];
+char wHexTemp[20];
 
 
-void GetTemp(int* oTempValue)
+void ToggleBitRB5()
+{
+    if(PORTBbits.RB5 == 1)
+    {
+        PORTBbits.RB5 = 0;
+    }
+    else
+    {
+        PORTBbits.RB5 = 1;
+    }
+}
+void SetToGetTemp()
 {
     if(wI2CTxBufferSize == 0)
     {
+        PIE1bits.SSPIE = 1;
         SSPCON3bits.ACKTIM = 1;
         wI2CTxBuffer[0] = 0xB8;
         wI2CTxBuffer[1] = 0x03;
@@ -3201,24 +3219,48 @@ void GetTemp(int* oTempValue)
         SSPCON2bits.SEN = 1;
     }
 }
-void WakeTemp()
+
+void Add_Trace(char* oText, char iSizeOfoText, char* iText)
 {
-    if(wI2CTxBuffer[0] != 0xB9)
+    if((iSizeOfoText + 1 - strlen(oText)) > strlen(iText))
     {
-        wI2CTxBuffer[0] = 0xB9;
+        strcat(oText,iText);
     }
-    else
-    {
-        wI2CTxBuffer[0] = 0xB8;
-    }
+}
+
+void GetTemp()
+{
     if(wI2CTxBufferSize == 0)
     {
-
+        PIE1bits.SSPIE = 1;
+        memset(wReceptionBuffer,0,sizeof(wReceptionBuffer));
+        wReceptionBufferPosition=0;
+        wI2CTxBuffer[0] = 0xB9;
+        wI2CRxBufferSize = 8;
         wI2CTxBufferSize = 1;
         SSPCON2bits.SEN = 1;
     }
 }
+void WakeTemp()
+{
+    PIE1bits.SSPIE = 1;
+    if(wI2CTxBufferSize == 0)
+    {
+        wI2CTxBuffer[0] = 0xB8;
+        wI2CTxBufferSize = 1;
+        SSPCON2bits.SEN = 1;
+    }
+}
+void PrintLog(char* iText)
+{
+    char wInterruptTextLen = strlen(iText);
 
+    if(wInterruptTextLen !=0)
+    {
+        lcdWriteText(iText);
+        memset(iText,0,sizeof(wInterruptTextLen));
+    }
+}
 void main(void)
 {
   memset(wInterruptText,0,sizeof(wInterruptText));
@@ -3227,6 +3269,10 @@ void main(void)
   OSCCONbits.SCS = 0x3;
   INTCONbits.GIE = 0;
   PORTA = 0x00;
+
+  PORTB = 0x00;
+  ANSELB = 0x00;
+  TRISB = 0x00;
 
   memset(wI2CTxBuffer,0,sizeof(wI2CTxBuffer));
   wI2CTxBufferSize=0;
@@ -3261,8 +3307,9 @@ void main(void)
 
   INTCONbits.GIE = 1;
 
+
   initLCD();
-    clearDisplay();
+  clearDisplay();
   _delay((unsigned long)((100)*(16000000/4000.0)));
   powerOnLcd();
   _delay((unsigned long)((100)*(16000000/4000.0)));
@@ -3272,96 +3319,155 @@ void main(void)
   _delay((unsigned long)((100)*(16000000/4000.0)));
   setNotBlinkingCursor();
   _delay((unsigned long)((100)*(16000000/4000.0)));
-
-  lcdWriteText("Temp Communication test :");
-
-  _delay((unsigned long)((1000)*(16000000/4000.0)));
-
+# 201 "161518_temp_main.c"
   int wCounter=0;
-  char wConv[8]={'/',0, '-',0, 0x6C,0, '|',0};
+  char wConv[4]={'+',0, 'x',0, };
   int wTemp=0;
-  while(1)
+  while(INTCONbits.GIE == 1)
   {
-    setCursorPosition(0x67);
-    _delay((unsigned long)((10)*(16000000/4000.0)));
-    lcdWriteText(&wConv[wCounter]);
+    clearDisplay();
+    moveCursorToHome();
+    _delay((unsigned long)((1000)*(16000000/4000.0)));
 
-
+    Add_Trace(wInterruptText,sizeof(wInterruptText),"WT:");
     WakeTemp();
+    _delay((unsigned long)((1000)*(16000000/4000000.0)));
 
+    Add_Trace(wInterruptText,sizeof(wInterruptText),",ST:");
+    PrintLog(wInterruptText);
+    SetToGetTemp();
+    _delay((unsigned long)((1500)*(16000000/4000000.0)));
 
+    PrintLog(wInterruptText);
 
+    Add_Trace(wInterruptText,sizeof(wInterruptText),"GT:");
+    GetTemp();
+
+    _delay((unsigned long)((2000)*(16000000/4000.0)));
+    PrintLog(wInterruptText);
 
     wCounter = wCounter + 2;
-    if(wCounter == 8)
+    if(wCounter == 4)
     {
         wCounter = 0;
     }
-# 169 "161518_temp_main.c"
-    _delay((unsigned long)((1000)*(16000000/4000.0)));
+
+
+    lcdWriteText(&wConv[wCounter]);
+    _delay((unsigned long)((10000)*(16000000/4000.0)));
+    test = 0;
   }
     return;
 }
 
-
+char wCounter2=0;
 void __attribute__((picinterrupt(""))) myint(void)
 {
+
     if(PIR1bits.SSPIF == 1)
     {
-
-
-
-
-
         PIR1bits.SSPIF = 0;
-        if(SSPSTATbits.P)
+        if( wI2CTxBufferSize != 0)
         {
-
-          wI2CTxBufferSize=0;
-          wI2CTxSendPos=0;
-        }
-        if(SSPSTATbits.S && wI2CTxSendPos == 0)
-        {
-
-          if(wI2CTxBufferSize !=0)
-          {
-            SSPBUF = wI2CTxBuffer[wI2CTxSendPos];
-            wI2CTxSendPos++;
-          }
-          else
-          {
-
-          }
-        }
-        else
-        {
-            if(SSPCON2bits.ACKSTAT == 0 && wI2CTxSendPos != 0)
+            if(SSPSTATbits.P)
             {
+              Add_Trace(wInterruptText,sizeof(wInterruptText),",P");
+              PIE1bits.SSPIE = 0;
+              wI2CTxBufferSize=0;
+              wI2CTxSendPos=0;
+            }
+            else if((SSPSTATbits.BF == 1) && ((wI2CTxBuffer[0] & 0x01) == 1))
+            {
+                sprintf(wHexTemp," %i ",(int)SSPBUF);
+                Add_Trace(wInterruptText,sizeof(wInterruptText),wHexTemp);
+                wReceptionBuffer[wReceptionBufferPosition] = SSPBUF;
+                if(wReceptionBufferPosition == 0)
+                {
+                    ToggleBitRB5();
+                }
+                wReceptionBufferPosition++;
 
-              if(wI2CTxSendPos < wI2CTxBufferSize)
+                SSPSTATbits.BF = 0 ;
+                if( wReceptionBufferPosition < wI2CRxBufferSize)
+                {
+                    SSPCON2bits.ACKDT = 0;
+                }
+                else
+                {
+                    SSPCON2bits.ACKDT = 1;
+                }
+                SSPCON2bits.ACKEN = 1;
+            }
+            else if(SSPSTATbits.S && wI2CTxSendPos == 0)
+            {
+              Add_Trace(wInterruptText,sizeof(wInterruptText),",S");
+              if(wI2CTxBufferSize !=0)
               {
                 SSPBUF = wI2CTxBuffer[wI2CTxSendPos];
                 wI2CTxSendPos++;
               }
               else
               {
-                SSPCON2bits.PEN = 1;
+                Add_Trace(wInterruptText,sizeof(wInterruptText),",ISE");
               }
             }
-            if(SSPCON2bits.ACKSTAT == 1)
+            else
             {
-
-                SSPCON2bits.ACKSTAT = 0;
-                if(wI2CTxSendPos != 0)
+                if(SSPCON2bits.ACKSTAT == 0 && wI2CTxSendPos != 0)
                 {
-                  SSPCON2bits.PEN = 1;
+                  Add_Trace(wInterruptText,sizeof(wInterruptText),"A");
+
+                  if(wI2CTxSendPos < wI2CTxBufferSize)
+                  {
+                    SSPBUF = wI2CTxBuffer[wI2CTxSendPos];
+                    wI2CTxSendPos++;
+                  }
+                  else
+                  {
+                      if((wI2CTxBuffer[0] & 0x01) == 1)
+                      {
+                          if( wReceptionBufferPosition < wI2CRxBufferSize)
+                          {
+                            _delay((unsigned long)((50)*(16000000/4000000.0)));
+                            SSPCON2bits.RCEN = 1;
+                            Add_Trace(wInterruptText,sizeof(wInterruptText),"R");
+
+                          }
+                          else
+                          {
+                            SSPCON2bits.PEN = 1;
+                          }
+                      }
+                      else
+                      {
+                        SSPCON2bits.PEN = 1;
+                      }
+                  }
+                }
+                else if(SSPCON2bits.ACKSTAT == 1)
+                {
+                    Add_Trace(wInterruptText,sizeof(wInterruptText),",NA");
+                    SSPCON2bits.ACKSTAT = 0;
+                    if(wI2CTxSendPos != 0)
+                    {
+                      SSPCON2bits.PEN = 1;
+                    }
+                    else
+                    {
+                      SSPCON2bits.PEN = 1;
+                    }
+                }
+                else
+                {
+                    Add_Trace(wInterruptText,sizeof(wInterruptText),",N8");
                 }
             }
         }
-
     }
     if(PIR2bits.BCLIF == 1)
     {
-        strcat(wInterruptText,",BCLIF");
+        ToggleBitRB5();
+        PIR2bits.BCLIF = 0;
+        Add_Trace(wInterruptText,sizeof(wInterruptText),",BCLIF");
     }
 }

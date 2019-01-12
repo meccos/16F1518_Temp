@@ -2,7 +2,10 @@
 
 #define _XTAL_FREQ 16000000 //for __delay_ms it need to know the cpu speed
 
-#define wInterruptTextSize 200
+#define wInterruptTextSize 75
+int test =0; 
+
+
 
 void initLCD(void);
 
@@ -23,7 +26,7 @@ void setCursorOff();
 void setCursorOn();
 void setCursorMovingRight();
 void setCursorMovingLeft();
-void setCursorPosition(char iPosition);
+void setCursorPosition(char iLine, char iPosition);
 void setDisplayMovingRight();
 void setDisplayMovingLeft();
 void moveCursorRight();
@@ -38,10 +41,10 @@ char mDisplayOnOffReg;
 char mCursorDisplayShiftReg;
 char mWritingPosition;
 
-#define DDRAM_Address_Line_1_Position_1 0x00
-#define DDRAM_Address_Line_2_Position_1 0x40
-#define DDRAM_Address_Line_3_Position_1 0x14
-#define DDRAM_Address_Line_4_Position_1 0x54
+#define DDRAM_Address_Line_0_Position_0 0x00
+#define DDRAM_Address_Line_1_Position_0 0x40
+#define DDRAM_Address_Line_2_Position_0 0x14
+#define DDRAM_Address_Line_3_Position_0 0x54
 
 #define RS PORTAbits.RA4
 #define RSDirection TRISAbits.TRISA4

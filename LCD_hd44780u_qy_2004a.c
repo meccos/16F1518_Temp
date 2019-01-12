@@ -1,6 +1,9 @@
 //LCD_hd44780u_qy_2004a.c
 
 #include "LCD_hd44780u_qy_2004a.h"
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
 #include <xc.h>
 
 
@@ -43,6 +46,7 @@ void lcdWriteText(char *iText)
     writeTxtChk(iText[wCharReadingPos]);
     wCharReadingPos++;
   }
+    
 }
 
 void lcdWriteRotText(char *iRotText, char ioRotReadPtr, char iWritePtr)
@@ -79,17 +83,18 @@ void writeTxtChk(char iOpCode)
   RW = RW_WRITE;
   switch(mWritingPosition)
   {
-    case 21:
-      setCursorPosition(DDRAM_Address_Line_2_Position_1);
+    case 20:
+      setCursorPosition(1,0);
       break;
-    case 41:
-      setCursorPosition(DDRAM_Address_Line_3_Position_1);
+    case 40:
+      setCursorPosition(2,0);
       break;
-    case 61:
-      setCursorPosition(DDRAM_Address_Line_4_Position_1);
+    case 60:
+      setCursorPosition(3,0);
       break;
-    case 81:
-      setCursorPosition(DDRAM_Address_Line_1_Position_1);
+    case 80:
+      setCursorPosition(0,0);
+      mWritingPosition = 0;
       break;
     default:
       break;
@@ -226,14 +231,38 @@ void moveCursorToHome()
   writeInsChk(0x02);
   mWritingPosition=1;
 }
-void setCursorPosition(char iPosition)
+void setCursorPosition(char iLine, char iPosition)
 {
+  char wLCDIndex=0;
+  
+  switch(iLine)
+  {
+      case 0:
+          wLCDIndex = DDRAM_Address_Line_0_Position_0 + iPosition;
+          mWritingPosition = iPosition;
+          break;
+      case 1:
+          wLCDIndex = DDRAM_Address_Line_1_Position_0 + iPosition;
+          mWritingPosition = 20 + iPosition;
+          break;
+      case 2:
+          wLCDIndex = DDRAM_Address_Line_2_Position_0 + iPosition;
+          mWritingPosition = 40 + iPosition;
+          break;
+      case 3:
+          wLCDIndex = DDRAM_Address_Line_3_Position_0 + iPosition;
+          mWritingPosition = 60 + iPosition;
+          break;
+      default:
+      break;
+  }
+  
   waitLCDBusy();
   
   SetToSendDataToLCD();
   RS = RS_INSTRUCTION;
   RW = RW_WRITE;
-  setData((iPosition >> 4) | 0x8 );
-  setData(iPosition);
-  mWritingPosition = iPosition;
+  setData((wLCDIndex >> 4) | 0x8 );
+  setData(wLCDIndex);
+  
 }

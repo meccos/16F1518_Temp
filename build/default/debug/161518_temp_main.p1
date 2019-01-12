@@ -879,29 +879,38 @@ Version 4.0 HI-TECH Software Intermediate Code
 "224
 {
 "225
-[e = . . _SSPCON2bits 0 2 -> -> 1 `i `uc ]
+[e = . . _SSPCON2bits 0 1 -> -> 1 `i `uc ]
 "226
 }
-[e :U 262 ]
+[e $U 263  ]
 "227
-}
-[e :U 261 ]
+[e :U 262 ]
 "228
-}
-[e :U 257 ]
+{
+"229
+[e = . . _SSPCON2bits 0 2 -> -> 1 `i `uc ]
 "230
 }
-[e :U 252 ]
+[e :U 263 ]
 "231
-[e $ ! == -> . . _PIR2bits 0 2 `i -> 1 `i 263  ]
+}
+[e :U 261 ]
 "232
-{
-"233
-[e ( _strcat (2 , &U _wInterruptText :s 2C ]
+}
+[e :U 257 ]
 "234
 }
-[e :U 263 ]
+[e :U 252 ]
 "235
+[e $ ! == -> . . _PIR2bits 0 2 `i -> 1 `i 264  ]
+"236
+{
+"237
+[e ( _strcat (2 , &U _wInterruptText :s 2C ]
+"238
+}
+[e :U 264 ]
+"239
 [e :UE 251 ]
 }
 [a 2C 44 66 67 76 73 70 0 ]
