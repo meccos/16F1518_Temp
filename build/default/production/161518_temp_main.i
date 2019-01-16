@@ -3158,6 +3158,79 @@ size_t strxfrm_l (char *restrict, const char *restrict, size_t, locale_t);
 void *memccpy (void *restrict, const void *restrict, int, size_t);
 # 14 "161518_temp_main.c" 2
 
+# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\stdint.h" 1 3
+# 22 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\stdint.h" 3
+# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\bits/alltypes.h" 1 3
+# 135 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef unsigned long uintptr_t;
+# 150 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef long intptr_t;
+# 166 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef signed char int8_t;
+
+
+
+
+typedef short int16_t;
+
+
+
+
+typedef long int32_t;
+# 189 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef int32_t intmax_t;
+
+
+
+
+
+
+
+typedef unsigned char uint8_t;
+
+
+
+
+typedef unsigned short uint16_t;
+
+
+
+
+typedef unsigned long uint32_t;
+# 225 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef uint32_t uintmax_t;
+# 22 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\stdint.h" 2 3
+
+
+typedef int8_t int_fast8_t;
+
+
+
+
+typedef int8_t int_least8_t;
+typedef int16_t int_least16_t;
+typedef int32_t int_least32_t;
+
+
+
+
+typedef uint8_t uint_fast8_t;
+
+
+
+
+typedef uint8_t uint_least8_t;
+typedef uint16_t uint_least16_t;
+typedef uint32_t uint_least32_t;
+# 131 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\stdint.h" 3
+# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\bits/stdint.h" 1 3
+typedef int32_t int_fast16_t;
+typedef int32_t int_fast32_t;
+typedef uint32_t uint_fast16_t;
+typedef uint32_t uint_fast32_t;
+# 131 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\stdint.h" 2 3
+# 15 "161518_temp_main.c" 2
+
 
 
 
@@ -3258,21 +3331,86 @@ void PrintLog(char* iText)
     if(wInterruptTextLen !=0)
     {
         lcdWriteText(iText);
-        memset(iText,0,sizeof(wInterruptTextLen));
+        memset(iText,0,wInterruptTextLen);
     }
 }
+void printEM1812(uint16_t wVariable, char* oTextOut)
+{
+    uint8_t wTen;
+    uint8_t wUnity;
+    uint8_t wDecimal;
+
+    wTen = wVariable/100;
+    wVariable = wVariable % 100;
+    wUnity = wVariable/10;
+    wVariable = wVariable %10;
+    wDecimal = wVariable;
+    char QWE[20];
+    oTextOut[0] = '0' + wTen;
+    oTextOut[1] = '0' + wUnity;
+    oTextOut[2] = ',';
+    oTextOut[3] = '0' + wDecimal;
+    oTextOut[4] = 0;
+
+}
+
+void Debounce(uint8_t iSwitch,uint16_t* ioTimer, uint8_t* swPressed)
+{
+    if(iSwitch == 0)
+    {
+      (*ioTimer)++;
+    }
+    else
+    {
+      *ioTimer = 0;
+    }
+    if(*ioTimer == 2000)
+    {
+      *swPressed = 1;
+    }
+    if(*ioTimer == 8000)
+    {
+      *ioTimer = 2001;
+      *swPressed = 1;
+    }
+}
+
+
+
+
+
 void main(void)
 {
+  char wReadout[20];
+  int16_t wHumidity=0, wHumidityPrev=0;
+  int16_t wTemperature=0, wTemperaturePrev=0;
   memset(wInterruptText,0,sizeof(wInterruptText));
 
   OSCCONbits.IRCF = 0xf;
   OSCCONbits.SCS = 0x3;
   INTCONbits.GIE = 0;
+
+  uint8_t wUpBottonPressed=0;
+  uint8_t wDownBottonPressed=0;
+  uint8_t wEnterBottonPressed=0;
+
+  uint8_t wMenu=0;
+  uint8_t wMenuPrev=1;
+
+  uint8_t wTempUpdate=0;
+  uint16_t wIterationCounter=0;
+  uint16_t wDebounceEnter=0;
+  uint16_t wDebounceUp=0;
+  uint16_t wDebounceDown=0;
+
   PORTA = 0x00;
 
   PORTB = 0x00;
   ANSELB = 0x00;
-  TRISB = 0x00;
+  TRISB = 0x0F;
+  WPUB = 0x0F;
+
+  OPTION_REGbits.nWPUEN = 0;
 
   memset(wI2CTxBuffer,0,sizeof(wI2CTxBuffer));
   wI2CTxBufferSize=0;
@@ -3319,43 +3457,113 @@ void main(void)
   _delay((unsigned long)((100)*(16000000/4000.0)));
   setNotBlinkingCursor();
   _delay((unsigned long)((100)*(16000000/4000.0)));
-# 201 "161518_temp_main.c"
+# 267 "161518_temp_main.c"
   int wCounter=0;
   char wConv[4]={'+',0, 'x',0, };
   int wTemp=0;
-  while(INTCONbits.GIE == 1)
+
+  clearDisplay();
+  moveCursorToHome();
+  _delay((unsigned long)((30)*(16000000/4000.0)));
+  while(1)
   {
-    clearDisplay();
-    moveCursorToHome();
-    _delay((unsigned long)((1000)*(16000000/4000.0)));
 
-    Add_Trace(wInterruptText,sizeof(wInterruptText),"WT:");
-    WakeTemp();
-    _delay((unsigned long)((1000)*(16000000/4000000.0)));
+    wHumidityPrev = wHumidity;
+    wHumidity = wReceptionBuffer[2]*256 + wReceptionBuffer[3];
+    wTemperaturePrev = wTemperature;
+    wTemperature = wReceptionBuffer[4]*256 + wReceptionBuffer[5];
 
-    Add_Trace(wInterruptText,sizeof(wInterruptText),",ST:");
-    PrintLog(wInterruptText);
-    SetToGetTemp();
-    _delay((unsigned long)((1500)*(16000000/4000000.0)));
 
-    PrintLog(wInterruptText);
-
-    Add_Trace(wInterruptText,sizeof(wInterruptText),"GT:");
-    GetTemp();
-
-    _delay((unsigned long)((2000)*(16000000/4000.0)));
-    PrintLog(wInterruptText);
-
-    wCounter = wCounter + 2;
-    if(wCounter == 4)
+    if((wHumidityPrev != wHumidity) || (wTemperaturePrev != wTemperaturePrev))
     {
-        wCounter = 0;
+        setCursorPosition(2,0);
+        printEM1812(wHumidity,wReadout);
+        Add_Trace(wInterruptText,sizeof(wInterruptText),"Humidity : ");
+        Add_Trace(wInterruptText,sizeof(wInterruptText),wReadout);
+        printEM1812(wTemperature,wReadout);
+        Add_Trace(wInterruptText,sizeof(wInterruptText),"\nTemp : ");
+        Add_Trace(wInterruptText,sizeof(wInterruptText),wReadout);
+        PrintLog(wInterruptText);
+    }
+
+    if(wMenu != wMenuPrev)
+    {
+      wMenuPrev = wMenu;
+      switch(wMenu)
+      {
+        case 0:
+          setCursorPosition(0,0);
+          lcdWriteText("Home           ");
+          break;
+        case 1:
+          setCursorPosition(0,0);
+          lcdWriteText("Set Temp:      ");
+          break;
+        case 2:
+          setCursorPosition(0,0);
+          lcdWriteText("Set Mode:      ");
+          break;
+        default:
+          setCursorPosition(0,0);
+          lcdWriteText("WTF            ");
+          break;
+      }
     }
 
 
-    lcdWriteText(&wConv[wCounter]);
-    _delay((unsigned long)((10000)*(16000000/4000.0)));
-    test = 0;
+    if( wTempUpdate == 1)
+    {
+        wTempUpdate = 0;
+        WakeTemp();
+        _delay((unsigned long)((1000)*(16000000/4000000.0)));
+
+        SetToGetTemp();
+        _delay((unsigned long)((1500)*(16000000/4000000.0)));
+
+        GetTemp();
+
+        wCounter = wCounter + 2;
+
+        if(wCounter == 4)
+        {
+          wCounter = 0;
+        }
+        setCursorPosition(3,19);
+        lcdWriteText(&wConv[wCounter]);
+    }
+    wIterationCounter++;
+    if(wIterationCounter == 65535)
+    {
+        wIterationCounter = 0;
+        wTempUpdate = 1;
+    }
+
+   Debounce(PORTBbits.RB0,&wDebounceEnter,&wEnterBottonPressed);
+   Debounce(PORTBbits.RB1,&wDebounceUp,&wUpBottonPressed);
+   Debounce(PORTBbits.RB2,&wDebounceDown,&wDownBottonPressed);
+
+
+   if(wUpBottonPressed == 1)
+   {
+       wUpBottonPressed = 0;
+       wMenu++;
+   }
+   if(wDownBottonPressed == 1)
+   {
+       wDownBottonPressed = 0;
+       wMenu--;
+   }
+
+   if(wMenu == 255)
+   {
+       wMenu = 2;
+   }
+   if(wMenu == 3)
+   {
+       wMenu = 0;
+   }
+
+
   }
     return;
 }
@@ -3371,20 +3579,14 @@ void __attribute__((picinterrupt(""))) myint(void)
         {
             if(SSPSTATbits.P)
             {
-              Add_Trace(wInterruptText,sizeof(wInterruptText),",P");
+
               PIE1bits.SSPIE = 0;
               wI2CTxBufferSize=0;
               wI2CTxSendPos=0;
             }
             else if((SSPSTATbits.BF == 1) && ((wI2CTxBuffer[0] & 0x01) == 1))
             {
-                sprintf(wHexTemp," %i ",(int)SSPBUF);
-                Add_Trace(wInterruptText,sizeof(wInterruptText),wHexTemp);
                 wReceptionBuffer[wReceptionBufferPosition] = SSPBUF;
-                if(wReceptionBufferPosition == 0)
-                {
-                    ToggleBitRB5();
-                }
                 wReceptionBufferPosition++;
 
                 SSPSTATbits.BF = 0 ;
@@ -3400,7 +3602,7 @@ void __attribute__((picinterrupt(""))) myint(void)
             }
             else if(SSPSTATbits.S && wI2CTxSendPos == 0)
             {
-              Add_Trace(wInterruptText,sizeof(wInterruptText),",S");
+
               if(wI2CTxBufferSize !=0)
               {
                 SSPBUF = wI2CTxBuffer[wI2CTxSendPos];
@@ -3408,14 +3610,14 @@ void __attribute__((picinterrupt(""))) myint(void)
               }
               else
               {
-                Add_Trace(wInterruptText,sizeof(wInterruptText),",ISE");
+
               }
             }
             else
             {
                 if(SSPCON2bits.ACKSTAT == 0 && wI2CTxSendPos != 0)
                 {
-                  Add_Trace(wInterruptText,sizeof(wInterruptText),"A");
+
 
                   if(wI2CTxSendPos < wI2CTxBufferSize)
                   {
@@ -3430,7 +3632,7 @@ void __attribute__((picinterrupt(""))) myint(void)
                           {
                             _delay((unsigned long)((50)*(16000000/4000000.0)));
                             SSPCON2bits.RCEN = 1;
-                            Add_Trace(wInterruptText,sizeof(wInterruptText),"R");
+
 
                           }
                           else
@@ -3446,7 +3648,7 @@ void __attribute__((picinterrupt(""))) myint(void)
                 }
                 else if(SSPCON2bits.ACKSTAT == 1)
                 {
-                    Add_Trace(wInterruptText,sizeof(wInterruptText),",NA");
+
                     SSPCON2bits.ACKSTAT = 0;
                     if(wI2CTxSendPos != 0)
                     {
@@ -3466,7 +3668,6 @@ void __attribute__((picinterrupt(""))) myint(void)
     }
     if(PIR2bits.BCLIF == 1)
     {
-        ToggleBitRB5();
         PIR2bits.BCLIF = 0;
         Add_Trace(wInterruptText,sizeof(wInterruptText),",BCLIF");
     }

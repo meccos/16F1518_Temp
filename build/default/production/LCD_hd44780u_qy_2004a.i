@@ -3217,6 +3217,26 @@ void writeTxtChk(char iOpCode)
   SetToSendDataToLCD();
   PORTAbits.RA4 = 1;
   PORTAbits.RA7 = 0;
+  if(iOpCode == '\n')
+  {
+   if(mWritingPosition < 20)
+   {
+       setCursorPosition(1,0);
+   }
+   else if(mWritingPosition < 40)
+   {
+       setCursorPosition(2,0);
+   }
+   else if(mWritingPosition < 60)
+   {
+       setCursorPosition(3,0);
+   }
+   else
+   {
+       setCursorPosition(0,0);
+   }
+   return;
+  }
   switch(mWritingPosition)
   {
     case 20:
