@@ -32,7 +32,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 "3512
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1518.h: 3512: extern volatile SSPCON3bits_t SSPCON3bits __attribute__((address(0x217)));
 [v _SSPCON3bits `VS188 ~T0 @X0 0 e@535 ]
-"3379
+"80 161518_temp_main.c
+[c E2203 0 1 2 3 .. ]
+[n E2203 . CommandSent ProcessingCommand CommandCompleted CommandFailed  ]
+"3379 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1518.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1518.h: 3379:     struct {
 [s S185 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S185 . SEN RSEN PEN RCEN ACKEN ACKDT ACKSTAT GCEN ]
@@ -104,18 +107,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 "821
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1518.h: 821: extern volatile T1CONbits_t T1CONbits __attribute__((address(0x018)));
 [v _T1CONbits `VS51 ~T0 @X0 0 e@24 ]
-"491
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1518.h: 491: extern volatile unsigned char PORTB __attribute__((address(0x00D)));
-[v _PORTB `Vuc ~T0 @X0 0 e@13 ]
-"2211
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1518.h: 2211: extern volatile unsigned char ANSELB __attribute__((address(0x18D)));
-[v _ANSELB `Vuc ~T0 @X0 0 e@397 ]
-"1114
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1518.h: 1114: extern volatile unsigned char TRISB __attribute__((address(0x08D)));
-[v _TRISB `Vuc ~T0 @X0 0 e@141 ]
-"2837
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1518.h: 2837: extern volatile unsigned char WPUB __attribute__((address(0x20D)));
-[v _WPUB `Vuc ~T0 @X0 0 e@525 ]
 "1347
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1518.h: 1347:     struct {
 [s S75 :3 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -131,6 +122,18 @@ Version 4.0 HI-TECH Software Intermediate Code
 "1364
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1518.h: 1364: extern volatile OPTION_REGbits_t OPTION_REGbits __attribute__((address(0x095)));
 [v _OPTION_REGbits `VS74 ~T0 @X0 0 e@149 ]
+"491
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1518.h: 491: extern volatile unsigned char PORTB __attribute__((address(0x00D)));
+[v _PORTB `Vuc ~T0 @X0 0 e@13 ]
+"2211
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1518.h: 2211: extern volatile unsigned char ANSELB __attribute__((address(0x18D)));
+[v _ANSELB `Vuc ~T0 @X0 0 e@397 ]
+"1114
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1518.h: 1114: extern volatile unsigned char TRISB __attribute__((address(0x08D)));
+[v _TRISB `Vuc ~T0 @X0 0 e@141 ]
+"2837
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1518.h: 2837: extern volatile unsigned char WPUB __attribute__((address(0x20D)));
+[v _WPUB `Vuc ~T0 @X0 0 e@525 ]
 "2158
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1518.h: 2158: extern volatile unsigned char ANSELA __attribute__((address(0x18C)));
 [v _ANSELA `Vuc ~T0 @X0 0 e@396 ]
@@ -216,9 +219,12 @@ Version 4.0 HI-TECH Software Intermediate Code
 "29
 [; ;./LCD_hd44780u_qy_2004a.h: 29: void setCursorPosition(char iLine, char iPosition);
 [v _setCursorPosition `(v ~T0 @X0 0 ef2`uc`uc ]
+"732 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1518.h
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1518.h: 732: extern volatile unsigned char TMR0 __attribute__((address(0x015)));
+[v _TMR0 `Vuc ~T0 @X0 0 e@21 ]
 [t ~ __interrupt . k ]
 [t T1 __interrupt ]
-"642 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1518.h
+"642
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1518.h: 642:     struct {
 [s S42 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S42 . TMR1IF TMR2IF CCP1IF SSPIF TXIF RCIF ADIF TMR1GIF ]
@@ -653,426 +659,506 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _wI2CTxSendPos `uc ~T0 @X0 1 e ]
 "51
 [v _wHexTemp `uc ~T0 @X0 -> 20 `i e ]
-"54
-[v _ToggleBitRB5 `(v ~T0 @X0 1 ef ]
+"52
+[v _wTrial `uc ~T0 @X0 1 e ]
+[i _wTrial
+-> -> 0 `i `uc
+]
 "55
+[v _ToggleBitRB5 `(v ~T0 @X0 1 ef ]
+"56
 {
 [e :U _ToggleBitRB5 ]
 [f ]
-"56
-[e $ ! == -> . . _PORTBbits 0 5 `i -> 1 `i 241  ]
 "57
-{
+[e $ ! == -> . . _PORTBbits 0 5 `i -> 1 `i 241  ]
 "58
-[e = . . _PORTBbits 0 5 -> -> 0 `i `uc ]
+{
 "59
+[e = . . _PORTBbits 0 5 -> -> 0 `i `uc ]
+"60
 }
 [e $U 242  ]
-"60
-[e :U 241 ]
 "61
-{
+[e :U 241 ]
 "62
-[e = . . _PORTBbits 0 5 -> -> 1 `i `uc ]
+{
 "63
+[e = . . _PORTBbits 0 5 -> -> 1 `i `uc ]
+"64
 }
 [e :U 242 ]
-"64
+"65
 [e :UE 240 ]
 }
-"65
+"67
+[v _wI2CCommandState `uc ~T0 @X0 1 e ]
+[i _wI2CCommandState
+-> -> 0 `i `uc
+]
+"68
 [v _SetToGetTemp `(v ~T0 @X0 1 ef ]
-"66
+"69
 {
 [e :U _SetToGetTemp ]
 [f ]
-"67
-[e $ ! == -> _wI2CTxBufferSize `i -> 0 `i 244  ]
-"68
-{
-"69
-[e = . . _PIE1bits 0 3 -> -> 1 `i `uc ]
 "70
-[e = . . _SSPCON3bits 0 7 -> -> 1 `i `uc ]
+[e = _wTrial -> -> 0 `i `uc ]
 "71
-[e = *U + &U _wI2CTxBuffer * -> -> -> 0 `i `ui `ux -> -> # *U &U _wI2CTxBuffer `ui `ux -> -> 184 `i `uc ]
+[e $ ! == -> _wI2CTxBufferSize `i -> 0 `i 244  ]
 "72
-[e = *U + &U _wI2CTxBuffer * -> -> -> 1 `i `ui `ux -> -> # *U &U _wI2CTxBuffer `ui `ux -> -> 3 `i `uc ]
+{
 "73
-[e = *U + &U _wI2CTxBuffer * -> -> -> 2 `i `ui `ux -> -> # *U &U _wI2CTxBuffer `ui `ux -> -> 0 `i `uc ]
+[e = . . _PIE1bits 0 3 -> -> 1 `i `uc ]
 "74
-[e = *U + &U _wI2CTxBuffer * -> -> -> 3 `i `ui `ux -> -> # *U &U _wI2CTxBuffer `ui `ux -> -> 4 `i `uc ]
+[e = . . _SSPCON3bits 0 7 -> -> 1 `i `uc ]
 "75
-[e = _wI2CTxBufferSize -> -> 4 `i `uc ]
+[e = *U + &U _wI2CTxBuffer * -> -> -> 0 `i `ui `ux -> -> # *U &U _wI2CTxBuffer `ui `ux -> -> 184 `i `uc ]
 "76
-[e = . . _SSPCON2bits 0 0 -> -> 1 `i `uc ]
+[e = *U + &U _wI2CTxBuffer * -> -> -> 1 `i `ui `ux -> -> # *U &U _wI2CTxBuffer `ui `ux -> -> 3 `i `uc ]
 "77
+[e = *U + &U _wI2CTxBuffer * -> -> -> 2 `i `ui `ux -> -> # *U &U _wI2CTxBuffer `ui `ux -> -> 0 `i `uc ]
+"78
+[e = *U + &U _wI2CTxBuffer * -> -> -> 3 `i `ui `ux -> -> # *U &U _wI2CTxBuffer `ui `ux -> -> 4 `i `uc ]
+"79
+[e = _wI2CTxBufferSize -> -> 4 `i `uc ]
+"80
+[e = _wI2CCommandState -> . `E2203 0 `uc ]
+"81
+[e = . . _SSPCON2bits 0 0 -> -> 1 `i `uc ]
+"83
 }
 [e :U 244 ]
-"78
+"84
 [e :UE 243 ]
 }
-"80
+"86
 [v _Add_Trace `(v ~T0 @X0 1 ef3`*uc`uc`*uc ]
-"81
+"87
 {
 [e :U _Add_Trace ]
-"80
+"86
 [v _oText `*uc ~T0 @X0 1 r1 ]
 [v _iSizeOfoText `uc ~T0 @X0 1 r2 ]
 [v _iText `*uc ~T0 @X0 1 r3 ]
-"81
+"87
 [f ]
-"82
+"88
 [e $ ! > - -> - -> _iSizeOfoText `i -> 1 `i `ui ( _strlen (1 -> _oText `*Cuc ( _strlen (1 -> _iText `*Cuc 246  ]
-"83
+"89
 {
-"84
+"90
 [e ( _strcat (2 , _oText -> _iText `*Cuc ]
-"85
+"91
 }
 [e :U 246 ]
-"86
+"92
 [e :UE 245 ]
 }
-"88
+"94
 [v _GetTemp `(v ~T0 @X0 1 ef ]
-"89
+"95
 {
 [e :U _GetTemp ]
 [f ]
-"90
-[e $ ! == -> _wI2CTxBufferSize `i -> 0 `i 248  ]
-"91
-{
-"92
-[e = . . _PIE1bits 0 3 -> -> 1 `i `uc ]
-"93
-[e ( _memset (3 , , -> &U _wReceptionBuffer `*v -> 0 `i -> # _wReceptionBuffer `ui ]
-"94
-[e = _wReceptionBufferPosition -> -> 0 `i `uc ]
-"95
-[e = *U + &U _wI2CTxBuffer * -> -> -> 0 `i `ui `ux -> -> # *U &U _wI2CTxBuffer `ui `ux -> -> 185 `i `uc ]
 "96
-[e = _wI2CRxBufferSize -> -> 8 `i `uc ]
+[e = _wTrial -> -> 0 `i `uc ]
 "97
-[e = _wI2CTxBufferSize -> -> 1 `i `uc ]
+[e $ ! == -> _wI2CTxBufferSize `i -> 0 `i 248  ]
 "98
-[e = . . _SSPCON2bits 0 0 -> -> 1 `i `uc ]
+{
 "99
+[e = . . _PIE1bits 0 3 -> -> 1 `i `uc ]
+"100
+[e ( _memset (3 , , -> &U _wReceptionBuffer `*v -> 0 `i -> # _wReceptionBuffer `ui ]
+"101
+[e = _wReceptionBufferPosition -> -> 0 `i `uc ]
+"102
+[e = *U + &U _wI2CTxBuffer * -> -> -> 0 `i `ui `ux -> -> # *U &U _wI2CTxBuffer `ui `ux -> -> 185 `i `uc ]
+"103
+[e = _wI2CRxBufferSize -> -> 8 `i `uc ]
+"104
+[e = _wI2CTxBufferSize -> -> 1 `i `uc ]
+"105
+[e = . . _SSPCON2bits 0 0 -> -> 1 `i `uc ]
+"106
 }
 [e :U 248 ]
-"100
+"107
 [e :UE 247 ]
 }
-"101
+"108
 [v _WakeTemp `(v ~T0 @X0 1 ef ]
-"102
+"109
 {
 [e :U _WakeTemp ]
 [f ]
-"103
+"110
 [e = . . _PIE1bits 0 3 -> -> 1 `i `uc ]
-"104
+"111
+[e = _wTrial -> -> 0 `i `uc ]
+"112
 [e $ ! == -> _wI2CTxBufferSize `i -> 0 `i 250  ]
-"105
+"113
 {
-"106
+"114
 [e = *U + &U _wI2CTxBuffer * -> -> -> 0 `i `ui `ux -> -> # *U &U _wI2CTxBuffer `ui `ux -> -> 184 `i `uc ]
-"107
+"115
 [e = _wI2CTxBufferSize -> -> 1 `i `uc ]
-"108
+"116
 [e = . . _SSPCON2bits 0 0 -> -> 1 `i `uc ]
-"109
+"117
 }
 [e :U 250 ]
-"110
+"118
 [e :UE 249 ]
 }
-"111
+"119
 [v _PrintLog `(v ~T0 @X0 1 ef1`*uc ]
-"112
+"120
 {
 [e :U _PrintLog ]
-"111
+"119
 [v _iText `*uc ~T0 @X0 1 r1 ]
-"112
+"120
 [f ]
-"113
+"121
 [v _wInterruptTextLen `uc ~T0 @X0 1 a ]
 [e = _wInterruptTextLen -> ( _strlen (1 -> _iText `*Cuc `uc ]
-"115
+"123
 [e $ ! != -> _wInterruptTextLen `i -> 0 `i 252  ]
-"116
+"124
 {
-"117
+"125
 [e ( _lcdWriteText (1 _iText ]
-"118
+"126
 [e ( _memset (3 , , -> _iText `*v -> 0 `i -> _wInterruptTextLen `ui ]
-"119
+"127
 }
 [e :U 252 ]
-"120
+"128
 [e :UE 251 ]
 }
-"121
-[v _printEM1812 `(v ~T0 @X0 1 ef2`us`*uc ]
-"122
+"129
+[v _printEM1812 `(v ~T0 @X0 1 ef2`s`*uc ]
+"130
 {
 [e :U _printEM1812 ]
-"121
-[v _wVariable `us ~T0 @X0 1 r1 ]
-[v _oTextOut `*uc ~T0 @X0 1 r2 ]
-"122
-[f ]
-"123
-[v _wTen `uc ~T0 @X0 1 a ]
-"124
-[v _wUnity `uc ~T0 @X0 1 a ]
-"125
-[v _wDecimal `uc ~T0 @X0 1 a ]
-"127
-[e = _wTen -> / -> _wVariable `ui -> -> 100 `i `ui `uc ]
-"128
-[e = _wVariable -> % -> _wVariable `ui -> -> 100 `i `ui `us ]
 "129
-[e = _wUnity -> / -> _wVariable `ui -> -> 10 `i `ui `uc ]
+[v _wVariable `s ~T0 @X0 1 r1 ]
+[v _oTextOut `*uc ~T0 @X0 1 r2 ]
 "130
-[e = _wVariable -> % -> _wVariable `ui -> -> 10 `i `ui `us ]
-"131
-[e = _wDecimal -> _wVariable `uc ]
-"132
-[v _QWE `uc ~T0 @X0 -> 20 `i a ]
-"133
-[e = *U + _oTextOut * -> -> 0 `i `x -> -> # *U _oTextOut `i `x -> + -> 48 `ui -> _wTen `ui `uc ]
-"134
-[e = *U + _oTextOut * -> -> 1 `i `x -> -> # *U _oTextOut `i `x -> + -> 48 `ui -> _wUnity `ui `uc ]
-"135
-[e = *U + _oTextOut * -> -> 2 `i `x -> -> # *U _oTextOut `i `x -> -> 44 `ui `uc ]
-"136
-[e = *U + _oTextOut * -> -> 3 `i `x -> -> # *U _oTextOut `i `x -> + -> 48 `ui -> _wDecimal `ui `uc ]
-"137
-[e = *U + _oTextOut * -> -> 4 `i `x -> -> # *U _oTextOut `i `x -> -> 0 `i `uc ]
-"139
-[e :UE 253 ]
-}
-"141
-[v _Debounce `(v ~T0 @X0 1 ef3`uc`*us`*uc ]
-"142
-{
-[e :U _Debounce ]
-"141
-[v _iSwitch `uc ~T0 @X0 1 r1 ]
-[v _ioTimer `*us ~T0 @X0 1 r2 ]
-[v _swPressed `*uc ~T0 @X0 1 r3 ]
-"142
 [f ]
-"143
-[e $ ! == -> _iSwitch `i -> 0 `i 255  ]
-"144
+"131
+[v _wTen `uc ~T0 @X0 1 a ]
+"132
+[v _wUnity `uc ~T0 @X0 1 a ]
+"133
+[v _wDecimal `uc ~T0 @X0 1 a ]
+"134
+[v _wIsNegative `uc ~T0 @X0 1 a ]
+[e = _wIsNegative -> -> 0 `i `uc ]
+"136
+[e $ ! < -> _wVariable `i -> 0 `i 254  ]
+"137
 {
-"145
-[e ++ *U _ioTimer -> -> 1 `i `us ]
-"146
+"138
+[e = _wIsNegative -> -> 1 `i `uc ]
+"139
+[e = _wVariable -> -U -> _wVariable `i `s ]
+"140
 }
-[e $U 256  ]
+[e :U 254 ]
+"142
+[e = _wTen -> / -> _wVariable `i -> 100 `i `uc ]
+"143
+[e = _wVariable -> % -> _wVariable `i -> 100 `i `s ]
+"144
+[e = _wUnity -> / -> _wVariable `i -> 10 `i `uc ]
+"145
+[e = _wVariable -> % -> _wVariable `i -> 10 `i `s ]
+"146
+[e = _wDecimal -> _wVariable `uc ]
 "147
-[e :U 255 ]
+[e $ ! != -> _wIsNegative `i -> 0 `i 255  ]
 "148
 {
 "149
-[e = *U _ioTimer -> -> 0 `i `us ]
+[e = *U + _oTextOut * -> -> 0 `i `x -> -> # *U _oTextOut `i `x -> -> 45 `ui `uc ]
 "150
+[e = *U + _oTextOut * -> -> 1 `i `x -> -> # *U _oTextOut `i `x -> + -> 48 `ui -> _wTen `ui `uc ]
+"151
+[e = *U + _oTextOut * -> -> 2 `i `x -> -> # *U _oTextOut `i `x -> + -> 48 `ui -> _wUnity `ui `uc ]
+"152
+[e = *U + _oTextOut * -> -> 3 `i `x -> -> # *U _oTextOut `i `x -> -> 44 `ui `uc ]
+"153
+[e = *U + _oTextOut * -> -> 4 `i `x -> -> # *U _oTextOut `i `x -> + -> 48 `ui -> _wDecimal `ui `uc ]
+"154
+[e = *U + _oTextOut * -> -> 5 `i `x -> -> # *U _oTextOut `i `x -> -> 0 `i `uc ]
+"155
+}
+[e $U 256  ]
+"156
+[e :U 255 ]
+"157
+{
+"158
+[e = *U + _oTextOut * -> -> 0 `i `x -> -> # *U _oTextOut `i `x -> + -> 48 `ui -> _wTen `ui `uc ]
+"159
+[e = *U + _oTextOut * -> -> 1 `i `x -> -> # *U _oTextOut `i `x -> + -> 48 `ui -> _wUnity `ui `uc ]
+"160
+[e = *U + _oTextOut * -> -> 2 `i `x -> -> # *U _oTextOut `i `x -> -> 44 `ui `uc ]
+"161
+[e = *U + _oTextOut * -> -> 3 `i `x -> -> # *U _oTextOut `i `x -> + -> 48 `ui -> _wDecimal `ui `uc ]
+"162
+[e = *U + _oTextOut * -> -> 4 `i `x -> -> # *U _oTextOut `i `x -> -> 0 `i `uc ]
+"163
 }
 [e :U 256 ]
-"151
-[e $ ! == -> *U _ioTimer `ui -> -> 2000 `i `ui 257  ]
-"152
-{
-"153
-[e = *U _swPressed -> -> 1 `i `uc ]
-"154
+"165
+[e :UE 253 ]
 }
-[e :U 257 ]
-"155
-[e $ ! == -> *U _ioTimer `ui -> -> 8000 `i `ui 258  ]
-"156
+"167
+[v _Debounce `(v ~T0 @X0 1 ef3`uc`*us`*uc ]
+"168
 {
-"157
-[e = *U _ioTimer -> -> 2001 `i `us ]
-"158
-[e = *U _swPressed -> -> 1 `i `uc ]
-"159
+[e :U _Debounce ]
+"167
+[v _iSwitch `uc ~T0 @X0 1 r1 ]
+[v _ioTimer `*us ~T0 @X0 1 r2 ]
+[v _swPressed `*uc ~T0 @X0 1 r3 ]
+"168
+[f ]
+"169
+[e $ ! == -> _iSwitch `i -> 0 `i 258  ]
+"170
+{
+"171
+[e ++ *U _ioTimer -> -> 1 `i `us ]
+"172
 }
+[e $U 259  ]
+"173
 [e :U 258 ]
-"160
-[e :UE 254 ]
+"174
+{
+"175
+[e = *U _ioTimer -> -> 0 `i `us ]
+"176
 }
-"162
+[e :U 259 ]
+"177
+[e $ ! == -> *U _ioTimer `ui -> -> 2000 `i `ui 260  ]
+"178
+{
+"179
+[e = *U _swPressed -> -> 1 `i `uc ]
+"180
+}
+[e :U 260 ]
+"181
+[e $ ! == -> *U _ioTimer `ui -> -> 8000 `i `ui 261  ]
+"182
+{
+"183
+[e = *U _ioTimer -> -> 2001 `i `us ]
+"184
+[e = *U _swPressed -> -> 1 `i `uc ]
+"185
+}
+[e :U 261 ]
+"186
+[e :UE 257 ]
+}
+"188
 [v _wTempUpdate `uc ~T0 @X0 1 e ]
 [i _wTempUpdate
 -> -> 0 `i `uc
 ]
-"170
+"196
 [v _wTimer1IntCounter `uc ~T0 @X0 1 e ]
 [i _wTimer1IntCounter
 -> -> 0 `i `uc
 ]
+"197
+[v _wTimer0Counter `uc ~T0 @X0 1 e ]
+[i _wTimer0Counter
+-> -> 0 `i `uc
+]
+"198
+[v _wTempState `uc ~T0 @X0 1 e ]
+[i _wTempState
+-> -> 0 `i `uc
+]
+"199
+[v _wHumidity `s ~T0 @X0 1 e ]
+[i _wHumidity
+-> -> 0 `i `s
+]
+"200
+[v _wTemperature `s ~T0 @X0 1 e ]
+[i _wTemperature
+-> -> 0 `i `s
+]
 [v $root$_main `(v ~T0 @X0 0 e ]
-"172
+"202
 [v _main `(v ~T0 @X0 1 ef ]
-"173
+"203
 {
 [e :U _main ]
 [f ]
-"174
+"204
 [v _wReadout `uc ~T0 @X0 -> 20 `i a ]
-"175
-[v _wHumidity `s ~T0 @X0 1 a ]
-[e = _wHumidity -> -> 0 `i `s ]
+"205
 [v _wHumidityPrev `s ~T0 @X0 1 a ]
 [e = _wHumidityPrev -> -> 0 `i `s ]
-"176
-[v _wTemperature `s ~T0 @X0 1 a ]
-[e = _wTemperature -> -> 0 `i `s ]
+"206
 [v _wTemperaturePrev `s ~T0 @X0 1 a ]
 [e = _wTemperaturePrev -> -> 0 `i `s ]
-"177
+"207
 [e ( _memset (3 , , -> &U _wInterruptText `*v -> 0 `i -> # _wInterruptText `ui ]
-"179
+"209
 [e = . . _OSCCONbits 0 2 -> -> 15 `i `uc ]
-"180
+"210
 [e = . . _OSCCONbits 0 0 -> -> 3 `i `uc ]
-"181
+"211
 [e = . . _INTCONbits 0 7 -> -> 0 `i `uc ]
-"183
+"213
 [v _wUpBottonPressed `uc ~T0 @X0 1 a ]
 [e = _wUpBottonPressed -> -> 0 `i `uc ]
-"184
+"214
 [v _wDownBottonPressed `uc ~T0 @X0 1 a ]
 [e = _wDownBottonPressed -> -> 0 `i `uc ]
-"185
+"215
 [v _wEnterBottonPressed `uc ~T0 @X0 1 a ]
 [e = _wEnterBottonPressed -> -> 0 `i `uc ]
-"187
+"217
 [v _wMenu `uc ~T0 @X0 1 a ]
 [e = _wMenu -> -> 0 `i `uc ]
-"188
+"218
 [v _wMenuPrev `uc ~T0 @X0 1 a ]
 [e = _wMenuPrev -> -> 1 `i `uc ]
-"190
+"220
 [v _wIterationCounter `us ~T0 @X0 1 a ]
 [e = _wIterationCounter -> -> 0 `i `us ]
-"191
+"221
 [v _wDebounceEnter `us ~T0 @X0 1 a ]
 [e = _wDebounceEnter -> -> 0 `i `us ]
-"192
+"222
 [v _wDebounceUp `us ~T0 @X0 1 a ]
 [e = _wDebounceUp -> -> 0 `i `us ]
-"193
+"223
 [v _wDebounceDown `us ~T0 @X0 1 a ]
 [e = _wDebounceDown -> -> 0 `i `us ]
-"195
+"225
 [e = _PORTA -> -> 0 `i `uc ]
-"199
-[e = . . _T1CONbits 0 5 -> -> 0 `i `uc ]
-"200
-[e = . . _T1CONbits 0 3 -> -> 0 `i `uc ]
-"201
-[e = . . _T1CONbits 0 4 -> -> 3 `i `uc ]
-"202
-[e = . . _T1CONbits 0 2 -> -> 0 `i `uc ]
-"203
-[e = . . _T1CONbits 0 0 -> -> 1 `i `uc ]
-"204
-[e = . . _PIE1bits 0 0 -> -> 1 `i `uc ]
-"212
-[e = _PORTB -> -> 0 `i `uc ]
-"213
-[e = _ANSELB -> -> 0 `i `uc ]
-"214
-[e = _TRISB -> -> 15 `i `uc ]
-"215
-[e = _WPUB -> -> 15 `i `uc ]
-"216
-[e = . . _OPTION_REGbits 0 5 -> -> 0 `i `uc ]
-"219
-[e ( _memset (3 , , -> &U _wI2CTxBuffer `*v -> 0 `i -> # _wI2CTxBuffer `ui ]
-"220
-[e = _wI2CTxBufferSize -> -> 0 `i `uc ]
-"221
-[e = _wI2CTxSendPos -> -> 0 `i `uc ]
-"223
-[e = _ANSELA -> -> 0 `i `uc ]
-"224
-[e = _TRISA -> -> 0 `i `uc ]
-"226
-[e = _TRISC -> -> 0 `i `uc ]
-"227
-[e = _TRISC -> -> 255 `i `uc ]
-"228
-[e = . . _ANSELCbits 0 3 -> -> 0 `i `uc ]
 "229
-[e = . . _ANSELCbits 0 4 -> -> 0 `i `uc ]
+[e = . . _T1CONbits 0 5 -> -> 0 `i `uc ]
+"230
+[e = . . _T1CONbits 0 3 -> -> 0 `i `uc ]
+"231
+[e = . . _T1CONbits 0 4 -> -> 3 `i `uc ]
+"232
+[e = . . _T1CONbits 0 2 -> -> 0 `i `uc ]
+"233
+[e = . . _T1CONbits 0 0 -> -> 1 `i `uc ]
 "234
-[e = . . _SSPCON1bits 0 0 -> -> 8 `i `uc ]
-"235
-[e = _SSPADD -> -> 31 `i `uc ]
-"236
-[e = . . _SSPCON1bits 0 2 -> -> 1 `i `uc ]
-"237
-[e = . . _SSPCON2bits 0 7 -> -> 0 `i `uc ]
+[e = . . _PIE1bits 0 0 -> -> 1 `i `uc ]
 "238
-[e = . . _SSPCON2bits 0 4 -> -> 1 `i `uc ]
+[e = . . _OPTION_REGbits 0 0 -> -> 2 `i `uc ]
 "239
-[e = . . _SSPCON3bits 0 6 -> -> 1 `i `uc ]
+[e = . . _OPTION_REGbits 0 3 -> -> 0 `i `uc ]
 "240
-[e = . . _SSPCON3bits 0 5 -> -> 1 `i `uc ]
+[e = . . _OPTION_REGbits 0 1 -> -> 0 `i `uc ]
 "241
-[e = . . _SSPCON3bits 0 3 -> -> 1 `i `uc ]
-"242
-[e = . . _SSPCON3bits 0 1 -> -> 0 `i `uc ]
-"243
-[e = . . _SSPCON3bits 0 0 -> -> 0 `i `uc ]
-"244
-[e = . . _SSPSTATbits 0 6 -> -> 0 `i `uc ]
+[e = . . _INTCONbits 0 5 -> -> 0 `i `uc ]
+"245
+[e = _PORTB -> -> 0 `i `uc ]
 "246
-[e = . . _INTCONbits 0 6 -> -> 1 `i `uc ]
+[e = _ANSELB -> -> 0 `i `uc ]
 "247
-[e = . . _PIE1bits 0 3 -> -> 1 `i `uc ]
+[e = _TRISB -> -> 15 `i `uc ]
 "248
-[e = . . _PIE2bits 0 2 -> -> 1 `i `uc ]
-"250
-[e = . . _INTCONbits 0 7 -> -> 1 `i `uc ]
+[e = _WPUB -> -> 15 `i `uc ]
+"249
+[e = . . _OPTION_REGbits 0 5 -> -> 0 `i `uc ]
+"252
+[e ( _memset (3 , , -> &U _wI2CTxBuffer `*v -> 0 `i -> # _wI2CTxBuffer `ui ]
 "253
-[e ( _initLCD ..  ]
+[e = _wI2CTxBufferSize -> -> 0 `i `uc ]
 "254
-[e ( _clearDisplay ..  ]
-"255
-[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+[e = _wI2CTxSendPos -> -> 0 `i `uc ]
 "256
-[e ( _powerOnLcd ..  ]
+[e = _ANSELA -> -> 0 `i `uc ]
 "257
-[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-"258
-[e ( _setCursorOff ..  ]
+[e = _TRISA -> -> 0 `i `uc ]
 "259
-[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+[e = _TRISC -> -> 0 `i `uc ]
 "260
-[e ( _moveCursorToHome ..  ]
+[e = _TRISC -> -> 255 `i `uc ]
 "261
-[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+[e = . . _ANSELCbits 0 3 -> -> 0 `i `uc ]
 "262
-[e ( _setNotBlinkingCursor ..  ]
-"263
+[e = . . _ANSELCbits 0 4 -> -> 0 `i `uc ]
+"267
+[e = . . _SSPCON1bits 0 0 -> -> 8 `i `uc ]
+"268
+[e = _SSPADD -> -> 31 `i `uc ]
+"269
+[e = . . _SSPCON1bits 0 2 -> -> 1 `i `uc ]
+"270
+[e = . . _SSPCON2bits 0 7 -> -> 0 `i `uc ]
+"271
+[e = . . _SSPCON2bits 0 4 -> -> 1 `i `uc ]
+"272
+[e = . . _SSPCON3bits 0 6 -> -> 1 `i `uc ]
+"273
+[e = . . _SSPCON3bits 0 5 -> -> 1 `i `uc ]
+"274
+[e = . . _SSPCON3bits 0 3 -> -> 1 `i `uc ]
+"275
+[e = . . _SSPCON3bits 0 1 -> -> 0 `i `uc ]
+"276
+[e = . . _SSPCON3bits 0 0 -> -> 0 `i `uc ]
+"277
+[e = . . _SSPSTATbits 0 6 -> -> 0 `i `uc ]
+"279
+[e = . . _INTCONbits 0 6 -> -> 1 `i `uc ]
+"280
+[e = . . _PIE1bits 0 3 -> -> 1 `i `uc ]
+"281
+[e = . . _PIE2bits 0 2 -> -> 1 `i `uc ]
+"283
+[e = . . _INTCONbits 0 7 -> -> 1 `i `uc ]
+"286
+[e ( _initLCD ..  ]
+"287
+[e ( _clearDisplay ..  ]
+"288
 [e ( __delay (1 -> * -> -> 100 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
 "289
+[e ( _powerOnLcd ..  ]
+"290
+[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+"291
+[e ( _setCursorOff ..  ]
+"292
+[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+"293
+[e ( _moveCursorToHome ..  ]
+"294
+[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+"295
+[e ( _setNotBlinkingCursor ..  ]
+"296
+[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+"322
 [v _wCounter `i ~T0 @X0 1 a ]
 [e = _wCounter -> 0 `i ]
-[v F2241 `uc ~T0 @X0 -> 4 `i s ]
-[i F2241
+[v F2250 `uc ~T0 @X0 -> 4 `i s ]
+[i F2250
 :U ..
-"290
+"323
 -> -> 43 `ui `uc
 -> -> 0 `i `uc
 -> -> 120 `ui `uc
@@ -1080,467 +1166,657 @@ Version 4.0 HI-TECH Software Intermediate Code
 ..
 ]
 [v _wConv `uc ~T0 @X0 -> 4 `i a ]
-[e = _wConv F2241 ]
-"291
+[e = _wConv F2250 ]
+"324
 [v _wTemp `i ~T0 @X0 1 a ]
 [e = _wTemp -> 0 `i ]
-"293
-[e ( _clearDisplay ..  ]
-"294
-[e ( _moveCursorToHome ..  ]
-"295
-[e ( __delay (1 -> * -> -> 30 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-"296
-[e :U 261 ]
-"297
-{
-"299
-[e $ ! != -> _wReceptionCounter `i -> _wReceptionCounterPrev `i 263  ]
-"300
-{
-"301
-[e = _wReceptionCounterPrev _wReceptionCounter ]
-"302
-[e = _wHumidityPrev _wHumidity ]
-"303
-[e = _wHumidity -> + * -> *U + &U _wReceptionBuffer * -> -> -> 2 `i `ui `ux -> -> # *U &U _wReceptionBuffer `ui `ux `i -> 256 `i -> *U + &U _wReceptionBuffer * -> -> -> 3 `i `ui `ux -> -> # *U &U _wReceptionBuffer `ui `ux `i `s ]
-"304
-[e = _wTemperaturePrev _wTemperature ]
-"305
-[e = _wTemperature -> + * -> *U + &U _wReceptionBuffer * -> -> -> 4 `i `ui `ux -> -> # *U &U _wReceptionBuffer `ui `ux `i -> 256 `i -> *U + &U _wReceptionBuffer * -> -> -> 5 `i `ui `ux -> -> # *U &U _wReceptionBuffer `ui `ux `i `s ]
-"306
-}
-[e :U 263 ]
-"309
-[e $ ! || != -> _wHumidityPrev `i -> _wHumidity `i != -> _wTemperaturePrev `i -> _wTemperature `i 264  ]
-"310
-{
-"311
-[e ( _setCursorPosition (2 , -> -> 2 `i `uc -> -> 0 `i `uc ]
-"312
-[e ( _printEM1812 (2 , -> _wHumidity `us &U _wReadout ]
-"313
-[e ( _Add_Trace (3 , , &U _wInterruptText -> -> # _wInterruptText `ui `uc :s 1C ]
-"314
-[e ( _Add_Trace (3 , , &U _wInterruptText -> -> # _wInterruptText `ui `uc &U _wReadout ]
-"315
-[e ( _printEM1812 (2 , -> _wTemperature `us &U _wReadout ]
-"316
-[e ( _Add_Trace (3 , , &U _wInterruptText -> -> # _wInterruptText `ui `uc :s 2C ]
-"317
-[e ( _Add_Trace (3 , , &U _wInterruptText -> -> # _wInterruptText `ui `uc &U _wReadout ]
-"318
-[e ( _PrintLog (1 &U _wInterruptText ]
-"319
-}
-[e :U 264 ]
-"321
-[e $ ! != -> _wMenu `i -> _wMenuPrev `i 265  ]
-"322
-{
-"323
-[e = _wMenuPrev _wMenu ]
-"324
-[e $U 267  ]
-"325
-{
-"326
-[e :U 268 ]
 "327
-[e ( _setCursorPosition (2 , -> -> 0 `i `uc -> -> 0 `i `uc ]
+[e ( _clearDisplay ..  ]
 "328
-[e ( _lcdWriteText (1 :s 3C ]
+[e ( _moveCursorToHome ..  ]
 "329
-[e $U 266  ]
+[e ( __delay (1 -> * -> -> 30 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
 "330
-[e :U 269 ]
+[e :U 264 ]
 "331
-[e ( _setCursorPosition (2 , -> -> 0 `i `uc -> -> 0 `i `uc ]
-"332
-[e ( _lcdWriteText (1 :s 4C ]
+{
 "333
-[e $U 266  ]
+[e $ ! || != -> _wHumidityPrev `i -> _wHumidity `i != -> _wTemperaturePrev `i -> _wTemperature `i 266  ]
 "334
-[e :U 270 ]
+{
 "335
-[e ( _setCursorPosition (2 , -> -> 0 `i `uc -> -> 0 `i `uc ]
+[e = _wHumidityPrev _wHumidity ]
 "336
-[e ( _lcdWriteText (1 :s 5C ]
+[e = _wTemperaturePrev _wTemperature ]
 "337
-[e $U 266  ]
+[e ( _setCursorPosition (2 , -> -> 2 `i `uc -> -> 0 `i `uc ]
 "338
-[e :U 271 ]
+[e ( _printEM1812 (2 , _wHumidityPrev &U _wReadout ]
 "339
-[e ( _setCursorPosition (2 , -> -> 0 `i `uc -> -> 0 `i `uc ]
+[e ( _Add_Trace (3 , , &U _wInterruptText -> -> # _wInterruptText `ui `uc :s 1C ]
 "340
-[e ( _lcdWriteText (1 :s 6C ]
+[e ( _Add_Trace (3 , , &U _wInterruptText -> -> # _wInterruptText `ui `uc &U _wReadout ]
 "341
-[e $U 266  ]
+[e ( _printEM1812 (2 , _wTemperaturePrev &U _wReadout ]
 "342
-}
-[e $U 266  ]
-[e :U 267 ]
-[e [\ -> _wMenu `i , $ -> 0 `i 268
- , $ -> 1 `i 269
- , $ -> 2 `i 270
- 271 ]
-[e :U 266 ]
+[e ( _Add_Trace (3 , , &U _wInterruptText -> -> # _wInterruptText `ui `uc :s 2C ]
 "343
+[e ( _Add_Trace (3 , , &U _wInterruptText -> -> # _wInterruptText `ui `uc &U _wReadout ]
+"344
+[e ( _PrintLog (1 &U _wInterruptText ]
+"345
 }
-[e :U 265 ]
-"346
-[e $ ! == -> _wTempUpdate `i -> 1 `i 272  ]
+[e :U 266 ]
 "347
-{
+[e $ ! != -> _wMenu `i -> _wMenuPrev `i 267  ]
 "348
-[e = _wTempUpdate -> -> 0 `i `uc ]
+{
 "349
-[e ( _WakeTemp ..  ]
+[e = _wMenuPrev _wMenu ]
 "350
-[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 16000000 `l `d .4000000.0 `ul ]
+[e $U 269  ]
+"351
+{
 "352
-[e ( _SetToGetTemp ..  ]
+[e :U 270 ]
 "353
-[e ( __delay (1 -> * -> -> 1500 `i `d / -> -> 16000000 `l `d .4000000.0 `ul ]
+[e ( _setCursorPosition (2 , -> -> 0 `i `uc -> -> 0 `i `uc ]
+"354
+[e ( _lcdWriteText (1 :s 3C ]
 "355
-[e ( _GetTemp ..  ]
+[e $U 268  ]
+"356
+[e :U 271 ]
 "357
-[e = _wCounter + _wCounter -> 2 `i ]
+[e ( _setCursorPosition (2 , -> -> 0 `i `uc -> -> 0 `i `uc ]
+"358
+[e ( _lcdWriteText (1 :s 4C ]
 "359
-[e $ ! == _wCounter -> 4 `i 273  ]
+[e $U 268  ]
 "360
-{
-"361
-[e = _wCounter -> 0 `i ]
-"362
-}
-[e :U 273 ]
-"363
-[e ( _setCursorPosition (2 , -> -> 3 `i `uc -> -> 19 `i `uc ]
-"364
-[e ( _lcdWriteText (1 &U *U + &U _wConv * -> -> _wCounter `ui `ux -> -> # *U &U _wConv `ui `ux ]
-"365
-}
 [e :U 272 ]
+"361
+[e ( _setCursorPosition (2 , -> -> 0 `i `uc -> -> 0 `i `uc ]
+"362
+[e ( _lcdWriteText (1 :s 5C ]
+"363
+[e $U 268  ]
+"364
+[e :U 273 ]
+"365
+[e ( _setCursorPosition (2 , -> -> 0 `i `uc -> -> 0 `i `uc ]
 "366
-[e ++ _wIterationCounter -> -> 1 `i `us ]
-"373
-[e ( _Debounce (3 , , . . _PORTBbits 0 0 &U _wDebounceEnter &U _wEnterBottonPressed ]
-"374
-[e ( _Debounce (3 , , . . _PORTBbits 0 1 &U _wDebounceUp &U _wUpBottonPressed ]
-"375
-[e ( _Debounce (3 , , . . _PORTBbits 0 2 &U _wDebounceDown &U _wDownBottonPressed ]
-"378
-[e $ ! == -> _wUpBottonPressed `i -> 1 `i 274  ]
-"379
-{
-"380
-[e = _wUpBottonPressed -> -> 0 `i `uc ]
-"381
-[e ++ _wMenu -> -> 1 `i `uc ]
-"382
+[e ( _lcdWriteText (1 :s 6C ]
+"367
+[e $U 268  ]
+"368
 }
-[e :U 274 ]
+[e $U 268  ]
+[e :U 269 ]
+[e [\ -> _wMenu `i , $ -> 0 `i 270
+ , $ -> 1 `i 271
+ , $ -> 2 `i 272
+ 273 ]
+[e :U 268 ]
+"369
+}
+[e :U 267 ]
+"371
+[e $U 275  ]
+"372
+{
+"373
+[e :U 276 ]
+"374
+[e ( _WakeTemp ..  ]
+"375
+[e ( _ToggleBitRB5 ..  ]
+"376
+[e ++ _wTempState -> -> 1 `i `uc ]
+"377
+[e = . . _INTCONbits 0 5 -> -> 0 `i `uc ]
+"378
+[e = _TMR0 -> -> 0 `i `uc ]
+"379
+[e = _wTimer0Counter -> -> 0 `i `uc ]
+"380
+[e = . . _INTCONbits 0 5 -> -> 1 `i `uc ]
+"381
+[e $U 274  ]
+"382
+[e :U 277 ]
 "383
-[e $ ! == -> _wDownBottonPressed `i -> 1 `i 275  ]
+[e $ ! == -> _wTimer0Counter `i -> 2 `i 278  ]
 "384
 {
 "385
-[e = _wDownBottonPressed -> -> 0 `i `uc ]
+[e ++ _wTempState -> -> 1 `i `uc ]
 "386
-[e -- _wMenu -> -> 1 `i `uc ]
+[e = . . _INTCONbits 0 5 -> -> 0 `i `uc ]
 "387
 }
-[e :U 275 ]
+[e :U 278 ]
+"388
+[e $U 274  ]
 "389
-[e $ ! == -> _wMenu `i -> 255 `i 276  ]
+[e :U 279 ]
 "390
-{
+[e $ ! == -> _wI2CCommandState `i -> . `E2203 3 `i 280  ]
 "391
-[e = _wMenu -> -> 2 `i `uc ]
-"392
-}
-[e :U 276 ]
-"393
-[e $ ! == -> _wMenu `i -> 3 `i 277  ]
-"394
 {
+"392
+[e = _wTempState -> -> 0 `i `uc ]
+"393
+}
+[e $U 281  ]
+"394
+[e :U 280 ]
+[e $ ! == -> _wI2CCommandState `i -> . `E2203 2 `i 282  ]
 "395
-[e = _wMenu -> -> 0 `i `uc ]
+{
 "396
-}
-[e :U 277 ]
+[e ( _ToggleBitRB5 ..  ]
+"397
+[e ( _SetToGetTemp ..  ]
+"398
+[e ( _ToggleBitRB5 ..  ]
 "399
-}
-[e :U 260 ]
-[e $U 261  ]
-[e :U 262 ]
+[e ++ _wTempState -> -> 1 `i `uc ]
 "400
-[e $UE 259  ]
+[e = . . _INTCONbits 0 5 -> -> 0 `i `uc ]
 "401
-[e :UE 259 ]
-}
+[e = _TMR0 -> -> 0 `i `uc ]
+"402
+[e = _wTimer0Counter -> -> 0 `i `uc ]
 "403
+[e = . . _INTCONbits 0 5 -> -> 1 `i `uc ]
+"404
+}
+[e :U 282 ]
+[e :U 281 ]
+"405
+[e $U 274  ]
+"406
+[e :U 283 ]
+"407
+[e $ ! == -> _wTimer0Counter `i -> 3 `i 284  ]
+"408
+{
+"409
+[e ++ _wTempState -> -> 1 `i `uc ]
+"410
+[e = . . _INTCONbits 0 5 -> -> 0 `i `uc ]
+"411
+}
+[e :U 284 ]
+"412
+[e $U 274  ]
+"413
+[e :U 285 ]
+"414
+[e ( _ToggleBitRB5 ..  ]
+"415
+[e ( _GetTemp ..  ]
+"416
+[e ++ _wTempState -> -> 1 `i `uc ]
+"417
+[e $U 274  ]
+"418
+[e :U 286 ]
+"419
+[e = _wCounter + _wCounter -> 2 `i ]
+"420
+[e $ ! == _wCounter -> 4 `i 287  ]
+"421
+{
+"422
+[e = _wCounter -> 0 `i ]
+"423
+}
+[e :U 287 ]
+"424
+[e ( _setCursorPosition (2 , -> -> 3 `i `uc -> -> 19 `i `uc ]
+"425
+[e ( _lcdWriteText (1 &U *U + &U _wConv * -> -> _wCounter `ui `ux -> -> # *U &U _wConv `ui `ux ]
+"426
+[e ++ _wTempState -> -> 1 `i `uc ]
+"427
+[e $U 274  ]
+"428
+[e :U 288 ]
+"429
+[e $U 274  ]
+"430
+[e :U 289 ]
+"431
+[e $U 274  ]
+"432
+}
+[e $U 274  ]
+[e :U 275 ]
+[e [\ -> _wTempState `i , $ -> 0 `i 276
+ , $ -> 1 `i 277
+ , $ -> 2 `i 279
+ , $ -> 3 `i 283
+ , $ -> 4 `i 285
+ , $ -> 5 `i 286
+ , $ -> 6 `i 288
+ 289 ]
+[e :U 274 ]
+"454
+[e ++ _wIterationCounter -> -> 1 `i `us ]
+"457
+[e ( _Debounce (3 , , . . _PORTBbits 0 0 &U _wDebounceEnter &U _wEnterBottonPressed ]
+"458
+[e ( _Debounce (3 , , . . _PORTBbits 0 1 &U _wDebounceUp &U _wUpBottonPressed ]
+"459
+[e ( _Debounce (3 , , . . _PORTBbits 0 2 &U _wDebounceDown &U _wDownBottonPressed ]
+"462
+[e $ ! == -> _wUpBottonPressed `i -> 1 `i 290  ]
+"463
+{
+"464
+[e = _wUpBottonPressed -> -> 0 `i `uc ]
+"465
+[e ++ _wMenu -> -> 1 `i `uc ]
+"466
+}
+[e :U 290 ]
+"467
+[e $ ! == -> _wDownBottonPressed `i -> 1 `i 291  ]
+"468
+{
+"469
+[e = _wDownBottonPressed -> -> 0 `i `uc ]
+"470
+[e -- _wMenu -> -> 1 `i `uc ]
+"471
+}
+[e :U 291 ]
+"473
+[e $ ! == -> _wMenu `i -> 255 `i 292  ]
+"474
+{
+"475
+[e = _wMenu -> -> 2 `i `uc ]
+"476
+}
+[e :U 292 ]
+"477
+[e $ ! == -> _wMenu `i -> 3 `i 293  ]
+"478
+{
+"479
+[e = _wMenu -> -> 0 `i `uc ]
+"480
+}
+[e :U 293 ]
+"483
+}
+[e :U 263 ]
+[e $U 264  ]
+[e :U 265 ]
+"484
+[e $UE 262  ]
+"485
+[e :UE 262 ]
+}
+"487
 [v _wCounter2 `uc ~T0 @X0 1 e ]
 [i _wCounter2
 -> -> 0 `i `uc
 ]
 [v $root$_myint `(v ~T0 @X0 0 e ]
-"404
+"488
 [v _myint `(v ~T1 @X0 1 ef ]
-"405
+"489
 {
 [e :U _myint ]
 [f ]
-"407
-[e $ ! == -> . . _PIR1bits 0 3 `i -> 1 `i 279  ]
-"408
-{
-"409
-[e = . . _PIR1bits 0 3 -> -> 0 `i `uc ]
-"410
-[e $ ! != -> _wI2CTxBufferSize `i -> 0 `i 280  ]
-"411
-{
-"412
-[e $ ! != -> . . _SSPSTATbits 0 4 `i -> 0 `i 281  ]
-"413
-{
-"415
-[e = . . _PIE1bits 0 3 -> -> 0 `i `uc ]
-"416
-[e = _wI2CTxBufferSize -> -> 0 `i `uc ]
-"417
-[e = _wI2CTxSendPos -> -> 0 `i `uc ]
-"418
-}
-[e $U 282  ]
-"419
-[e :U 281 ]
-[e $ ! && == -> . . _SSPSTATbits 0 0 `i -> 1 `i == & -> *U + &U _wI2CTxBuffer * -> -> -> 0 `i `ui `ux -> -> # *U &U _wI2CTxBuffer `ui `ux `i -> 1 `i -> 1 `i 283  ]
-"420
-{
-"421
-[e = *U + &U _wReceptionBuffer * -> _wReceptionBufferPosition `ux -> -> # *U &U _wReceptionBuffer `ui `ux -> _SSPBUF `uc ]
-"422
-[e ++ _wReceptionBufferPosition -> -> 1 `i `uc ]
-"424
-[e = . . _SSPSTATbits 0 0 -> -> 0 `i `uc ]
-"425
-[e $ ! < -> _wReceptionBufferPosition `i -> _wI2CRxBufferSize `i 284  ]
-"426
-{
-"427
-[e = . . _SSPCON2bits 0 5 -> -> 0 `i `uc ]
-"428
-}
-[e $U 285  ]
-"429
-[e :U 284 ]
-"430
-{
-"431
-[e = . . _SSPCON2bits 0 5 -> -> 1 `i `uc ]
-"432
-[e ++ _wReceptionCounter -> -> 1 `i `uc ]
-"434
-}
-[e :U 285 ]
-"435
-[e = . . _SSPCON2bits 0 4 -> -> 1 `i `uc ]
-"436
-}
-[e $U 286  ]
-"437
-[e :U 283 ]
-[e $ ! && != -> . . _SSPSTATbits 0 3 `i -> 0 `i == -> _wI2CTxSendPos `i -> 0 `i 287  ]
-"438
-{
-"440
-[e $ ! != -> _wI2CTxBufferSize `i -> 0 `i 288  ]
-"441
-{
-"442
-[e = _SSPBUF -> *U + &U _wI2CTxBuffer * -> _wI2CTxSendPos `ux -> -> # *U &U _wI2CTxBuffer `ui `ux `uc ]
-"443
-[e ++ _wI2CTxSendPos -> -> 1 `i `uc ]
-"444
-}
-[e $U 289  ]
-"445
-[e :U 288 ]
-"446
-{
-"448
-}
-[e :U 289 ]
-"449
-}
-[e $U 290  ]
-"450
-[e :U 287 ]
-"451
-{
-"452
-[e $ ! && == -> . . _SSPCON2bits 0 6 `i -> 0 `i != -> _wI2CTxSendPos `i -> 0 `i 291  ]
-"453
-{
-"456
-[e $ ! < -> _wI2CTxSendPos `i -> _wI2CTxBufferSize `i 292  ]
-"457
-{
-"458
-[e = _SSPBUF -> *U + &U _wI2CTxBuffer * -> _wI2CTxSendPos `ux -> -> # *U &U _wI2CTxBuffer `ui `ux `uc ]
-"459
-[e ++ _wI2CTxSendPos -> -> 1 `i `uc ]
-"460
-}
-[e $U 293  ]
-"461
-[e :U 292 ]
-"462
-{
-"463
-[e $ ! == & -> *U + &U _wI2CTxBuffer * -> -> -> 0 `i `ui `ux -> -> # *U &U _wI2CTxBuffer `ui `ux `i -> 1 `i -> 1 `i 294  ]
-"464
-{
-"465
-[e $ ! < -> _wReceptionBufferPosition `i -> _wI2CRxBufferSize `i 295  ]
-"466
-{
-"467
-[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 16000000 `l `d .4000000.0 `ul ]
-"468
-[e = . . _SSPCON2bits 0 3 -> -> 1 `i `uc ]
-"471
-}
-[e $U 296  ]
-"472
-[e :U 295 ]
-"473
-{
-"474
-[e = . . _SSPCON2bits 0 2 -> -> 1 `i `uc ]
-"475
-}
-[e :U 296 ]
-"476
-}
-[e $U 297  ]
-"477
-[e :U 294 ]
-"478
-{
-"479
-[e = . . _SSPCON2bits 0 2 -> -> 1 `i `uc ]
-"480
-}
-[e :U 297 ]
-"481
-}
-[e :U 293 ]
-"482
-}
-[e $U 298  ]
-"483
-[e :U 291 ]
-[e $ ! == -> . . _SSPCON2bits 0 6 `i -> 1 `i 299  ]
-"484
-{
-"486
-[e = . . _SSPCON2bits 0 6 -> -> 0 `i `uc ]
-"487
-[e $ ! != -> _wI2CTxSendPos `i -> 0 `i 300  ]
-"488
-{
-"489
-[e = . . _SSPCON2bits 0 2 -> -> 1 `i `uc ]
-"490
-}
-[e $U 301  ]
 "491
-[e :U 300 ]
+[e $ ! == -> . . _PIR1bits 0 3 `i -> 1 `i 295  ]
 "492
 {
 "493
-[e = . . _SSPCON2bits 0 2 -> -> 1 `i `uc ]
+[e = . . _PIR1bits 0 3 -> -> 0 `i `uc ]
 "494
-}
-[e :U 301 ]
+[e $ ! != -> _wI2CTxBufferSize `i -> 0 `i 296  ]
 "495
-}
-[e $U 302  ]
+{
 "496
-[e :U 299 ]
+[e $ ! == & -> *U + &U _wI2CTxBuffer * -> -> -> 0 `i `ui `ux -> -> # *U &U _wI2CTxBuffer `ui `ux `i -> 1 `i -> 1 `i 297  ]
 "497
 {
 "498
-[e ( _Add_Trace (3 , , &U _wInterruptText -> -> # _wInterruptText `ui `uc :s 7C ]
+[e $ ! != -> . . _SSPSTATbits 0 4 `i -> 0 `i 298  ]
 "499
-}
-[e :U 302 ]
-[e :U 298 ]
+{
 "500
-}
-[e :U 290 ]
-[e :U 286 ]
-[e :U 282 ]
+[e = . . _PIE1bits 0 3 -> -> 0 `i `uc ]
 "501
-}
-[e :U 280 ]
+[e = _wI2CTxBufferSize -> -> 0 `i `uc ]
 "502
-}
-[e :U 279 ]
+[e = _wI2CTxSendPos -> -> 0 `i `uc ]
 "503
-[e $ ! == -> . . _PIR2bits 0 2 `i -> 1 `i 303  ]
-"504
-{
-"505
-[e = . . _PIR2bits 0 2 -> -> 0 `i `uc ]
-"506
-[e ( _Add_Trace (3 , , &U _wInterruptText -> -> # _wInterruptText `ui `uc :s 8C ]
-"507
 }
-[e :U 303 ]
+[e $U 299  ]
+"504
+[e :U 298 ]
+[e $ ! && != -> . . _SSPSTATbits 0 3 `i -> 0 `i == -> _wI2CTxSendPos `i -> 0 `i 300  ]
+"505
+{
+"506
+[e = _SSPBUF -> *U + &U _wI2CTxBuffer * -> _wI2CTxSendPos `ux -> -> # *U &U _wI2CTxBuffer `ui `ux `uc ]
+"507
+[e = _wI2CCommandState -> . `E2203 1 `uc ]
 "508
-[e $ ! == -> . . _PIR1bits 0 0 `i -> 1 `i 304  ]
+[e ++ _wI2CTxSendPos -> -> 1 `i `uc ]
 "509
-{
+}
+[e $U 301  ]
 "510
-[e ( _ToggleBitRB5 ..  ]
-"512
-[e ++ _wTimer1IntCounter -> -> 1 `i `uc ]
-"513
-[e = . . _PIR1bits 0 0 -> -> 0 `i `uc ]
-"515
-[e $ ! == -> _wTimer1IntCounter `i -> 7 `i 305  ]
-"516
+[e :U 300 ]
+[e $ ! == -> . . _SSPSTATbits 0 0 `i -> 1 `i 302  ]
+"511
 {
+"512
+[e = *U + &U _wReceptionBuffer * -> _wReceptionBufferPosition `ux -> -> # *U &U _wReceptionBuffer `ui `ux -> _SSPBUF `uc ]
+"513
+[e ++ _wReceptionBufferPosition -> -> 1 `i `uc ]
+"515
+[e = . . _SSPSTATbits 0 0 -> -> 0 `i `uc ]
+"516
+[e $ ! < -> _wReceptionBufferPosition `i -> _wI2CRxBufferSize `i 303  ]
 "517
-[e = _TMR1H -> -> 76 `i `uc ]
+{
 "518
-[e = _TMR1L -> -> 131 `i `uc ]
+[e = . . _SSPCON2bits 0 5 -> -> 0 `i `uc ]
 "519
 }
-[e :U 305 ]
+[e $U 304  ]
 "520
-[e $ ! == -> _wTimer1IntCounter `i -> 8 `i 306  ]
+[e :U 303 ]
 "521
 {
 "522
-[e = _wTimer1IntCounter -> -> 0 `i `uc ]
+[e = . . _SSPCON2bits 0 5 -> -> 1 `i `uc ]
+"523
+[e = _wHumidity -> + * -> *U + &U _wReceptionBuffer * -> -> -> 2 `i `ui `ux -> -> # *U &U _wReceptionBuffer `ui `ux `i -> 256 `i -> *U + &U _wReceptionBuffer * -> -> -> 3 `i `ui `ux -> -> # *U &U _wReceptionBuffer `ui `ux `i `s ]
 "524
-[e = _wTempUpdate -> -> 1 `i `uc ]
+[e = _wTemperature -> + * -> *U + &U _wReceptionBuffer * -> -> -> 4 `i `ui `ux -> -> # *U &U _wReceptionBuffer `ui `ux `i -> 256 `i -> *U + &U _wReceptionBuffer * -> -> -> 5 `i `ui `ux -> -> # *U &U _wReceptionBuffer `ui `ux `i `s ]
 "525
-}
-[e :U 306 ]
-"526
+[e ++ _wReceptionCounter -> -> 1 `i `uc ]
+"527
 }
 [e :U 304 ]
-"527
-[e :UE 278 ]
+"528
+[e = . . _SSPCON2bits 0 4 -> -> 1 `i `uc ]
+"529
 }
-[a 8C 44 66 67 76 73 70 0 ]
+[e $U 305  ]
+"530
+[e :U 302 ]
+"531
+{
+"532
+[e $ ! && == -> . . _SSPCON2bits 0 6 `i -> 0 `i != -> _wI2CTxSendPos `i -> 0 `i 306  ]
+"533
+{
+"534
+[e $ ! < -> _wReceptionBufferPosition `i -> _wI2CRxBufferSize `i 307  ]
+"535
+{
+"536
+[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 16000000 `l `d .4000000.0 `ul ]
+"537
+[e = . . _SSPCON2bits 0 3 -> -> 1 `i `uc ]
+"538
+}
+[e $U 308  ]
+"539
+[e :U 307 ]
+"540
+{
+"541
+[e = . . _SSPCON2bits 0 2 -> -> 1 `i `uc ]
+"542
+}
+[e :U 308 ]
+"543
+}
+[e $U 309  ]
+"544
+[e :U 306 ]
+[e $ ! == -> . . _SSPCON2bits 0 6 `i -> 1 `i 310  ]
+"545
+{
+"546
+[e = . . _SSPCON2bits 0 6 -> -> 0 `i `uc ]
+"547
+[e $ ! != -> _wI2CTxSendPos `i -> 0 `i 311  ]
+"548
+{
+"549
+[e = . . _SSPCON2bits 0 2 -> -> 1 `i `uc ]
+"550
+}
+[e $U 312  ]
+"551
+[e :U 311 ]
+"552
+{
+"553
+[e = . . _SSPCON2bits 0 2 -> -> 1 `i `uc ]
+"554
+}
+[e :U 312 ]
+"555
+}
+[e $U 313  ]
+"556
+[e :U 310 ]
+"557
+{
+"558
+[e ( _Add_Trace (3 , , &U _wInterruptText -> -> # _wInterruptText `ui `uc :s 7C ]
+"559
+}
+[e :U 313 ]
+[e :U 309 ]
+"560
+}
+[e :U 305 ]
+[e :U 301 ]
+[e :U 299 ]
+"562
+}
+[e $U 314  ]
+"563
+[e :U 297 ]
+"564
+{
+"565
+[e $ ! != -> . . _SSPSTATbits 0 4 `i -> 0 `i 315  ]
+"566
+{
+"567
+[e = . . _PIE1bits 0 3 -> -> 0 `i `uc ]
+"568
+[e = _wI2CTxBufferSize -> -> 0 `i `uc ]
+"569
+[e = _wI2CTxSendPos -> -> 0 `i `uc ]
+"570
+[e ( _lcdWriteText (1 :s 8C ]
+"571
+}
+[e $U 316  ]
+"572
+[e :U 315 ]
+[e $ ! && != -> . . _SSPSTATbits 0 3 `i -> 0 `i == -> _wI2CTxSendPos `i -> 0 `i 317  ]
+"573
+{
+"574
+[e ( _lcdWriteText (1 :s 9C ]
+"575
+[e = _wI2CCommandState -> . `E2203 1 `uc ]
+"576
+[e = _SSPBUF -> *U + &U _wI2CTxBuffer * -> _wI2CTxSendPos `ux -> -> # *U &U _wI2CTxBuffer `ui `ux `uc ]
+"577
+[e ++ _wI2CTxSendPos -> -> 1 `i `uc ]
+"578
+}
+[e $U 318  ]
+"579
+[e :U 317 ]
+"580
+{
+"581
+[e $ ! && == -> . . _SSPCON2bits 0 6 `i -> 0 `i != -> _wI2CTxSendPos `i -> 0 `i 319  ]
+"582
+{
+"583
+[e ( _lcdWriteText (1 :s 10C ]
+"584
+[e $ ! < -> _wI2CTxSendPos `i -> _wI2CTxBufferSize `i 320  ]
+"585
+{
+"586
+[e = _SSPBUF -> *U + &U _wI2CTxBuffer * -> _wI2CTxSendPos `ux -> -> # *U &U _wI2CTxBuffer `ui `ux `uc ]
+"587
+[e ++ _wI2CTxSendPos -> -> 1 `i `uc ]
+"588
+}
+[e $U 321  ]
+"589
+[e :U 320 ]
+"590
+{
+"591
+[e = . . _SSPCON2bits 0 2 -> -> 1 `i `uc ]
+"592
+[e = _wI2CCommandState -> . `E2203 2 `uc ]
+"593
+}
+[e :U 321 ]
+"594
+}
+[e $U 322  ]
+"595
+[e :U 319 ]
+[e $ ! == -> . . _SSPCON2bits 0 6 `i -> 1 `i 323  ]
+"596
+{
+"597
+[e = . . _SSPCON2bits 0 6 -> -> 0 `i `uc ]
+"598
+[e = . . _SSPCON2bits 0 2 -> -> 1 `i `uc ]
+"599
+[e = _wI2CCommandState -> . `E2203 3 `uc ]
+"600
+[e ( _lcdWriteText (1 :s 11C ]
+"601
+}
+[e $U 324  ]
+"602
+[e :U 323 ]
+"603
+{
+"605
+}
+[e :U 324 ]
+[e :U 322 ]
+"606
+}
+[e :U 318 ]
+[e :U 316 ]
+"607
+}
+[e :U 314 ]
+"612
+}
+[e :U 296 ]
+"613
+}
+[e :U 295 ]
+"614
+[e $ ! == -> . . _PIR2bits 0 2 `i -> 1 `i 325  ]
+"615
+{
+"616
+[e = . . _PIR2bits 0 2 -> -> 0 `i `uc ]
+"617
+[e ( _Add_Trace (3 , , &U _wInterruptText -> -> # _wInterruptText `ui `uc :s 12C ]
+"618
+}
+[e :U 325 ]
+"619
+[e $ ! == -> . . _PIR1bits 0 0 `i -> 1 `i 326  ]
+"620
+{
+"621
+[e ++ _wTimer1IntCounter -> -> 1 `i `uc ]
+"622
+[e = . . _PIR1bits 0 0 -> -> 0 `i `uc ]
+"624
+[e $ ! == -> _wTimer1IntCounter `i -> 7 `i 327  ]
+"625
+{
+"626
+[e = _TMR1H -> -> 76 `i `uc ]
+"627
+[e = _TMR1L -> -> 131 `i `uc ]
+"628
+}
+[e :U 327 ]
+"629
+[e $ ! == -> _wTimer1IntCounter `i -> 8 `i 328  ]
+"630
+{
+"631
+[e = _wTimer1IntCounter -> -> 0 `i `uc ]
+"633
+[e = _wTempUpdate -> -> 1 `i `uc ]
+"634
+[e $ ! == -> _wTempState `i -> 6 `i 329  ]
+"635
+{
+"636
+[e = _wTempState -> -> 0 `i `uc ]
+"637
+}
+[e $U 330  ]
+"638
+[e :U 329 ]
+"639
+{
+"641
+}
+[e :U 330 ]
+"642
+}
+[e :U 328 ]
+"643
+}
+[e :U 326 ]
+"644
+[e $ ! == -> . . _INTCONbits 0 2 `i -> 1 `i 331  ]
+"645
+{
+"646
+[e = . . _INTCONbits 0 2 -> -> 0 `i `uc ]
+"647
+[e ++ _wTimer0Counter -> -> 1 `i `uc ]
+"648
+}
+[e :U 331 ]
+"649
+[e :UE 294 ]
+}
+[a 9C 83 0 ]
+[a 11C 82 0 ]
+[a 8C 80 0 ]
+[a 12C 44 66 67 76 73 70 0 ]
+[a 10C 65 0 ]
 [a 7C 44 78 56 0 ]
 [a 1C 72 117 109 105 100 105 116 121 32 58 32 0 ]
 [a 2C 10 84 101 109 112 32 58 32 0 ]

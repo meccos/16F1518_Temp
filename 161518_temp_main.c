@@ -49,6 +49,7 @@ char wI2CTxBufferSize;
 char wI2CRxBufferSize;
 char wI2CTxSendPos;
 char wHexTemp[20];
+uint8_t wTrial=0;
 
 
 void ToggleBitRB5()
@@ -62,8 +63,11 @@ void ToggleBitRB5()
         PORTBbits.RB5 = 1;
     }
 }
+enum{CommandSent,ProcessingCommand,CommandCompleted,CommandFailed};
+uint8_t wI2CCommandState = 0;
 void SetToGetTemp()
 {
+    wTrial=0;
     if(wI2CTxBufferSize == 0)
     {
         PIE1bits.SSPIE = 1;
@@ -73,7 +77,9 @@ void SetToGetTemp()
         wI2CTxBuffer[2] = 0x00; //Read register 0x00
         wI2CTxBuffer[3] = 0x04; //Read 4 registers from 0x00 to 0x04
         wI2CTxBufferSize = 4;
+        wI2CCommandState=CommandSent;
         SSPCON2bits.SEN = 1;
+        
     }
 }
 
@@ -87,6 +93,7 @@ void Add_Trace(char* oText, char iSizeOfoText, char* iText)
 
 void GetTemp()
 {
+    wTrial=0;
     if(wI2CTxBufferSize == 0)
     {
         PIE1bits.SSPIE = 1;
@@ -101,6 +108,7 @@ void GetTemp()
 void WakeTemp()
 {
     PIE1bits.SSPIE = 1;
+    wTrial=0;
     if(wI2CTxBufferSize == 0)
     {
         wI2CTxBuffer[0] = 0xB8; // 0xB8 Address of the AM2320
@@ -118,23 +126,41 @@ void PrintLog(char* iText)
         memset(iText,0,wInterruptTextLen);
     }   
 }
-void printEM1812(uint16_t wVariable, char* oTextOut)
+void printEM1812(int16_t wVariable, char* oTextOut)
 {
     uint8_t wTen;
     uint8_t wUnity;
     uint8_t wDecimal;
+    uint8_t wIsNegative=0;
+    
+    if(wVariable < 0)
+    {
+        wIsNegative = 1;
+        wVariable = -wVariable; 
+    }
     
     wTen = wVariable/100;
     wVariable = wVariable % 100;
     wUnity = wVariable/10;
     wVariable = wVariable %10;
     wDecimal = wVariable;
-    char QWE[20];
-    oTextOut[0] = '0' + wTen;
-    oTextOut[1] = '0' + wUnity;
-    oTextOut[2] = ',';
-    oTextOut[3] = '0' + wDecimal;
-    oTextOut[4] = 0;
+    if(wIsNegative)
+    {
+        oTextOut[0] = '-';
+        oTextOut[1] = '0' + wTen;
+        oTextOut[2] = '0' + wUnity;
+        oTextOut[3] = ',';
+        oTextOut[4] = '0' + wDecimal;
+        oTextOut[5] = 0;
+    }
+    else
+    {
+        oTextOut[0] = '0' + wTen;
+        oTextOut[1] = '0' + wUnity;
+        oTextOut[2] = ',';
+        oTextOut[3] = '0' + wDecimal;
+        oTextOut[4] = 0;
+    }
     
 }
 
@@ -168,12 +194,16 @@ uint8_t wTempUpdate=0;
 #define DISPTACHERSIGNAL T1CONbits.TMR1CS
 
 uint8_t wTimer1IntCounter=0;
-
+uint8_t wTimer0Counter=0;
+uint8_t wTempState=0;
+int16_t wHumidity=0;
+int16_t wTemperature=0;
+  
 void main(void) 
 {
   char wReadout[20];
-  int16_t wHumidity=0, wHumidityPrev=0;
-  int16_t wTemperature=0, wTemperaturePrev=0;
+  int16_t wHumidityPrev=0;
+  int16_t wTemperaturePrev=0;
   memset(wInterruptText,0,sizeof(wInterruptText));
   //OSCCONbits.IRCF = 13; //4mhz
   OSCCONbits.IRCF = 0xf; // Set frequency to 16 mhz
@@ -203,9 +233,12 @@ void main(void)
   T1CONbits.TMR1ON = 1; // Enabling the timer1
   PIE1bits.TMR1IE =1; //Enabling the timer1 interrupt
   //INTCONbits.PEIE = 1; // Is done later on
-  
-         
-  //T1GCONbits.TMR1GE = 1; // Not counting if not 1
+
+  //TempGetTimer
+  OPTION_REGbits.PS = 0x2;
+  OPTION_REGbits.TMR0CS = 0;
+  OPTION_REGbits.PSA = 0;
+  INTCONbits.TMR0IE = 0; //Enable Timer 0 Interrupt
   
   
   //Button configuration
@@ -289,6 +322,7 @@ void main(void)
   int wCounter=0;
   char wConv[4]={'+',0, 'x',0, };
   int wTemp=0;
+
   
   clearDisplay();
   moveCursorToHome();
@@ -296,23 +330,15 @@ void main(void)
   while(1)
   {
     
-      if(wReceptionCounter != wReceptionCounterPrev)
-      {
-         wReceptionCounterPrev = wReceptionCounter;
-        wHumidityPrev = wHumidity;
-        wHumidity = wReceptionBuffer[2]*256 + wReceptionBuffer[3];
-        wTemperaturePrev = wTemperature;
-        wTemperature = wReceptionBuffer[4]*256 + wReceptionBuffer[5];
-      }
-     
-
     if((wHumidityPrev != wHumidity) || (wTemperaturePrev != wTemperature))
     {
+        wHumidityPrev = wHumidity;
+        wTemperaturePrev = wTemperature;
         setCursorPosition(2,0);
-        printEM1812(wHumidity,wReadout);
+        printEM1812(wHumidityPrev,wReadout);
         Add_Trace(wInterruptText,sizeof(wInterruptText),"Humidity : ");
         Add_Trace(wInterruptText,sizeof(wInterruptText),wReadout);
-        printEM1812(wTemperature,wReadout);
+        printEM1812(wTemperaturePrev,wReadout);
         Add_Trace(wInterruptText,sizeof(wInterruptText),"\nTemp : ");
         Add_Trace(wInterruptText,sizeof(wInterruptText),wReadout);
         PrintLog(wInterruptText);
@@ -341,8 +367,70 @@ void main(void)
           break;
       }
     }
-    
-   
+     
+    switch( wTempState )
+    {
+        case 0:
+            WakeTemp();
+            ToggleBitRB5();
+            wTempState++;
+            INTCONbits.TMR0IE = 0; //Enable Timer 0 Interrupt
+            TMR0 = 0;
+            wTimer0Counter=0;
+            INTCONbits.TMR0IE = 1; //Enable Timer 0 Interrupt
+            break;
+        case 1:
+            if(wTimer0Counter == 2)
+            {
+                wTempState++;
+                INTCONbits.TMR0IE = 0; //Enable Timer 0 Interrupt
+            }
+            break;
+        case 2:
+            if(wI2CCommandState == CommandFailed)
+            {
+                wTempState=0;
+            }
+            else if (wI2CCommandState == CommandCompleted)
+            {
+                ToggleBitRB5();
+                SetToGetTemp();
+                ToggleBitRB5();
+                wTempState++;
+                INTCONbits.TMR0IE = 0; //Enable Timer 0 Interrupt
+                TMR0 = 0;
+                wTimer0Counter=0;
+                INTCONbits.TMR0IE = 1; //Enable Timer 0 Interrupt
+            }
+            break;
+        case 3:
+            if(wTimer0Counter == 3)
+            {
+                wTempState++;
+                INTCONbits.TMR0IE = 0; //Enable Timer 0 Interrupt
+            }
+            break;
+        case 4:
+            ToggleBitRB5();
+            GetTemp();
+            wTempState++;
+            break;
+        case 5:
+            wCounter = wCounter + 2;
+            if(wCounter == 4)
+            {
+              wCounter = 0;
+            }
+            setCursorPosition(3,19);
+            lcdWriteText(&wConv[wCounter]);
+            wTempState++;
+            break;
+        case 6:
+            break;
+        default:
+            break;
+    }
+   /*
     if( wTempUpdate == 1)
     {
         wTempUpdate = 0;
@@ -362,13 +450,9 @@ void main(void)
         }
         setCursorPosition(3,19);
         lcdWriteText(&wConv[wCounter]);
-    }
+    }*/
     wIterationCounter++;
-    //if(wIterationCounter == 65535)
-    //{
-    //    wIterationCounter = 0;
-    //    wTempUpdate = 1;
-    //}
+
 
    Debounce(ENTERBotton,&wDebounceEnter,&wEnterBottonPressed);
    Debounce(UPBotton,&wDebounceUp,&wUpBottonPressed);
@@ -409,95 +493,122 @@ void __interrupt() myint(void)
         PIR1bits.SSPIF = 0;
         if( wI2CTxBufferSize != 0)
         {
-            if(SSPSTATbits.P)
+            if((wI2CTxBuffer[0] & 0x01) == 1) //Read mode
             {
-              //Add_Trace(wInterruptText,sizeof(wInterruptText),",P");
-              PIE1bits.SSPIE = 0;
-              wI2CTxBufferSize=0;
-              wI2CTxSendPos=0;
-            }
-            else if((SSPSTATbits.BF == 1) && ((wI2CTxBuffer[0] & 0x01) == 1))
-            {
-                wReceptionBuffer[wReceptionBufferPosition] = SSPBUF;
-                wReceptionBufferPosition++;
-                
-                SSPSTATbits.BF = 0 ;
-                if( wReceptionBufferPosition < wI2CRxBufferSize)
+                if(SSPSTATbits.P)
                 {
-                    SSPCON2bits.ACKDT = 0; //Acknowledge the reception.
+                  PIE1bits.SSPIE = 0;
+                  wI2CTxBufferSize=0;
+                  wI2CTxSendPos=0;
                 }
-                else
+                else if(SSPSTATbits.S && wI2CTxSendPos == 0) //Start of the transmission to slave
                 {
-                    SSPCON2bits.ACKDT = 1; // Don't acknowledge the reception.
-                    wReceptionCounter++; // Indicate that we received new packet
-                    
-                }
-                SSPCON2bits.ACKEN = 1;
-            }
-            else if(SSPSTATbits.S && wI2CTxSendPos == 0)
-            {
-              //Add_Trace(wInterruptText,sizeof(wInterruptText),",S");
-              if(wI2CTxBufferSize !=0)
-              {
-                SSPBUF = wI2CTxBuffer[wI2CTxSendPos]; 
-                wI2CTxSendPos++;
-              }
-              else
-              {
-                //Add_Trace(wInterruptText,sizeof(wInterruptText),",ISE");
-              }
-            }
-            else
-            {
-                if(SSPCON2bits.ACKSTAT == 0 && wI2CTxSendPos != 0) //Acknowledge received proceeding sending other bits
-                {
-                  //Add_Trace(wInterruptText,sizeof(wInterruptText),"A");
-                  
-                  if(wI2CTxSendPos < wI2CTxBufferSize) //Keep sending up to the last byte
-                  {
                     SSPBUF = wI2CTxBuffer[wI2CTxSendPos]; 
+                    wI2CCommandState = ProcessingCommand;
                     wI2CTxSendPos++;
-                  }
-                  else
-                  {
-                      if((wI2CTxBuffer[0] & 0x01) == 1) //If set the Read into the address
-                      {
-                          if( wReceptionBufferPosition < wI2CRxBufferSize)
-                          {
-                            __delay_us(50);
-                            SSPCON2bits.RCEN = 1; //Enable reception
-                           //Add_Trace(wInterruptText,sizeof(wInterruptText),"R");
-                            
-                          }
-                          else
-                          {
-                            SSPCON2bits.PEN = 1; //Send Completed Generating the Stop sequence.
-                          }
-                      }
-                      else
-                      {
-                        SSPCON2bits.PEN = 1; //Send Completed Generating the Stop sequence.
-                      }
-                  }
                 }
-                else if(SSPCON2bits.ACKSTAT == 1)
+                else if(SSPSTATbits.BF == 1) //Reception of one byte from slave
                 {
-                    //Add_Trace(wInterruptText,sizeof(wInterruptText),",NA");
-                    SSPCON2bits.ACKSTAT = 0;
-                    if(wI2CTxSendPos != 0)
+                    wReceptionBuffer[wReceptionBufferPosition] = SSPBUF;
+                    wReceptionBufferPosition++;
+
+                    SSPSTATbits.BF = 0 ;
+                    if( wReceptionBufferPosition < wI2CRxBufferSize)
                     {
-                      SSPCON2bits.PEN = 1;
+                        SSPCON2bits.ACKDT = 0; //Acknowledge the reception.
                     }
                     else
                     {
-                      SSPCON2bits.PEN = 1;
+                        SSPCON2bits.ACKDT = 1; // Don't acknowledge the reception.
+                        wHumidity = wReceptionBuffer[2]*256 + wReceptionBuffer[3];
+                        wTemperature = wReceptionBuffer[4]*256 + wReceptionBuffer[5];
+                        wReceptionCounter++; // Indicate that we received new packet
+
                     }
+                    SSPCON2bits.ACKEN = 1;
                 }
                 else
                 {
-                    Add_Trace(wInterruptText,sizeof(wInterruptText),",N8");
+                    if(SSPCON2bits.ACKSTAT == 0 && wI2CTxSendPos != 0) //Acknowledge received proceeding sending other bits
+                    {
+                        if( wReceptionBufferPosition < wI2CRxBufferSize)
+                        {
+                          __delay_us(50);
+                          SSPCON2bits.RCEN = 1; //Enable reception
+                        }
+                        else
+                        {
+                          SSPCON2bits.PEN = 1; //Send Completed Generating the Stop sequence.
+                        }
+                    }
+                    else if(SSPCON2bits.ACKSTAT == 1)
+                    {
+                        SSPCON2bits.ACKSTAT = 0;
+                        if(wI2CTxSendPos != 0)
+                        {
+                          SSPCON2bits.PEN = 1;
+                        }
+                        else
+                        {
+                          SSPCON2bits.PEN = 1;
+                        }
+                    }
+                    else
+                    {
+                        Add_Trace(wInterruptText,sizeof(wInterruptText),",N8");
+                    }
+                }
+
+            }
+            else //Write to mode
+            {
+                if(SSPSTATbits.P)
+                {
+                  PIE1bits.SSPIE = 0;
+                  wI2CTxBufferSize=0;
+                  wI2CTxSendPos=0;
+                  lcdWriteText("P");
+                }
+                else if(SSPSTATbits.S && wI2CTxSendPos == 0) //Start of the transmission to slave
+                {
+                    lcdWriteText("S");
+                    wI2CCommandState = ProcessingCommand;
+                    SSPBUF = wI2CTxBuffer[wI2CTxSendPos]; 
+                    wI2CTxSendPos++;
+                }
+                else
+                {
+                    if(SSPCON2bits.ACKSTAT == 0 && wI2CTxSendPos != 0) //Acknowledge received proceeding sending other bits
+                    {
+                        lcdWriteText("A");
+                      if(wI2CTxSendPos < wI2CTxBufferSize) //Keep sending up to the last byte
+                      {
+                        SSPBUF = wI2CTxBuffer[wI2CTxSendPos]; 
+                        wI2CTxSendPos++;
+                      }
+                      else
+                      {
+                            SSPCON2bits.PEN = 1; //Send Completed Generating the Stop sequence.
+                            wI2CCommandState = CommandCompleted;
+                      }
+                    }
+                    else if(SSPCON2bits.ACKSTAT == 1)
+                    {
+                        SSPCON2bits.ACKSTAT = 0;
+                        SSPCON2bits.PEN = 1;
+                        wI2CCommandState = CommandFailed;
+                        lcdWriteText("R");
+                    }
+                    else
+                    {
+                        
+                    }
                 }
             }
+
+
+
+            
         }
     }
     if(PIR2bits.BCLIF == 1)
@@ -507,8 +618,6 @@ void __interrupt() myint(void)
     }
     if(PIR1bits.TMR1IF == 1)
     {
-        ToggleBitRB5();
-        
         wTimer1IntCounter++;
         PIR1bits.TMR1IF = 0;
         
@@ -522,6 +631,19 @@ void __interrupt() myint(void)
             wTimer1IntCounter = 0;
  
             wTempUpdate = 1;
+            if(wTempState == 6)
+            {
+               wTempState = 0;
+            }
+            else
+            {
+                  
+            }
         }
+    }
+    if(INTCONbits.TMR0IF == 1)
+    {
+        INTCONbits.TMR0IF = 0;
+        wTimer0Counter++;
     }
 }
