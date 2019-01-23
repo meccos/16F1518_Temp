@@ -19,17 +19,15 @@ CommandFailed 3
 [v i1_Add_Trace Add_Trace `(v  1 e 1 0 ]
 "94
 [v _GetTemp GetTemp `(v  1 e 1 0 ]
-"108
-[v _WakeTemp WakeTemp `(v  1 e 1 0 ]
-"119
+"120
 [v _PrintLog PrintLog `(v  1 e 1 0 ]
-"129
+"130
 [v _printEM1812 printEM1812 `(v  1 e 1 0 ]
-"167
+"168
 [v _Debounce Debounce `(v  1 e 1 0 ]
-"202
+"203
 [v _main main `(v  1 e 1 0 ]
-"488
+"494
 [v _myint myint `II(v  1 e 1 0 ]
 "5 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\awdiv.c
 [v ___awdiv __awdiv `(i  1 e 2 0 ]
@@ -54,26 +52,20 @@ CommandFailed 3
 [v _initLCD initLCD `(v  1 e 1 0 ]
 "41
 [v _lcdWriteText lcdWriteText `(v  1 e 1 0 ]
-[v i1_lcdWriteText lcdWriteText `(v  1 e 1 0 ]
 "67
 [v _setData setData `(v  1 e 1 0 ]
-[v i1_setData setData `(v  1 e 1 0 ]
 "79
 [v _writeTxtChk writeTxtChk `(v  1 e 1 0 ]
-[v i1_writeTxtChk writeTxtChk `(v  1 e 1 0 ]
 "132
 [v _writeInsChk writeInsChk `(v  1 e 1 0 ]
 "138
 [v _writeInsNoChk writeInsNoChk `(v  1 e 1 0 ]
 "147
 [v _SetToReadDataFromLCD SetToReadDataFromLCD `(v  1 e 1 0 ]
-[v i1_SetToReadDataFromLCD SetToReadDataFromLCD `(v  1 e 1 0 ]
 "154
 [v _SetToSendDataToLCD SetToSendDataToLCD `(v  1 e 1 0 ]
-[v i1_SetToSendDataToLCD SetToSendDataToLCD `(v  1 e 1 0 ]
 "162
 [v _waitLCDBusy waitLCDBusy `(v  1 e 1 0 ]
-[v i1_waitLCDBusy waitLCDBusy `(v  1 e 1 0 ]
 "188
 [v _powerOnLcd powerOnLcd `(v  1 e 1 0 ]
 "198
@@ -86,7 +78,6 @@ CommandFailed 3
 [v _moveCursorToHome moveCursorToHome `(v  1 e 1 0 ]
 "254
 [v _setCursorPosition setCursorPosition `(v  1 e 1 0 ]
-[v i1_setCursorPosition setCursorPosition `(v  1 e 1 0 ]
 "40 C:\Users\dell\MPLABXProjects\16F1518_Temp.X/LCD_hd44780u_qy_2004a.h
 [v _mDisplayOnOffReg mDisplayOnOffReg `uc  1 e 1 0 ]
 "41
@@ -113,17 +104,17 @@ CommandFailed 3
 [v _wTrial wTrial `uc  1 e 1 0 ]
 "67
 [v _wI2CCommandState wI2CCommandState `uc  1 e 1 0 ]
-"188
+"189
 [v _wTempUpdate wTempUpdate `uc  1 e 1 0 ]
-"196
-[v _wTimer1IntCounter wTimer1IntCounter `uc  1 e 1 0 ]
 "197
-[v _wTimer0Counter wTimer0Counter `uc  1 e 1 0 ]
+[v _wTimer1IntCounter wTimer1IntCounter `uc  1 e 1 0 ]
 "198
-[v _wTempState wTempState `uc  1 e 1 0 ]
+[v _wTimer0Counter wTimer0Counter `uc  1 e 1 0 ]
 "199
-[v _wHumidity wHumidity `s  1 e 2 0 ]
+[v _wTempState wTempState `uc  1 e 1 0 ]
 "200
+[v _wHumidity wHumidity `s  1 e 2 0 ]
+"201
 [v _wTemperature wTemperature `s  1 e 2 0 ]
 [s S162 . 1 `uc 1 IOCIF 1 0 :1:0 
 `uc 1 INTF 1 0 :1:1 
@@ -144,7 +135,7 @@ CommandFailed 3
 [v _INTCONbits INTCONbits `VES176  1 e 1 @11 ]
 "429
 [v _PORTA PORTA `VEuc  1 e 1 @12 ]
-[s S630 . 1 `uc 1 RA0 1 0 :1:0 
+[s S625 . 1 `uc 1 RA0 1 0 :1:0 
 `uc 1 RA1 1 0 :1:1 
 `uc 1 RA2 1 0 :1:2 
 `uc 1 RA3 1 0 :1:3 
@@ -154,8 +145,8 @@ CommandFailed 3
 `uc 1 RA7 1 0 :1:7 
 ]
 "446
-[u S639 . 1 `S630 1 . 1 0 ]
-[v _PORTAbits PORTAbits `VES639  1 e 1 @12 ]
+[u S634 . 1 `S625 1 . 1 0 ]
+[v _PORTAbits PORTAbits `VES634  1 e 1 @12 ]
 "491
 [v _PORTB PORTB `VEuc  1 e 1 @13 ]
 [s S22 . 1 `uc 1 RB0 1 0 :1:0 
@@ -215,7 +206,7 @@ CommandFailed 3
 [v _T1CONbits T1CONbits `VES208  1 e 1 @24 ]
 "1052
 [v _TRISA TRISA `VEuc  1 e 1 @140 ]
-[s S609 . 1 `uc 1 TRISA0 1 0 :1:0 
+[s S604 . 1 `uc 1 TRISA0 1 0 :1:0 
 `uc 1 TRISA1 1 0 :1:1 
 `uc 1 TRISA2 1 0 :1:2 
 `uc 1 TRISA3 1 0 :1:3 
@@ -225,8 +216,8 @@ CommandFailed 3
 `uc 1 TRISA7 1 0 :1:7 
 ]
 "1069
-[u S618 . 1 `S609 1 . 1 0 ]
-[v _TRISAbits TRISAbits `VES618  1 e 1 @140 ]
+[u S613 . 1 `S604 1 . 1 0 ]
+[v _TRISAbits TRISAbits `VES613  1 e 1 @140 ]
 "1114
 [v _TRISB TRISB `VEuc  1 e 1 @141 ]
 "1176
@@ -356,42 +347,42 @@ CommandFailed 3
 "3512
 [u S73 . 1 `S64 1 . 1 0 ]
 [v _SSPCON3bits SSPCON3bits `VES73  1 e 1 @535 ]
-"202 C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+"203 C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
 [v _main main `(v  1 e 1 0 ]
 {
-"204
-[v main@wReadout wReadout `[20]uc  1 a 20 2 ]
-"323
-[v main@wConv wConv `[4]uc  1 a 4 22 ]
-"322
-[v main@wCounter wCounter `i  1 a 2 40 ]
-"223
-[v main@wDebounceDown wDebounceDown `us  1 a 2 38 ]
-"222
-[v main@wDebounceUp wDebounceUp `us  1 a 2 36 ]
-"221
-[v main@wDebounceEnter wDebounceEnter `us  1 a 2 34 ]
-"206
-[v main@wTemperaturePrev wTemperaturePrev `s  1 a 2 31 ]
 "205
-[v main@wHumidityPrev wHumidityPrev `s  1 a 2 29 ]
-"220
-[v main@wIterationCounter wIterationCounter `us  1 a 2 26 ]
+[v main@wReadout wReadout `[20]uc  1 a 20 6 ]
 "324
+[v main@wConv wConv `[4]uc  1 a 4 2 ]
+"323
+[v main@wCounter wCounter `i  1 a 2 40 ]
+"224
+[v main@wDebounceDown wDebounceDown `us  1 a 2 38 ]
+"223
+[v main@wDebounceUp wDebounceUp `us  1 a 2 36 ]
+"222
+[v main@wDebounceEnter wDebounceEnter `us  1 a 2 34 ]
+"207
+[v main@wTemperaturePrev wTemperaturePrev `s  1 a 2 31 ]
+"206
+[v main@wHumidityPrev wHumidityPrev `s  1 a 2 29 ]
+"221
+[v main@wIterationCounter wIterationCounter `us  1 a 2 26 ]
+"325
 [v main@wTemp wTemp `i  1 a 2 0 ]
-"217
-[v main@wMenu wMenu `uc  1 a 1 44 ]
-"214
-[v main@wDownBottonPressed wDownBottonPressed `uc  1 a 1 43 ]
-"213
-[v main@wUpBottonPressed wUpBottonPressed `uc  1 a 1 42 ]
-"215
-[v main@wEnterBottonPressed wEnterBottonPressed `uc  1 a 1 33 ]
 "218
+[v main@wMenu wMenu `uc  1 a 1 44 ]
+"215
+[v main@wDownBottonPressed wDownBottonPressed `uc  1 a 1 43 ]
+"214
+[v main@wUpBottonPressed wUpBottonPressed `uc  1 a 1 42 ]
+"216
+[v main@wEnterBottonPressed wEnterBottonPressed `uc  1 a 1 33 ]
+"219
 [v main@wMenuPrev wMenuPrev `uc  1 a 1 28 ]
-"322
+"323
 [v main@F2250 F2250 `[4]uc  1 s 4 F2250 ]
-"485
+"491
 } 0
 "198 C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
 [v _setNotBlinkingCursor setNotBlinkingCursor `(v  1 e 1 0 ]
@@ -403,21 +394,21 @@ CommandFailed 3
 {
 "207
 } 0
-"129 C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+"130 C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
 [v _printEM1812 printEM1812 `(v  1 e 1 0 ]
 {
-"133
-[v printEM1812@wDecimal wDecimal `uc  1 a 1 36 ]
-"132
-[v printEM1812@wUnity wUnity `uc  1 a 1 35 ]
-"131
-[v printEM1812@wTen wTen `uc  1 a 1 34 ]
 "134
+[v printEM1812@wDecimal wDecimal `uc  1 a 1 36 ]
+"133
+[v printEM1812@wUnity wUnity `uc  1 a 1 35 ]
+"132
+[v printEM1812@wTen wTen `uc  1 a 1 34 ]
+"135
 [v printEM1812@wIsNegative wIsNegative `uc  1 a 1 33 ]
-"129
+"130
 [v printEM1812@wVariable wVariable `s  1 p 2 29 ]
 [v printEM1812@oTextOut oTextOut `*.6uc  1 p 1 31 ]
-"165
+"166
 } 0
 "5 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\awmod.c
 [v ___awmod __awmod `(i  1 e 2 0 ]
@@ -481,12 +472,7 @@ CommandFailed 3
 [v writeInsNoChk@iOpCode iOpCode `uc  1 a 1 24 ]
 "145
 } 0
-"108 C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
-[v _WakeTemp WakeTemp `(v  1 e 1 0 ]
-{
-"118
-} 0
-"55
+"55 C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
 [v _ToggleBitRB5 ToggleBitRB5 `(v  1 e 1 0 ]
 {
 "65
@@ -496,17 +482,17 @@ CommandFailed 3
 {
 "84
 } 0
-"119
+"120
 [v _PrintLog PrintLog `(v  1 e 1 0 ]
 {
 [v PrintLog@iText iText `*.5uc  1 a 1 wreg ]
-"121
+"122
 [v PrintLog@wInterruptTextLen wInterruptTextLen `uc  1 a 1 41 ]
-"119
+"120
 [v PrintLog@iText iText `*.5uc  1 a 1 wreg ]
-"121
+"122
 [v PrintLog@iText iText `*.5uc  1 a 1 42 ]
-"128
+"129
 } 0
 "41 C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
 [v _lcdWriteText lcdWriteText `(v  1 e 1 0 ]
@@ -568,7 +554,7 @@ CommandFailed 3
 "94 C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
 [v _GetTemp GetTemp `(v  1 e 1 0 ]
 {
-"107
+"108
 } 0
 "4 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\memset.c
 [v _memset memset `(*.39v  1 e 1 0 ]
@@ -583,16 +569,16 @@ CommandFailed 3
 [v memset@n n `ui  1 p 2 24 ]
 "90
 } 0
-"167 C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+"168 C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
 [v _Debounce Debounce `(v  1 e 1 0 ]
 {
 [v Debounce@iSwitch iSwitch `uc  1 a 1 wreg ]
 [v Debounce@iSwitch iSwitch `uc  1 a 1 wreg ]
 [v Debounce@ioTimer ioTimer `*.6us  1 p 1 20 ]
 [v Debounce@swPressed swPressed `*.6uc  1 p 1 21 ]
-"169
+"170
 [v Debounce@iSwitch iSwitch `uc  1 a 1 24 ]
-"186
+"187
 } 0
 "86
 [v _Add_Trace Add_Trace `(v  1 e 1 0 ]
@@ -639,64 +625,12 @@ CommandFailed 3
 [v strcpy@dest dest `*.5uc  1 a 1 33 ]
 "18
 } 0
-"488 C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+"494 C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
 [v _myint myint `II(v  1 e 1 0 ]
 {
-"649
+"653
 } 0
-"41 C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
-[v i1_lcdWriteText lcdWriteText `(v  1 e 1 0 ]
-{
-[v i1lcdWriteText@wCharReadingPos lcdWriteText `uc  1 a 1 13 ]
-[v i1lcdWriteText@iText iText `*.26uc  1 p 2 0 ]
-"50
-} 0
-"79
-[v i1_writeTxtChk writeTxtChk `(v  1 e 1 0 ]
-{
-[v i1writeTxtChk@iOpCode iOpCode `uc  1 a 1 wreg ]
-[v i1writeTxtChk@iOpCode iOpCode `uc  1 a 1 wreg ]
-"81
-[v i1writeTxtChk@iOpCode iOpCode `uc  1 a 1 12 ]
-"130
-} 0
-"254
-[v i1_setCursorPosition setCursorPosition `(v  1 e 1 0 ]
-{
-[v i1setCursorPosition@iLine iLine `uc  1 a 1 wreg ]
-[v i1setCursorPosition@wLCDIndex setCursorPosition `uc  1 a 1 9 ]
-[v i1setCursorPosition@iLine iLine `uc  1 a 1 wreg ]
-[v i1setCursorPosition@iPosition iPosition `uc  1 p 1 5 ]
-"256
-[v i1setCursorPosition@iLine iLine `uc  1 a 1 8 ]
-"288
-} 0
-"162
-[v i1_waitLCDBusy waitLCDBusy `(v  1 e 1 0 ]
-{
-[v i1waitLCDBusy@busyFlag waitLCDBusy `i  1 a 2 3 ]
-"182
-} 0
-"147
-[v i1_SetToReadDataFromLCD SetToReadDataFromLCD `(v  1 e 1 0 ]
-{
-"153
-} 0
-"67
-[v i1_setData setData `(v  1 e 1 0 ]
-{
-[v i1setData@iValue iValue `uc  1 a 1 wreg ]
-[v i1setData@iValue iValue `uc  1 a 1 wreg ]
-"69
-[v i1setData@iValue iValue `uc  1 a 1 2 ]
-"77
-} 0
-"154
-[v i1_SetToSendDataToLCD SetToSendDataToLCD `(v  1 e 1 0 ]
-{
-"160
-} 0
-"86 C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+"86
 [v i1_Add_Trace Add_Trace `(v  1 e 1 0 ]
 {
 [v i1Add_Trace@oText oText `*.5uc  1 a 1 wreg ]

@@ -3320,6 +3320,7 @@ void GetTemp()
         wI2CTxBuffer[0] = 0xB9;
         wI2CRxBufferSize = 8;
         wI2CTxBufferSize = 1;
+        wI2CCommandState=CommandSent;
         SSPCON2bits.SEN = 1;
     }
 }
@@ -3512,7 +3513,7 @@ void main(void)
   _delay((unsigned long)((100)*(16000000/4000.0)));
   setNotBlinkingCursor();
   _delay((unsigned long)((100)*(16000000/4000.0)));
-# 322 "161518_temp_main.c"
+# 323 "161518_temp_main.c"
   int wCounter=0;
   char wConv[4]={'+',0, 'x',0, };
   int wTemp=0;
@@ -3565,7 +3566,7 @@ void main(void)
     switch( wTempState )
     {
         case 0:
-            WakeTemp();
+            SetToGetTemp();
             ToggleBitRB5();
             wTempState++;
             INTCONbits.TMR0IE = 0;
@@ -3588,7 +3589,7 @@ void main(void)
             else if (wI2CCommandState == CommandCompleted)
             {
                 ToggleBitRB5();
-                SetToGetTemp();
+                GetTemp();
                 ToggleBitRB5();
                 wTempState++;
                 INTCONbits.TMR0IE = 0;
@@ -3598,16 +3599,21 @@ void main(void)
             }
             break;
         case 3:
-            if(wTimer0Counter == 3)
+            if(wTimer0Counter == 2)
             {
                 wTempState++;
                 INTCONbits.TMR0IE = 0;
             }
             break;
         case 4:
-            ToggleBitRB5();
-            GetTemp();
-            wTempState++;
+            if(wI2CCommandState == CommandFailed)
+            {
+                wTempState=0;
+            }
+            else if(wI2CCommandState == CommandCompleted)
+            {
+                wTempState++;
+            }
             break;
         case 5:
             wCounter = wCounter + 2;
@@ -3624,7 +3630,7 @@ void main(void)
         default:
             break;
     }
-# 454 "161518_temp_main.c"
+# 460 "161518_temp_main.c"
     wIterationCounter++;
 
 
@@ -3694,6 +3700,7 @@ void __attribute__((picinterrupt(""))) myint(void)
                     else
                     {
                         SSPCON2bits.ACKDT = 1;
+                        wI2CCommandState = CommandCompleted;
                         wHumidity = wReceptionBuffer[2]*256 + wReceptionBuffer[3];
                         wTemperature = wReceptionBuffer[4]*256 + wReceptionBuffer[5];
                         wReceptionCounter++;
@@ -3707,7 +3714,7 @@ void __attribute__((picinterrupt(""))) myint(void)
                     {
                         if( wReceptionBufferPosition < wI2CRxBufferSize)
                         {
-                          _delay((unsigned long)((50)*(16000000/4000000.0)));
+
                           SSPCON2bits.RCEN = 1;
                         }
                         else
@@ -3718,6 +3725,7 @@ void __attribute__((picinterrupt(""))) myint(void)
                     else if(SSPCON2bits.ACKSTAT == 1)
                     {
                         SSPCON2bits.ACKSTAT = 0;
+                        wI2CCommandState = CommandFailed;
                         if(wI2CTxSendPos != 0)
                         {
                           SSPCON2bits.PEN = 1;
@@ -3741,11 +3749,9 @@ void __attribute__((picinterrupt(""))) myint(void)
                   PIE1bits.SSPIE = 0;
                   wI2CTxBufferSize=0;
                   wI2CTxSendPos=0;
-                  lcdWriteText("P");
                 }
                 else if(SSPSTATbits.S && wI2CTxSendPos == 0)
                 {
-                    lcdWriteText("S");
                     wI2CCommandState = ProcessingCommand;
                     SSPBUF = wI2CTxBuffer[wI2CTxSendPos];
                     wI2CTxSendPos++;
@@ -3754,7 +3760,6 @@ void __attribute__((picinterrupt(""))) myint(void)
                 {
                     if(SSPCON2bits.ACKSTAT == 0 && wI2CTxSendPos != 0)
                     {
-                        lcdWriteText("A");
                       if(wI2CTxSendPos < wI2CTxBufferSize)
                       {
                         SSPBUF = wI2CTxBuffer[wI2CTxSendPos];
@@ -3771,7 +3776,6 @@ void __attribute__((picinterrupt(""))) myint(void)
                         SSPCON2bits.ACKSTAT = 0;
                         SSPCON2bits.PEN = 1;
                         wI2CCommandState = CommandFailed;
-                        lcdWriteText("R");
                     }
                     else
                     {
