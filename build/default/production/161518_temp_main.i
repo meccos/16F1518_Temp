@@ -3259,6 +3259,8 @@ typedef uint32_t uint_fast32_t;
 char wInterruptText[75];
 char wReceptionBuffer[30];
 char wReceptionBufferPosition;
+uint8_t wReceptionCounter=0;
+uint8_t wReceptionCounterPrev=0;
 
 char wI2CTxBuffer[20];
 char wI2CTxBufferSize;
@@ -3295,7 +3297,7 @@ void SetToGetTemp()
 
 void Add_Trace(char* oText, char iSizeOfoText, char* iText)
 {
-    if((iSizeOfoText + 1 - strlen(oText)) > strlen(iText))
+    if((iSizeOfoText - 1 - strlen(oText)) > strlen(iText))
     {
         strcat(oText,iText);
     }
@@ -3375,9 +3377,15 @@ void Debounce(uint8_t iSwitch,uint16_t* ioTimer, uint8_t* swPressed)
     }
 }
 
+uint8_t wTempUpdate=0;
 
 
 
+
+
+
+
+uint8_t wTimer1IntCounter=0;
 
 void main(void)
 {
@@ -3397,7 +3405,6 @@ void main(void)
   uint8_t wMenu=0;
   uint8_t wMenuPrev=1;
 
-  uint8_t wTempUpdate=0;
   uint16_t wIterationCounter=0;
   uint16_t wDebounceEnter=0;
   uint16_t wDebounceUp=0;
@@ -3405,12 +3412,27 @@ void main(void)
 
   PORTA = 0x00;
 
+
+
+  T1CONbits.TMR1CS = 0x00;
+  T1CONbits.T1OSCEN = 0x0;
+  T1CONbits.T1CKPS = 0x3;
+  T1CONbits.nT1SYNC = 0;
+  T1CONbits.TMR1ON = 1;
+  PIE1bits.TMR1IE =1;
+
+
+
+
+
+
+
   PORTB = 0x00;
   ANSELB = 0x00;
   TRISB = 0x0F;
   WPUB = 0x0F;
-
   OPTION_REGbits.nWPUEN = 0;
+
 
   memset(wI2CTxBuffer,0,sizeof(wI2CTxBuffer));
   wI2CTxBufferSize=0;
@@ -3457,7 +3479,7 @@ void main(void)
   _delay((unsigned long)((100)*(16000000/4000.0)));
   setNotBlinkingCursor();
   _delay((unsigned long)((100)*(16000000/4000.0)));
-# 267 "161518_temp_main.c"
+# 289 "161518_temp_main.c"
   int wCounter=0;
   char wConv[4]={'+',0, 'x',0, };
   int wTemp=0;
@@ -3468,13 +3490,17 @@ void main(void)
   while(1)
   {
 
-    wHumidityPrev = wHumidity;
-    wHumidity = wReceptionBuffer[2]*256 + wReceptionBuffer[3];
-    wTemperaturePrev = wTemperature;
-    wTemperature = wReceptionBuffer[4]*256 + wReceptionBuffer[5];
+      if(wReceptionCounter != wReceptionCounterPrev)
+      {
+         wReceptionCounterPrev = wReceptionCounter;
+        wHumidityPrev = wHumidity;
+        wHumidity = wReceptionBuffer[2]*256 + wReceptionBuffer[3];
+        wTemperaturePrev = wTemperature;
+        wTemperature = wReceptionBuffer[4]*256 + wReceptionBuffer[5];
+      }
 
 
-    if((wHumidityPrev != wHumidity) || (wTemperaturePrev != wTemperaturePrev))
+    if((wHumidityPrev != wHumidity) || (wTemperaturePrev != wTemperature))
     {
         setCursorPosition(2,0);
         printEM1812(wHumidity,wReadout);
@@ -3532,11 +3558,11 @@ void main(void)
         lcdWriteText(&wConv[wCounter]);
     }
     wIterationCounter++;
-    if(wIterationCounter == 65535)
-    {
-        wIterationCounter = 0;
-        wTempUpdate = 1;
-    }
+
+
+
+
+
 
    Debounce(PORTBbits.RB0,&wDebounceEnter,&wEnterBottonPressed);
    Debounce(PORTBbits.RB1,&wDebounceUp,&wUpBottonPressed);
@@ -3597,6 +3623,8 @@ void __attribute__((picinterrupt(""))) myint(void)
                 else
                 {
                     SSPCON2bits.ACKDT = 1;
+                    wReceptionCounter++;
+
                 }
                 SSPCON2bits.ACKEN = 1;
             }
@@ -3670,5 +3698,24 @@ void __attribute__((picinterrupt(""))) myint(void)
     {
         PIR2bits.BCLIF = 0;
         Add_Trace(wInterruptText,sizeof(wInterruptText),",BCLIF");
+    }
+    if(PIR1bits.TMR1IF == 1)
+    {
+        ToggleBitRB5();
+
+        wTimer1IntCounter++;
+        PIR1bits.TMR1IF = 0;
+
+        if(wTimer1IntCounter == 7)
+        {
+            TMR1H = 0x4C;
+            TMR1L = 0x83;
+        }
+        if(wTimer1IntCounter == 8)
+        {
+            wTimer1IntCounter = 0;
+
+            wTempUpdate = 1;
+        }
     }
 }
