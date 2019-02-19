@@ -3237,7 +3237,8 @@ typedef uint32_t uint_fast32_t;
 
 
 
-#pragma config FOSC = INTOSC
+
+#pragma config FOSC = 0x2
 #pragma config WDTE = OFF
 #pragma config PWRTE = ON
 #pragma config MCLRE = OFF
@@ -3269,6 +3270,9 @@ char wI2CTxSendPos;
 char wHexTemp[20];
 uint8_t wTrial=0;
 
+unsigned char gTxBuffer[256];
+uint8_t gTxTransmitSize=0;
+uint8_t gTxReadingPosition=0;
 
 void ToggleBitRB5()
 {
@@ -3351,6 +3355,7 @@ void printEM1812(int16_t wVariable, char* oTextOut)
     uint8_t wUnity;
     uint8_t wDecimal;
     uint8_t wIsNegative=0;
+    uint8_t wWritingPosition=0;
 
     if(wVariable < 0)
     {
@@ -3363,23 +3368,25 @@ void printEM1812(int16_t wVariable, char* oTextOut)
     wUnity = wVariable/10;
     wVariable = wVariable %10;
     wDecimal = wVariable;
+
+
     if(wIsNegative)
     {
-        oTextOut[0] = '-';
-        oTextOut[1] = '0' + wTen;
-        oTextOut[2] = '0' + wUnity;
-        oTextOut[3] = ',';
-        oTextOut[4] = '0' + wDecimal;
-        oTextOut[5] = 0;
+        oTextOut[wWritingPosition] = '-';
+        wWritingPosition++;
     }
-    else
+    if( wTen != 0 )
     {
-        oTextOut[0] = '0' + wTen;
-        oTextOut[1] = '0' + wUnity;
-        oTextOut[2] = ',';
-        oTextOut[3] = '0' + wDecimal;
-        oTextOut[4] = 0;
+        oTextOut[wWritingPosition] = '0' + wTen;
+        wWritingPosition++;
     }
+    oTextOut[wWritingPosition] = '0' + wUnity;
+    wWritingPosition++;
+    oTextOut[wWritingPosition] = ',';
+    wWritingPosition++;
+    oTextOut[wWritingPosition] = '0' + wDecimal;
+    wWritingPosition++;
+    oTextOut[wWritingPosition] = 0;
 
 }
 
@@ -3403,6 +3410,25 @@ void Debounce(uint8_t iSwitch,uint16_t* ioTimer, uint8_t* swPressed)
       *swPressed = 1;
     }
 }
+void Send_UART_Data( unsigned char* iData, uint8_t iData_Length)
+{
+    if(gTxTransmitSize != 0)
+    {
+        return;
+    }
+    gTxReadingPosition = 0;
+    gTxTransmitSize = iData_Length;
+    memcpy(gTxBuffer , iData,iData_Length);
+
+    SPBRGH = 0;
+    SPBRGL = 1;
+    ANSELCbits.ANSC6 = 0;
+    TXSTAbits.TXEN = 1;
+    TXSTAbits.SYNC = 0;
+    RCSTAbits.SPEN = 1;
+    PIE1bits.TXIE = 1;
+
+}
 
 uint8_t wTempUpdate=0;
 
@@ -3418,6 +3444,14 @@ uint8_t wTempState=0;
 int16_t wHumidity=0;
 int16_t wTemperature=0;
 
+unsigned char gUartTXBuffer[50];
+unsigned char gUartRXBuffer[50];
+
+int16_t wTempSet=210;
+
+enum eMenu{eShowTime=0,eShowTemp,eShowMode,eSetTime=128,eSetTemp=129,eSetMode=130};
+enum eMode{eElectric=0,eFuel,eThermopump,eCooling};
+# 249 "161518_temp_main.c"
 void main(void)
 {
   char wReadout[20];
@@ -3426,15 +3460,16 @@ void main(void)
   memset(wInterruptText,0,sizeof(wInterruptText));
 
   OSCCONbits.IRCF = 0xf;
-  OSCCONbits.SCS = 0x3;
+  OSCCONbits.SCS = 0x0;
   INTCONbits.GIE = 0;
 
   uint8_t wUpBottonPressed=0;
   uint8_t wDownBottonPressed=0;
   uint8_t wEnterBottonPressed=0;
 
+  uint8_t wEditingMode=0;
   uint8_t wMenu=0;
-  uint8_t wMenuPrev=1;
+  uint8_t wUpdateMenu=1;
 
   uint16_t wIterationCounter=0;
   uint16_t wDebounceEnter=0;
@@ -3472,14 +3507,20 @@ void main(void)
   wI2CTxBufferSize=0;
   wI2CTxSendPos=0;
 
-  ANSELA = 0x00;
-  TRISA = 0x00;
 
-  TRISC=0x00;
-  TRISC = 0xFF;
+
+
+  TRISCbits.TRISC3 = 1;
+  TRISCbits.TRISC4 = 1;
   ANSELCbits.ANSC3 = 0;
   ANSELCbits.ANSC4 = 0;
 
+
+
+  ANSELCbits.ANSC6 = 0;
+  ANSELCbits.ANSC7 = 0;
+  TRISCbits.TRISC6 = 0;
+  TRISCbits.TRISC7 = 1;
 
 
 
@@ -3513,7 +3554,7 @@ void main(void)
   _delay((unsigned long)((100)*(16000000/4000.0)));
   setNotBlinkingCursor();
   _delay((unsigned long)((100)*(16000000/4000.0)));
-# 323 "161518_temp_main.c"
+# 376 "161518_temp_main.c"
   int wCounter=0;
   char wConv[4]={'+',0, 'x',0, };
   int wTemp=0;
@@ -3539,22 +3580,39 @@ void main(void)
         PrintLog(wInterruptText);
     }
 
-    if(wMenu != wMenuPrev)
+    if( wUpdateMenu )
     {
-      wMenuPrev = wMenu;
-      switch(wMenu)
+      wUpdateMenu = 0;
+      switch(wMenu )
       {
-        case 0:
+        case eShowTime:
           setCursorPosition(0,0);
-          lcdWriteText("Home           ");
+          lcdWriteText("Time           ");
           break;
-        case 1:
+        case eShowTemp:
           setCursorPosition(0,0);
-          lcdWriteText("Set Temp:      ");
+          lcdWriteText("Temp Setting:  \n");
+          printEM1812(wTempSet, wReadout);
+          lcdWriteText(wReadout);
           break;
-        case 2:
+        case eShowMode:
           setCursorPosition(0,0);
-          lcdWriteText("Set Mode:      ");
+          lcdWriteText("Mode:          ");
+          break;
+        case eSetTime:
+          setCursorPosition(0,0);
+          lcdWriteText("-Set Time-     \n");
+          break;
+        case eSetTemp:
+          setCursorPosition(0,0);
+          lcdWriteText("-Set Temp-     \n");
+          printEM1812(wTempSet, wReadout);
+          lcdWriteText(wReadout);
+          break;
+        case eSetMode:
+          setCursorPosition(0,0);
+          lcdWriteText("-Set Mode-     \n");
+
           break;
         default:
           setCursorPosition(0,0);
@@ -3613,6 +3671,12 @@ void main(void)
             else if(wI2CCommandState == CommandCompleted)
             {
                 wTempState++;
+                gUartTXBuffer[0] = 'A';
+                gUartTXBuffer[1] = 'T';
+                gUartTXBuffer[2] = 0x0d;
+                gUartTXBuffer[3] = 0x0a;
+                gUartTXBuffer[4] = 0;
+                Send_UART_Data(gUartTXBuffer,4);
             }
             break;
         case 5:
@@ -3630,7 +3694,7 @@ void main(void)
         default:
             break;
     }
-# 460 "161518_temp_main.c"
+
     wIterationCounter++;
 
 
@@ -3639,23 +3703,68 @@ void main(void)
    Debounce(PORTBbits.RB2,&wDebounceDown,&wDownBottonPressed);
 
 
+
    if(wUpBottonPressed == 1)
    {
+       wUpdateMenu=1;
        wUpBottonPressed = 0;
-       wMenu++;
+        switch(wMenu)
+        {
+            case eSetTime:
+
+                break;
+            case eSetTemp:
+                wTempSet = wTempSet+1;
+                break;
+            case eSetMode:
+                break;
+            default:
+                wMenu++;
+                break;
+        }
+
    }
    if(wDownBottonPressed == 1)
    {
+       wUpdateMenu=1;
        wDownBottonPressed = 0;
-       wMenu--;
-   }
+        switch(wMenu)
+        {
+            case eSetTime:
 
+                break;
+            case eSetTemp:
+                wTempSet = wTempSet - 1;
+                break;
+            case eSetMode:
+                break;
+            default:
+                wMenu--;
+                break;
+        }
+   }
+   if(wEnterBottonPressed == 1)
+   {
+       wUpdateMenu=1;
+       wEnterBottonPressed = 0;
+       if(wEditingMode == 0)
+       {
+         wEditingMode = 1;
+         wMenu = wMenu+128;
+       }
+       else
+       {
+         wEditingMode = 0;
+       }
+   }
    if(wMenu == 255)
    {
+       wUpdateMenu=1;
        wMenu = 2;
    }
    if(wMenu == 3)
    {
+       wUpdateMenu=1;
        wMenu = 0;
    }
 
@@ -3701,8 +3810,22 @@ void __attribute__((picinterrupt(""))) myint(void)
                     {
                         SSPCON2bits.ACKDT = 1;
                         wI2CCommandState = CommandCompleted;
-                        wHumidity = wReceptionBuffer[2]*256 + wReceptionBuffer[3];
-                        wTemperature = wReceptionBuffer[4]*256 + wReceptionBuffer[5];
+                        if(wReceptionBuffer[2] & 0x80 )
+                        {
+                          wHumidity = -((wReceptionBuffer[2] & 0x7F)*256) + wReceptionBuffer[3];
+                        }
+                        else
+                        {
+                          wHumidity = (wReceptionBuffer[2]*256) + wReceptionBuffer[3];
+                        }
+                        if(wReceptionBuffer[4] & 0x80 )
+                        {
+                          wTemperature = -((wReceptionBuffer[4] & 0x7F)*256) + wReceptionBuffer[5];
+                        }
+                        else
+                        {
+                          wTemperature = (wReceptionBuffer[4] *256) + wReceptionBuffer[5];
+                        }
                         wReceptionCounter++;
 
                     }
@@ -3807,7 +3930,6 @@ void __attribute__((picinterrupt(""))) myint(void)
         if(wTimer1IntCounter == 8)
         {
             wTimer1IntCounter = 0;
-
             wTempUpdate = 1;
             if(wTempState == 6)
             {
@@ -3823,5 +3945,19 @@ void __attribute__((picinterrupt(""))) myint(void)
     {
         INTCONbits.TMR0IF = 0;
         wTimer0Counter++;
+    }
+    if( PIR1bits.TXIF == 1 )
+    {
+      if(gTxReadingPosition < gTxTransmitSize)
+      {
+          TXREG = gTxBuffer[gTxReadingPosition];
+          gTxReadingPosition++;
+      }
+      else
+      {
+           gTxReadingPosition = 0;
+           gTxTransmitSize = 0;
+           PIE1bits.TXIE =0;
+      }
     }
 }

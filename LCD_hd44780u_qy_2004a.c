@@ -9,10 +9,32 @@
 
 void initLCD()
 {
-  //Set all the control pins to logic Zero
+    //Setting pin to digitals
+  DB7_AD = 0;
+  DB6_AD = 0;
+  DB5_AD = 0;
+  DB4_AD = 0;
+  RS_AD = 0;
+  RW_AD = 0;
+  E_AD = 0;
+  //Setting initial value
+  DB7 = 0;
+  DB6 = 0;
+  DB5 = 0;
+  DB4 = 0;
+  RS=0;
+  RW=0;
+  E=0;
+  //Set initial pin direction to ouput
   RSDirection = 0;
   RWDirection = 0;
   EDirection = 0;
+  DB7Direction = 0;
+  DB6Direction = 0;
+  DB5Direction = 0;
+  DB4Direction = 0;
+
+  
   RS = RS_INSTRUCTION;
   RW = RW_WRITE;
   E = 0;

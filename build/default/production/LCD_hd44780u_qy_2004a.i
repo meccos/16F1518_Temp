@@ -3146,12 +3146,34 @@ extern __bank0 __bit __timeout;
 void initLCD()
 {
 
-  TRISAbits.TRISA4 = 0;
-  TRISAbits.TRISA7 = 0;
-  TRISAbits.TRISA5 = 0;
-  PORTAbits.RA4 = 0;
-  PORTAbits.RA7 = 0;
-  PORTAbits.RA5 = 0;
+  ANSELAbits.ANSA3 = 0;
+  ANSELCbits.ANSC2 = 0;
+  ANSELCbits.ANSC1 = 0;
+  ANSELCbits.ANSC0 = 0;
+  ANSELAbits.ANSA0 = 0;
+  ANSELAbits.ANSA1 = 0;
+  ANSELAbits.ANSA2 = 0;
+
+  PORTAbits.RA3 = 0;
+  PORTCbits.RC2 = 0;
+  PORTCbits.RC1 = 0;
+  PORTCbits.RC0 = 0;
+  PORTAbits.RA0=0;
+  PORTAbits.RA1=0;
+  PORTAbits.RA2=0;
+
+  TRISAbits.TRISA0 = 0;
+  TRISAbits.TRISA1 = 0;
+  TRISAbits.TRISA2 = 0;
+  TRISAbits.TRISA3 = 0;
+  TRISCbits.TRISC2 = 0;
+  TRISCbits.TRISC1 = 0;
+  TRISCbits.TRISC0 = 0;
+
+
+  PORTAbits.RA0 = 0;
+  PORTAbits.RA1 = 0;
+  PORTAbits.RA2 = 0;
 
 
   _delay((unsigned long)((15)*(16000000/4000.0)));
@@ -3202,21 +3224,21 @@ void lcdWriteRotText(char *iRotText, char ioRotReadPtr, char iWritePtr)
 
 void setData(char iValue)
 {
-  PORTAbits.RA5 = 1;
+  PORTAbits.RA2 = 1;
   PORTAbits.RA3 = (iValue & 0x8) >> 3;
-  PORTAbits.RA2 = (iValue & 0x4) >> 2;
-  PORTAbits.RA1 = (iValue & 0x2) >> 1;
-  PORTAbits.RA0 = (iValue & 0x1) ;
+  PORTCbits.RC2 = (iValue & 0x4) >> 2;
+  PORTCbits.RC1 = (iValue & 0x2) >> 1;
+  PORTCbits.RC0 = (iValue & 0x1) ;
   _delay((unsigned long)((1)*(16000000/4000000.0)));
-  PORTAbits.RA5 = 0;
+  PORTAbits.RA2 = 0;
   _delay((unsigned long)((1)*(16000000/4000000.0)));
 }
 
 void writeTxtChk(char iOpCode)
 {
   SetToSendDataToLCD();
-  PORTAbits.RA4 = 1;
-  PORTAbits.RA7 = 0;
+  PORTAbits.RA0 = 1;
+  PORTAbits.RA1 = 0;
   if(iOpCode == '\n')
   {
    if(mWritingPosition < 20)
@@ -3257,8 +3279,8 @@ void writeTxtChk(char iOpCode)
   }
   waitLCDBusy();
   SetToSendDataToLCD();
-  PORTAbits.RA4 = 1;
-  PORTAbits.RA7 = 0;
+  PORTAbits.RA0 = 1;
+  PORTAbits.RA1 = 0;
   setData(iOpCode >> 4);
   setData(iOpCode);
   _delay((unsigned long)((1)*(16000000/4000000.0)));
@@ -3274,8 +3296,8 @@ void writeInsChk(char iOpCode)
 void writeInsNoChk(char iOpCode)
 {
   SetToSendDataToLCD();
-  PORTAbits.RA4 = 0;
-  PORTAbits.RA7 = 0;
+  PORTAbits.RA0 = 0;
+  PORTAbits.RA1 = 0;
   setData(iOpCode >> 4);
   setData(iOpCode);
 }
@@ -3283,22 +3305,22 @@ void writeInsNoChk(char iOpCode)
 void SetToReadDataFromLCD()
 {
   TRISAbits.TRISA3 = 1;
-  TRISAbits.TRISA2 = 1;
-  TRISAbits.TRISA1 = 1;
-  TRISAbits.TRISA0 = 1;
+  TRISCbits.TRISC2 = 1;
+  TRISCbits.TRISC1 = 1;
+  TRISCbits.TRISC0 = 1;
 }
 void SetToSendDataToLCD()
 {
   TRISAbits.TRISA3 = 0;;
-  TRISAbits.TRISA2 = 0;;
-  TRISAbits.TRISA1 = 0;;
-  TRISAbits.TRISA0 = 0;;
+  TRISCbits.TRISC2 = 0;;
+  TRISCbits.TRISC1 = 0;;
+  TRISCbits.TRISC0 = 0;;
 }
 
 void waitLCDBusy()
 {
-  PORTAbits.RA4 = 0;
-  PORTAbits.RA7 = 1;
+  PORTAbits.RA0 = 0;
+  PORTAbits.RA1 = 1;
 
   SetToReadDataFromLCD();
 
@@ -3306,13 +3328,13 @@ void waitLCDBusy()
   while(busyFlag == 1)
   {
 
-    PORTAbits.RA5 = 1;
+    PORTAbits.RA2 = 1;
     _delay((unsigned long)((1)*(16000000/4000000.0)));
     busyFlag = PORTAbits.RA3;
-    PORTAbits.RA5 = 0;
+    PORTAbits.RA2 = 0;
     _delay((unsigned long)((2)*(16000000/4000000.0)));
 
-    PORTAbits.RA5 = 1;
+    PORTAbits.RA2 = 1;
     _delay((unsigned long)((1)*(16000000/4000000.0)));
   }
 }
@@ -3416,8 +3438,8 @@ void setCursorPosition(char iLine, char iPosition)
   waitLCDBusy();
 
   SetToSendDataToLCD();
-  PORTAbits.RA4 = 0;
-  PORTAbits.RA7 = 0;
+  PORTAbits.RA0 = 0;
+  PORTAbits.RA1 = 0;
   setData((wLCDIndex >> 4) | 0x8 );
   setData(wLCDIndex);
 

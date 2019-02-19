@@ -19,7 +19,8 @@
 // 'C' source line config statements
 
 // CONFIG1
-#pragma config FOSC = INTOSC    // Oscillator Selection (INTOSC oscillator: I/O function on CLKIN pin)
+//#pragma config FOSC = INTOSC    // Oscillator Selection (INTOSC oscillator: I/O function on CLKIN pin)
+#pragma config FOSC = 0x2       // Oscillator external high speed
 #pragma config WDTE = OFF       // Watchdog Timer Enable (WDT disabled)
 #pragma config PWRTE = ON       // Power-up Timer Enable (PWRT enabled)
 #pragma config MCLRE = OFF      // MCLR Pin Function Select (MCLR/VPP pin function is digital input)
@@ -51,6 +52,9 @@ char wI2CTxSendPos;
 char wHexTemp[20];
 uint8_t wTrial=0;
 
+unsigned char gTxBuffer[256];
+uint8_t  gTxTransmitSize=0;
+uint8_t  gTxReadingPosition=0;
 
 void ToggleBitRB5()
 {
@@ -133,6 +137,7 @@ void printEM1812(int16_t wVariable, char* oTextOut)
     uint8_t wUnity;
     uint8_t wDecimal;
     uint8_t wIsNegative=0;
+    uint8_t wWritingPosition=0;
     
     if(wVariable < 0)
     {
@@ -145,23 +150,25 @@ void printEM1812(int16_t wVariable, char* oTextOut)
     wUnity = wVariable/10;
     wVariable = wVariable %10;
     wDecimal = wVariable;
+    
+    
     if(wIsNegative)
     {
-        oTextOut[0] = '-';
-        oTextOut[1] = '0' + wTen;
-        oTextOut[2] = '0' + wUnity;
-        oTextOut[3] = ',';
-        oTextOut[4] = '0' + wDecimal;
-        oTextOut[5] = 0;
+        oTextOut[wWritingPosition] = '-';
+        wWritingPosition++;
     }
-    else
+    if( wTen != 0 )
     {
-        oTextOut[0] = '0' + wTen;
-        oTextOut[1] = '0' + wUnity;
-        oTextOut[2] = ',';
-        oTextOut[3] = '0' + wDecimal;
-        oTextOut[4] = 0;
+        oTextOut[wWritingPosition] = '0' + wTen;
+        wWritingPosition++;
     }
+    oTextOut[wWritingPosition] = '0' + wUnity;
+    wWritingPosition++;
+    oTextOut[wWritingPosition] = ',';
+    wWritingPosition++;
+    oTextOut[wWritingPosition] = '0' + wDecimal;
+    wWritingPosition++;
+    oTextOut[wWritingPosition] = 0;
     
 }
 
@@ -185,6 +192,25 @@ void Debounce(uint8_t iSwitch,uint16_t* ioTimer, uint8_t* swPressed)
       *swPressed = 1;
     }
 }
+void Send_UART_Data( unsigned char* iData, uint8_t iData_Length)
+{
+    if(gTxTransmitSize != 0)
+    {
+        return;
+    }
+    gTxReadingPosition = 0;
+    gTxTransmitSize = iData_Length;
+    memcpy(gTxBuffer , iData,iData_Length);
+
+    SPBRGH = 0;
+    SPBRGL = 1;  //14mhz cristal + 23 = 104 us which is Baudrate set to 9600  Datasheet page 249
+    ANSELCbits.ANSC6 = 0; //Desabling UART TX pin analogu fonction
+    TXSTAbits.TXEN = 1; //Enable UART Port
+    TXSTAbits.SYNC = 0; //Setting Asynchonus operation
+    RCSTAbits.SPEN = 1; //Enabling of UART Pin TX pin will be set as output
+    PIE1bits.TXIE = 1; //Enabling the UART Tx interrupt
+    
+}
 
 uint8_t wTempUpdate=0;
 
@@ -199,7 +225,27 @@ uint8_t wTimer0Counter=0;
 uint8_t wTempState=0;
 int16_t wHumidity=0;
 int16_t wTemperature=0;
-  
+
+unsigned char gUartTXBuffer[50];
+unsigned char gUartRXBuffer[50];
+
+int16_t wTempSet=210;
+
+enum eMenu{eShowTime=0,eShowTemp,eShowMode,eSetTime=128,eSetTemp=129,eSetMode=130};
+enum eMode{eElectric=0,eFuel,eThermopump,eCooling};
+
+#define SCK_Direction TRISCbits.TRISC3
+#define SCK_AD ANSELCbits.ANSC3
+#define SDA_Direction TRISCbits.TRISC4
+#define SDA_AD ANSELCbits.ANSC4
+
+#define USART_TX_Direction TRISCbits.TRISC6
+#define USART_TX_AN ANSELCbits.ANSC6
+#define USART_RX_Direction TRISCbits.TRISC7
+#define USART_RX_AN ANSELCbits.ANSC7
+
+
+
 void main(void) 
 {
   char wReadout[20];
@@ -208,15 +254,16 @@ void main(void)
   memset(wInterruptText,0,sizeof(wInterruptText));
   //OSCCONbits.IRCF = 13; //4mhz
   OSCCONbits.IRCF = 0xf; // Set frequency to 16 mhz
-  OSCCONbits.SCS = 0x3; // IRCF bits for the osccon register
+  OSCCONbits.SCS = 0x0; // IRCF bits for the osccon register
   INTCONbits.GIE = 0; //Disable interrupt
   
   uint8_t wUpBottonPressed=0;
   uint8_t wDownBottonPressed=0;
   uint8_t wEnterBottonPressed=0;
   
+  uint8_t wEditingMode=0;
   uint8_t wMenu=0;
-  uint8_t wMenuPrev=1;
+  uint8_t wUpdateMenu=1;
   
   uint16_t wIterationCounter=0;
   uint16_t wDebounceEnter=0;
@@ -254,14 +301,20 @@ void main(void)
   wI2CTxBufferSize=0;
   wI2CTxSendPos=0;
 
-  ANSELA = 0x00; //Setting All to digital
-  TRISA = 0x00; //Setting the portA as output
+  //SCREEN Configuration done int the initLCD function
+ 
+  //i2c setup
+  SCK_Direction = 1;
+  SDA_Direction = 1;
+  SCK_AD = 0;
+  SDA_AD = 0;
+
+  //USART
   
-  TRISC=0x00;
-  TRISC = 0xFF; //SDA and SCL need to be define as intputs
-  ANSELCbits.ANSC3 = 0;
-  ANSELCbits.ANSC4 = 0;
-  
+  USART_TX_AN = 0;
+  USART_RX_AN = 0;
+  USART_TX_Direction = 0;
+  USART_RX_Direction = 1;
 
   //Setting the I2cBus
   
@@ -345,22 +398,39 @@ void main(void)
         PrintLog(wInterruptText);
     }
     
-    if(wMenu != wMenuPrev)
+    if( wUpdateMenu )
     {
-      wMenuPrev = wMenu;
-      switch(wMenu)
+      wUpdateMenu = 0;
+      switch(wMenu ) //{eShowTime=0,eShowTemp,eShowMode,eSetTime=128,eSetTemp=129,eSetMode=130};
       {
-        case 0:
+        case eShowTime:
           setCursorPosition(0,0);
-          lcdWriteText("Home           ");
+          lcdWriteText("Time           ");
           break;
-        case 1:
+        case eShowTemp:
           setCursorPosition(0,0);
-          lcdWriteText("Set Temp:      ");
+          lcdWriteText("Temp Setting:  \n");
+          printEM1812(wTempSet, wReadout);
+          lcdWriteText(wReadout);
           break;
-        case 2:
+        case eShowMode:
           setCursorPosition(0,0);
-          lcdWriteText("Set Mode:      ");
+          lcdWriteText("Mode:          ");
+          break;
+        case eSetTime:
+          setCursorPosition(0,0);
+          lcdWriteText("-Set Time-     \n");
+          break;
+        case eSetTemp:
+          setCursorPosition(0,0);
+          lcdWriteText("-Set Temp-     \n");
+          printEM1812(wTempSet, wReadout);
+          lcdWriteText(wReadout);
+          break;
+        case eSetMode:
+          setCursorPosition(0,0);
+          lcdWriteText("-Set Mode-     \n");
+
           break;
         default:
           setCursorPosition(0,0);
@@ -419,6 +489,12 @@ void main(void)
             else if(wI2CCommandState == CommandCompleted)
             {
                 wTempState++;
+                gUartTXBuffer[0] = 'A';
+                gUartTXBuffer[1] = 'T';
+                gUartTXBuffer[2] = 0x0d;
+                gUartTXBuffer[3] = 0x0a;
+                gUartTXBuffer[4] = 0;
+                Send_UART_Data(gUartTXBuffer,4);
             }
             break;
         case 5:
@@ -436,27 +512,7 @@ void main(void)
         default:
             break;
     }
-   /*
-    if( wTempUpdate == 1)
-    {
-        wTempUpdate = 0;
-        WakeTemp();
-        __delay_us(1000);
 
-        SetToGetTemp();
-        __delay_us(1500);
-
-        GetTemp();
-        
-        wCounter = wCounter + 2;
-
-        if(wCounter == 4)
-        {
-          wCounter = 0;
-        }
-        setCursorPosition(3,19);
-        lcdWriteText(&wConv[wCounter]);
-    }*/
     wIterationCounter++;
 
 
@@ -464,24 +520,69 @@ void main(void)
    Debounce(UPBotton,&wDebounceUp,&wUpBottonPressed);
    Debounce(DOWNBotton,&wDebounceDown,&wDownBottonPressed);
 
-
+//{eShowTime=0,eShowTemp,eShowMode,eSetTime=128,eSetTemp=129,eSetMode=130};
+   //enum eMode{eElectric=0,eFuel,eThermopump,eCooling
    if(wUpBottonPressed == 1)
    {
+       wUpdateMenu=1;
        wUpBottonPressed = 0;
-       wMenu++;
+        switch(wMenu)
+        {
+            case eSetTime:
+
+                break;
+            case eSetTemp:
+                wTempSet = wTempSet+1;
+                break;
+            case eSetMode:
+                break;
+            default:
+                wMenu++;
+                break;
+        }
+
    }
    if(wDownBottonPressed == 1)
    {
+       wUpdateMenu=1;
        wDownBottonPressed = 0;
-       wMenu--;
+        switch(wMenu)
+        {
+            case eSetTime:
+
+                break;
+            case eSetTemp:
+                wTempSet = wTempSet - 1;
+                break;
+            case eSetMode:
+                break;
+            default:
+                wMenu--;
+                break;
+        }
    }
-   
+   if(wEnterBottonPressed == 1)
+   {
+       wUpdateMenu=1;
+       wEnterBottonPressed = 0;
+       if(wEditingMode == 0)
+       {
+         wEditingMode = 1;
+         wMenu = wMenu+128;
+       }
+       else
+       {
+         wEditingMode = 0;   
+       }
+   }   
    if(wMenu == 255)
    {
+       wUpdateMenu=1;
        wMenu = 2;
    }
    if(wMenu == 3)
    {
+       wUpdateMenu=1;
        wMenu = 0;
    }    
   
@@ -527,8 +628,22 @@ void __interrupt() myint(void)
                     {
                         SSPCON2bits.ACKDT = 1; // Don't acknowledge the reception.
                         wI2CCommandState = CommandCompleted;
-                        wHumidity = wReceptionBuffer[2]*256 + wReceptionBuffer[3];
-                        wTemperature = wReceptionBuffer[4]*256 + wReceptionBuffer[5];
+                        if(wReceptionBuffer[2] & 0x80 ) //Check if the number is negative
+                        {
+                          wHumidity = -((wReceptionBuffer[2] & 0x7F)*256) + wReceptionBuffer[3];
+                        }
+                        else
+                        {
+                          wHumidity = (wReceptionBuffer[2]*256) + wReceptionBuffer[3];
+                        }
+                        if(wReceptionBuffer[4] & 0x80 ) //Check if the number is negative
+                        {
+                          wTemperature = -((wReceptionBuffer[4] & 0x7F)*256) + wReceptionBuffer[5];
+                        }
+                        else
+                        {
+                          wTemperature = (wReceptionBuffer[4] *256) + wReceptionBuffer[5];
+                        }
                         wReceptionCounter++; // Indicate that we received new packet
 
                     }
@@ -633,7 +748,6 @@ void __interrupt() myint(void)
         if(wTimer1IntCounter == 8)
         {
             wTimer1IntCounter = 0;
- 
             wTempUpdate = 1;
             if(wTempState == 6)
             {
@@ -649,5 +763,19 @@ void __interrupt() myint(void)
     {
         INTCONbits.TMR0IF = 0;
         wTimer0Counter++;
+    }
+    if( PIR1bits.TXIF == 1 ) //UART Transmission
+    {
+      if(gTxReadingPosition < gTxTransmitSize)
+      {
+          TXREG = gTxBuffer[gTxReadingPosition];
+          gTxReadingPosition++;
+      }
+      else
+      {
+           gTxReadingPosition = 0;
+           gTxTransmitSize = 0;
+           PIE1bits.TXIE =0;
+      }
     }
 }

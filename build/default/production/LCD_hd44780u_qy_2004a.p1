@@ -1,15 +1,30 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"1058 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1518.h
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1518.h: 1058:     struct {
-[s S68 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S68 . TRISA0 TRISA1 TRISA2 TRISA3 TRISA4 TRISA5 TRISA6 TRISA7 ]
-"1057
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1518.h: 1057: typedef union {
-[u S67 `S68 1 ]
-[n S67 . . ]
-"1069
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1518.h: 1069: extern volatile TRISAbits_t TRISAbits __attribute__((address(0x08C)));
-[v _TRISAbits `VS67 ~T0 @X0 0 e@140 ]
+"2164 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1518.h
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1518.h: 2164:     struct {
+[s S116 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S116 . ANSA0 ANSA1 ANSA2 ANSA3 . ANSA5 ]
+"2172
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1518.h: 2172:     struct {
+[s S117 :6 `uc 1 ]
+[n S117 . ANSELA ]
+"2163
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1518.h: 2163: typedef union {
+[u S115 `S116 1 `S117 1 ]
+[n S115 . . . ]
+"2176
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1518.h: 2176: extern volatile ANSELAbits_t ANSELAbits __attribute__((address(0x18C)));
+[v _ANSELAbits `VS115 ~T0 @X0 0 e@396 ]
+"2275
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1518.h: 2275:     struct {
+[s S122 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S122 . ANSC0 ANSC1 ANSC2 ANSC3 ANSC4 ANSC5 ANSC6 ANSC7 ]
+"2274
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1518.h: 2274: typedef union {
+[u S121 `S122 1 ]
+[n S121 . . ]
+"2286
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1518.h: 2286: extern volatile ANSELCbits_t ANSELCbits __attribute__((address(0x18E)));
+[v _ANSELCbits `VS121 ~T0 @X0 0 e@398 ]
 "435
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1518.h: 435:     struct {
 [s S37 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -21,6 +36,39 @@ Version 4.0 HI-TECH Software Intermediate Code
 "446
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1518.h: 446: extern volatile PORTAbits_t PORTAbits __attribute__((address(0x00C)));
 [v _PORTAbits `VS36 ~T0 @X0 0 e@12 ]
+"559
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1518.h: 559:     struct {
+[s S41 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S41 . RC0 RC1 RC2 RC3 RC4 RC5 RC6 RC7 ]
+"558
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1518.h: 558: typedef union {
+[u S40 `S41 1 ]
+[n S40 . . ]
+"570
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1518.h: 570: extern volatile PORTCbits_t PORTCbits __attribute__((address(0x00E)));
+[v _PORTCbits `VS40 ~T0 @X0 0 e@14 ]
+"1058
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1518.h: 1058:     struct {
+[s S68 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S68 . TRISA0 TRISA1 TRISA2 TRISA3 TRISA4 TRISA5 TRISA6 TRISA7 ]
+"1057
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1518.h: 1057: typedef union {
+[u S67 `S68 1 ]
+[n S67 . . ]
+"1069
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1518.h: 1069: extern volatile TRISAbits_t TRISAbits __attribute__((address(0x08C)));
+[v _TRISAbits `VS67 ~T0 @X0 0 e@140 ]
+"1182
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1518.h: 1182:     struct {
+[s S72 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S72 . TRISC0 TRISC1 TRISC2 TRISC3 TRISC4 TRISC5 TRISC6 TRISC7 ]
+"1181
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1518.h: 1181: typedef union {
+[u S71 `S72 1 ]
+[n S71 . . ]
+"1193
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1518.h: 1193: extern volatile TRISCbits_t TRISCbits __attribute__((address(0x08E)));
+[v _TRISCbits `VS71 ~T0 @X0 0 e@142 ]
 [v F2158 `(v ~T0 @X0 1 tf1`ul ]
 "92 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic.h
 [v __delay `JF2158 ~T0 @X0 0 e ]
@@ -406,355 +454,409 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U _initLCD ]
 [f ]
 "13
-[; ;LCD_hd44780u_qy_2004a.c: 13:   TRISAbits.TRISA4 = 0;
-[e = . . _TRISAbits 0 4 -> -> 0 `i `uc ]
+[; ;LCD_hd44780u_qy_2004a.c: 13:   ANSELAbits.ANSA3 = 0;
+[e = . . _ANSELAbits 0 3 -> -> 0 `i `uc ]
 "14
-[; ;LCD_hd44780u_qy_2004a.c: 14:   TRISAbits.TRISA7 = 0;
-[e = . . _TRISAbits 0 7 -> -> 0 `i `uc ]
+[; ;LCD_hd44780u_qy_2004a.c: 14:   ANSELCbits.ANSC2 = 0;
+[e = . . _ANSELCbits 0 2 -> -> 0 `i `uc ]
 "15
-[; ;LCD_hd44780u_qy_2004a.c: 15:   TRISAbits.TRISA5 = 0;
-[e = . . _TRISAbits 0 5 -> -> 0 `i `uc ]
+[; ;LCD_hd44780u_qy_2004a.c: 15:   ANSELCbits.ANSC1 = 0;
+[e = . . _ANSELCbits 0 1 -> -> 0 `i `uc ]
 "16
-[; ;LCD_hd44780u_qy_2004a.c: 16:   PORTAbits.RA4 = 0;
-[e = . . _PORTAbits 0 4 -> -> 0 `i `uc ]
+[; ;LCD_hd44780u_qy_2004a.c: 16:   ANSELCbits.ANSC0 = 0;
+[e = . . _ANSELCbits 0 0 -> -> 0 `i `uc ]
 "17
-[; ;LCD_hd44780u_qy_2004a.c: 17:   PORTAbits.RA7 = 0;
-[e = . . _PORTAbits 0 7 -> -> 0 `i `uc ]
+[; ;LCD_hd44780u_qy_2004a.c: 17:   ANSELAbits.ANSA0 = 0;
+[e = . . _ANSELAbits 0 0 -> -> 0 `i `uc ]
 "18
-[; ;LCD_hd44780u_qy_2004a.c: 18:   PORTAbits.RA5 = 0;
-[e = . . _PORTAbits 0 5 -> -> 0 `i `uc ]
+[; ;LCD_hd44780u_qy_2004a.c: 18:   ANSELAbits.ANSA1 = 0;
+[e = . . _ANSELAbits 0 1 -> -> 0 `i `uc ]
+"19
+[; ;LCD_hd44780u_qy_2004a.c: 19:   ANSELAbits.ANSA2 = 0;
+[e = . . _ANSELAbits 0 2 -> -> 0 `i `uc ]
 "21
-[; ;LCD_hd44780u_qy_2004a.c: 21:   _delay((unsigned long)((15)*(16000000/4000.0)));
-[e ( __delay (1 -> * -> -> 15 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+[; ;LCD_hd44780u_qy_2004a.c: 21:   PORTAbits.RA3 = 0;
+[e = . . _PORTAbits 0 3 -> -> 0 `i `uc ]
 "22
-[; ;LCD_hd44780u_qy_2004a.c: 22:   setData(0x3);
-[e ( _setData (1 -> -> 3 `i `uc ]
+[; ;LCD_hd44780u_qy_2004a.c: 22:   PORTCbits.RC2 = 0;
+[e = . . _PORTCbits 0 2 -> -> 0 `i `uc ]
 "23
-[; ;LCD_hd44780u_qy_2004a.c: 23:   _delay((unsigned long)((5)*(16000000/4000.0)));
-[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+[; ;LCD_hd44780u_qy_2004a.c: 23:   PORTCbits.RC1 = 0;
+[e = . . _PORTCbits 0 1 -> -> 0 `i `uc ]
 "24
-[; ;LCD_hd44780u_qy_2004a.c: 24:   setData(0x3);
-[e ( _setData (1 -> -> 3 `i `uc ]
+[; ;LCD_hd44780u_qy_2004a.c: 24:   PORTCbits.RC0 = 0;
+[e = . . _PORTCbits 0 0 -> -> 0 `i `uc ]
 "25
-[; ;LCD_hd44780u_qy_2004a.c: 25:   _delay((unsigned long)((150)*(16000000/4000000.0)));
-[e ( __delay (1 -> * -> -> 150 `i `d / -> -> 16000000 `l `d .4000000.0 `ul ]
+[; ;LCD_hd44780u_qy_2004a.c: 25:   PORTAbits.RA0=0;
+[e = . . _PORTAbits 0 0 -> -> 0 `i `uc ]
 "26
-[; ;LCD_hd44780u_qy_2004a.c: 26:   setData(0x3);
-[e ( _setData (1 -> -> 3 `i `uc ]
+[; ;LCD_hd44780u_qy_2004a.c: 26:   PORTAbits.RA1=0;
+[e = . . _PORTAbits 0 1 -> -> 0 `i `uc ]
 "27
-[; ;LCD_hd44780u_qy_2004a.c: 27:   _delay((unsigned long)((10)*(16000000/4000000.0)));
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 16000000 `l `d .4000000.0 `ul ]
-"28
-[; ;LCD_hd44780u_qy_2004a.c: 28:   setData(0x2);
-[e ( _setData (1 -> -> 2 `i `uc ]
+[; ;LCD_hd44780u_qy_2004a.c: 27:   PORTAbits.RA2=0;
+[e = . . _PORTAbits 0 2 -> -> 0 `i `uc ]
 "29
-[; ;LCD_hd44780u_qy_2004a.c: 29:   _delay((unsigned long)((10)*(16000000/4000000.0)));
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 16000000 `l `d .4000000.0 `ul ]
+[; ;LCD_hd44780u_qy_2004a.c: 29:   TRISAbits.TRISA0 = 0;
+[e = . . _TRISAbits 0 0 -> -> 0 `i `uc ]
 "30
-[; ;LCD_hd44780u_qy_2004a.c: 30:   writeInsChk(0x28);
-[e ( _writeInsChk (1 -> -> 40 `i `uc ]
+[; ;LCD_hd44780u_qy_2004a.c: 30:   TRISAbits.TRISA1 = 0;
+[e = . . _TRISAbits 0 1 -> -> 0 `i `uc ]
 "31
-[; ;LCD_hd44780u_qy_2004a.c: 31:   mDisplayOnOffReg = 0x0F;
-[e = _mDisplayOnOffReg -> -> 15 `i `uc ]
+[; ;LCD_hd44780u_qy_2004a.c: 31:   TRISAbits.TRISA2 = 0;
+[e = . . _TRISAbits 0 2 -> -> 0 `i `uc ]
 "32
-[; ;LCD_hd44780u_qy_2004a.c: 32:   mCursorDisplayShiftReg= 0x06;
-[e = _mCursorDisplayShiftReg -> -> 6 `i `uc ]
+[; ;LCD_hd44780u_qy_2004a.c: 32:   TRISAbits.TRISA3 = 0;
+[e = . . _TRISAbits 0 3 -> -> 0 `i `uc ]
 "33
-[; ;LCD_hd44780u_qy_2004a.c: 33:   writeInsChk(mDisplayOnOffReg);
-[e ( _writeInsChk (1 _mDisplayOnOffReg ]
+[; ;LCD_hd44780u_qy_2004a.c: 33:   TRISCbits.TRISC2 = 0;
+[e = . . _TRISCbits 0 2 -> -> 0 `i `uc ]
+"34
+[; ;LCD_hd44780u_qy_2004a.c: 34:   TRISCbits.TRISC1 = 0;
+[e = . . _TRISCbits 0 1 -> -> 0 `i `uc ]
 "35
-[; ;LCD_hd44780u_qy_2004a.c: 35:   clearDisplay();
-[e ( _clearDisplay ..  ]
-"36
-[; ;LCD_hd44780u_qy_2004a.c: 36:   writeInsChk(0x06);
-[e ( _writeInsChk (1 -> -> 6 `i `uc ]
-"37
-[; ;LCD_hd44780u_qy_2004a.c: 37:   mWritingPosition=1;
-[e = _mWritingPosition -> -> 1 `i `uc ]
+[; ;LCD_hd44780u_qy_2004a.c: 35:   TRISCbits.TRISC0 = 0;
+[e = . . _TRISCbits 0 0 -> -> 0 `i `uc ]
+"38
+[; ;LCD_hd44780u_qy_2004a.c: 38:   PORTAbits.RA0 = 0;
+[e = . . _PORTAbits 0 0 -> -> 0 `i `uc ]
 "39
-[; ;LCD_hd44780u_qy_2004a.c: 39: }
+[; ;LCD_hd44780u_qy_2004a.c: 39:   PORTAbits.RA1 = 0;
+[e = . . _PORTAbits 0 1 -> -> 0 `i `uc ]
+"40
+[; ;LCD_hd44780u_qy_2004a.c: 40:   PORTAbits.RA2 = 0;
+[e = . . _PORTAbits 0 2 -> -> 0 `i `uc ]
+"43
+[; ;LCD_hd44780u_qy_2004a.c: 43:   _delay((unsigned long)((15)*(16000000/4000.0)));
+[e ( __delay (1 -> * -> -> 15 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+"44
+[; ;LCD_hd44780u_qy_2004a.c: 44:   setData(0x3);
+[e ( _setData (1 -> -> 3 `i `uc ]
+"45
+[; ;LCD_hd44780u_qy_2004a.c: 45:   _delay((unsigned long)((5)*(16000000/4000.0)));
+[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+"46
+[; ;LCD_hd44780u_qy_2004a.c: 46:   setData(0x3);
+[e ( _setData (1 -> -> 3 `i `uc ]
+"47
+[; ;LCD_hd44780u_qy_2004a.c: 47:   _delay((unsigned long)((150)*(16000000/4000000.0)));
+[e ( __delay (1 -> * -> -> 150 `i `d / -> -> 16000000 `l `d .4000000.0 `ul ]
+"48
+[; ;LCD_hd44780u_qy_2004a.c: 48:   setData(0x3);
+[e ( _setData (1 -> -> 3 `i `uc ]
+"49
+[; ;LCD_hd44780u_qy_2004a.c: 49:   _delay((unsigned long)((10)*(16000000/4000000.0)));
+[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 16000000 `l `d .4000000.0 `ul ]
+"50
+[; ;LCD_hd44780u_qy_2004a.c: 50:   setData(0x2);
+[e ( _setData (1 -> -> 2 `i `uc ]
+"51
+[; ;LCD_hd44780u_qy_2004a.c: 51:   _delay((unsigned long)((10)*(16000000/4000000.0)));
+[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 16000000 `l `d .4000000.0 `ul ]
+"52
+[; ;LCD_hd44780u_qy_2004a.c: 52:   writeInsChk(0x28);
+[e ( _writeInsChk (1 -> -> 40 `i `uc ]
+"53
+[; ;LCD_hd44780u_qy_2004a.c: 53:   mDisplayOnOffReg = 0x0F;
+[e = _mDisplayOnOffReg -> -> 15 `i `uc ]
+"54
+[; ;LCD_hd44780u_qy_2004a.c: 54:   mCursorDisplayShiftReg= 0x06;
+[e = _mCursorDisplayShiftReg -> -> 6 `i `uc ]
+"55
+[; ;LCD_hd44780u_qy_2004a.c: 55:   writeInsChk(mDisplayOnOffReg);
+[e ( _writeInsChk (1 _mDisplayOnOffReg ]
+"57
+[; ;LCD_hd44780u_qy_2004a.c: 57:   clearDisplay();
+[e ( _clearDisplay ..  ]
+"58
+[; ;LCD_hd44780u_qy_2004a.c: 58:   writeInsChk(0x06);
+[e ( _writeInsChk (1 -> -> 6 `i `uc ]
+"59
+[; ;LCD_hd44780u_qy_2004a.c: 59:   mWritingPosition=1;
+[e = _mWritingPosition -> -> 1 `i `uc ]
+"61
+[; ;LCD_hd44780u_qy_2004a.c: 61: }
 [e :UE 240 ]
 }
-"41
-[; ;LCD_hd44780u_qy_2004a.c: 41: void lcdWriteText(char *iText)
+"63
+[; ;LCD_hd44780u_qy_2004a.c: 63: void lcdWriteText(char *iText)
 [v _lcdWriteText `(v ~T0 @X0 1 ef1`*uc ]
-"42
-[; ;LCD_hd44780u_qy_2004a.c: 42:  {
+"64
+[; ;LCD_hd44780u_qy_2004a.c: 64:  {
 {
 [e :U _lcdWriteText ]
-"41
-[; ;LCD_hd44780u_qy_2004a.c: 41: void lcdWriteText(char *iText)
+"63
+[; ;LCD_hd44780u_qy_2004a.c: 63: void lcdWriteText(char *iText)
 [v _iText `*uc ~T0 @X0 1 r1 ]
-"42
-[; ;LCD_hd44780u_qy_2004a.c: 42:  {
+"64
+[; ;LCD_hd44780u_qy_2004a.c: 64:  {
 [f ]
-"43
-[; ;LCD_hd44780u_qy_2004a.c: 43:   unsigned char wCharReadingPos = 0;
+"65
+[; ;LCD_hd44780u_qy_2004a.c: 65:   unsigned char wCharReadingPos = 0;
 [v _wCharReadingPos `uc ~T0 @X0 1 a ]
 [e = _wCharReadingPos -> -> 0 `i `uc ]
-"44
-[; ;LCD_hd44780u_qy_2004a.c: 44:   while( iText[wCharReadingPos] != 0)
+"66
+[; ;LCD_hd44780u_qy_2004a.c: 66:   while( iText[wCharReadingPos] != 0)
 [e $U 242  ]
 [e :U 243 ]
-"45
-[; ;LCD_hd44780u_qy_2004a.c: 45:   {
+"67
+[; ;LCD_hd44780u_qy_2004a.c: 67:   {
 {
-"46
-[; ;LCD_hd44780u_qy_2004a.c: 46:     writeTxtChk(iText[wCharReadingPos]);
+"68
+[; ;LCD_hd44780u_qy_2004a.c: 68:     writeTxtChk(iText[wCharReadingPos]);
 [e ( _writeTxtChk (1 *U + _iText * -> _wCharReadingPos `ux -> -> # *U _iText `ui `ux ]
-"47
-[; ;LCD_hd44780u_qy_2004a.c: 47:     wCharReadingPos++;
+"69
+[; ;LCD_hd44780u_qy_2004a.c: 69:     wCharReadingPos++;
 [e ++ _wCharReadingPos -> -> 1 `i `uc ]
-"48
-[; ;LCD_hd44780u_qy_2004a.c: 48:   }
+"70
+[; ;LCD_hd44780u_qy_2004a.c: 70:   }
 }
 [e :U 242 ]
-"44
-[; ;LCD_hd44780u_qy_2004a.c: 44:   while( iText[wCharReadingPos] != 0)
+"66
+[; ;LCD_hd44780u_qy_2004a.c: 66:   while( iText[wCharReadingPos] != 0)
 [e $ != -> *U + _iText * -> _wCharReadingPos `ux -> -> # *U _iText `ui `ux `i -> 0 `i 243  ]
 [e :U 244 ]
-"50
-[; ;LCD_hd44780u_qy_2004a.c: 50: }
+"72
+[; ;LCD_hd44780u_qy_2004a.c: 72: }
 [e :UE 241 ]
 }
-"52
-[; ;LCD_hd44780u_qy_2004a.c: 52: void lcdWriteRotText(char *iRotText, char ioRotReadPtr, char iWritePtr)
+"74
+[; ;LCD_hd44780u_qy_2004a.c: 74: void lcdWriteRotText(char *iRotText, char ioRotReadPtr, char iWritePtr)
 [v _lcdWriteRotText `(v ~T0 @X0 1 ef3`*uc`uc`uc ]
-"53
-[; ;LCD_hd44780u_qy_2004a.c: 53: {
+"75
+[; ;LCD_hd44780u_qy_2004a.c: 75: {
 {
 [e :U _lcdWriteRotText ]
-"52
-[; ;LCD_hd44780u_qy_2004a.c: 52: void lcdWriteRotText(char *iRotText, char ioRotReadPtr, char iWritePtr)
+"74
+[; ;LCD_hd44780u_qy_2004a.c: 74: void lcdWriteRotText(char *iRotText, char ioRotReadPtr, char iWritePtr)
 [v _iRotText `*uc ~T0 @X0 1 r1 ]
 [v _ioRotReadPtr `uc ~T0 @X0 1 r2 ]
 [v _iWritePtr `uc ~T0 @X0 1 r3 ]
-"53
-[; ;LCD_hd44780u_qy_2004a.c: 53: {
+"75
+[; ;LCD_hd44780u_qy_2004a.c: 75: {
 [f ]
-"54
-[; ;LCD_hd44780u_qy_2004a.c: 54:     while(ioRotReadPtr < iWritePtr || (ioRotReadPtr < 75 && ioRotReadPtr > iWritePtr))
+"76
+[; ;LCD_hd44780u_qy_2004a.c: 76:     while(ioRotReadPtr < iWritePtr || (ioRotReadPtr < 75 && ioRotReadPtr > iWritePtr))
 [e $U 246  ]
 [e :U 247 ]
-"55
-[; ;LCD_hd44780u_qy_2004a.c: 55:     {
+"77
+[; ;LCD_hd44780u_qy_2004a.c: 77:     {
 {
-"56
-[; ;LCD_hd44780u_qy_2004a.c: 56:         writeTxtChk(iRotText[ioRotReadPtr]);
+"78
+[; ;LCD_hd44780u_qy_2004a.c: 78:         writeTxtChk(iRotText[ioRotReadPtr]);
 [e ( _writeTxtChk (1 *U + _iRotText * -> _ioRotReadPtr `ux -> -> # *U _iRotText `ui `ux ]
-"57
-[; ;LCD_hd44780u_qy_2004a.c: 57:         ioRotReadPtr++;
+"79
+[; ;LCD_hd44780u_qy_2004a.c: 79:         ioRotReadPtr++;
 [e ++ _ioRotReadPtr -> -> 1 `i `uc ]
-"58
-[; ;LCD_hd44780u_qy_2004a.c: 58:         if(ioRotReadPtr == 75)
+"80
+[; ;LCD_hd44780u_qy_2004a.c: 80:         if(ioRotReadPtr == 75)
 [e $ ! == -> _ioRotReadPtr `i -> 75 `i 249  ]
-"59
-[; ;LCD_hd44780u_qy_2004a.c: 59:         {
+"81
+[; ;LCD_hd44780u_qy_2004a.c: 81:         {
 {
-"60
-[; ;LCD_hd44780u_qy_2004a.c: 60:             ioRotReadPtr = 0;
+"82
+[; ;LCD_hd44780u_qy_2004a.c: 82:             ioRotReadPtr = 0;
 [e = _ioRotReadPtr -> -> 0 `i `uc ]
-"61
-[; ;LCD_hd44780u_qy_2004a.c: 61:         }
+"83
+[; ;LCD_hd44780u_qy_2004a.c: 83:         }
 }
 [e :U 249 ]
-"62
-[; ;LCD_hd44780u_qy_2004a.c: 62:     }
+"84
+[; ;LCD_hd44780u_qy_2004a.c: 84:     }
 }
 [e :U 246 ]
-"54
-[; ;LCD_hd44780u_qy_2004a.c: 54:     while(ioRotReadPtr < iWritePtr || (ioRotReadPtr < 75 && ioRotReadPtr > iWritePtr))
+"76
+[; ;LCD_hd44780u_qy_2004a.c: 76:     while(ioRotReadPtr < iWritePtr || (ioRotReadPtr < 75 && ioRotReadPtr > iWritePtr))
 [e $ || < -> _ioRotReadPtr `i -> _iWritePtr `i && < -> _ioRotReadPtr `i -> 75 `i > -> _ioRotReadPtr `i -> _iWritePtr `i 247  ]
 [e :U 248 ]
-"65
-[; ;LCD_hd44780u_qy_2004a.c: 65: }
+"87
+[; ;LCD_hd44780u_qy_2004a.c: 87: }
 [e :UE 245 ]
 }
-"67
-[; ;LCD_hd44780u_qy_2004a.c: 67: void setData(char iValue)
+"89
+[; ;LCD_hd44780u_qy_2004a.c: 89: void setData(char iValue)
 [v _setData `(v ~T0 @X0 1 ef1`uc ]
-"68
-[; ;LCD_hd44780u_qy_2004a.c: 68: {
+"90
+[; ;LCD_hd44780u_qy_2004a.c: 90: {
 {
 [e :U _setData ]
-"67
-[; ;LCD_hd44780u_qy_2004a.c: 67: void setData(char iValue)
+"89
+[; ;LCD_hd44780u_qy_2004a.c: 89: void setData(char iValue)
 [v _iValue `uc ~T0 @X0 1 r1 ]
-"68
-[; ;LCD_hd44780u_qy_2004a.c: 68: {
+"90
+[; ;LCD_hd44780u_qy_2004a.c: 90: {
 [f ]
-"69
-[; ;LCD_hd44780u_qy_2004a.c: 69:   PORTAbits.RA5 = 1;
-[e = . . _PORTAbits 0 5 -> -> 1 `i `uc ]
-"70
-[; ;LCD_hd44780u_qy_2004a.c: 70:   PORTAbits.RA3 = (iValue & 0x8) >> 3;
+"91
+[; ;LCD_hd44780u_qy_2004a.c: 91:   PORTAbits.RA2 = 1;
+[e = . . _PORTAbits 0 2 -> -> 1 `i `uc ]
+"92
+[; ;LCD_hd44780u_qy_2004a.c: 92:   PORTAbits.RA3 = (iValue & 0x8) >> 3;
 [e = . . _PORTAbits 0 3 -> >> & -> _iValue `i -> 8 `i -> 3 `i `uc ]
-"71
-[; ;LCD_hd44780u_qy_2004a.c: 71:   PORTAbits.RA2 = (iValue & 0x4) >> 2;
-[e = . . _PORTAbits 0 2 -> >> & -> _iValue `i -> 4 `i -> 2 `i `uc ]
-"72
-[; ;LCD_hd44780u_qy_2004a.c: 72:   PORTAbits.RA1 = (iValue & 0x2) >> 1;
-[e = . . _PORTAbits 0 1 -> >> & -> _iValue `i -> 2 `i -> 1 `i `uc ]
-"73
-[; ;LCD_hd44780u_qy_2004a.c: 73:   PORTAbits.RA0 = (iValue & 0x1) ;
-[e = . . _PORTAbits 0 0 -> & -> _iValue `i -> 1 `i `uc ]
-"74
-[; ;LCD_hd44780u_qy_2004a.c: 74:   _delay((unsigned long)((1)*(16000000/4000000.0)));
+"93
+[; ;LCD_hd44780u_qy_2004a.c: 93:   PORTCbits.RC2 = (iValue & 0x4) >> 2;
+[e = . . _PORTCbits 0 2 -> >> & -> _iValue `i -> 4 `i -> 2 `i `uc ]
+"94
+[; ;LCD_hd44780u_qy_2004a.c: 94:   PORTCbits.RC1 = (iValue & 0x2) >> 1;
+[e = . . _PORTCbits 0 1 -> >> & -> _iValue `i -> 2 `i -> 1 `i `uc ]
+"95
+[; ;LCD_hd44780u_qy_2004a.c: 95:   PORTCbits.RC0 = (iValue & 0x1) ;
+[e = . . _PORTCbits 0 0 -> & -> _iValue `i -> 1 `i `uc ]
+"96
+[; ;LCD_hd44780u_qy_2004a.c: 96:   _delay((unsigned long)((1)*(16000000/4000000.0)));
 [e ( __delay (1 -> * -> -> 1 `i `d / -> -> 16000000 `l `d .4000000.0 `ul ]
-"75
-[; ;LCD_hd44780u_qy_2004a.c: 75:   PORTAbits.RA5 = 0;
-[e = . . _PORTAbits 0 5 -> -> 0 `i `uc ]
-"76
-[; ;LCD_hd44780u_qy_2004a.c: 76:   _delay((unsigned long)((1)*(16000000/4000000.0)));
+"97
+[; ;LCD_hd44780u_qy_2004a.c: 97:   PORTAbits.RA2 = 0;
+[e = . . _PORTAbits 0 2 -> -> 0 `i `uc ]
+"98
+[; ;LCD_hd44780u_qy_2004a.c: 98:   _delay((unsigned long)((1)*(16000000/4000000.0)));
 [e ( __delay (1 -> * -> -> 1 `i `d / -> -> 16000000 `l `d .4000000.0 `ul ]
-"77
-[; ;LCD_hd44780u_qy_2004a.c: 77: }
+"99
+[; ;LCD_hd44780u_qy_2004a.c: 99: }
 [e :UE 250 ]
 }
-"79
-[; ;LCD_hd44780u_qy_2004a.c: 79: void writeTxtChk(char iOpCode)
+"101
+[; ;LCD_hd44780u_qy_2004a.c: 101: void writeTxtChk(char iOpCode)
 [v _writeTxtChk `(v ~T0 @X0 1 ef1`uc ]
-"80
-[; ;LCD_hd44780u_qy_2004a.c: 80: {
+"102
+[; ;LCD_hd44780u_qy_2004a.c: 102: {
 {
 [e :U _writeTxtChk ]
-"79
-[; ;LCD_hd44780u_qy_2004a.c: 79: void writeTxtChk(char iOpCode)
+"101
+[; ;LCD_hd44780u_qy_2004a.c: 101: void writeTxtChk(char iOpCode)
 [v _iOpCode `uc ~T0 @X0 1 r1 ]
-"80
-[; ;LCD_hd44780u_qy_2004a.c: 80: {
+"102
+[; ;LCD_hd44780u_qy_2004a.c: 102: {
 [f ]
-"81
-[; ;LCD_hd44780u_qy_2004a.c: 81:   SetToSendDataToLCD();
+"103
+[; ;LCD_hd44780u_qy_2004a.c: 103:   SetToSendDataToLCD();
 [e ( _SetToSendDataToLCD ..  ]
-"82
-[; ;LCD_hd44780u_qy_2004a.c: 82:   PORTAbits.RA4 = 1;
-[e = . . _PORTAbits 0 4 -> -> 1 `i `uc ]
-"83
-[; ;LCD_hd44780u_qy_2004a.c: 83:   PORTAbits.RA7 = 0;
-[e = . . _PORTAbits 0 7 -> -> 0 `i `uc ]
-"84
-[; ;LCD_hd44780u_qy_2004a.c: 84:   if(iOpCode == '\n')
+"104
+[; ;LCD_hd44780u_qy_2004a.c: 104:   PORTAbits.RA0 = 1;
+[e = . . _PORTAbits 0 0 -> -> 1 `i `uc ]
+"105
+[; ;LCD_hd44780u_qy_2004a.c: 105:   PORTAbits.RA1 = 0;
+[e = . . _PORTAbits 0 1 -> -> 0 `i `uc ]
+"106
+[; ;LCD_hd44780u_qy_2004a.c: 106:   if(iOpCode == '\n')
 [e $ ! == -> _iOpCode `ui -> 10 `ui 252  ]
-"85
-[; ;LCD_hd44780u_qy_2004a.c: 85:   {
+"107
+[; ;LCD_hd44780u_qy_2004a.c: 107:   {
 {
-"86
-[; ;LCD_hd44780u_qy_2004a.c: 86:    if(mWritingPosition < 20)
+"108
+[; ;LCD_hd44780u_qy_2004a.c: 108:    if(mWritingPosition < 20)
 [e $ ! < -> _mWritingPosition `i -> 20 `i 253  ]
-"87
-[; ;LCD_hd44780u_qy_2004a.c: 87:    {
+"109
+[; ;LCD_hd44780u_qy_2004a.c: 109:    {
 {
-"88
-[; ;LCD_hd44780u_qy_2004a.c: 88:        setCursorPosition(1,0);
+"110
+[; ;LCD_hd44780u_qy_2004a.c: 110:        setCursorPosition(1,0);
 [e ( _setCursorPosition (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
-"89
-[; ;LCD_hd44780u_qy_2004a.c: 89:    }
+"111
+[; ;LCD_hd44780u_qy_2004a.c: 111:    }
 }
 [e $U 254  ]
-"90
-[; ;LCD_hd44780u_qy_2004a.c: 90:    else if(mWritingPosition < 40)
+"112
+[; ;LCD_hd44780u_qy_2004a.c: 112:    else if(mWritingPosition < 40)
 [e :U 253 ]
 [e $ ! < -> _mWritingPosition `i -> 40 `i 255  ]
-"91
-[; ;LCD_hd44780u_qy_2004a.c: 91:    {
+"113
+[; ;LCD_hd44780u_qy_2004a.c: 113:    {
 {
-"92
-[; ;LCD_hd44780u_qy_2004a.c: 92:        setCursorPosition(2,0);
+"114
+[; ;LCD_hd44780u_qy_2004a.c: 114:        setCursorPosition(2,0);
 [e ( _setCursorPosition (2 , -> -> 2 `i `uc -> -> 0 `i `uc ]
-"93
-[; ;LCD_hd44780u_qy_2004a.c: 93:    }
+"115
+[; ;LCD_hd44780u_qy_2004a.c: 115:    }
 }
 [e $U 256  ]
-"94
-[; ;LCD_hd44780u_qy_2004a.c: 94:    else if(mWritingPosition < 60)
+"116
+[; ;LCD_hd44780u_qy_2004a.c: 116:    else if(mWritingPosition < 60)
 [e :U 255 ]
 [e $ ! < -> _mWritingPosition `i -> 60 `i 257  ]
-"95
-[; ;LCD_hd44780u_qy_2004a.c: 95:    {
+"117
+[; ;LCD_hd44780u_qy_2004a.c: 117:    {
 {
-"96
-[; ;LCD_hd44780u_qy_2004a.c: 96:        setCursorPosition(3,0);
+"118
+[; ;LCD_hd44780u_qy_2004a.c: 118:        setCursorPosition(3,0);
 [e ( _setCursorPosition (2 , -> -> 3 `i `uc -> -> 0 `i `uc ]
-"97
-[; ;LCD_hd44780u_qy_2004a.c: 97:    }
+"119
+[; ;LCD_hd44780u_qy_2004a.c: 119:    }
 }
 [e $U 258  ]
-"98
-[; ;LCD_hd44780u_qy_2004a.c: 98:    else
+"120
+[; ;LCD_hd44780u_qy_2004a.c: 120:    else
 [e :U 257 ]
-"99
-[; ;LCD_hd44780u_qy_2004a.c: 99:    {
+"121
+[; ;LCD_hd44780u_qy_2004a.c: 121:    {
 {
-"100
-[; ;LCD_hd44780u_qy_2004a.c: 100:        setCursorPosition(0,0);
+"122
+[; ;LCD_hd44780u_qy_2004a.c: 122:        setCursorPosition(0,0);
 [e ( _setCursorPosition (2 , -> -> 0 `i `uc -> -> 0 `i `uc ]
-"101
-[; ;LCD_hd44780u_qy_2004a.c: 101:    }
+"123
+[; ;LCD_hd44780u_qy_2004a.c: 123:    }
 }
 [e :U 258 ]
 [e :U 256 ]
 [e :U 254 ]
-"102
-[; ;LCD_hd44780u_qy_2004a.c: 102:    return;
+"124
+[; ;LCD_hd44780u_qy_2004a.c: 124:    return;
 [e $UE 251  ]
-"103
-[; ;LCD_hd44780u_qy_2004a.c: 103:   }
+"125
+[; ;LCD_hd44780u_qy_2004a.c: 125:   }
 }
 [e :U 252 ]
-"104
-[; ;LCD_hd44780u_qy_2004a.c: 104:   switch(mWritingPosition)
+"126
+[; ;LCD_hd44780u_qy_2004a.c: 126:   switch(mWritingPosition)
 [e $U 260  ]
-"105
-[; ;LCD_hd44780u_qy_2004a.c: 105:   {
+"127
+[; ;LCD_hd44780u_qy_2004a.c: 127:   {
 {
-"106
-[; ;LCD_hd44780u_qy_2004a.c: 106:     case 20:
+"128
+[; ;LCD_hd44780u_qy_2004a.c: 128:     case 20:
 [e :U 261 ]
-"107
-[; ;LCD_hd44780u_qy_2004a.c: 107:       setCursorPosition(1,0);
+"129
+[; ;LCD_hd44780u_qy_2004a.c: 129:       setCursorPosition(1,0);
 [e ( _setCursorPosition (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
-"108
-[; ;LCD_hd44780u_qy_2004a.c: 108:       break;
+"130
+[; ;LCD_hd44780u_qy_2004a.c: 130:       break;
 [e $U 259  ]
-"109
-[; ;LCD_hd44780u_qy_2004a.c: 109:     case 40:
+"131
+[; ;LCD_hd44780u_qy_2004a.c: 131:     case 40:
 [e :U 262 ]
-"110
-[; ;LCD_hd44780u_qy_2004a.c: 110:       setCursorPosition(2,0);
+"132
+[; ;LCD_hd44780u_qy_2004a.c: 132:       setCursorPosition(2,0);
 [e ( _setCursorPosition (2 , -> -> 2 `i `uc -> -> 0 `i `uc ]
-"111
-[; ;LCD_hd44780u_qy_2004a.c: 111:       break;
+"133
+[; ;LCD_hd44780u_qy_2004a.c: 133:       break;
 [e $U 259  ]
-"112
-[; ;LCD_hd44780u_qy_2004a.c: 112:     case 60:
+"134
+[; ;LCD_hd44780u_qy_2004a.c: 134:     case 60:
 [e :U 263 ]
-"113
-[; ;LCD_hd44780u_qy_2004a.c: 113:       setCursorPosition(3,0);
+"135
+[; ;LCD_hd44780u_qy_2004a.c: 135:       setCursorPosition(3,0);
 [e ( _setCursorPosition (2 , -> -> 3 `i `uc -> -> 0 `i `uc ]
-"114
-[; ;LCD_hd44780u_qy_2004a.c: 114:       break;
+"136
+[; ;LCD_hd44780u_qy_2004a.c: 136:       break;
 [e $U 259  ]
-"115
-[; ;LCD_hd44780u_qy_2004a.c: 115:     case 80:
+"137
+[; ;LCD_hd44780u_qy_2004a.c: 137:     case 80:
 [e :U 264 ]
-"116
-[; ;LCD_hd44780u_qy_2004a.c: 116:       setCursorPosition(0,0);
+"138
+[; ;LCD_hd44780u_qy_2004a.c: 138:       setCursorPosition(0,0);
 [e ( _setCursorPosition (2 , -> -> 0 `i `uc -> -> 0 `i `uc ]
-"117
-[; ;LCD_hd44780u_qy_2004a.c: 117:       mWritingPosition = 0;
+"139
+[; ;LCD_hd44780u_qy_2004a.c: 139:       mWritingPosition = 0;
 [e = _mWritingPosition -> -> 0 `i `uc ]
-"118
-[; ;LCD_hd44780u_qy_2004a.c: 118:       break;
+"140
+[; ;LCD_hd44780u_qy_2004a.c: 140:       break;
 [e $U 259  ]
-"119
-[; ;LCD_hd44780u_qy_2004a.c: 119:     default:
+"141
+[; ;LCD_hd44780u_qy_2004a.c: 141:     default:
 [e :U 265 ]
-"120
-[; ;LCD_hd44780u_qy_2004a.c: 120:       break;
+"142
+[; ;LCD_hd44780u_qy_2004a.c: 142:       break;
 [e $U 259  ]
-"121
-[; ;LCD_hd44780u_qy_2004a.c: 121:   }
+"143
+[; ;LCD_hd44780u_qy_2004a.c: 143:   }
 }
 [e $U 259  ]
 [e :U 260 ]
@@ -764,527 +866,527 @@ Version 4.0 HI-TECH Software Intermediate Code
  , $ -> 80 `i 264
  265 ]
 [e :U 259 ]
-"122
-[; ;LCD_hd44780u_qy_2004a.c: 122:   waitLCDBusy();
+"144
+[; ;LCD_hd44780u_qy_2004a.c: 144:   waitLCDBusy();
 [e ( _waitLCDBusy ..  ]
-"123
-[; ;LCD_hd44780u_qy_2004a.c: 123:   SetToSendDataToLCD();
+"145
+[; ;LCD_hd44780u_qy_2004a.c: 145:   SetToSendDataToLCD();
 [e ( _SetToSendDataToLCD ..  ]
-"124
-[; ;LCD_hd44780u_qy_2004a.c: 124:   PORTAbits.RA4 = 1;
-[e = . . _PORTAbits 0 4 -> -> 1 `i `uc ]
-"125
-[; ;LCD_hd44780u_qy_2004a.c: 125:   PORTAbits.RA7 = 0;
-[e = . . _PORTAbits 0 7 -> -> 0 `i `uc ]
-"126
-[; ;LCD_hd44780u_qy_2004a.c: 126:   setData(iOpCode >> 4);
+"146
+[; ;LCD_hd44780u_qy_2004a.c: 146:   PORTAbits.RA0 = 1;
+[e = . . _PORTAbits 0 0 -> -> 1 `i `uc ]
+"147
+[; ;LCD_hd44780u_qy_2004a.c: 147:   PORTAbits.RA1 = 0;
+[e = . . _PORTAbits 0 1 -> -> 0 `i `uc ]
+"148
+[; ;LCD_hd44780u_qy_2004a.c: 148:   setData(iOpCode >> 4);
 [e ( _setData (1 -> >> -> _iOpCode `i -> 4 `i `uc ]
-"127
-[; ;LCD_hd44780u_qy_2004a.c: 127:   setData(iOpCode);
+"149
+[; ;LCD_hd44780u_qy_2004a.c: 149:   setData(iOpCode);
 [e ( _setData (1 _iOpCode ]
-"128
-[; ;LCD_hd44780u_qy_2004a.c: 128:   _delay((unsigned long)((1)*(16000000/4000000.0)));
+"150
+[; ;LCD_hd44780u_qy_2004a.c: 150:   _delay((unsigned long)((1)*(16000000/4000000.0)));
 [e ( __delay (1 -> * -> -> 1 `i `d / -> -> 16000000 `l `d .4000000.0 `ul ]
-"129
-[; ;LCD_hd44780u_qy_2004a.c: 129:   mWritingPosition++;
+"151
+[; ;LCD_hd44780u_qy_2004a.c: 151:   mWritingPosition++;
 [e ++ _mWritingPosition -> -> 1 `i `uc ]
-"130
-[; ;LCD_hd44780u_qy_2004a.c: 130: }
+"152
+[; ;LCD_hd44780u_qy_2004a.c: 152: }
 [e :UE 251 ]
 }
-"132
-[; ;LCD_hd44780u_qy_2004a.c: 132: void writeInsChk(char iOpCode)
-[v _writeInsChk `(v ~T0 @X0 1 ef1`uc ]
-"133
-[; ;LCD_hd44780u_qy_2004a.c: 133: {
-{
-[e :U _writeInsChk ]
-"132
-[; ;LCD_hd44780u_qy_2004a.c: 132: void writeInsChk(char iOpCode)
-[v _iOpCode `uc ~T0 @X0 1 r1 ]
-"133
-[; ;LCD_hd44780u_qy_2004a.c: 133: {
-[f ]
-"134
-[; ;LCD_hd44780u_qy_2004a.c: 134:   waitLCDBusy();
-[e ( _waitLCDBusy ..  ]
-"135
-[; ;LCD_hd44780u_qy_2004a.c: 135:   writeInsNoChk(iOpCode);
-[e ( _writeInsNoChk (1 _iOpCode ]
-"136
-[; ;LCD_hd44780u_qy_2004a.c: 136: }
-[e :UE 266 ]
-}
-"138
-[; ;LCD_hd44780u_qy_2004a.c: 138: void writeInsNoChk(char iOpCode)
-[v _writeInsNoChk `(v ~T0 @X0 1 ef1`uc ]
-"139
-[; ;LCD_hd44780u_qy_2004a.c: 139: {
-{
-[e :U _writeInsNoChk ]
-"138
-[; ;LCD_hd44780u_qy_2004a.c: 138: void writeInsNoChk(char iOpCode)
-[v _iOpCode `uc ~T0 @X0 1 r1 ]
-"139
-[; ;LCD_hd44780u_qy_2004a.c: 139: {
-[f ]
-"140
-[; ;LCD_hd44780u_qy_2004a.c: 140:   SetToSendDataToLCD();
-[e ( _SetToSendDataToLCD ..  ]
-"141
-[; ;LCD_hd44780u_qy_2004a.c: 141:   PORTAbits.RA4 = 0;
-[e = . . _PORTAbits 0 4 -> -> 0 `i `uc ]
-"142
-[; ;LCD_hd44780u_qy_2004a.c: 142:   PORTAbits.RA7 = 0;
-[e = . . _PORTAbits 0 7 -> -> 0 `i `uc ]
-"143
-[; ;LCD_hd44780u_qy_2004a.c: 143:   setData(iOpCode >> 4);
-[e ( _setData (1 -> >> -> _iOpCode `i -> 4 `i `uc ]
-"144
-[; ;LCD_hd44780u_qy_2004a.c: 144:   setData(iOpCode);
-[e ( _setData (1 _iOpCode ]
-"145
-[; ;LCD_hd44780u_qy_2004a.c: 145: }
-[e :UE 267 ]
-}
-"147
-[; ;LCD_hd44780u_qy_2004a.c: 147: void SetToReadDataFromLCD()
-[v _SetToReadDataFromLCD `(v ~T0 @X0 1 ef ]
-"148
-[; ;LCD_hd44780u_qy_2004a.c: 148: {
-{
-[e :U _SetToReadDataFromLCD ]
-[f ]
-"149
-[; ;LCD_hd44780u_qy_2004a.c: 149:   TRISAbits.TRISA3 = 1;
-[e = . . _TRISAbits 0 3 -> -> 1 `i `uc ]
-"150
-[; ;LCD_hd44780u_qy_2004a.c: 150:   TRISAbits.TRISA2 = 1;
-[e = . . _TRISAbits 0 2 -> -> 1 `i `uc ]
-"151
-[; ;LCD_hd44780u_qy_2004a.c: 151:   TRISAbits.TRISA1 = 1;
-[e = . . _TRISAbits 0 1 -> -> 1 `i `uc ]
-"152
-[; ;LCD_hd44780u_qy_2004a.c: 152:   TRISAbits.TRISA0 = 1;
-[e = . . _TRISAbits 0 0 -> -> 1 `i `uc ]
-"153
-[; ;LCD_hd44780u_qy_2004a.c: 153: }
-[e :UE 268 ]
-}
 "154
-[; ;LCD_hd44780u_qy_2004a.c: 154: void SetToSendDataToLCD()
-[v _SetToSendDataToLCD `(v ~T0 @X0 1 ef ]
+[; ;LCD_hd44780u_qy_2004a.c: 154: void writeInsChk(char iOpCode)
+[v _writeInsChk `(v ~T0 @X0 1 ef1`uc ]
 "155
 [; ;LCD_hd44780u_qy_2004a.c: 155: {
 {
-[e :U _SetToSendDataToLCD ]
+[e :U _writeInsChk ]
+"154
+[; ;LCD_hd44780u_qy_2004a.c: 154: void writeInsChk(char iOpCode)
+[v _iOpCode `uc ~T0 @X0 1 r1 ]
+"155
+[; ;LCD_hd44780u_qy_2004a.c: 155: {
 [f ]
 "156
-[; ;LCD_hd44780u_qy_2004a.c: 156:   TRISAbits.TRISA3 = 0;;
-[e = . . _TRISAbits 0 3 -> -> 0 `i `uc ]
+[; ;LCD_hd44780u_qy_2004a.c: 156:   waitLCDBusy();
+[e ( _waitLCDBusy ..  ]
 "157
-[; ;LCD_hd44780u_qy_2004a.c: 157:   TRISAbits.TRISA2 = 0;;
-[e = . . _TRISAbits 0 2 -> -> 0 `i `uc ]
+[; ;LCD_hd44780u_qy_2004a.c: 157:   writeInsNoChk(iOpCode);
+[e ( _writeInsNoChk (1 _iOpCode ]
 "158
-[; ;LCD_hd44780u_qy_2004a.c: 158:   TRISAbits.TRISA1 = 0;;
-[e = . . _TRISAbits 0 1 -> -> 0 `i `uc ]
-"159
-[; ;LCD_hd44780u_qy_2004a.c: 159:   TRISAbits.TRISA0 = 0;;
-[e = . . _TRISAbits 0 0 -> -> 0 `i `uc ]
+[; ;LCD_hd44780u_qy_2004a.c: 158: }
+[e :UE 266 ]
+}
 "160
-[; ;LCD_hd44780u_qy_2004a.c: 160: }
+[; ;LCD_hd44780u_qy_2004a.c: 160: void writeInsNoChk(char iOpCode)
+[v _writeInsNoChk `(v ~T0 @X0 1 ef1`uc ]
+"161
+[; ;LCD_hd44780u_qy_2004a.c: 161: {
+{
+[e :U _writeInsNoChk ]
+"160
+[; ;LCD_hd44780u_qy_2004a.c: 160: void writeInsNoChk(char iOpCode)
+[v _iOpCode `uc ~T0 @X0 1 r1 ]
+"161
+[; ;LCD_hd44780u_qy_2004a.c: 161: {
+[f ]
+"162
+[; ;LCD_hd44780u_qy_2004a.c: 162:   SetToSendDataToLCD();
+[e ( _SetToSendDataToLCD ..  ]
+"163
+[; ;LCD_hd44780u_qy_2004a.c: 163:   PORTAbits.RA0 = 0;
+[e = . . _PORTAbits 0 0 -> -> 0 `i `uc ]
+"164
+[; ;LCD_hd44780u_qy_2004a.c: 164:   PORTAbits.RA1 = 0;
+[e = . . _PORTAbits 0 1 -> -> 0 `i `uc ]
+"165
+[; ;LCD_hd44780u_qy_2004a.c: 165:   setData(iOpCode >> 4);
+[e ( _setData (1 -> >> -> _iOpCode `i -> 4 `i `uc ]
+"166
+[; ;LCD_hd44780u_qy_2004a.c: 166:   setData(iOpCode);
+[e ( _setData (1 _iOpCode ]
+"167
+[; ;LCD_hd44780u_qy_2004a.c: 167: }
+[e :UE 267 ]
+}
+"169
+[; ;LCD_hd44780u_qy_2004a.c: 169: void SetToReadDataFromLCD()
+[v _SetToReadDataFromLCD `(v ~T0 @X0 1 ef ]
+"170
+[; ;LCD_hd44780u_qy_2004a.c: 170: {
+{
+[e :U _SetToReadDataFromLCD ]
+[f ]
+"171
+[; ;LCD_hd44780u_qy_2004a.c: 171:   TRISAbits.TRISA3 = 1;
+[e = . . _TRISAbits 0 3 -> -> 1 `i `uc ]
+"172
+[; ;LCD_hd44780u_qy_2004a.c: 172:   TRISCbits.TRISC2 = 1;
+[e = . . _TRISCbits 0 2 -> -> 1 `i `uc ]
+"173
+[; ;LCD_hd44780u_qy_2004a.c: 173:   TRISCbits.TRISC1 = 1;
+[e = . . _TRISCbits 0 1 -> -> 1 `i `uc ]
+"174
+[; ;LCD_hd44780u_qy_2004a.c: 174:   TRISCbits.TRISC0 = 1;
+[e = . . _TRISCbits 0 0 -> -> 1 `i `uc ]
+"175
+[; ;LCD_hd44780u_qy_2004a.c: 175: }
+[e :UE 268 ]
+}
+"176
+[; ;LCD_hd44780u_qy_2004a.c: 176: void SetToSendDataToLCD()
+[v _SetToSendDataToLCD `(v ~T0 @X0 1 ef ]
+"177
+[; ;LCD_hd44780u_qy_2004a.c: 177: {
+{
+[e :U _SetToSendDataToLCD ]
+[f ]
+"178
+[; ;LCD_hd44780u_qy_2004a.c: 178:   TRISAbits.TRISA3 = 0;;
+[e = . . _TRISAbits 0 3 -> -> 0 `i `uc ]
+"179
+[; ;LCD_hd44780u_qy_2004a.c: 179:   TRISCbits.TRISC2 = 0;;
+[e = . . _TRISCbits 0 2 -> -> 0 `i `uc ]
+"180
+[; ;LCD_hd44780u_qy_2004a.c: 180:   TRISCbits.TRISC1 = 0;;
+[e = . . _TRISCbits 0 1 -> -> 0 `i `uc ]
+"181
+[; ;LCD_hd44780u_qy_2004a.c: 181:   TRISCbits.TRISC0 = 0;;
+[e = . . _TRISCbits 0 0 -> -> 0 `i `uc ]
+"182
+[; ;LCD_hd44780u_qy_2004a.c: 182: }
 [e :UE 269 ]
 }
-"162
-[; ;LCD_hd44780u_qy_2004a.c: 162: void waitLCDBusy()
+"184
+[; ;LCD_hd44780u_qy_2004a.c: 184: void waitLCDBusy()
 [v _waitLCDBusy `(v ~T0 @X0 1 ef ]
-"163
-[; ;LCD_hd44780u_qy_2004a.c: 163: {
+"185
+[; ;LCD_hd44780u_qy_2004a.c: 185: {
 {
 [e :U _waitLCDBusy ]
 [f ]
-"164
-[; ;LCD_hd44780u_qy_2004a.c: 164:   PORTAbits.RA4 = 0;
-[e = . . _PORTAbits 0 4 -> -> 0 `i `uc ]
-"165
-[; ;LCD_hd44780u_qy_2004a.c: 165:   PORTAbits.RA7 = 1;
-[e = . . _PORTAbits 0 7 -> -> 1 `i `uc ]
-"167
-[; ;LCD_hd44780u_qy_2004a.c: 167:   SetToReadDataFromLCD();
+"186
+[; ;LCD_hd44780u_qy_2004a.c: 186:   PORTAbits.RA0 = 0;
+[e = . . _PORTAbits 0 0 -> -> 0 `i `uc ]
+"187
+[; ;LCD_hd44780u_qy_2004a.c: 187:   PORTAbits.RA1 = 1;
+[e = . . _PORTAbits 0 1 -> -> 1 `i `uc ]
+"189
+[; ;LCD_hd44780u_qy_2004a.c: 189:   SetToReadDataFromLCD();
 [e ( _SetToReadDataFromLCD ..  ]
-"169
-[; ;LCD_hd44780u_qy_2004a.c: 169:   int busyFlag = 1;
+"191
+[; ;LCD_hd44780u_qy_2004a.c: 191:   int busyFlag = 1;
 [v _busyFlag `i ~T0 @X0 1 a ]
 [e = _busyFlag -> 1 `i ]
-"170
-[; ;LCD_hd44780u_qy_2004a.c: 170:   while(busyFlag == 1)
+"192
+[; ;LCD_hd44780u_qy_2004a.c: 192:   while(busyFlag == 1)
 [e $U 271  ]
 [e :U 272 ]
-"171
-[; ;LCD_hd44780u_qy_2004a.c: 171:   {
+"193
+[; ;LCD_hd44780u_qy_2004a.c: 193:   {
 {
-"173
-[; ;LCD_hd44780u_qy_2004a.c: 173:     PORTAbits.RA5 = 1;
-[e = . . _PORTAbits 0 5 -> -> 1 `i `uc ]
-"174
-[; ;LCD_hd44780u_qy_2004a.c: 174:     _delay((unsigned long)((1)*(16000000/4000000.0)));
+"195
+[; ;LCD_hd44780u_qy_2004a.c: 195:     PORTAbits.RA2 = 1;
+[e = . . _PORTAbits 0 2 -> -> 1 `i `uc ]
+"196
+[; ;LCD_hd44780u_qy_2004a.c: 196:     _delay((unsigned long)((1)*(16000000/4000000.0)));
 [e ( __delay (1 -> * -> -> 1 `i `d / -> -> 16000000 `l `d .4000000.0 `ul ]
-"175
-[; ;LCD_hd44780u_qy_2004a.c: 175:     busyFlag = PORTAbits.RA3;
+"197
+[; ;LCD_hd44780u_qy_2004a.c: 197:     busyFlag = PORTAbits.RA3;
 [e = _busyFlag -> . . _PORTAbits 0 3 `i ]
-"176
-[; ;LCD_hd44780u_qy_2004a.c: 176:     PORTAbits.RA5 = 0;
-[e = . . _PORTAbits 0 5 -> -> 0 `i `uc ]
-"177
-[; ;LCD_hd44780u_qy_2004a.c: 177:     _delay((unsigned long)((2)*(16000000/4000000.0)));
+"198
+[; ;LCD_hd44780u_qy_2004a.c: 198:     PORTAbits.RA2 = 0;
+[e = . . _PORTAbits 0 2 -> -> 0 `i `uc ]
+"199
+[; ;LCD_hd44780u_qy_2004a.c: 199:     _delay((unsigned long)((2)*(16000000/4000000.0)));
 [e ( __delay (1 -> * -> -> 2 `i `d / -> -> 16000000 `l `d .4000000.0 `ul ]
-"179
-[; ;LCD_hd44780u_qy_2004a.c: 179:     PORTAbits.RA5 = 1;
-[e = . . _PORTAbits 0 5 -> -> 1 `i `uc ]
-"180
-[; ;LCD_hd44780u_qy_2004a.c: 180:     _delay((unsigned long)((1)*(16000000/4000000.0)));
+"201
+[; ;LCD_hd44780u_qy_2004a.c: 201:     PORTAbits.RA2 = 1;
+[e = . . _PORTAbits 0 2 -> -> 1 `i `uc ]
+"202
+[; ;LCD_hd44780u_qy_2004a.c: 202:     _delay((unsigned long)((1)*(16000000/4000000.0)));
 [e ( __delay (1 -> * -> -> 1 `i `d / -> -> 16000000 `l `d .4000000.0 `ul ]
-"181
-[; ;LCD_hd44780u_qy_2004a.c: 181:   }
+"203
+[; ;LCD_hd44780u_qy_2004a.c: 203:   }
 }
 [e :U 271 ]
-"170
-[; ;LCD_hd44780u_qy_2004a.c: 170:   while(busyFlag == 1)
+"192
+[; ;LCD_hd44780u_qy_2004a.c: 192:   while(busyFlag == 1)
 [e $ == _busyFlag -> 1 `i 272  ]
 [e :U 273 ]
-"182
-[; ;LCD_hd44780u_qy_2004a.c: 182: }
+"204
+[; ;LCD_hd44780u_qy_2004a.c: 204: }
 [e :UE 270 ]
 }
-"183
-[; ;LCD_hd44780u_qy_2004a.c: 183: void powerOffLcd()
+"205
+[; ;LCD_hd44780u_qy_2004a.c: 205: void powerOffLcd()
 [v _powerOffLcd `(v ~T0 @X0 1 ef ]
-"184
-[; ;LCD_hd44780u_qy_2004a.c: 184: {
+"206
+[; ;LCD_hd44780u_qy_2004a.c: 206: {
 {
 [e :U _powerOffLcd ]
 [f ]
-"185
-[; ;LCD_hd44780u_qy_2004a.c: 185:   mDisplayOnOffReg = mDisplayOnOffReg & 0xFB;
+"207
+[; ;LCD_hd44780u_qy_2004a.c: 207:   mDisplayOnOffReg = mDisplayOnOffReg & 0xFB;
 [e = _mDisplayOnOffReg -> & -> _mDisplayOnOffReg `i -> 251 `i `uc ]
-"186
-[; ;LCD_hd44780u_qy_2004a.c: 186:   writeInsChk(mDisplayOnOffReg);
+"208
+[; ;LCD_hd44780u_qy_2004a.c: 208:   writeInsChk(mDisplayOnOffReg);
 [e ( _writeInsChk (1 _mDisplayOnOffReg ]
-"187
-[; ;LCD_hd44780u_qy_2004a.c: 187: }
+"209
+[; ;LCD_hd44780u_qy_2004a.c: 209: }
 [e :UE 274 ]
 }
-"188
-[; ;LCD_hd44780u_qy_2004a.c: 188: void powerOnLcd()
+"210
+[; ;LCD_hd44780u_qy_2004a.c: 210: void powerOnLcd()
 [v _powerOnLcd `(v ~T0 @X0 1 ef ]
-"189
-[; ;LCD_hd44780u_qy_2004a.c: 189: {
+"211
+[; ;LCD_hd44780u_qy_2004a.c: 211: {
 {
 [e :U _powerOnLcd ]
 [f ]
-"190
-[; ;LCD_hd44780u_qy_2004a.c: 190:   mDisplayOnOffReg = mDisplayOnOffReg | 0x04;
+"212
+[; ;LCD_hd44780u_qy_2004a.c: 212:   mDisplayOnOffReg = mDisplayOnOffReg | 0x04;
 [e = _mDisplayOnOffReg -> | -> _mDisplayOnOffReg `i -> 4 `i `uc ]
-"191
-[; ;LCD_hd44780u_qy_2004a.c: 191:   writeInsChk(mDisplayOnOffReg);
+"213
+[; ;LCD_hd44780u_qy_2004a.c: 213:   writeInsChk(mDisplayOnOffReg);
 [e ( _writeInsChk (1 _mDisplayOnOffReg ]
-"192
-[; ;LCD_hd44780u_qy_2004a.c: 192: }
+"214
+[; ;LCD_hd44780u_qy_2004a.c: 214: }
 [e :UE 275 ]
 }
-"193
-[; ;LCD_hd44780u_qy_2004a.c: 193: void setBlinkingCursor()
+"215
+[; ;LCD_hd44780u_qy_2004a.c: 215: void setBlinkingCursor()
 [v _setBlinkingCursor `(v ~T0 @X0 1 ef ]
-"194
-[; ;LCD_hd44780u_qy_2004a.c: 194: {
+"216
+[; ;LCD_hd44780u_qy_2004a.c: 216: {
 {
 [e :U _setBlinkingCursor ]
 [f ]
-"195
-[; ;LCD_hd44780u_qy_2004a.c: 195:   mDisplayOnOffReg = mDisplayOnOffReg | 0x01;
+"217
+[; ;LCD_hd44780u_qy_2004a.c: 217:   mDisplayOnOffReg = mDisplayOnOffReg | 0x01;
 [e = _mDisplayOnOffReg -> | -> _mDisplayOnOffReg `i -> 1 `i `uc ]
-"196
-[; ;LCD_hd44780u_qy_2004a.c: 196:   writeInsChk(mDisplayOnOffReg);
+"218
+[; ;LCD_hd44780u_qy_2004a.c: 218:   writeInsChk(mDisplayOnOffReg);
 [e ( _writeInsChk (1 _mDisplayOnOffReg ]
-"197
-[; ;LCD_hd44780u_qy_2004a.c: 197: }
+"219
+[; ;LCD_hd44780u_qy_2004a.c: 219: }
 [e :UE 276 ]
 }
-"198
-[; ;LCD_hd44780u_qy_2004a.c: 198: void setNotBlinkingCursor()
+"220
+[; ;LCD_hd44780u_qy_2004a.c: 220: void setNotBlinkingCursor()
 [v _setNotBlinkingCursor `(v ~T0 @X0 1 ef ]
-"199
-[; ;LCD_hd44780u_qy_2004a.c: 199: {
+"221
+[; ;LCD_hd44780u_qy_2004a.c: 221: {
 {
 [e :U _setNotBlinkingCursor ]
 [f ]
-"200
-[; ;LCD_hd44780u_qy_2004a.c: 200:   mDisplayOnOffReg = mDisplayOnOffReg & 0xFE;
+"222
+[; ;LCD_hd44780u_qy_2004a.c: 222:   mDisplayOnOffReg = mDisplayOnOffReg & 0xFE;
 [e = _mDisplayOnOffReg -> & -> _mDisplayOnOffReg `i -> 254 `i `uc ]
-"201
-[; ;LCD_hd44780u_qy_2004a.c: 201:   writeInsChk(mDisplayOnOffReg);
+"223
+[; ;LCD_hd44780u_qy_2004a.c: 223:   writeInsChk(mDisplayOnOffReg);
 [e ( _writeInsChk (1 _mDisplayOnOffReg ]
-"202
-[; ;LCD_hd44780u_qy_2004a.c: 202: }
+"224
+[; ;LCD_hd44780u_qy_2004a.c: 224: }
 [e :UE 277 ]
 }
-"203
-[; ;LCD_hd44780u_qy_2004a.c: 203: void setCursorOff()
+"225
+[; ;LCD_hd44780u_qy_2004a.c: 225: void setCursorOff()
 [v _setCursorOff `(v ~T0 @X0 1 ef ]
-"204
-[; ;LCD_hd44780u_qy_2004a.c: 204: {
+"226
+[; ;LCD_hd44780u_qy_2004a.c: 226: {
 {
 [e :U _setCursorOff ]
 [f ]
-"205
-[; ;LCD_hd44780u_qy_2004a.c: 205:   mDisplayOnOffReg = mDisplayOnOffReg & 0xFD;
+"227
+[; ;LCD_hd44780u_qy_2004a.c: 227:   mDisplayOnOffReg = mDisplayOnOffReg & 0xFD;
 [e = _mDisplayOnOffReg -> & -> _mDisplayOnOffReg `i -> 253 `i `uc ]
-"206
-[; ;LCD_hd44780u_qy_2004a.c: 206:   writeInsChk(mDisplayOnOffReg);
+"228
+[; ;LCD_hd44780u_qy_2004a.c: 228:   writeInsChk(mDisplayOnOffReg);
 [e ( _writeInsChk (1 _mDisplayOnOffReg ]
-"207
-[; ;LCD_hd44780u_qy_2004a.c: 207: }
+"229
+[; ;LCD_hd44780u_qy_2004a.c: 229: }
 [e :UE 278 ]
 }
-"208
-[; ;LCD_hd44780u_qy_2004a.c: 208: void setCursorOn()
+"230
+[; ;LCD_hd44780u_qy_2004a.c: 230: void setCursorOn()
 [v _setCursorOn `(v ~T0 @X0 1 ef ]
-"209
-[; ;LCD_hd44780u_qy_2004a.c: 209: {
+"231
+[; ;LCD_hd44780u_qy_2004a.c: 231: {
 {
 [e :U _setCursorOn ]
 [f ]
-"210
-[; ;LCD_hd44780u_qy_2004a.c: 210:   mDisplayOnOffReg = mDisplayOnOffReg | 0x02;
+"232
+[; ;LCD_hd44780u_qy_2004a.c: 232:   mDisplayOnOffReg = mDisplayOnOffReg | 0x02;
 [e = _mDisplayOnOffReg -> | -> _mDisplayOnOffReg `i -> 2 `i `uc ]
-"211
-[; ;LCD_hd44780u_qy_2004a.c: 211:   writeInsChk(mDisplayOnOffReg);
+"233
+[; ;LCD_hd44780u_qy_2004a.c: 233:   writeInsChk(mDisplayOnOffReg);
 [e ( _writeInsChk (1 _mDisplayOnOffReg ]
-"212
-[; ;LCD_hd44780u_qy_2004a.c: 212: }
+"234
+[; ;LCD_hd44780u_qy_2004a.c: 234: }
 [e :UE 279 ]
 }
-"214
-[; ;LCD_hd44780u_qy_2004a.c: 214: void setCursorMovingLeft()
+"236
+[; ;LCD_hd44780u_qy_2004a.c: 236: void setCursorMovingLeft()
 [v _setCursorMovingLeft `(v ~T0 @X0 1 ef ]
-"215
-[; ;LCD_hd44780u_qy_2004a.c: 215: {
+"237
+[; ;LCD_hd44780u_qy_2004a.c: 237: {
 {
 [e :U _setCursorMovingLeft ]
 [f ]
-"216
-[; ;LCD_hd44780u_qy_2004a.c: 216:   mCursorDisplayShiftReg = 0x10;
+"238
+[; ;LCD_hd44780u_qy_2004a.c: 238:   mCursorDisplayShiftReg = 0x10;
 [e = _mCursorDisplayShiftReg -> -> 16 `i `uc ]
-"217
-[; ;LCD_hd44780u_qy_2004a.c: 217:   writeInsChk(mCursorDisplayShiftReg);
+"239
+[; ;LCD_hd44780u_qy_2004a.c: 239:   writeInsChk(mCursorDisplayShiftReg);
 [e ( _writeInsChk (1 _mCursorDisplayShiftReg ]
-"218
-[; ;LCD_hd44780u_qy_2004a.c: 218: }
+"240
+[; ;LCD_hd44780u_qy_2004a.c: 240: }
 [e :UE 280 ]
 }
-"219
-[; ;LCD_hd44780u_qy_2004a.c: 219: void setCursorMovingRight()
+"241
+[; ;LCD_hd44780u_qy_2004a.c: 241: void setCursorMovingRight()
 [v _setCursorMovingRight `(v ~T0 @X0 1 ef ]
-"220
-[; ;LCD_hd44780u_qy_2004a.c: 220: {
+"242
+[; ;LCD_hd44780u_qy_2004a.c: 242: {
 {
 [e :U _setCursorMovingRight ]
 [f ]
-"221
-[; ;LCD_hd44780u_qy_2004a.c: 221:   mCursorDisplayShiftReg = 0x14;
+"243
+[; ;LCD_hd44780u_qy_2004a.c: 243:   mCursorDisplayShiftReg = 0x14;
 [e = _mCursorDisplayShiftReg -> -> 20 `i `uc ]
-"222
-[; ;LCD_hd44780u_qy_2004a.c: 222:   writeInsChk(mCursorDisplayShiftReg);
+"244
+[; ;LCD_hd44780u_qy_2004a.c: 244:   writeInsChk(mCursorDisplayShiftReg);
 [e ( _writeInsChk (1 _mCursorDisplayShiftReg ]
-"223
-[; ;LCD_hd44780u_qy_2004a.c: 223: }
+"245
+[; ;LCD_hd44780u_qy_2004a.c: 245: }
 [e :UE 281 ]
 }
-"224
-[; ;LCD_hd44780u_qy_2004a.c: 224: void setDisplayMovingRight()
+"246
+[; ;LCD_hd44780u_qy_2004a.c: 246: void setDisplayMovingRight()
 [v _setDisplayMovingRight `(v ~T0 @X0 1 ef ]
-"225
-[; ;LCD_hd44780u_qy_2004a.c: 225: {
+"247
+[; ;LCD_hd44780u_qy_2004a.c: 247: {
 {
 [e :U _setDisplayMovingRight ]
 [f ]
-"226
-[; ;LCD_hd44780u_qy_2004a.c: 226:   mCursorDisplayShiftReg = 0x18;
+"248
+[; ;LCD_hd44780u_qy_2004a.c: 248:   mCursorDisplayShiftReg = 0x18;
 [e = _mCursorDisplayShiftReg -> -> 24 `i `uc ]
-"227
-[; ;LCD_hd44780u_qy_2004a.c: 227:   writeInsChk(mCursorDisplayShiftReg);
+"249
+[; ;LCD_hd44780u_qy_2004a.c: 249:   writeInsChk(mCursorDisplayShiftReg);
 [e ( _writeInsChk (1 _mCursorDisplayShiftReg ]
-"228
-[; ;LCD_hd44780u_qy_2004a.c: 228: }
+"250
+[; ;LCD_hd44780u_qy_2004a.c: 250: }
 [e :UE 282 ]
 }
-"229
-[; ;LCD_hd44780u_qy_2004a.c: 229: void setDisplayMovingLeft()
+"251
+[; ;LCD_hd44780u_qy_2004a.c: 251: void setDisplayMovingLeft()
 [v _setDisplayMovingLeft `(v ~T0 @X0 1 ef ]
-"230
-[; ;LCD_hd44780u_qy_2004a.c: 230: {
+"252
+[; ;LCD_hd44780u_qy_2004a.c: 252: {
 {
 [e :U _setDisplayMovingLeft ]
 [f ]
-"231
-[; ;LCD_hd44780u_qy_2004a.c: 231:   mCursorDisplayShiftReg = 0x1C;
+"253
+[; ;LCD_hd44780u_qy_2004a.c: 253:   mCursorDisplayShiftReg = 0x1C;
 [e = _mCursorDisplayShiftReg -> -> 28 `i `uc ]
-"232
-[; ;LCD_hd44780u_qy_2004a.c: 232:   writeInsChk(mCursorDisplayShiftReg);
+"254
+[; ;LCD_hd44780u_qy_2004a.c: 254:   writeInsChk(mCursorDisplayShiftReg);
 [e ( _writeInsChk (1 _mCursorDisplayShiftReg ]
-"233
-[; ;LCD_hd44780u_qy_2004a.c: 233: }
+"255
+[; ;LCD_hd44780u_qy_2004a.c: 255: }
 [e :UE 283 ]
 }
-"235
-[; ;LCD_hd44780u_qy_2004a.c: 235: void moveCursorRight()
+"257
+[; ;LCD_hd44780u_qy_2004a.c: 257: void moveCursorRight()
 [v _moveCursorRight `(v ~T0 @X0 1 ef ]
-"236
-[; ;LCD_hd44780u_qy_2004a.c: 236: {
+"258
+[; ;LCD_hd44780u_qy_2004a.c: 258: {
 {
 [e :U _moveCursorRight ]
 [f ]
-"237
-[; ;LCD_hd44780u_qy_2004a.c: 237:   mCursorDisplayShiftReg = mCursorDisplayShiftReg | 0x04;
+"259
+[; ;LCD_hd44780u_qy_2004a.c: 259:   mCursorDisplayShiftReg = mCursorDisplayShiftReg | 0x04;
 [e = _mCursorDisplayShiftReg -> | -> _mCursorDisplayShiftReg `i -> 4 `i `uc ]
-"238
-[; ;LCD_hd44780u_qy_2004a.c: 238:   writeInsChk(mCursorDisplayShiftReg);
+"260
+[; ;LCD_hd44780u_qy_2004a.c: 260:   writeInsChk(mCursorDisplayShiftReg);
 [e ( _writeInsChk (1 _mCursorDisplayShiftReg ]
-"239
-[; ;LCD_hd44780u_qy_2004a.c: 239: }
+"261
+[; ;LCD_hd44780u_qy_2004a.c: 261: }
 [e :UE 284 ]
 }
-"240
-[; ;LCD_hd44780u_qy_2004a.c: 240: void moveCursorLeft()
+"262
+[; ;LCD_hd44780u_qy_2004a.c: 262: void moveCursorLeft()
 [v _moveCursorLeft `(v ~T0 @X0 1 ef ]
-"241
-[; ;LCD_hd44780u_qy_2004a.c: 241: {
+"263
+[; ;LCD_hd44780u_qy_2004a.c: 263: {
 {
 [e :U _moveCursorLeft ]
 [f ]
-"242
-[; ;LCD_hd44780u_qy_2004a.c: 242:   mCursorDisplayShiftReg = mCursorDisplayShiftReg | 0x04;
+"264
+[; ;LCD_hd44780u_qy_2004a.c: 264:   mCursorDisplayShiftReg = mCursorDisplayShiftReg | 0x04;
 [e = _mCursorDisplayShiftReg -> | -> _mCursorDisplayShiftReg `i -> 4 `i `uc ]
-"243
-[; ;LCD_hd44780u_qy_2004a.c: 243:   writeInsChk(mCursorDisplayShiftReg);
+"265
+[; ;LCD_hd44780u_qy_2004a.c: 265:   writeInsChk(mCursorDisplayShiftReg);
 [e ( _writeInsChk (1 _mCursorDisplayShiftReg ]
-"244
-[; ;LCD_hd44780u_qy_2004a.c: 244: }
+"266
+[; ;LCD_hd44780u_qy_2004a.c: 266: }
 [e :UE 285 ]
 }
-"245
-[; ;LCD_hd44780u_qy_2004a.c: 245: void clearDisplay()
+"267
+[; ;LCD_hd44780u_qy_2004a.c: 267: void clearDisplay()
 [v _clearDisplay `(v ~T0 @X0 1 ef ]
-"246
-[; ;LCD_hd44780u_qy_2004a.c: 246: {
+"268
+[; ;LCD_hd44780u_qy_2004a.c: 268: {
 {
 [e :U _clearDisplay ]
 [f ]
-"247
-[; ;LCD_hd44780u_qy_2004a.c: 247:   writeInsChk(0x01);
+"269
+[; ;LCD_hd44780u_qy_2004a.c: 269:   writeInsChk(0x01);
 [e ( _writeInsChk (1 -> -> 1 `i `uc ]
-"248
-[; ;LCD_hd44780u_qy_2004a.c: 248: }
+"270
+[; ;LCD_hd44780u_qy_2004a.c: 270: }
 [e :UE 286 ]
 }
-"249
-[; ;LCD_hd44780u_qy_2004a.c: 249: void moveCursorToHome()
+"271
+[; ;LCD_hd44780u_qy_2004a.c: 271: void moveCursorToHome()
 [v _moveCursorToHome `(v ~T0 @X0 1 ef ]
-"250
-[; ;LCD_hd44780u_qy_2004a.c: 250: {
+"272
+[; ;LCD_hd44780u_qy_2004a.c: 272: {
 {
 [e :U _moveCursorToHome ]
 [f ]
-"251
-[; ;LCD_hd44780u_qy_2004a.c: 251:   writeInsChk(0x02);
+"273
+[; ;LCD_hd44780u_qy_2004a.c: 273:   writeInsChk(0x02);
 [e ( _writeInsChk (1 -> -> 2 `i `uc ]
-"252
-[; ;LCD_hd44780u_qy_2004a.c: 252:   mWritingPosition=1;
+"274
+[; ;LCD_hd44780u_qy_2004a.c: 274:   mWritingPosition=1;
 [e = _mWritingPosition -> -> 1 `i `uc ]
-"253
-[; ;LCD_hd44780u_qy_2004a.c: 253: }
+"275
+[; ;LCD_hd44780u_qy_2004a.c: 275: }
 [e :UE 287 ]
 }
-"254
-[; ;LCD_hd44780u_qy_2004a.c: 254: void setCursorPosition(char iLine, char iPosition)
+"276
+[; ;LCD_hd44780u_qy_2004a.c: 276: void setCursorPosition(char iLine, char iPosition)
 [v _setCursorPosition `(v ~T0 @X0 1 ef2`uc`uc ]
-"255
-[; ;LCD_hd44780u_qy_2004a.c: 255: {
+"277
+[; ;LCD_hd44780u_qy_2004a.c: 277: {
 {
 [e :U _setCursorPosition ]
-"254
-[; ;LCD_hd44780u_qy_2004a.c: 254: void setCursorPosition(char iLine, char iPosition)
+"276
+[; ;LCD_hd44780u_qy_2004a.c: 276: void setCursorPosition(char iLine, char iPosition)
 [v _iLine `uc ~T0 @X0 1 r1 ]
 [v _iPosition `uc ~T0 @X0 1 r2 ]
-"255
-[; ;LCD_hd44780u_qy_2004a.c: 255: {
+"277
+[; ;LCD_hd44780u_qy_2004a.c: 277: {
 [f ]
-"256
-[; ;LCD_hd44780u_qy_2004a.c: 256:   char wLCDIndex=0;
+"278
+[; ;LCD_hd44780u_qy_2004a.c: 278:   char wLCDIndex=0;
 [v _wLCDIndex `uc ~T0 @X0 1 a ]
 [e = _wLCDIndex -> -> 0 `i `uc ]
-"258
-[; ;LCD_hd44780u_qy_2004a.c: 258:   switch(iLine)
+"280
+[; ;LCD_hd44780u_qy_2004a.c: 280:   switch(iLine)
 [e $U 290  ]
-"259
-[; ;LCD_hd44780u_qy_2004a.c: 259:   {
+"281
+[; ;LCD_hd44780u_qy_2004a.c: 281:   {
 {
-"260
-[; ;LCD_hd44780u_qy_2004a.c: 260:       case 0:
+"282
+[; ;LCD_hd44780u_qy_2004a.c: 282:       case 0:
 [e :U 291 ]
-"261
-[; ;LCD_hd44780u_qy_2004a.c: 261:           wLCDIndex = 0x00 + iPosition;
+"283
+[; ;LCD_hd44780u_qy_2004a.c: 283:           wLCDIndex = 0x00 + iPosition;
 [e = _wLCDIndex -> + -> 0 `i -> _iPosition `i `uc ]
-"262
-[; ;LCD_hd44780u_qy_2004a.c: 262:           mWritingPosition = iPosition;
+"284
+[; ;LCD_hd44780u_qy_2004a.c: 284:           mWritingPosition = iPosition;
 [e = _mWritingPosition _iPosition ]
-"263
-[; ;LCD_hd44780u_qy_2004a.c: 263:           break;
+"285
+[; ;LCD_hd44780u_qy_2004a.c: 285:           break;
 [e $U 289  ]
-"264
-[; ;LCD_hd44780u_qy_2004a.c: 264:       case 1:
+"286
+[; ;LCD_hd44780u_qy_2004a.c: 286:       case 1:
 [e :U 292 ]
-"265
-[; ;LCD_hd44780u_qy_2004a.c: 265:           wLCDIndex = 0x40 + iPosition;
+"287
+[; ;LCD_hd44780u_qy_2004a.c: 287:           wLCDIndex = 0x40 + iPosition;
 [e = _wLCDIndex -> + -> 64 `i -> _iPosition `i `uc ]
-"266
-[; ;LCD_hd44780u_qy_2004a.c: 266:           mWritingPosition = 20 + iPosition;
+"288
+[; ;LCD_hd44780u_qy_2004a.c: 288:           mWritingPosition = 20 + iPosition;
 [e = _mWritingPosition -> + -> 20 `i -> _iPosition `i `uc ]
-"267
-[; ;LCD_hd44780u_qy_2004a.c: 267:           break;
+"289
+[; ;LCD_hd44780u_qy_2004a.c: 289:           break;
 [e $U 289  ]
-"268
-[; ;LCD_hd44780u_qy_2004a.c: 268:       case 2:
+"290
+[; ;LCD_hd44780u_qy_2004a.c: 290:       case 2:
 [e :U 293 ]
-"269
-[; ;LCD_hd44780u_qy_2004a.c: 269:           wLCDIndex = 0x14 + iPosition;
+"291
+[; ;LCD_hd44780u_qy_2004a.c: 291:           wLCDIndex = 0x14 + iPosition;
 [e = _wLCDIndex -> + -> 20 `i -> _iPosition `i `uc ]
-"270
-[; ;LCD_hd44780u_qy_2004a.c: 270:           mWritingPosition = 40 + iPosition;
+"292
+[; ;LCD_hd44780u_qy_2004a.c: 292:           mWritingPosition = 40 + iPosition;
 [e = _mWritingPosition -> + -> 40 `i -> _iPosition `i `uc ]
-"271
-[; ;LCD_hd44780u_qy_2004a.c: 271:           break;
+"293
+[; ;LCD_hd44780u_qy_2004a.c: 293:           break;
 [e $U 289  ]
-"272
-[; ;LCD_hd44780u_qy_2004a.c: 272:       case 3:
+"294
+[; ;LCD_hd44780u_qy_2004a.c: 294:       case 3:
 [e :U 294 ]
-"273
-[; ;LCD_hd44780u_qy_2004a.c: 273:           wLCDIndex = 0x54 + iPosition;
+"295
+[; ;LCD_hd44780u_qy_2004a.c: 295:           wLCDIndex = 0x54 + iPosition;
 [e = _wLCDIndex -> + -> 84 `i -> _iPosition `i `uc ]
-"274
-[; ;LCD_hd44780u_qy_2004a.c: 274:           mWritingPosition = 60 + iPosition;
+"296
+[; ;LCD_hd44780u_qy_2004a.c: 296:           mWritingPosition = 60 + iPosition;
 [e = _mWritingPosition -> + -> 60 `i -> _iPosition `i `uc ]
-"275
-[; ;LCD_hd44780u_qy_2004a.c: 275:           break;
+"297
+[; ;LCD_hd44780u_qy_2004a.c: 297:           break;
 [e $U 289  ]
-"276
-[; ;LCD_hd44780u_qy_2004a.c: 276:       default:
+"298
+[; ;LCD_hd44780u_qy_2004a.c: 298:       default:
 [e :U 295 ]
-"277
-[; ;LCD_hd44780u_qy_2004a.c: 277:       break;
+"299
+[; ;LCD_hd44780u_qy_2004a.c: 299:       break;
 [e $U 289  ]
-"278
-[; ;LCD_hd44780u_qy_2004a.c: 278:   }
+"300
+[; ;LCD_hd44780u_qy_2004a.c: 300:   }
 }
 [e $U 289  ]
 [e :U 290 ]
@@ -1294,25 +1396,25 @@ Version 4.0 HI-TECH Software Intermediate Code
  , $ -> 3 `i 294
  295 ]
 [e :U 289 ]
-"280
-[; ;LCD_hd44780u_qy_2004a.c: 280:   waitLCDBusy();
+"302
+[; ;LCD_hd44780u_qy_2004a.c: 302:   waitLCDBusy();
 [e ( _waitLCDBusy ..  ]
-"282
-[; ;LCD_hd44780u_qy_2004a.c: 282:   SetToSendDataToLCD();
+"304
+[; ;LCD_hd44780u_qy_2004a.c: 304:   SetToSendDataToLCD();
 [e ( _SetToSendDataToLCD ..  ]
-"283
-[; ;LCD_hd44780u_qy_2004a.c: 283:   PORTAbits.RA4 = 0;
-[e = . . _PORTAbits 0 4 -> -> 0 `i `uc ]
-"284
-[; ;LCD_hd44780u_qy_2004a.c: 284:   PORTAbits.RA7 = 0;
-[e = . . _PORTAbits 0 7 -> -> 0 `i `uc ]
-"285
-[; ;LCD_hd44780u_qy_2004a.c: 285:   setData((wLCDIndex >> 4) | 0x8 );
+"305
+[; ;LCD_hd44780u_qy_2004a.c: 305:   PORTAbits.RA0 = 0;
+[e = . . _PORTAbits 0 0 -> -> 0 `i `uc ]
+"306
+[; ;LCD_hd44780u_qy_2004a.c: 306:   PORTAbits.RA1 = 0;
+[e = . . _PORTAbits 0 1 -> -> 0 `i `uc ]
+"307
+[; ;LCD_hd44780u_qy_2004a.c: 307:   setData((wLCDIndex >> 4) | 0x8 );
 [e ( _setData (1 -> | >> -> _wLCDIndex `i -> 4 `i -> 8 `i `uc ]
-"286
-[; ;LCD_hd44780u_qy_2004a.c: 286:   setData(wLCDIndex);
+"308
+[; ;LCD_hd44780u_qy_2004a.c: 308:   setData(wLCDIndex);
 [e ( _setData (1 _wLCDIndex ]
-"288
-[; ;LCD_hd44780u_qy_2004a.c: 288: }
+"310
+[; ;LCD_hd44780u_qy_2004a.c: 310: }
 [e :UE 288 ]
 }
