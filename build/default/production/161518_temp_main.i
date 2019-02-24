@@ -2962,6 +2962,129 @@ char mCursorDisplayShiftReg;
 char mWritingPosition;
 # 11 "161518_temp_main.c" 2
 
+# 1 "./EM1812.h" 1
+
+
+
+# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\stdint.h" 1 3
+# 22 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\stdint.h" 3
+# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\bits/alltypes.h" 1 3
+# 135 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef unsigned long uintptr_t;
+# 150 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef long intptr_t;
+# 166 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef signed char int8_t;
+
+
+
+
+typedef short int16_t;
+
+
+
+
+typedef long int32_t;
+# 189 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef int32_t intmax_t;
+
+
+
+
+
+
+
+typedef unsigned char uint8_t;
+
+
+
+
+typedef unsigned short uint16_t;
+
+
+
+
+typedef unsigned long uint32_t;
+# 225 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef uint32_t uintmax_t;
+# 22 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\stdint.h" 2 3
+
+
+typedef int8_t int_fast8_t;
+
+
+
+
+typedef int8_t int_least8_t;
+typedef int16_t int_least16_t;
+typedef int32_t int_least32_t;
+
+
+
+
+typedef uint8_t uint_fast8_t;
+
+
+
+
+typedef uint8_t uint_least8_t;
+typedef uint16_t uint_least16_t;
+typedef uint32_t uint_least32_t;
+# 131 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\stdint.h" 3
+# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\bits/stdint.h" 1 3
+typedef int32_t int_fast16_t;
+typedef int32_t int_fast32_t;
+typedef uint32_t uint_fast16_t;
+typedef uint32_t uint_fast32_t;
+# 131 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\stdint.h" 2 3
+# 4 "./EM1812.h" 2
+
+
+
+enum EM1812StateMachine{eSetGetTemp = 0,eWaitSetGetTempProcessing,eGetTemp,eWaitGetTempProcessing, eValueReception,eIdle,eError};
+uint8_t wTempState=eSetGetTemp;
+uint8_t wTimer0Counter=0;
+
+void printEM1812(int16_t wVariable, char* oTextOut);
+
+void GetTemp(uint8_t* oTxBuffer, uint8_t* oTxBufferSize, uint8_t* oRxBufferSize);
+void WakeTemp(uint8_t* oTxBuffer, uint8_t* oTxBufferSize);
+void SetToGetTemp(uint8_t* oTxBuffer, uint8_t* oTxBufferSize );
+int TempUpdateRequest();
+int EM1812EntryPoint(int16_t* oHumidity, int16_t* oTemperature);
+# 12 "161518_temp_main.c" 2
+
+# 1 "./I2C.h" 1
+# 13 "./I2C.h"
+enum I2CSTATUS {CommandSent, ProcessingCommand, CommandWillComplet, CommandCompleted, CommandWillFail, CommandFailed};
+uint8_t wI2CCommandState = CommandCompleted;
+
+char wReceptionBufferPosition=0;
+uint8_t wReceptionCounter=0;
+uint8_t wReceptionCounterPrev=0;
+
+uint8_t wI2CTxBuffer[20];
+uint8_t wI2CRxBuffer[20];
+
+uint8_t wI2CTxBufferSize = 20;
+uint8_t wI2CRxBufferSize = 20;
+
+uint8_t wI2CTxNbOfByteToSend;
+uint8_t wI2CRxNbOfByteToReceived;
+
+uint8_t wNewI2CReception =0;
+
+uint8_t wI2CTxSendPos=0;
+
+
+void I2CInit();
+int I2C_Interrupt();
+int GetI2CStatus();
+int I2C_SendData(uint8_t* iData,uint8_t iNumberofByte);
+int GetNewReceivedData(uint8_t* oData, uint8_t oDataSize);
+int I2C_GetData(uint8_t iAdress, uint8_t iRxNumberOfByteExpected);
+# 13 "161518_temp_main.c" 2
+
 
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\stdio.h" 1 3
 # 24 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\stdio.h" 3
@@ -3099,7 +3222,7 @@ char *ctermid(char *);
 
 
 char *tempnam(const char *, const char *);
-# 13 "161518_temp_main.c" 2
+# 15 "161518_temp_main.c" 2
 
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\string.h" 1 3
 # 25 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\string.h" 3
@@ -3156,88 +3279,19 @@ size_t strxfrm_l (char *restrict, const char *restrict, size_t, locale_t);
 
 
 void *memccpy (void *restrict, const void *restrict, int, size_t);
-# 14 "161518_temp_main.c" 2
-
-# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\stdint.h" 1 3
-# 22 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\stdint.h" 3
-# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\bits/alltypes.h" 1 3
-# 135 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\bits/alltypes.h" 3
-typedef unsigned long uintptr_t;
-# 150 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\bits/alltypes.h" 3
-typedef long intptr_t;
-# 166 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\bits/alltypes.h" 3
-typedef signed char int8_t;
+# 16 "161518_temp_main.c" 2
 
 
-
-
-typedef short int16_t;
-
-
-
-
-typedef long int32_t;
-# 189 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\bits/alltypes.h" 3
-typedef int32_t intmax_t;
+# 1 "./GeneralFunction.h" 1
 
 
 
 
 
 
-
-typedef unsigned char uint8_t;
-
-
-
-
-typedef unsigned short uint16_t;
-
-
-
-
-typedef unsigned long uint32_t;
-# 225 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\bits/alltypes.h" 3
-typedef uint32_t uintmax_t;
-# 22 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\stdint.h" 2 3
-
-
-typedef int8_t int_fast8_t;
-
-
-
-
-typedef int8_t int_least8_t;
-typedef int16_t int_least16_t;
-typedef int32_t int_least32_t;
-
-
-
-
-typedef uint8_t uint_fast8_t;
-
-
-
-
-typedef uint8_t uint_least8_t;
-typedef uint16_t uint_least16_t;
-typedef uint32_t uint_least32_t;
-# 131 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\stdint.h" 3
-# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\bits/stdint.h" 1 3
-typedef int32_t int_fast16_t;
-typedef int32_t int_fast32_t;
-typedef uint32_t uint_fast16_t;
-typedef uint32_t uint_fast32_t;
-# 131 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\stdint.h" 2 3
-# 15 "161518_temp_main.c" 2
-
-
-
-
-
-
-
-
+void AddTrace(char* oText, char iSizeOfoText, char* iText);
+# 18 "161518_temp_main.c" 2
+# 27 "161518_temp_main.c"
 #pragma config FOSC = 0x2
 #pragma config WDTE = OFF
 #pragma config PWRTE = ON
@@ -3258,21 +3312,14 @@ typedef uint32_t uint_fast32_t;
 
 
 char wInterruptText[75];
-char wReceptionBuffer[30];
-char wReceptionBufferPosition;
-uint8_t wReceptionCounter=0;
-uint8_t wReceptionCounterPrev=0;
 
-char wI2CTxBuffer[20];
-char wI2CTxBufferSize;
-char wI2CRxBufferSize;
-char wI2CTxSendPos;
 char wHexTemp[20];
 uint8_t wTrial=0;
 
 unsigned char gTxBuffer[256];
 uint8_t gTxTransmitSize=0;
 uint8_t gTxReadingPosition=0;
+uint8_t gErrorCode;
 
 void ToggleBitRB5()
 {
@@ -3285,60 +3332,7 @@ void ToggleBitRB5()
         PORTBbits.RB5 = 1;
     }
 }
-enum{CommandSent,ProcessingCommand,CommandCompleted,CommandFailed};
-uint8_t wI2CCommandState = 0;
-void SetToGetTemp()
-{
-    wTrial=0;
-    if(wI2CTxBufferSize == 0)
-    {
-        PIE1bits.SSPIE = 1;
-        SSPCON3bits.ACKTIM = 1;
-        wI2CTxBuffer[0] = 0xB8;
-        wI2CTxBuffer[1] = 0x03;
-        wI2CTxBuffer[2] = 0x00;
-        wI2CTxBuffer[3] = 0x04;
-        wI2CTxBufferSize = 4;
-        wI2CCommandState=CommandSent;
-        SSPCON2bits.SEN = 1;
 
-    }
-}
-
-void Add_Trace(char* oText, char iSizeOfoText, char* iText)
-{
-    if((iSizeOfoText - 1 - strlen(oText)) > strlen(iText))
-    {
-        strcat(oText,iText);
-    }
-}
-
-void GetTemp()
-{
-    wTrial=0;
-    if(wI2CTxBufferSize == 0)
-    {
-        PIE1bits.SSPIE = 1;
-        memset(wReceptionBuffer,0,sizeof(wReceptionBuffer));
-        wReceptionBufferPosition=0;
-        wI2CTxBuffer[0] = 0xB9;
-        wI2CRxBufferSize = 8;
-        wI2CTxBufferSize = 1;
-        wI2CCommandState=CommandSent;
-        SSPCON2bits.SEN = 1;
-    }
-}
-void WakeTemp()
-{
-    PIE1bits.SSPIE = 1;
-    wTrial=0;
-    if(wI2CTxBufferSize == 0)
-    {
-        wI2CTxBuffer[0] = 0xB8;
-        wI2CTxBufferSize = 1;
-        SSPCON2bits.SEN = 1;
-    }
-}
 void PrintLog(char* iText)
 {
     char wInterruptTextLen = strlen(iText);
@@ -3348,46 +3342,6 @@ void PrintLog(char* iText)
         lcdWriteText(iText);
         memset(iText,0,wInterruptTextLen);
     }
-}
-void printEM1812(int16_t wVariable, char* oTextOut)
-{
-    uint8_t wTen;
-    uint8_t wUnity;
-    uint8_t wDecimal;
-    uint8_t wIsNegative=0;
-    uint8_t wWritingPosition=0;
-
-    if(wVariable < 0)
-    {
-        wIsNegative = 1;
-        wVariable = -wVariable;
-    }
-
-    wTen = wVariable/100;
-    wVariable = wVariable % 100;
-    wUnity = wVariable/10;
-    wVariable = wVariable %10;
-    wDecimal = wVariable;
-
-
-    if(wIsNegative)
-    {
-        oTextOut[wWritingPosition] = '-';
-        wWritingPosition++;
-    }
-    if( wTen != 0 )
-    {
-        oTextOut[wWritingPosition] = '0' + wTen;
-        wWritingPosition++;
-    }
-    oTextOut[wWritingPosition] = '0' + wUnity;
-    wWritingPosition++;
-    oTextOut[wWritingPosition] = ',';
-    wWritingPosition++;
-    oTextOut[wWritingPosition] = '0' + wDecimal;
-    wWritingPosition++;
-    oTextOut[wWritingPosition] = 0;
-
 }
 
 void Debounce(uint8_t iSwitch,uint16_t* ioTimer, uint8_t* swPressed)
@@ -3429,35 +3383,31 @@ void Send_UART_Data( unsigned char* iData, uint8_t iData_Length)
     PIE1bits.TXIE = 1;
 
 }
-
-uint8_t wTempUpdate=0;
-
-
-
-
-
-
-
+# 126 "161518_temp_main.c"
 uint8_t wTimer1IntCounter=0;
-uint8_t wTimer0Counter=0;
-uint8_t wTempState=0;
+
 int16_t wHumidity=0;
 int16_t wTemperature=0;
 
 unsigned char gUartTXBuffer[50];
 unsigned char gUartRXBuffer[50];
+unsigned char gUartRXBufferIndex;
 
 int16_t wTempSet=210;
 
 enum eMenu{eShowTime=0,eShowTemp,eShowMode,eSetTime=128,eSetTemp=129,eSetMode=130};
 enum eMode{eElectric=0,eFuel,eThermopump,eCooling};
-# 249 "161518_temp_main.c"
+# 147 "161518_temp_main.c"
 void main(void)
 {
+
+  gErrorCode =0;
+
   char wReadout[20];
   int16_t wHumidityPrev=0;
   int16_t wTemperaturePrev=0;
   memset(wInterruptText,0,sizeof(wInterruptText));
+
 
   OSCCONbits.IRCF = 0xf;
   OSCCONbits.SCS = 0x0;
@@ -3503,17 +3453,9 @@ void main(void)
   OPTION_REGbits.nWPUEN = 0;
 
 
-  memset(wI2CTxBuffer,0,sizeof(wI2CTxBuffer));
-  wI2CTxBufferSize=0;
-  wI2CTxSendPos=0;
 
+  I2CInit();
 
-
-
-  TRISCbits.TRISC3 = 1;
-  TRISCbits.TRISC4 = 1;
-  ANSELCbits.ANSC3 = 0;
-  ANSELCbits.ANSC4 = 0;
 
 
 
@@ -3521,6 +3463,10 @@ void main(void)
   ANSELCbits.ANSC7 = 0;
   TRISCbits.TRISC6 = 0;
   TRISCbits.TRISC7 = 1;
+  gUartRXBufferIndex = 0;
+
+
+  PIE1bits.RCIE =1;
 
 
 
@@ -3554,7 +3500,8 @@ void main(void)
   _delay((unsigned long)((100)*(16000000/4000.0)));
   setNotBlinkingCursor();
   _delay((unsigned long)((100)*(16000000/4000.0)));
-# 376 "161518_temp_main.c"
+
+
   int wCounter=0;
   char wConv[4]={'+',0, 'x',0, };
   int wTemp=0;
@@ -3563,138 +3510,34 @@ void main(void)
   clearDisplay();
   moveCursorToHome();
   _delay((unsigned long)((30)*(16000000/4000.0)));
+
+
+
+
+
+
+
+  _delay((unsigned long)((1000)*(16000000/4000.0)));
   while(1)
   {
-
-    if((wHumidityPrev != wHumidity) || (wTemperaturePrev != wTemperature))
+# 418 "161518_temp_main.c"
+    if( EM1812EntryPoint(&wHumidity, &wTemperature) == 1)
     {
-        wHumidityPrev = wHumidity;
-        wTemperaturePrev = wTemperature;
-        setCursorPosition(2,0);
-        printEM1812(wHumidityPrev,wReadout);
-        Add_Trace(wInterruptText,sizeof(wInterruptText),"Humidity : ");
-        Add_Trace(wInterruptText,sizeof(wInterruptText),wReadout);
-        printEM1812(wTemperaturePrev,wReadout);
-        Add_Trace(wInterruptText,sizeof(wInterruptText),"\nTemp : ");
-        Add_Trace(wInterruptText,sizeof(wInterruptText),wReadout);
-        PrintLog(wInterruptText);
+
+        if((wHumidityPrev != wHumidity) || (wTemperaturePrev != wTemperature))
+        {
+            wHumidityPrev = wHumidity;
+            wTemperaturePrev = wTemperature;
+            setCursorPosition(2,0);
+            printEM1812(wHumidityPrev,wReadout);
+            AddTrace(wInterruptText,sizeof(wInterruptText),"Humidity : ");
+            AddTrace(wInterruptText,sizeof(wInterruptText),wReadout);
+            printEM1812(wTemperaturePrev,wReadout);
+            AddTrace(wInterruptText,sizeof(wInterruptText),"\nTemp : ");
+            AddTrace(wInterruptText,sizeof(wInterruptText),wReadout);
+            PrintLog(wInterruptText);
+        }
     }
-
-    if( wUpdateMenu )
-    {
-      wUpdateMenu = 0;
-      switch(wMenu )
-      {
-        case eShowTime:
-          setCursorPosition(0,0);
-          lcdWriteText("Time           ");
-          break;
-        case eShowTemp:
-          setCursorPosition(0,0);
-          lcdWriteText("Temp Setting:  \n");
-          printEM1812(wTempSet, wReadout);
-          lcdWriteText(wReadout);
-          break;
-        case eShowMode:
-          setCursorPosition(0,0);
-          lcdWriteText("Mode:          ");
-          break;
-        case eSetTime:
-          setCursorPosition(0,0);
-          lcdWriteText("-Set Time-     \n");
-          break;
-        case eSetTemp:
-          setCursorPosition(0,0);
-          lcdWriteText("-Set Temp-     \n");
-          printEM1812(wTempSet, wReadout);
-          lcdWriteText(wReadout);
-          break;
-        case eSetMode:
-          setCursorPosition(0,0);
-          lcdWriteText("-Set Mode-     \n");
-
-          break;
-        default:
-          setCursorPosition(0,0);
-          lcdWriteText("WTF            ");
-          break;
-      }
-    }
-
-    switch( wTempState )
-    {
-        case 0:
-            SetToGetTemp();
-            ToggleBitRB5();
-            wTempState++;
-            INTCONbits.TMR0IE = 0;
-            TMR0 = 0;
-            wTimer0Counter=0;
-            INTCONbits.TMR0IE = 1;
-            break;
-        case 1:
-            if(wTimer0Counter == 2)
-            {
-                wTempState++;
-                INTCONbits.TMR0IE = 0;
-            }
-            break;
-        case 2:
-            if(wI2CCommandState == CommandFailed)
-            {
-                wTempState=0;
-            }
-            else if (wI2CCommandState == CommandCompleted)
-            {
-                ToggleBitRB5();
-                GetTemp();
-                ToggleBitRB5();
-                wTempState++;
-                INTCONbits.TMR0IE = 0;
-                TMR0 = 0;
-                wTimer0Counter=0;
-                INTCONbits.TMR0IE = 1;
-            }
-            break;
-        case 3:
-            if(wTimer0Counter == 2)
-            {
-                wTempState++;
-                INTCONbits.TMR0IE = 0;
-            }
-            break;
-        case 4:
-            if(wI2CCommandState == CommandFailed)
-            {
-                wTempState=0;
-            }
-            else if(wI2CCommandState == CommandCompleted)
-            {
-                wTempState++;
-                gUartTXBuffer[0] = 'A';
-                gUartTXBuffer[1] = 'T';
-                gUartTXBuffer[2] = 0x0d;
-                gUartTXBuffer[3] = 0x0a;
-                gUartTXBuffer[4] = 0;
-                Send_UART_Data(gUartTXBuffer,4);
-            }
-            break;
-        case 5:
-            wCounter = wCounter + 2;
-            if(wCounter == 4)
-            {
-              wCounter = 0;
-            }
-            setCursorPosition(3,19);
-            lcdWriteText(&wConv[wCounter]);
-            wTempState++;
-            break;
-        case 6:
-            break;
-        default:
-            break;
-    }
-
     wIterationCounter++;
 
 
@@ -3747,13 +3590,31 @@ void main(void)
    {
        wUpdateMenu=1;
        wEnterBottonPressed = 0;
+
        if(wEditingMode == 0)
        {
          wEditingMode = 1;
          wMenu = wMenu+128;
+
+            gUartRXBufferIndex=0;
+            gUartRXBuffer[0]=0;
+            memcpy(gUartTXBuffer,"AT+CWMODE=3",sizeof("AT+CWMODE=2"));
+            gUartTXBuffer[sizeof("AT+CWMODE=2")] = 0x0d;
+            gUartTXBuffer[sizeof("AT+CWMODE=2")+1] = 0x0a;
+            gUartTXBuffer[sizeof("AT+CWMODE=2")+2] = 0;
+            Send_UART_Data(gUartTXBuffer,sizeof("AT+CWMODE=2")+2);
        }
        else
        {
+            gUartRXBufferIndex=0;
+            gUartRXBuffer[0]=0;
+            memcpy(gUartTXBuffer,"AT+CWSAP=\"ESP_9945B5\",\"12345678\",11,0",sizeof("AT+CWSAP=\"ESP_9945B5\",\"12345678\",11,0"));
+
+
+            gUartTXBuffer[sizeof("AT+CWSAP=\"ESP_9945B5\",\"12345678\",11,0")] = 0x0d;
+            gUartTXBuffer[sizeof("AT+CWSAP=\"ESP_9945B5\",\"12345678\",11,0")+1] = 0x0a;
+            gUartTXBuffer[sizeof("AT+CWSAP=\"ESP_9945B5\",\"12345678\",11,0")+2] = 0;
+            Send_UART_Data(gUartTXBuffer,sizeof("AT+CWSAP=\"ESP_9945B5\",\"12345678\",11,0")+2);
          wEditingMode = 0;
        }
    }
@@ -3776,147 +3637,16 @@ void main(void)
 char wCounter2=0;
 void __attribute__((picinterrupt(""))) myint(void)
 {
-
-    if(PIR1bits.SSPIF == 1)
+    int wI2CError;
+    wI2CError = I2C_Interrupt();
+    if( wI2CError != 0 )
     {
-        PIR1bits.SSPIF = 0;
-        if( wI2CTxBufferSize != 0)
-        {
-            if((wI2CTxBuffer[0] & 0x01) == 1)
-            {
-                if(SSPSTATbits.P)
-                {
-                  PIE1bits.SSPIE = 0;
-                  wI2CTxBufferSize=0;
-                  wI2CTxSendPos=0;
-                }
-                else if(SSPSTATbits.S && wI2CTxSendPos == 0)
-                {
-                    SSPBUF = wI2CTxBuffer[wI2CTxSendPos];
-                    wI2CCommandState = ProcessingCommand;
-                    wI2CTxSendPos++;
-                }
-                else if(SSPSTATbits.BF == 1)
-                {
-                    wReceptionBuffer[wReceptionBufferPosition] = SSPBUF;
-                    wReceptionBufferPosition++;
-
-                    SSPSTATbits.BF = 0 ;
-                    if( wReceptionBufferPosition < wI2CRxBufferSize)
-                    {
-                        SSPCON2bits.ACKDT = 0;
-                    }
-                    else
-                    {
-                        SSPCON2bits.ACKDT = 1;
-                        wI2CCommandState = CommandCompleted;
-                        if(wReceptionBuffer[2] & 0x80 )
-                        {
-                          wHumidity = -((wReceptionBuffer[2] & 0x7F)*256) + wReceptionBuffer[3];
-                        }
-                        else
-                        {
-                          wHumidity = (wReceptionBuffer[2]*256) + wReceptionBuffer[3];
-                        }
-                        if(wReceptionBuffer[4] & 0x80 )
-                        {
-                          wTemperature = -((wReceptionBuffer[4] & 0x7F)*256) + wReceptionBuffer[5];
-                        }
-                        else
-                        {
-                          wTemperature = (wReceptionBuffer[4] *256) + wReceptionBuffer[5];
-                        }
-                        wReceptionCounter++;
-
-                    }
-                    SSPCON2bits.ACKEN = 1;
-                }
-                else
-                {
-                    if(SSPCON2bits.ACKSTAT == 0 && wI2CTxSendPos != 0)
-                    {
-                        if( wReceptionBufferPosition < wI2CRxBufferSize)
-                        {
-
-                          SSPCON2bits.RCEN = 1;
-                        }
-                        else
-                        {
-                          SSPCON2bits.PEN = 1;
-                        }
-                    }
-                    else if(SSPCON2bits.ACKSTAT == 1)
-                    {
-                        SSPCON2bits.ACKSTAT = 0;
-                        wI2CCommandState = CommandFailed;
-                        if(wI2CTxSendPos != 0)
-                        {
-                          SSPCON2bits.PEN = 1;
-                        }
-                        else
-                        {
-                          SSPCON2bits.PEN = 1;
-                        }
-                    }
-                    else
-                    {
-                        Add_Trace(wInterruptText,sizeof(wInterruptText),",N8");
-                    }
-                }
-
-            }
-            else
-            {
-                if(SSPSTATbits.P)
-                {
-                  PIE1bits.SSPIE = 0;
-                  wI2CTxBufferSize=0;
-                  wI2CTxSendPos=0;
-                }
-                else if(SSPSTATbits.S && wI2CTxSendPos == 0)
-                {
-                    wI2CCommandState = ProcessingCommand;
-                    SSPBUF = wI2CTxBuffer[wI2CTxSendPos];
-                    wI2CTxSendPos++;
-                }
-                else
-                {
-                    if(SSPCON2bits.ACKSTAT == 0 && wI2CTxSendPos != 0)
-                    {
-                      if(wI2CTxSendPos < wI2CTxBufferSize)
-                      {
-                        SSPBUF = wI2CTxBuffer[wI2CTxSendPos];
-                        wI2CTxSendPos++;
-                      }
-                      else
-                      {
-                            SSPCON2bits.PEN = 1;
-                            wI2CCommandState = CommandCompleted;
-                      }
-                    }
-                    else if(SSPCON2bits.ACKSTAT == 1)
-                    {
-                        SSPCON2bits.ACKSTAT = 0;
-                        SSPCON2bits.PEN = 1;
-                        wI2CCommandState = CommandFailed;
-                    }
-                    else
-                    {
-
-                    }
-                }
-            }
-
-
-
-
-        }
+        char wText[2];
+        wText[0] = '0' + wI2CError;
+        wText[1] = 0;
+        lcdWriteText(wText);
     }
-    if(PIR2bits.BCLIF == 1)
-    {
-        PIR2bits.BCLIF = 0;
-        Add_Trace(wInterruptText,sizeof(wInterruptText),",BCLIF");
-    }
+
     if(PIR1bits.TMR1IF == 1)
     {
         wTimer1IntCounter++;
@@ -3930,15 +3660,7 @@ void __attribute__((picinterrupt(""))) myint(void)
         if(wTimer1IntCounter == 8)
         {
             wTimer1IntCounter = 0;
-            wTempUpdate = 1;
-            if(wTempState == 6)
-            {
-               wTempState = 0;
-            }
-            else
-            {
-
-            }
+            TempUpdateRequest();
         }
     }
     if(INTCONbits.TMR0IF == 1)
@@ -3959,5 +3681,25 @@ void __attribute__((picinterrupt(""))) myint(void)
            gTxTransmitSize = 0;
            PIE1bits.TXIE =0;
       }
+    }
+    if( PIR1bits.RCIF == 1)
+    {
+        if(RCSTAbits.FERR == 1 || RCSTAbits.OERR == 1 )
+        {
+            gErrorCode = RCSTAbits.FERR + (RCSTAbits.OERR<<1);
+        }
+        else
+        {
+            if(gUartRXBufferIndex < sizeof(gUartRXBuffer) )
+            {
+              gUartRXBuffer[gUartRXBufferIndex] = RCREG;
+              gUartRXBufferIndex++;
+            }
+            else
+            {
+              gErrorCode = 3;
+            }
+        }
+
     }
 }

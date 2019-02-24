@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=161518_temp_main.c LCD_hd44780u_qy_2004a.c
+SOURCEFILES_QUOTED_IF_SPACED=161518_temp_main.c LCD_hd44780u_qy_2004a.c EM1812.c I2C.c GeneralFunction.c ESP8266.c EUSART.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/161518_temp_main.p1 ${OBJECTDIR}/LCD_hd44780u_qy_2004a.p1
-POSSIBLE_DEPFILES=${OBJECTDIR}/161518_temp_main.p1.d ${OBJECTDIR}/LCD_hd44780u_qy_2004a.p1.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/161518_temp_main.p1 ${OBJECTDIR}/LCD_hd44780u_qy_2004a.p1 ${OBJECTDIR}/EM1812.p1 ${OBJECTDIR}/I2C.p1 ${OBJECTDIR}/GeneralFunction.p1 ${OBJECTDIR}/ESP8266.p1 ${OBJECTDIR}/EUSART.p1
+POSSIBLE_DEPFILES=${OBJECTDIR}/161518_temp_main.p1.d ${OBJECTDIR}/LCD_hd44780u_qy_2004a.p1.d ${OBJECTDIR}/EM1812.p1.d ${OBJECTDIR}/I2C.p1.d ${OBJECTDIR}/GeneralFunction.p1.d ${OBJECTDIR}/ESP8266.p1.d ${OBJECTDIR}/EUSART.p1.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/161518_temp_main.p1 ${OBJECTDIR}/LCD_hd44780u_qy_2004a.p1
+OBJECTFILES=${OBJECTDIR}/161518_temp_main.p1 ${OBJECTDIR}/LCD_hd44780u_qy_2004a.p1 ${OBJECTDIR}/EM1812.p1 ${OBJECTDIR}/I2C.p1 ${OBJECTDIR}/GeneralFunction.p1 ${OBJECTDIR}/ESP8266.p1 ${OBJECTDIR}/EUSART.p1
 
 # Source Files
-SOURCEFILES=161518_temp_main.c LCD_hd44780u_qy_2004a.c
+SOURCEFILES=161518_temp_main.c LCD_hd44780u_qy_2004a.c EM1812.c I2C.c GeneralFunction.c ESP8266.c EUSART.c
 
 
 CFLAGS=
@@ -109,6 +109,46 @@ ${OBJECTDIR}/LCD_hd44780u_qy_2004a.p1: LCD_hd44780u_qy_2004a.c  nbproject/Makefi
 	@-${MV} ${OBJECTDIR}/LCD_hd44780u_qy_2004a.d ${OBJECTDIR}/LCD_hd44780u_qy_2004a.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/LCD_hd44780u_qy_2004a.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
+${OBJECTDIR}/EM1812.p1: EM1812.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/EM1812.p1.d 
+	@${RM} ${OBJECTDIR}/EM1812.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1  -fno-short-double -fno-short-float -O0 -fasmfile -Og -maddrqual=ignore -xassembler-with-cpp -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/EM1812.p1 EM1812.c 
+	@-${MV} ${OBJECTDIR}/EM1812.d ${OBJECTDIR}/EM1812.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/EM1812.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/I2C.p1: I2C.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/I2C.p1.d 
+	@${RM} ${OBJECTDIR}/I2C.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1  -fno-short-double -fno-short-float -O0 -fasmfile -Og -maddrqual=ignore -xassembler-with-cpp -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/I2C.p1 I2C.c 
+	@-${MV} ${OBJECTDIR}/I2C.d ${OBJECTDIR}/I2C.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/I2C.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/GeneralFunction.p1: GeneralFunction.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/GeneralFunction.p1.d 
+	@${RM} ${OBJECTDIR}/GeneralFunction.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1  -fno-short-double -fno-short-float -O0 -fasmfile -Og -maddrqual=ignore -xassembler-with-cpp -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/GeneralFunction.p1 GeneralFunction.c 
+	@-${MV} ${OBJECTDIR}/GeneralFunction.d ${OBJECTDIR}/GeneralFunction.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/GeneralFunction.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/ESP8266.p1: ESP8266.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/ESP8266.p1.d 
+	@${RM} ${OBJECTDIR}/ESP8266.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1  -fno-short-double -fno-short-float -O0 -fasmfile -Og -maddrqual=ignore -xassembler-with-cpp -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/ESP8266.p1 ESP8266.c 
+	@-${MV} ${OBJECTDIR}/ESP8266.d ${OBJECTDIR}/ESP8266.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/ESP8266.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/EUSART.p1: EUSART.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/EUSART.p1.d 
+	@${RM} ${OBJECTDIR}/EUSART.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1  -fno-short-double -fno-short-float -O0 -fasmfile -Og -maddrqual=ignore -xassembler-with-cpp -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/EUSART.p1 EUSART.c 
+	@-${MV} ${OBJECTDIR}/EUSART.d ${OBJECTDIR}/EUSART.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/EUSART.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
 else
 ${OBJECTDIR}/161518_temp_main.p1: 161518_temp_main.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
@@ -125,6 +165,46 @@ ${OBJECTDIR}/LCD_hd44780u_qy_2004a.p1: LCD_hd44780u_qy_2004a.c  nbproject/Makefi
 	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -fno-short-double -fno-short-float -O0 -fasmfile -Og -maddrqual=ignore -xassembler-with-cpp -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/LCD_hd44780u_qy_2004a.p1 LCD_hd44780u_qy_2004a.c 
 	@-${MV} ${OBJECTDIR}/LCD_hd44780u_qy_2004a.d ${OBJECTDIR}/LCD_hd44780u_qy_2004a.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/LCD_hd44780u_qy_2004a.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/EM1812.p1: EM1812.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/EM1812.p1.d 
+	@${RM} ${OBJECTDIR}/EM1812.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -fno-short-double -fno-short-float -O0 -fasmfile -Og -maddrqual=ignore -xassembler-with-cpp -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/EM1812.p1 EM1812.c 
+	@-${MV} ${OBJECTDIR}/EM1812.d ${OBJECTDIR}/EM1812.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/EM1812.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/I2C.p1: I2C.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/I2C.p1.d 
+	@${RM} ${OBJECTDIR}/I2C.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -fno-short-double -fno-short-float -O0 -fasmfile -Og -maddrqual=ignore -xassembler-with-cpp -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/I2C.p1 I2C.c 
+	@-${MV} ${OBJECTDIR}/I2C.d ${OBJECTDIR}/I2C.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/I2C.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/GeneralFunction.p1: GeneralFunction.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/GeneralFunction.p1.d 
+	@${RM} ${OBJECTDIR}/GeneralFunction.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -fno-short-double -fno-short-float -O0 -fasmfile -Og -maddrqual=ignore -xassembler-with-cpp -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/GeneralFunction.p1 GeneralFunction.c 
+	@-${MV} ${OBJECTDIR}/GeneralFunction.d ${OBJECTDIR}/GeneralFunction.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/GeneralFunction.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/ESP8266.p1: ESP8266.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/ESP8266.p1.d 
+	@${RM} ${OBJECTDIR}/ESP8266.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -fno-short-double -fno-short-float -O0 -fasmfile -Og -maddrqual=ignore -xassembler-with-cpp -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/ESP8266.p1 ESP8266.c 
+	@-${MV} ${OBJECTDIR}/ESP8266.d ${OBJECTDIR}/ESP8266.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/ESP8266.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/EUSART.p1: EUSART.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/EUSART.p1.d 
+	@${RM} ${OBJECTDIR}/EUSART.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -fno-short-double -fno-short-float -O0 -fasmfile -Og -maddrqual=ignore -xassembler-with-cpp -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/EUSART.p1 EUSART.c 
+	@-${MV} ${OBJECTDIR}/EUSART.d ${OBJECTDIR}/EUSART.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/EUSART.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
 endif
 
