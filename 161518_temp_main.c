@@ -17,6 +17,8 @@
 #include <stdint.h>
 #include "GeneralFunction.h"
 #include "I2C.h"
+#include "EUSART.h"
+#include "ESP8266.h"
 
 // PIC16F1518 Configuration Bit Settings
 
@@ -48,9 +50,7 @@ char wInterruptText[wInterruptTextSize];
 char wHexTemp[20];
 uint8_t wTrial=0;
 
-unsigned char gTxBuffer[256];
-uint8_t  gTxTransmitSize=0;
-uint8_t  gTxReadingPosition=0;
+
 uint8_t  gErrorCode;
 
 void ToggleBitRB5()
@@ -96,25 +96,7 @@ void Debounce(uint8_t iSwitch,uint16_t* ioTimer, uint8_t* swPressed)
       *swPressed = 1;
     }
 }
-void Send_UART_Data( unsigned char* iData, uint8_t iData_Length)
-{
-    if(gTxTransmitSize != 0)
-    {
-        return;
-    }
-    gTxReadingPosition = 0;
-    gTxTransmitSize = iData_Length;
-    memcpy(gTxBuffer , iData,iData_Length);
 
-    SPBRGH = 0;
-    SPBRGL = 1;  //14mhz cristal + 23 = 104 us which is Baudrate set to 9600  Datasheet page 249
-    ANSELCbits.ANSC6 = 0; //Desabling UART TX pin analogu fonction
-    TXSTAbits.TXEN = 1; //Enable UART Port
-    TXSTAbits.SYNC = 0; //Setting Asynchonus operation
-    RCSTAbits.SPEN = 1; //Enabling of UART Pin TX pin will be set as output
-    PIE1bits.TXIE = 1; //Enabling the UART Tx interrupt
-    
-}
 
 
 #define ENTERBotton PORTBbits.RB0
@@ -128,19 +110,12 @@ uint8_t wTimer1IntCounter=0;
 int16_t wHumidity=0;
 int16_t wTemperature=0;
 
-unsigned char gUartTXBuffer[50];
-unsigned char gUartRXBuffer[50];
-unsigned char gUartRXBufferIndex;
-
 int16_t wTempSet=210;
 
 enum eMenu{eShowTime=0,eShowTemp,eShowMode,eSetTime=128,eSetTemp=129,eSetMode=130};
 enum eMode{eElectric=0,eFuel,eThermopump,eCooling};
 
-#define USART_TX_Direction TRISCbits.TRISC6
-#define USART_TX_AN ANSELCbits.ANSC6
-#define USART_RX_Direction TRISCbits.TRISC7
-#define USART_RX_AN ANSELCbits.ANSC7
+
 
 
 
@@ -200,38 +175,11 @@ void main(void)
   
   //SCREEN Configuration done int the initLCD function
  
-  I2CInit();
+  //I2CInit();
+  EUSARTInit();
 
 
-  //USART
-  
-  USART_TX_AN = 0;
-  USART_RX_AN = 0;
-  USART_TX_Direction = 0;
-  USART_RX_Direction = 1;
-  gUartRXBufferIndex = 0;
-  
-  
-  PIE1bits.RCIE =1;
 
-  //Setting the I2cBus
-  
-  SSPCON1bits.SSPM = 0x8; // I2C Master Mode 
-  SSPADD = 0x1F; //Setting the Baud rate of the Clock  SPADD +1 *4 / Fosc
-  SSPCON1bits.SSPEN = 1;    //Enable Synchronous Serial Port Enable bit
-  SSPCON2bits.GCEN = 0;  //Disable General call address
-  SSPCON2bits.ACKEN = 1;  //Initiate Acknowledge Sequence Enable bits
-  SSPCON3bits.PCIE = 1;     //Raise interrupt on Stop Condition
-  SSPCON3bits.SCIE = 1;     //Raise interrupt on Start Condition
-  SSPCON3bits.SDAHT = 1;  //300 ms hold time on SDA after falling edge of SCL
-  SSPCON3bits.AHEN = 0 ; // Address holding disable
-  SSPCON3bits.DHEN = 0; //Data hold disable
-  SSPSTATbits.CKE = 0; //Disable SMbus specific inputs
-  
-  INTCONbits.PEIE = 1; //Enable peripheral interrupt
-  PIE1bits.SSPIE = 1;  //Enable interrupt from MSSP
-  PIE2bits.BCLIE = 1; //Enable collision detection interrupt
-  
   INTCONbits.GIE = 1; //Enable interrupt
   
   
@@ -267,7 +215,7 @@ void main(void)
   while(1)
   {
     
-    if( wUpdateMenu )
+    /*if( wUpdateMenu )
     {
       wUpdateMenu = 0;
       switch(wMenu ) //{eShowTime=0,eShowTemp,eShowMode,eSetTime=128,eSetTemp=129,eSetMode=130};
@@ -306,12 +254,13 @@ void main(void)
           lcdWriteText("WTF            ");
           break;
       }
-    }
-  
-    if( EM1812EntryPoint(&wHumidity, &wTemperature) == 1)
+    }*/
+    
+    Esp8266Entrypoint();
+    //if( EM1812EntryPoint(&wHumidity, &wTemperature) == 1)
     {
         
-        if((wHumidityPrev != wHumidity) || (wTemperaturePrev != wTemperature))
+        /*if((wHumidityPrev != wHumidity) || (wTemperaturePrev != wTemperature))
         {
             wHumidityPrev = wHumidity;
             wTemperaturePrev = wTemperature;
@@ -323,7 +272,7 @@ void main(void)
             AddTrace(wInterruptText,sizeof(wInterruptText),"\nTemp : ");
             AddTrace(wInterruptText,sizeof(wInterruptText),wReadout);
             PrintLog(wInterruptText);
-        }
+        }*/
     }
     wIterationCounter++;
 
@@ -358,6 +307,8 @@ void main(void)
    {
        wUpdateMenu=1;
        wDownBottonPressed = 0;
+         clearDisplay();
+         moveCursorToHome();
         switch(wMenu)
         {
             case eSetTime:
@@ -382,26 +333,11 @@ void main(void)
        {
          wEditingMode = 1;
          wMenu = wMenu+128;
-         
-            gUartRXBufferIndex=0;
-            gUartRXBuffer[0]=0;
-            memcpy(gUartTXBuffer,"AT+CWMODE=3",sizeof("AT+CWMODE=2"));
-            gUartTXBuffer[sizeof("AT+CWMODE=2")] = 0x0d;
-            gUartTXBuffer[sizeof("AT+CWMODE=2")+1] = 0x0a;
-            gUartTXBuffer[sizeof("AT+CWMODE=2")+2] = 0;
-            Send_UART_Data(gUartTXBuffer,sizeof("AT+CWMODE=2")+2);
+         Esp8266SetAccessPointMode();
        }
        else
        {
-            gUartRXBufferIndex=0;
-            gUartRXBuffer[0]=0;
-            memcpy(gUartTXBuffer,"AT+CWSAP=\"ESP_9945B5\",\"12345678\",11,0",sizeof("AT+CWSAP=\"ESP_9945B5\",\"12345678\",11,0"));
-            //gUartTXBuffer[0] = 'A';
-            //gUartTXBuffer[1] = 'T';
-            gUartTXBuffer[sizeof("AT+CWSAP=\"ESP_9945B5\",\"12345678\",11,0")] = 0x0d;
-            gUartTXBuffer[sizeof("AT+CWSAP=\"ESP_9945B5\",\"12345678\",11,0")+1] = 0x0a;
-            gUartTXBuffer[sizeof("AT+CWSAP=\"ESP_9945B5\",\"12345678\",11,0")+2] = 0;
-            Send_UART_Data(gUartTXBuffer,sizeof("AT+CWSAP=\"ESP_9945B5\",\"12345678\",11,0")+2);
+         Esp8266SetupWifi();
          wEditingMode = 0;   
        }
    }   
@@ -424,16 +360,26 @@ void main(void)
 char wCounter2=0;
 void __interrupt() myint(void)
 {
-    int wI2CError;
-    wI2CError = I2C_Interrupt();
+    int wI2CError,wEUSARTError;
+    //wI2CError = I2C_Interrupt();
     if( wI2CError != 0 )
     {
-        char wText[2];
-        wText[0] = '0' + wI2CError;
-        wText[1] = 0;
+        char wText[3];
+        wText[1] = 'i';
+        wText[1] = '0' + wI2CError;
+        wText[2] = 0;
         lcdWriteText(wText);
     }
-
+    
+    wEUSARTError = EUSARTInterrupt();
+    if( wEUSARTError != 0 )
+    {
+        char wText[3];
+        wText[0] = 'u';
+        wText[1] = '0' + wEUSARTError;
+        wText[2] = 0;
+        lcdWriteText(wText);
+    }
     if(PIR1bits.TMR1IF == 1)
     {
         wTimer1IntCounter++;
@@ -454,39 +400,5 @@ void __interrupt() myint(void)
     {
         INTCONbits.TMR0IF = 0;
         wTimer0Counter++;
-    }
-    if( PIR1bits.TXIF == 1 ) //UART Transmission
-    {
-      if(gTxReadingPosition < gTxTransmitSize)
-      {
-          TXREG = gTxBuffer[gTxReadingPosition];
-          gTxReadingPosition++;
-      }
-      else
-      {
-           gTxReadingPosition = 0;
-           gTxTransmitSize = 0;
-           PIE1bits.TXIE =0;
-      }
-    }
-    if( PIR1bits.RCIF == 1)
-    {
-        if(RCSTAbits.FERR == 1 || RCSTAbits.OERR == 1 )
-        {
-            gErrorCode = RCSTAbits.FERR + (RCSTAbits.OERR<<1);
-        }
-        else
-        {
-            if(gUartRXBufferIndex < sizeof(gUartRXBuffer) )
-            {
-              gUartRXBuffer[gUartRXBufferIndex] = RCREG;
-              gUartRXBufferIndex++;
-            }
-            else
-            {
-              gErrorCode = 3;  
-            }
-        }
-        
     }
 }

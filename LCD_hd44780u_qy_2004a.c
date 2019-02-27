@@ -71,6 +71,30 @@ void lcdWriteText(char *iText)
     
 }
 
+void lcdWriteAllText(char *iText)
+ {
+  unsigned char wCharReadingPos = 0;
+  while( iText[wCharReadingPos] != 0)
+  {
+    switch(iText[wCharReadingPos])
+    {
+        case '\r':
+            writeTxtChk('/');
+            writeTxtChk('r');
+            break;
+        case '\n':
+            writeTxtChk('/');
+            writeTxtChk('n');
+            break;
+        default:
+            writeTxtChk(iText[wCharReadingPos]);
+            break;
+    }
+    wCharReadingPos++;
+  }
+    
+}
+
 void lcdWriteRotText(char *iRotText, char ioRotReadPtr, char iWritePtr)
 {
     while(ioRotReadPtr < iWritePtr || (ioRotReadPtr < wInterruptTextSize && ioRotReadPtr > iWritePtr))
@@ -100,6 +124,10 @@ void setData(char iValue)
 
 void writeTxtChk(char iOpCode)
 {
+    if(iOpCode == '\r')
+    {
+      return;   
+    }
   SetToSendDataToLCD();
   RS = RS_DATA_REGISTER;
   RW = RW_WRITE;

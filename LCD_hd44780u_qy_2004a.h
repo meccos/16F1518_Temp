@@ -17,6 +17,7 @@ void waitLCDBusy(void);
 void SetReadDataFromLCD(void);
 void SetToSendDataToLCD(void);
 void lcdWriteText(char *iText);
+void lcdWriteAllText(char *iText);
 void lcdWriteRotText(char *iRotText, char ioRotReadPtr, char iWritePtr);
 void powerOffLcd();
 void powerOnLcd();

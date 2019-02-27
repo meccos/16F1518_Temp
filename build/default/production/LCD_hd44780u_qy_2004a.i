@@ -29,6 +29,7 @@ void waitLCDBusy(void);
 void SetReadDataFromLCD(void);
 void SetToSendDataToLCD(void);
 void lcdWriteText(char *iText);
+void lcdWriteAllText(char *iText);
 void lcdWriteRotText(char *iRotText, char ioRotReadPtr, char iWritePtr);
 void powerOffLcd();
 void powerOnLcd();
@@ -3207,6 +3208,30 @@ void lcdWriteText(char *iText)
 
 }
 
+void lcdWriteAllText(char *iText)
+ {
+  unsigned char wCharReadingPos = 0;
+  while( iText[wCharReadingPos] != 0)
+  {
+    switch(iText[wCharReadingPos])
+    {
+        case '\r':
+            writeTxtChk('/');
+            writeTxtChk('r');
+            break;
+        case '\n':
+            writeTxtChk('/');
+            writeTxtChk('n');
+            break;
+        default:
+            writeTxtChk(iText[wCharReadingPos]);
+            break;
+    }
+    wCharReadingPos++;
+  }
+
+}
+
 void lcdWriteRotText(char *iRotText, char ioRotReadPtr, char iWritePtr)
 {
     while(ioRotReadPtr < iWritePtr || (ioRotReadPtr < 75 && ioRotReadPtr > iWritePtr))
@@ -3236,6 +3261,10 @@ void setData(char iValue)
 
 void writeTxtChk(char iOpCode)
 {
+    if(iOpCode == '\r')
+    {
+      return;
+    }
   SetToSendDataToLCD();
   PORTAbits.RA0 = 1;
   PORTAbits.RA1 = 0;

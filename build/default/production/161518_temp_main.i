@@ -2937,6 +2937,7 @@ void waitLCDBusy(void);
 void SetReadDataFromLCD(void);
 void SetToSendDataToLCD(void);
 void lcdWriteText(char *iText);
+void lcdWriteAllText(char *iText);
 void lcdWriteRotText(char *iRotText, char ioRotReadPtr, char iWritePtr);
 void powerOffLcd();
 void powerOnLcd();
@@ -3289,9 +3290,61 @@ void *memccpy (void *restrict, const void *restrict, int, size_t);
 
 
 
+
 void AddTrace(char* oText, char iSizeOfoText, char* iText);
+char* uint8_tToa(char* wText, uint8_t iNumber);
 # 18 "161518_temp_main.c" 2
-# 27 "161518_temp_main.c"
+
+
+# 1 "./EUSART.h" 1
+# 13 "./EUSART.h"
+uint8_t gEusartTXBuffer[50];
+uint8_t gEusartRXBuffer[50];
+uint8_t gEusartRXBufferIndex;
+uint8_t gTxReadingPosition = 0;
+
+uint8_t gTxTransmitSize = 0;
+
+
+void EUSARTInit();
+void Send_UART_Data( uint8_t* iData, uint8_t iData_Length);
+uint8_t EusartGetNbByteReceived();
+
+void EusartGetRxBuffer(uint8_t* oData, uint8_t iDataSize, uint8_t* oNbOfByteReceived);
+int EUSARTInterrupt();
+# 20 "161518_temp_main.c" 2
+
+# 1 "./ESP8266.h" 1
+
+
+
+
+
+
+
+enum{eHideSSID, eBroadcastSSID};
+enum{eSettingUpCommand, eESPIdle, eESPProcessCommand, eESPCommandSent, eESPWaitConfirmation,eESPCommandReceived};
+enum{eSettingAPMode, eSettingWiFiMode, eSendData, eNothing};
+
+uint8_t gEsp8266State=eESPIdle;
+uint8_t gESPCommand=eNothing;
+
+void Esp8266Init();
+
+void Esp8266SetupWifi();
+void Esp8266SetAccessPointMode();
+int Esp8266SetNetworkParameters(char* iWifiNetworkName, char* iWifiPassword, uint8_t iChannel, uint8_t iHidden);
+
+void Esp8266Entrypoint();
+# 21 "161518_temp_main.c" 2
+
+
+
+
+
+
+
+
 #pragma config FOSC = 0x2
 #pragma config WDTE = OFF
 #pragma config PWRTE = ON
@@ -3316,9 +3369,7 @@ char wInterruptText[75];
 char wHexTemp[20];
 uint8_t wTrial=0;
 
-unsigned char gTxBuffer[256];
-uint8_t gTxTransmitSize=0;
-uint8_t gTxReadingPosition=0;
+
 uint8_t gErrorCode;
 
 void ToggleBitRB5()
@@ -3364,40 +3415,21 @@ void Debounce(uint8_t iSwitch,uint16_t* ioTimer, uint8_t* swPressed)
       *swPressed = 1;
     }
 }
-void Send_UART_Data( unsigned char* iData, uint8_t iData_Length)
-{
-    if(gTxTransmitSize != 0)
-    {
-        return;
-    }
-    gTxReadingPosition = 0;
-    gTxTransmitSize = iData_Length;
-    memcpy(gTxBuffer , iData,iData_Length);
-
-    SPBRGH = 0;
-    SPBRGL = 1;
-    ANSELCbits.ANSC6 = 0;
-    TXSTAbits.TXEN = 1;
-    TXSTAbits.SYNC = 0;
-    RCSTAbits.SPEN = 1;
-    PIE1bits.TXIE = 1;
-
-}
-# 126 "161518_temp_main.c"
+# 108 "161518_temp_main.c"
 uint8_t wTimer1IntCounter=0;
 
 int16_t wHumidity=0;
 int16_t wTemperature=0;
 
-unsigned char gUartTXBuffer[50];
-unsigned char gUartRXBuffer[50];
-unsigned char gUartRXBufferIndex;
-
 int16_t wTempSet=210;
 
 enum eMenu{eShowTime=0,eShowTemp,eShowMode,eSetTime=128,eSetTemp=129,eSetMode=130};
 enum eMode{eElectric=0,eFuel,eThermopump,eCooling};
-# 147 "161518_temp_main.c"
+
+
+
+
+
 void main(void)
 {
 
@@ -3454,37 +3486,10 @@ void main(void)
 
 
 
-  I2CInit();
+
+  EUSARTInit();
 
 
-
-
-  ANSELCbits.ANSC6 = 0;
-  ANSELCbits.ANSC7 = 0;
-  TRISCbits.TRISC6 = 0;
-  TRISCbits.TRISC7 = 1;
-  gUartRXBufferIndex = 0;
-
-
-  PIE1bits.RCIE =1;
-
-
-
-  SSPCON1bits.SSPM = 0x8;
-  SSPADD = 0x1F;
-  SSPCON1bits.SSPEN = 1;
-  SSPCON2bits.GCEN = 0;
-  SSPCON2bits.ACKEN = 1;
-  SSPCON3bits.PCIE = 1;
-  SSPCON3bits.SCIE = 1;
-  SSPCON3bits.SDAHT = 1;
-  SSPCON3bits.AHEN = 0 ;
-  SSPCON3bits.DHEN = 0;
-  SSPSTATbits.CKE = 0;
-
-  INTCONbits.PEIE = 1;
-  PIE1bits.SSPIE = 1;
-  PIE2bits.BCLIE = 1;
 
   INTCONbits.GIE = 1;
 
@@ -3512,31 +3517,19 @@ void main(void)
   _delay((unsigned long)((30)*(16000000/4000.0)));
 
 
-
-
-
-
+  RCSTAbits.SPEN = 1;
+  RCSTAbits.CREN = 1;
+  RCSTAbits.ADDEN = 0;
+  RCSTAbits.RX9 = 0 ;
 
   _delay((unsigned long)((1000)*(16000000/4000.0)));
   while(1)
   {
-# 418 "161518_temp_main.c"
-    if( EM1812EntryPoint(&wHumidity, &wTemperature) == 1)
-    {
+# 259 "161518_temp_main.c"
+    Esp8266Entrypoint();
 
-        if((wHumidityPrev != wHumidity) || (wTemperaturePrev != wTemperature))
-        {
-            wHumidityPrev = wHumidity;
-            wTemperaturePrev = wTemperature;
-            setCursorPosition(2,0);
-            printEM1812(wHumidityPrev,wReadout);
-            AddTrace(wInterruptText,sizeof(wInterruptText),"Humidity : ");
-            AddTrace(wInterruptText,sizeof(wInterruptText),wReadout);
-            printEM1812(wTemperaturePrev,wReadout);
-            AddTrace(wInterruptText,sizeof(wInterruptText),"\nTemp : ");
-            AddTrace(wInterruptText,sizeof(wInterruptText),wReadout);
-            PrintLog(wInterruptText);
-        }
+    {
+# 276 "161518_temp_main.c"
     }
     wIterationCounter++;
 
@@ -3571,6 +3564,8 @@ void main(void)
    {
        wUpdateMenu=1;
        wDownBottonPressed = 0;
+         clearDisplay();
+         moveCursorToHome();
         switch(wMenu)
         {
             case eSetTime:
@@ -3595,26 +3590,11 @@ void main(void)
        {
          wEditingMode = 1;
          wMenu = wMenu+128;
-
-            gUartRXBufferIndex=0;
-            gUartRXBuffer[0]=0;
-            memcpy(gUartTXBuffer,"AT+CWMODE=3",sizeof("AT+CWMODE=2"));
-            gUartTXBuffer[sizeof("AT+CWMODE=2")] = 0x0d;
-            gUartTXBuffer[sizeof("AT+CWMODE=2")+1] = 0x0a;
-            gUartTXBuffer[sizeof("AT+CWMODE=2")+2] = 0;
-            Send_UART_Data(gUartTXBuffer,sizeof("AT+CWMODE=2")+2);
+         Esp8266SetAccessPointMode();
        }
        else
        {
-            gUartRXBufferIndex=0;
-            gUartRXBuffer[0]=0;
-            memcpy(gUartTXBuffer,"AT+CWSAP=\"ESP_9945B5\",\"12345678\",11,0",sizeof("AT+CWSAP=\"ESP_9945B5\",\"12345678\",11,0"));
-
-
-            gUartTXBuffer[sizeof("AT+CWSAP=\"ESP_9945B5\",\"12345678\",11,0")] = 0x0d;
-            gUartTXBuffer[sizeof("AT+CWSAP=\"ESP_9945B5\",\"12345678\",11,0")+1] = 0x0a;
-            gUartTXBuffer[sizeof("AT+CWSAP=\"ESP_9945B5\",\"12345678\",11,0")+2] = 0;
-            Send_UART_Data(gUartTXBuffer,sizeof("AT+CWSAP=\"ESP_9945B5\",\"12345678\",11,0")+2);
+         Esp8266SetupWifi();
          wEditingMode = 0;
        }
    }
@@ -3637,16 +3617,26 @@ void main(void)
 char wCounter2=0;
 void __attribute__((picinterrupt(""))) myint(void)
 {
-    int wI2CError;
-    wI2CError = I2C_Interrupt();
+    int wI2CError,wEUSARTError;
+
     if( wI2CError != 0 )
     {
-        char wText[2];
-        wText[0] = '0' + wI2CError;
-        wText[1] = 0;
+        char wText[3];
+        wText[1] = 'i';
+        wText[1] = '0' + wI2CError;
+        wText[2] = 0;
         lcdWriteText(wText);
     }
 
+    wEUSARTError = EUSARTInterrupt();
+    if( wEUSARTError != 0 )
+    {
+        char wText[3];
+        wText[0] = 'u';
+        wText[1] = '0' + wEUSARTError;
+        wText[2] = 0;
+        lcdWriteText(wText);
+    }
     if(PIR1bits.TMR1IF == 1)
     {
         wTimer1IntCounter++;
@@ -3667,39 +3657,5 @@ void __attribute__((picinterrupt(""))) myint(void)
     {
         INTCONbits.TMR0IF = 0;
         wTimer0Counter++;
-    }
-    if( PIR1bits.TXIF == 1 )
-    {
-      if(gTxReadingPosition < gTxTransmitSize)
-      {
-          TXREG = gTxBuffer[gTxReadingPosition];
-          gTxReadingPosition++;
-      }
-      else
-      {
-           gTxReadingPosition = 0;
-           gTxTransmitSize = 0;
-           PIE1bits.TXIE =0;
-      }
-    }
-    if( PIR1bits.RCIF == 1)
-    {
-        if(RCSTAbits.FERR == 1 || RCSTAbits.OERR == 1 )
-        {
-            gErrorCode = RCSTAbits.FERR + (RCSTAbits.OERR<<1);
-        }
-        else
-        {
-            if(gUartRXBufferIndex < sizeof(gUartRXBuffer) )
-            {
-              gUartRXBuffer[gUartRXBufferIndex] = RCREG;
-              gUartRXBufferIndex++;
-            }
-            else
-            {
-              gErrorCode = 3;
-            }
-        }
-
     }
 }
