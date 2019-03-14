@@ -9,12 +9,12 @@ Version 4.0 HI-TECH Software Intermediate Code
 [n E1735 I2CSTATUS CommandSent ProcessingCommand CommandWillComplet CommandCompleted CommandWillFail CommandFailed  ]
 "12 ./ESP8266.h
 [; ;./ESP8266.h: 12: uint8_t gEsp8266State=eESPIdle;
-[c E2276 0 1 2 3 4 5 .. ]
-[n E2276 . eSettingUpCommand eESPIdle eESPProcessCommand eESPCommandSent eESPWaitConfirmation eESPCommandReceived  ]
+[c E2284 0 1 2 3 4 5 .. ]
+[n E2284 . eSettingUpCommand eESPIdle eESPProcessCommand eESPCommandSent eESPWaitConfirmation eESPCommandReceived  ]
 "13
 [; ;./ESP8266.h: 13: uint8_t gESPCommand=eNothing;
-[c E2283 0 1 2 3 .. ]
-[n E2283 . eSettingAPMode eSettingWiFiMode eSendData eNothing  ]
+[c E2291 0 1 2 3 4 .. ]
+[n E2291 . eSettingAPMode eSettingWiFiMode eSendData eNothing eOpenUDPSocket  ]
 "497 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1518.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1518.h: 497:     struct {
 [s S36 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -122,6 +122,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 "2837
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1518.h: 2837: extern volatile unsigned char WPUB __attribute__((address(0x20D)));
 [v _WPUB `Vuc ~T0 @X0 0 e@525 ]
+"34 ./I2C.h
+[; ;./I2C.h: 34: void I2CInit();
+[v _I2CInit `(v ~T0 @X0 0 e? ]
 "21 ./EUSART.h
 [; ;./EUSART.h: 21: void EUSARTInit();
 [v _EUSARTInit `(v ~T0 @X0 0 e? ]
@@ -158,20 +161,38 @@ Version 4.0 HI-TECH Software Intermediate Code
 "2678
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1518.h: 2678: extern volatile RCSTAbits_t RCSTAbits __attribute__((address(0x19D)));
 [v _RCSTAbits `VS148 ~T0 @X0 0 e@413 ]
-"21 ./ESP8266.h
-[; ;./ESP8266.h: 21: void Esp8266Entrypoint();
+"24 ./ESP8266.h
+[; ;./ESP8266.h: 24: void Esp8266Entrypoint();
 [v _Esp8266Entrypoint `(v ~T0 @X0 0 e? ]
-"303 161518_temp_main.c
-[c E2315 0 1 2 128 129 130 .. ]
-[n E2315 eMenu eShowTime eShowTemp eShowMode eSetTime eSetTemp eSetMode  ]
-"18 ./ESP8266.h
-[; ;./ESP8266.h: 18: void Esp8266SetAccessPointMode();
+"17 ./EM1812.h
+[; ;./EM1812.h: 17: int EM1812EntryPoint(int16_t* oHumidity, int16_t* oTemperature);
+[v _EM1812EntryPoint `(i ~T0 @X0 0 ef2`*s`*s ]
+"30 ./LCD_hd44780u_qy_2004a.h
+[; ;./LCD_hd44780u_qy_2004a.h: 30: void setCursorPosition(char iLine, char iPosition);
+[v _setCursorPosition `(v ~T0 @X0 0 ef2`uc`uc ]
+"11 ./EM1812.h
+[; ;./EM1812.h: 11: void printEM1812(int16_t wVariable, char* oTextOut);
+[v _printEM1812 `(v ~T0 @X0 0 ef2`s`*uc ]
+"9 ./GeneralFunction.h
+[; ;./GeneralFunction.h: 9: void AddTrace(char* oText, char iSizeOfoText, char* iText);
+[v _AddTrace `(v ~T0 @X0 0 ef3`*uc`uc`*uc ]
+"19 ./ESP8266.h
+[; ;./ESP8266.h: 19: void Esp8266OpenSocket();
+[v _Esp8266OpenSocket `(v ~T0 @X0 0 e? ]
+"304 161518_temp_main.c
+[c E2329 0 1 2 128 129 130 .. ]
+[n E2329 eMenu eShowTime eShowTemp eShowMode eSetTime eSetTemp eSetMode  ]
+"21 ./ESP8266.h
+[; ;./ESP8266.h: 21: void Esp8266SetAccessPointMode();
 [v _Esp8266SetAccessPointMode `(v ~T0 @X0 0 e? ]
-"17
-[; ;./ESP8266.h: 17: void Esp8266SetupWifi();
+"20
+[; ;./ESP8266.h: 20: void Esp8266SetupWifi();
 [v _Esp8266SetupWifi `(v ~T0 @X0 0 e? ]
 [t ~ __interrupt . k ]
 [t T1 __interrupt ]
+"35 ./I2C.h
+[; ;./I2C.h: 35: int I2C_Interrupt();
+[v _I2C_Interrupt `(i ~T0 @X0 0 e? ]
 "26 ./EUSART.h
 [; ;./EUSART.h: 26: int EUSARTInterrupt();
 [v _EUSARTInterrupt `(i ~T0 @X0 0 e? ]
@@ -616,11 +637,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> -> 0 `i `uc
 ]
 "13 ./EUSART.h
-[; ;./EUSART.h: 13: uint8_t gEusartTXBuffer[50];
-[v _gEusartTXBuffer `uc ~T0 @X0 -> 50 `i e ]
+[; ;./EUSART.h: 13: uint8_t gEusartTXBuffer[70];
+[v _gEusartTXBuffer `uc ~T0 @X0 -> 70 `i e ]
 "14
-[; ;./EUSART.h: 14: uint8_t gEusartRXBuffer[50];
-[v _gEusartRXBuffer `uc ~T0 @X0 -> 50 `i e ]
+[; ;./EUSART.h: 14: uint8_t gEusartRXBuffer[70];
+[v _gEusartRXBuffer `uc ~T0 @X0 -> 70 `i e ]
 "15
 [; ;./EUSART.h: 15: uint8_t gEusartRXBufferIndex;
 [v _gEusartRXBufferIndex `uc ~T0 @X0 1 e ]
@@ -640,13 +661,13 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;./ESP8266.h: 12: uint8_t gEsp8266State=eESPIdle;
 [v _gEsp8266State `uc ~T0 @X0 1 e ]
 [i _gEsp8266State
--> . `E2276 1 `uc
+-> . `E2284 1 `uc
 ]
 "13
 [; ;./ESP8266.h: 13: uint8_t gESPCommand=eNothing;
 [v _gESPCommand `uc ~T0 @X0 1 e ]
 [i _gESPCommand
--> . `E2283 3 `uc
+-> . `E2291 3 `uc
 ]
 "29 161518_temp_main.c
 [p x FOSC = 0x2 ]
@@ -901,6 +922,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = _WPUB -> -> 15 `i `uc ]
 "174
 [e = . . _OPTION_REGbits 0 5 -> -> 0 `i `uc ]
+"178
+[e ( _I2CInit ..  ]
 "179
 [e ( _EUSARTInit ..  ]
 "183
@@ -930,8 +953,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "199
 [v _wCounter `i ~T0 @X0 1 a ]
 [e = _wCounter -> 0 `i ]
-[v F2342 `uc ~T0 @X0 -> 4 `i s ]
-[i F2342
+[v F2356 `uc ~T0 @X0 -> 4 `i s ]
+[i F2356
 :U ..
 "200
 -> -> 43 `ui `uc
@@ -941,7 +964,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 ..
 ]
 [v _wConv `uc ~T0 @X0 -> 4 `i a ]
-[e = _wConv F2342 ]
+[e = _wConv F2356 ]
 "201
 [v _wTemp `i ~T0 @X0 1 a ]
 [e = _wTemp -> 0 `i ]
@@ -967,10 +990,40 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 "259
 [e ( _Esp8266Entrypoint ..  ]
+"260
+[e $ ! == ( _EM1812EntryPoint (2 , &U _wHumidity &U _wTemperature -> 1 `i 254  ]
 "261
 {
+"263
+[e $ ! && != -> 0 `i -> 0 `i || != -> _wHumidityPrev `i -> _wHumidity `i != -> _wTemperaturePrev `i -> _wTemperature `i 255  ]
+"264
+{
+"265
+[e = _wHumidityPrev _wHumidity ]
+"266
+[e = _wTemperaturePrev _wTemperature ]
+"267
+[e ( _setCursorPosition (2 , -> -> 2 `i `uc -> -> 0 `i `uc ]
+"268
+[e ( _printEM1812 (2 , _wHumidityPrev &U _wReadout ]
+"269
+[e ( _AddTrace (3 , , &U _wInterruptText -> -> # _wInterruptText `ui `uc :s 1C ]
+"270
+[e ( _AddTrace (3 , , &U _wInterruptText -> -> # _wInterruptText `ui `uc &U _wReadout ]
+"271
+[e ( _printEM1812 (2 , _wTemperaturePrev &U _wReadout ]
+"272
+[e ( _AddTrace (3 , , &U _wInterruptText -> -> # _wInterruptText `ui `uc :s 2C ]
+"273
+[e ( _AddTrace (3 , , &U _wInterruptText -> -> # _wInterruptText `ui `uc &U _wReadout ]
+"274
+[e ( _PrintLog (1 &U _wInterruptText ]
+"275
+}
+[e :U 255 ]
 "276
 }
+[e :U 254 ]
 "277
 [e ++ _wIterationCounter -> -> 1 `i `us ]
 "280
@@ -980,259 +1033,267 @@ Version 4.0 HI-TECH Software Intermediate Code
 "282
 [e ( _Debounce (3 , , . . _PORTBbits 0 2 &U _wDebounceDown &U _wDownBottonPressed ]
 "286
-[e $ ! == -> _wUpBottonPressed `i -> 1 `i 254  ]
+[e $ ! == -> _wUpBottonPressed `i -> 1 `i 256  ]
 "287
 {
 "288
-[e = _wUpdateMenu -> -> 1 `i `uc ]
+[e ( _Esp8266OpenSocket ..  ]
 "289
-[e = _wUpBottonPressed -> -> 0 `i `uc ]
-"290
-[e $U 256  ]
-"291
-{
-"292
-[e :U 257 ]
-"294
-[e $U 255  ]
-"295
-[e :U 258 ]
-"296
-[e = _wTempSet -> + -> _wTempSet `i -> 1 `i `s ]
-"297
-[e $U 255  ]
-"298
-[e :U 259 ]
-"299
-[e $U 255  ]
-"300
-[e :U 260 ]
-"301
-[e ++ _wMenu -> -> 1 `i `uc ]
-"302
-[e $U 255  ]
-"303
-}
-[e $U 255  ]
-[e :U 256 ]
-[e [\ -> _wMenu `i , $ . `E2315 3 257
- , $ . `E2315 4 258
- , $ . `E2315 5 259
- 260 ]
-[e :U 255 ]
-"305
-}
-[e :U 254 ]
-"306
-[e $ ! == -> _wDownBottonPressed `i -> 1 `i 261  ]
-"307
-{
-"308
 [e = _wUpdateMenu -> -> 1 `i `uc ]
-"309
-[e = _wDownBottonPressed -> -> 0 `i `uc ]
-"310
-[e ( _clearDisplay ..  ]
-"311
-[e ( _moveCursorToHome ..  ]
-"312
-[e $U 263  ]
-"313
+"290
+[e = _wUpBottonPressed -> -> 0 `i `uc ]
+"291
+[e $U 258  ]
+"292
 {
-"314
-[e :U 264 ]
-"316
-[e $U 262  ]
-"317
-[e :U 265 ]
-"318
-[e = _wTempSet -> - -> _wTempSet `i -> 1 `i `s ]
-"319
-[e $U 262  ]
-"320
-[e :U 266 ]
-"321
-[e $U 262  ]
-"322
-[e :U 267 ]
-"323
-[e -- _wMenu -> -> 1 `i `uc ]
-"324
-[e $U 262  ]
-"325
-}
-[e $U 262  ]
-[e :U 263 ]
-[e [\ -> _wMenu `i , $ . `E2315 3 264
- , $ . `E2315 4 265
- , $ . `E2315 5 266
- 267 ]
+"293
+[e :U 259 ]
+"295
+[e $U 257  ]
+"296
+[e :U 260 ]
+"297
+[e = _wTempSet -> + -> _wTempSet `i -> 1 `i `s ]
+"298
+[e $U 257  ]
+"299
+[e :U 261 ]
+"300
+[e $U 257  ]
+"301
 [e :U 262 ]
+"302
+[e ++ _wMenu -> -> 1 `i `uc ]
+"303
+[e $U 257  ]
+"304
+}
+[e $U 257  ]
+[e :U 258 ]
+[e [\ -> _wMenu `i , $ . `E2329 3 259
+ , $ . `E2329 4 260
+ , $ . `E2329 5 261
+ 262 ]
+[e :U 257 ]
+"306
+}
+[e :U 256 ]
+"307
+[e $ ! == -> _wDownBottonPressed `i -> 1 `i 263  ]
+"308
+{
+"309
+[e = _wUpdateMenu -> -> 1 `i `uc ]
+"310
+[e = _wDownBottonPressed -> -> 0 `i `uc ]
+"311
+[e ( _clearDisplay ..  ]
+"312
+[e ( _moveCursorToHome ..  ]
+"313
+[e $U 265  ]
+"314
+{
+"315
+[e :U 266 ]
+"317
+[e $U 264  ]
+"318
+[e :U 267 ]
+"319
+[e = _wTempSet -> - -> _wTempSet `i -> 1 `i `s ]
+"320
+[e $U 264  ]
+"321
+[e :U 268 ]
+"322
+[e $U 264  ]
+"323
+[e :U 269 ]
+"324
+[e -- _wMenu -> -> 1 `i `uc ]
+"325
+[e $U 264  ]
 "326
 }
-[e :U 261 ]
+[e $U 264  ]
+[e :U 265 ]
+[e [\ -> _wMenu `i , $ . `E2329 3 266
+ , $ . `E2329 4 267
+ , $ . `E2329 5 268
+ 269 ]
+[e :U 264 ]
 "327
-[e $ ! == -> _wEnterBottonPressed `i -> 1 `i 268  ]
+}
+[e :U 263 ]
 "328
-{
+[e $ ! == -> _wEnterBottonPressed `i -> 1 `i 270  ]
 "329
-[e = _wUpdateMenu -> -> 1 `i `uc ]
+{
 "330
+[e = _wUpdateMenu -> -> 1 `i `uc ]
+"331
 [e = _wEnterBottonPressed -> -> 0 `i `uc ]
-"332
-[e $ ! == -> _wEditingMode `i -> 0 `i 269  ]
 "333
-{
+[e $ ! == -> _wEditingMode `i -> 0 `i 271  ]
 "334
-[e = _wEditingMode -> -> 1 `i `uc ]
-"335
-[e = _wMenu -> + -> _wMenu `i -> 128 `i `uc ]
-"336
-[e ( _Esp8266SetAccessPointMode ..  ]
-"337
-}
-[e $U 270  ]
-"338
-[e :U 269 ]
-"339
 {
-"340
-[e ( _Esp8266SetupWifi ..  ]
-"341
-[e = _wEditingMode -> -> 0 `i `uc ]
-"342
+"335
+[e = _wEditingMode -> -> 1 `i `uc ]
+"336
+[e = _wMenu -> + -> _wMenu `i -> 128 `i `uc ]
+"337
+[e ( _Esp8266SetAccessPointMode ..  ]
+"338
 }
-[e :U 270 ]
+[e $U 272  ]
+"339
+[e :U 271 ]
+"340
+{
+"341
+[e ( _Esp8266SetupWifi ..  ]
+"342
+[e = _wEditingMode -> -> 0 `i `uc ]
 "343
 }
-[e :U 268 ]
-"344
-[e $ ! == -> _wMenu `i -> 255 `i 271  ]
-"345
-{
-"346
-[e = _wUpdateMenu -> -> 1 `i `uc ]
-"347
-[e = _wMenu -> -> 2 `i `uc ]
-"348
-}
-[e :U 271 ]
-"349
-[e $ ! == -> _wMenu `i -> 3 `i 272  ]
-"350
-{
-"351
-[e = _wUpdateMenu -> -> 1 `i `uc ]
-"352
-[e = _wMenu -> -> 0 `i `uc ]
-"353
-}
 [e :U 272 ]
-"356
+"344
+}
+[e :U 270 ]
+"345
+[e $ ! == -> _wMenu `i -> 255 `i 273  ]
+"346
+{
+"347
+[e = _wUpdateMenu -> -> 1 `i `uc ]
+"348
+[e = _wMenu -> -> 2 `i `uc ]
+"349
+}
+[e :U 273 ]
+"350
+[e $ ! == -> _wMenu `i -> 3 `i 274  ]
+"351
+{
+"352
+[e = _wUpdateMenu -> -> 1 `i `uc ]
+"353
+[e = _wMenu -> -> 0 `i `uc ]
+"354
+}
+[e :U 274 ]
+"357
 }
 [e :U 251 ]
 [e $U 252  ]
 [e :U 253 ]
-"357
-[e $UE 250  ]
 "358
+[e $UE 250  ]
+"359
 [e :UE 250 ]
 }
-"360
+"361
 [v _wCounter2 `uc ~T0 @X0 1 e ]
 [i _wCounter2
 -> -> 0 `i `uc
 ]
 [v $root$_myint `(v ~T0 @X0 0 e ]
-"361
-[v _myint `(v ~T1 @X0 1 ef ]
 "362
+[v _myint `(v ~T1 @X0 1 ef ]
+"363
 {
 [e :U _myint ]
 [f ]
-"363
+"364
 [v _wI2CError `i ~T0 @X0 1 a ]
+[e = _wI2CError -> 0 `i ]
 [v _wEUSARTError `i ~T0 @X0 1 a ]
+[e = _wEUSARTError -> 0 `i ]
 "365
-[e $ ! != _wI2CError -> 0 `i 274  ]
+[e = _wI2CError ( _I2C_Interrupt ..  ]
 "366
-{
+[e $ ! != _wI2CError -> 0 `i 276  ]
 "367
-[v _wText `uc ~T0 @X0 -> 3 `i a ]
+{
 "368
-[e = *U + &U _wText * -> -> -> 1 `i `ui `ux -> -> # *U &U _wText `ui `ux -> -> 105 `ui `uc ]
-"369
-[e = *U + &U _wText * -> -> -> 1 `i `ui `ux -> -> # *U &U _wText `ui `ux -> + -> 48 `ui -> _wI2CError `ui `uc ]
-"370
-[e = *U + &U _wText * -> -> -> 2 `i `ui `ux -> -> # *U &U _wText `ui `ux -> -> 0 `i `uc ]
-"371
-[e ( _lcdWriteText (1 &U _wText ]
-"372
-}
-[e :U 274 ]
-"374
-[e = _wEUSARTError ( _EUSARTInterrupt ..  ]
-"375
-[e $ ! != _wEUSARTError -> 0 `i 275  ]
-"376
-{
-"377
 [v _wText `uc ~T0 @X0 -> 3 `i a ]
-"378
-[e = *U + &U _wText * -> -> -> 0 `i `ui `ux -> -> # *U &U _wText `ui `ux -> -> 117 `ui `uc ]
-"379
-[e = *U + &U _wText * -> -> -> 1 `i `ui `ux -> -> # *U &U _wText `ui `ux -> + -> 48 `ui -> _wEUSARTError `ui `uc ]
-"380
+"369
+[e = *U + &U _wText * -> -> -> 0 `i `ui `ux -> -> # *U &U _wText `ui `ux -> -> 105 `ui `uc ]
+"370
+[e = *U + &U _wText * -> -> -> 1 `i `ui `ux -> -> # *U &U _wText `ui `ux -> + -> 48 `ui -> _wI2CError `ui `uc ]
+"371
 [e = *U + &U _wText * -> -> -> 2 `i `ui `ux -> -> # *U &U _wText `ui `ux -> -> 0 `i `uc ]
-"381
+"372
 [e ( _lcdWriteText (1 &U _wText ]
-"382
-}
-[e :U 275 ]
-"383
-[e $ ! == -> . . _PIR1bits 0 0 `i -> 1 `i 276  ]
-"384
-{
-"385
-[e ++ _wTimer1IntCounter -> -> 1 `i `uc ]
-"386
-[e = . . _PIR1bits 0 0 -> -> 0 `i `uc ]
-"388
-[e $ ! == -> _wTimer1IntCounter `i -> 7 `i 277  ]
-"389
-{
-"390
-[e = _TMR1H -> -> 76 `i `uc ]
-"391
-[e = _TMR1L -> -> 131 `i `uc ]
-"392
-}
-[e :U 277 ]
-"393
-[e $ ! == -> _wTimer1IntCounter `i -> 8 `i 278  ]
-"394
-{
-"395
-[e = _wTimer1IntCounter -> -> 0 `i `uc ]
-"396
-[e ( _TempUpdateRequest ..  ]
-"397
-}
-[e :U 278 ]
-"398
+"373
 }
 [e :U 276 ]
-"399
-[e $ ! == -> . . _INTCONbits 0 2 `i -> 1 `i 279  ]
-"400
+"375
+[e = _wEUSARTError ( _EUSARTInterrupt ..  ]
+"376
+[e $ ! != _wEUSARTError -> 0 `i 277  ]
+"377
 {
-"401
-[e = . . _INTCONbits 0 2 -> -> 0 `i `uc ]
-"402
-[e ++ _wTimer0Counter -> -> 1 `i `uc ]
-"403
+"378
+[v _wText `uc ~T0 @X0 -> 3 `i a ]
+"379
+[e = *U + &U _wText * -> -> -> 0 `i `ui `ux -> -> # *U &U _wText `ui `ux -> -> 117 `ui `uc ]
+"380
+[e = *U + &U _wText * -> -> -> 1 `i `ui `ux -> -> # *U &U _wText `ui `ux -> + -> 48 `ui -> _wEUSARTError `ui `uc ]
+"381
+[e = *U + &U _wText * -> -> -> 2 `i `ui `ux -> -> # *U &U _wText `ui `ux -> -> 0 `i `uc ]
+"382
+[e ( _lcdWriteText (1 &U _wText ]
+"383
+}
+[e :U 277 ]
+"384
+[e $ ! == -> . . _PIR1bits 0 0 `i -> 1 `i 278  ]
+"385
+{
+"386
+[e ++ _wTimer1IntCounter -> -> 1 `i `uc ]
+"387
+[e = . . _PIR1bits 0 0 -> -> 0 `i `uc ]
+"389
+[e $ ! == -> _wTimer1IntCounter `i -> 7 `i 279  ]
+"390
+{
+"391
+[e = _TMR1H -> -> 76 `i `uc ]
+"392
+[e = _TMR1L -> -> 131 `i `uc ]
+"393
 }
 [e :U 279 ]
-"404
-[e :UE 273 ]
+"394
+[e $ ! == -> _wTimer1IntCounter `i -> 8 `i 280  ]
+"395
+{
+"396
+[e = _wTimer1IntCounter -> -> 0 `i `uc ]
+"397
+[e ( _TempUpdateRequest ..  ]
+"398
 }
+[e :U 280 ]
+"399
+}
+[e :U 278 ]
+"400
+[e $ ! == -> . . _INTCONbits 0 2 `i -> 1 `i 281  ]
+"401
+{
+"402
+[e = . . _INTCONbits 0 2 -> -> 0 `i `uc ]
+"403
+[e ++ _wTimer0Counter -> -> 1 `i `uc ]
+"404
+}
+[e :U 281 ]
+"405
+[e :UE 275 ]
+}
+[a 1C 72 117 109 105 100 105 116 121 32 58 32 0 ]
+[a 2C 10 84 101 109 112 32 58 32 0 ]

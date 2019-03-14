@@ -3291,15 +3291,17 @@ void *memccpy (void *restrict, const void *restrict, int, size_t);
 
 
 
+char* moveToNextChar(char* iText, uint8_t iTextSize);
 void AddTrace(char* oText, char iSizeOfoText, char* iText);
-char* uint8_tToa(char* wText, uint8_t iNumber);
+char* uint8_tToa(char* wText, uint8_t iSizeofText, uint8_t iNumber);
+char* uint16_tToa(char* wText, uint8_t iSizeofText, uint16_t iNumber);
 # 18 "161518_temp_main.c" 2
 
 
 # 1 "./EUSART.h" 1
 # 13 "./EUSART.h"
-uint8_t gEusartTXBuffer[50];
-uint8_t gEusartRXBuffer[50];
+uint8_t gEusartTXBuffer[70];
+uint8_t gEusartRXBuffer[70];
 uint8_t gEusartRXBufferIndex;
 uint8_t gTxReadingPosition = 0;
 
@@ -3324,13 +3326,16 @@ int EUSARTInterrupt();
 
 enum{eHideSSID, eBroadcastSSID};
 enum{eSettingUpCommand, eESPIdle, eESPProcessCommand, eESPCommandSent, eESPWaitConfirmation,eESPCommandReceived};
-enum{eSettingAPMode, eSettingWiFiMode, eSendData, eNothing};
+enum{eSettingAPMode, eSettingWiFiMode, eSendData, eNothing, eOpenUDPSocket};
 
 uint8_t gEsp8266State=eESPIdle;
 uint8_t gESPCommand=eNothing;
 
 void Esp8266Init();
 
+int Esp8266OpenSocketCommand(char* iType, char* iDestination, uint16_t DestinationPort);
+
+void Esp8266OpenSocket();
 void Esp8266SetupWifi();
 void Esp8266SetAccessPointMode();
 int Esp8266SetNetworkParameters(char* iWifiNetworkName, char* iWifiPassword, uint8_t iChannel, uint8_t iHidden);
@@ -3486,7 +3491,7 @@ void main(void)
 
 
 
-
+  I2CInit();
   EUSARTInit();
 
 
@@ -3527,9 +3532,22 @@ void main(void)
   {
 # 259 "161518_temp_main.c"
     Esp8266Entrypoint();
-
+    if( EM1812EntryPoint(&wHumidity, &wTemperature) == 1)
     {
-# 276 "161518_temp_main.c"
+
+        if(0 && ((wHumidityPrev != wHumidity) || (wTemperaturePrev != wTemperature)))
+        {
+            wHumidityPrev = wHumidity;
+            wTemperaturePrev = wTemperature;
+            setCursorPosition(2,0);
+            printEM1812(wHumidityPrev,wReadout);
+            AddTrace(wInterruptText,sizeof(wInterruptText),"Humidity : ");
+            AddTrace(wInterruptText,sizeof(wInterruptText),wReadout);
+            printEM1812(wTemperaturePrev,wReadout);
+            AddTrace(wInterruptText,sizeof(wInterruptText),"\nTemp : ");
+            AddTrace(wInterruptText,sizeof(wInterruptText),wReadout);
+            PrintLog(wInterruptText);
+        }
     }
     wIterationCounter++;
 
@@ -3542,6 +3560,7 @@ void main(void)
 
    if(wUpBottonPressed == 1)
    {
+       Esp8266OpenSocket();
        wUpdateMenu=1;
        wUpBottonPressed = 0;
         switch(wMenu)
@@ -3617,12 +3636,12 @@ void main(void)
 char wCounter2=0;
 void __attribute__((picinterrupt(""))) myint(void)
 {
-    int wI2CError,wEUSARTError;
-
+    int wI2CError=0,wEUSARTError=0;
+    wI2CError = I2C_Interrupt();
     if( wI2CError != 0 )
     {
         char wText[3];
-        wText[1] = 'i';
+        wText[0] = 'i';
         wText[1] = '0' + wI2CError;
         wText[2] = 0;
         lcdWriteText(wText);

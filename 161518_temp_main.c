@@ -175,7 +175,7 @@ void main(void)
   
   //SCREEN Configuration done int the initLCD function
  
-  //I2CInit();
+  I2CInit();
   EUSARTInit();
 
 
@@ -257,10 +257,10 @@ void main(void)
     }*/
     
     Esp8266Entrypoint();
-    //if( EM1812EntryPoint(&wHumidity, &wTemperature) == 1)
+    if( EM1812EntryPoint(&wHumidity, &wTemperature) == 1)
     {
         
-        /*if((wHumidityPrev != wHumidity) || (wTemperaturePrev != wTemperature))
+        if(0 && ((wHumidityPrev != wHumidity) || (wTemperaturePrev != wTemperature)))
         {
             wHumidityPrev = wHumidity;
             wTemperaturePrev = wTemperature;
@@ -272,7 +272,7 @@ void main(void)
             AddTrace(wInterruptText,sizeof(wInterruptText),"\nTemp : ");
             AddTrace(wInterruptText,sizeof(wInterruptText),wReadout);
             PrintLog(wInterruptText);
-        }*/
+        }
     }
     wIterationCounter++;
 
@@ -285,6 +285,7 @@ void main(void)
    //enum eMode{eElectric=0,eFuel,eThermopump,eCooling
    if(wUpBottonPressed == 1)
    {
+       Esp8266OpenSocket();
        wUpdateMenu=1;
        wUpBottonPressed = 0;
         switch(wMenu)
@@ -360,12 +361,12 @@ void main(void)
 char wCounter2=0;
 void __interrupt() myint(void)
 {
-    int wI2CError,wEUSARTError;
-    //wI2CError = I2C_Interrupt();
+    int wI2CError=0,wEUSARTError=0;
+    wI2CError = I2C_Interrupt();
     if( wI2CError != 0 )
     {
         char wText[3];
-        wText[1] = 'i';
+        wText[0] = 'i';
         wText[1] = '0' + wI2CError;
         wText[2] = 0;
         lcdWriteText(wText);
