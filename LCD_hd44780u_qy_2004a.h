@@ -1,5 +1,7 @@
 //LCD_hd44780u_qy_2004a.h
 
+#include "stdint.h"
+
 #define _XTAL_FREQ 16000000 //for __delay_ms it need to know the cpu speed
 
 #define wInterruptTextSize 75
@@ -19,6 +21,7 @@ void SetToSendDataToLCD(void);
 void lcdWriteText(char *iText);
 void lcdWriteAllText(char *iText);
 void lcdWriteRotText(char *iRotText, char ioRotReadPtr, char iWritePtr);
+void lcdWriteRotaryBuffer(char *iRotText, uint8_t iStarPosition, uint8_t iNumOfChar, uint8_t iBufferSize);
 void powerOffLcd();
 void powerOnLcd();
 void setBlinkingCursor();
@@ -47,27 +50,27 @@ char mWritingPosition;
 #define DDRAM_Address_Line_2_Position_0 0x14
 #define DDRAM_Address_Line_3_Position_0 0x54
 
-#define RS PORTAbits.RA0
-#define RSDirection TRISAbits.TRISA0
-#define RS_AD ANSELAbits.ANSA0
-#define RW PORTAbits.RA1
-#define RWDirection TRISAbits.TRISA1
-#define RW_AD ANSELAbits.ANSA1
-#define E PORTAbits.RA2
-#define EDirection TRISAbits.TRISA2
-#define E_AD ANSELAbits.ANSA2
-#define DB7 PORTAbits.RA3
-#define DB7Direction TRISAbits.TRISA3
-#define DB7_AD ANSELAbits.ANSA3
-#define DB6 PORTCbits.RC2
-#define DB6Direction TRISCbits.TRISC2
-#define DB6_AD ANSELCbits.ANSC2
-#define DB5 PORTCbits.RC1
-#define DB5Direction TRISCbits.TRISC1
-#define DB5_AD ANSELCbits.ANSC1
-#define DB4 PORTCbits.RC0
-#define DB4Direction TRISCbits.TRISC0
-#define DB4_AD ANSELCbits.ANSC0
+#define RS PORTCbits.RC2
+#define RSDirection TRISCbits.TRISC2
+#define RS_AD ANSELCbits.ANSC2
+#define RW PORTCbits.RC1
+#define RWDirection TRISCbits.TRISC1
+#define RW_AD ANSELCbits.ANSC1
+#define E PORTCbits.RC0
+#define EDirection TRISCbits.TRISC0
+#define E_AD ANSELCbits.ANSC0
+#define DB7 PORTAbits.RA0
+#define DB7Direction TRISAbits.TRISA0
+#define DB7_AD ANSELAbits.ANSA0
+#define DB6 PORTAbits.RA1
+#define DB6Direction TRISAbits.TRISA1
+#define DB6_AD ANSELAbits.ANSA1
+#define DB5 PORTAbits.RA2
+#define DB5Direction TRISAbits.TRISA2
+#define DB5_AD ANSELAbits.ANSA2
+#define DB4 PORTAbits.RA3
+#define DB4Direction TRISAbits.TRISA3
+#define DB4_AD ANSELAbits.ANSA3
 
 #define FROM_LCD 1
 #define TO_LCD 0;

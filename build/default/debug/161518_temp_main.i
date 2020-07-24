@@ -2920,7 +2920,84 @@ extern __bank0 __bit __timeout;
 # 1 "./LCD_hd44780u_qy_2004a.h" 1
 
 
+# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\stdint.h" 1 3
+# 22 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\stdint.h" 3
+# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\bits/alltypes.h" 1 3
+# 135 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef unsigned long uintptr_t;
+# 150 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef long intptr_t;
+# 166 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef signed char int8_t;
 
+
+
+
+typedef short int16_t;
+
+
+
+
+typedef long int32_t;
+# 189 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef int32_t intmax_t;
+
+
+
+
+
+
+
+typedef unsigned char uint8_t;
+
+
+
+
+typedef unsigned short uint16_t;
+
+
+
+
+typedef unsigned long uint32_t;
+# 225 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef uint32_t uintmax_t;
+# 22 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\stdint.h" 2 3
+
+
+typedef int8_t int_fast8_t;
+
+
+
+
+typedef int8_t int_least8_t;
+typedef int16_t int_least16_t;
+typedef int32_t int_least32_t;
+
+
+
+
+typedef uint8_t uint_fast8_t;
+
+
+
+
+typedef uint8_t uint_least8_t;
+typedef uint16_t uint_least16_t;
+typedef uint32_t uint_least32_t;
+# 131 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\stdint.h" 3
+# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\bits/stdint.h" 1 3
+typedef int32_t int_fast16_t;
+typedef int32_t int_fast32_t;
+typedef uint32_t uint_fast16_t;
+typedef uint32_t uint_fast32_t;
+# 131 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\stdint.h" 2 3
+# 3 "./LCD_hd44780u_qy_2004a.h" 2
+
+
+
+
+
+int test =0;
 
 
 
@@ -2934,7 +3011,9 @@ void waitLCDBusy(void);
 void SetReadDataFromLCD(void);
 void SetToSendDataToLCD(void);
 void lcdWriteText(char *iText);
+void lcdWriteAllText(char *iText);
 void lcdWriteRotText(char *iRotText, char ioRotReadPtr, char iWritePtr);
+void lcdWriteRotaryBuffer(char *iRotText, uint8_t iStarPosition, uint8_t iNumOfChar, uint8_t iBufferSize);
 void powerOffLcd();
 void powerOnLcd();
 void setBlinkingCursor();
@@ -2943,7 +3022,7 @@ void setCursorOff();
 void setCursorOn();
 void setCursorMovingRight();
 void setCursorMovingLeft();
-void setCursorPosition(char iPosition);
+void setCursorPosition(char iLine, char iPosition);
 void setDisplayMovingRight();
 void setDisplayMovingLeft();
 void moveCursorRight();
@@ -2958,6 +3037,57 @@ char mDisplayOnOffReg;
 char mCursorDisplayShiftReg;
 char mWritingPosition;
 # 11 "161518_temp_main.c" 2
+
+# 1 "./EM1812.h" 1
+
+
+
+
+
+
+enum EM1812StateMachine{eSetGetTemp = 0,eWaitSetGetTempProcessing,eGetTemp,eWaitGetTempProcessing, eValueReception,eIdle,eError};
+uint8_t wTempState=eSetGetTemp;
+uint8_t wTimer0Counter=0;
+
+void printEM1812(int16_t wVariable, char* oTextOut);
+
+void GetTemp(uint8_t* oTxBuffer, uint8_t* oTxBufferSize, uint8_t* oRxBufferSize);
+void WakeTemp(uint8_t* oTxBuffer, uint8_t* oTxBufferSize);
+void SetToGetTemp(uint8_t* oTxBuffer, uint8_t* oTxBufferSize );
+int TempUpdateRequest();
+int EM1812EntryPoint(int16_t* oHumidity, int16_t* oTemperature);
+# 12 "161518_temp_main.c" 2
+
+# 1 "./I2C.h" 1
+# 13 "./I2C.h"
+enum I2CSTATUS {CommandSent, ProcessingCommand, CommandWillComplet, CommandCompleted, CommandWillFail, CommandFailed};
+uint8_t wI2CCommandState = CommandCompleted;
+
+char wReceptionBufferPosition=0;
+uint8_t wReceptionCounter=0;
+uint8_t wReceptionCounterPrev=0;
+
+uint8_t wI2CTxBuffer[20];
+uint8_t wI2CRxBuffer[20];
+
+uint8_t wI2CTxBufferSize = 20;
+uint8_t wI2CRxBufferSize = 20;
+
+uint8_t wI2CTxNbOfByteToSend;
+uint8_t wI2CRxNbOfByteToReceived;
+
+uint8_t wNewI2CReception =0;
+
+uint8_t wI2CTxSendPos=0;
+
+
+void I2CInit();
+int I2C_Interrupt();
+int GetI2CStatus();
+int I2C_SendData(uint8_t* iData,uint8_t iNumberofByte);
+int GetNewReceivedData(uint8_t* oData, uint8_t oDataSize);
+int I2C_GetData(uint8_t iAdress, uint8_t iRxNumberOfByteExpected);
+# 13 "161518_temp_main.c" 2
 
 
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\stdio.h" 1 3
@@ -3096,7 +3226,7 @@ char *ctermid(char *);
 
 
 char *tempnam(const char *, const char *);
-# 13 "161518_temp_main.c" 2
+# 15 "161518_temp_main.c" 2
 
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\string.h" 1 3
 # 25 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\string.h" 3
@@ -3153,7 +3283,72 @@ size_t strxfrm_l (char *restrict, const char *restrict, size_t, locale_t);
 
 
 void *memccpy (void *restrict, const void *restrict, int, size_t);
-# 14 "161518_temp_main.c" 2
+# 16 "161518_temp_main.c" 2
+
+
+# 1 "./GeneralFunction.h" 1
+
+
+
+
+
+
+
+uint8_t moveToNextChar(char* iText, uint8_t iOffset, uint8_t iRotaryBufferSize);
+int memcmprotbuffer(char* iRotBuffer, uint8_t iReadingPtr, uint8_t iRotBufferSize, char* iCmpText,uint8_t iCmpTextSize);
+void AddTrace(char* oText, char iSizeOfoText, char* iText);
+char* uint8_tToa(char* wText, uint8_t iSizeofText, uint8_t iNumber);
+char* uint16_tToa(char* wText, uint8_t iSizeofText, uint16_t iNumber);
+# 18 "161518_temp_main.c" 2
+
+
+# 1 "./EUSART.h" 1
+# 13 "./EUSART.h"
+uint8_t gEusartTXBuffer[70];
+uint8_t gEusartRXBuffer[200];
+uint8_t gEusartRXBufferWritePtr=0;
+uint8_t gTxReadingPosition = 0;
+uint8_t gEUSARTError=0;
+
+uint8_t gTxTransmitSize = 0;
+
+
+void EUSARTInit();
+void Send_UART_Data( uint8_t* iData, uint8_t iData_Length);
+uint8_t EusartGetNbByteReceived(uint8_t wReadingPosition);
+
+uint8_t EusartGetRxBufferWritePtrPosition();
+uint8_t* EusartGetRxBuffer();
+uint8_t EusartGetRxBufferSize();
+int EUSARTInterrupt();
+# 20 "161518_temp_main.c" 2
+
+# 1 "./ESP8266.h" 1
+# 11 "./ESP8266.h"
+enum{eHideSSID, eBroadcastSSID};
+enum{eSettingUpCommand, eESPIdle, eESPProcessCommand, eESPCommandSent, eESPWaitConfirmation,eESPCommandReceived};
+enum{eSettingRestore,eSettingRestoreWaitReboot,eSettingRestoreWaitReboot2, eSettingAte, eSettingAPMode, eSettingWiFiMode, eSendData, eNothing, eOpenUDPSocket};
+
+uint8_t gEsp8266State=eESPIdle;
+uint8_t gESPCommand=eNothing;
+uint8_t gEsp8266Echo = 1;
+uint8_t* gEspRxBufferPtr;
+uint8_t gEspRxBufferSize;
+uint8_t gEspRxBufferReadingPosition;
+
+void Esp8266Init();
+
+int Esp8266OpenSocketCommand(char* iType, char* iDestination, uint16_t DestinationPort);
+
+void Esp8266SetRestore();
+void Esp8266TurnOffEcho();
+void Esp8266OpenSocket();
+void Esp8266SetupWifi();
+void Esp8266SetAccessPointMode();
+int Esp8266SetNetworkParameters(char* iWifiNetworkName, char* iWifiPassword, uint8_t iChannel, uint8_t iHidden);
+
+void Esp8266Entrypoint();
+# 21 "161518_temp_main.c" 2
 
 
 
@@ -3162,6 +3357,7 @@ void *memccpy (void *restrict, const void *restrict, int, size_t);
 
 
 #pragma config FOSC = INTOSC
+
 #pragma config WDTE = OFF
 #pragma config PWRTE = ON
 #pragma config MCLRE = OFF
@@ -3180,192 +3376,317 @@ void *memccpy (void *restrict, const void *restrict, int, size_t);
 #pragma config LVP = OFF
 
 
-char wInterruptText[200];
+char wInterruptText[75];
 
-char wI2CTxBuffer[20];
-char wI2CTxBufferSize;
-char wI2CTxSendPos;
-char wHexTemp[5];
+char wHexTemp[20];
+uint8_t wTrial = 0;
 
 
-void GetTemp(int* oTempValue)
-{
-    if(wI2CTxBufferSize == 0)
-    {
-        SSPCON3bits.ACKTIM = 1;
-        wI2CTxBuffer[0] = 0xB8;
-        wI2CTxBuffer[1] = 0x03;
-        wI2CTxBuffer[2] = 0x00;
-        wI2CTxBuffer[3] = 0x04;
-        wI2CTxBufferSize = 4;
-        SSPCON2bits.SEN = 1;
-    }
-}
-void WakeTemp()
-{
-    if(wI2CTxBuffer[0] != 0xB9)
-    {
-        wI2CTxBuffer[0] = 0xB9;
-    }
-    else
-    {
-        wI2CTxBuffer[0] = 0xB8;
-    }
-    if(wI2CTxBufferSize == 0)
-    {
+uint8_t gErrorCode;
 
-        wI2CTxBufferSize = 1;
-        SSPCON2bits.SEN = 1;
+void ToggleBitRB5() {
+    if (PORTBbits.RB5 == 1) {
+        PORTBbits.RB5 = 0;
+    } else {
+        PORTBbits.RB5 = 1;
     }
 }
 
-void main(void)
-{
-  memset(wInterruptText,0,sizeof(wInterruptText));
+void PrintLog(char* iText) {
+    char wInterruptTextLen = strlen(iText);
 
-  OSCCONbits.IRCF = 0xf;
-  OSCCONbits.SCS = 0x3;
-  INTCONbits.GIE = 0;
-  PORTA = 0x00;
+    if (wInterruptTextLen != 0) {
+        lcdWriteText(iText);
+        memset(iText, 0, wInterruptTextLen);
+    }
+}
 
-  memset(wI2CTxBuffer,0,sizeof(wI2CTxBuffer));
-  wI2CTxBufferSize=0;
-  wI2CTxSendPos=0;
+void Debounce(uint8_t iSwitch, uint16_t* ioTimer, uint8_t* swPressed) {
+    if (iSwitch == 0)
+    {
+        (*ioTimer)++;
+    } else {
+        *ioTimer = 0;
+    }
+    if (*ioTimer == 2000) {
+        *swPressed = 1;
+    }
+    if (*ioTimer == 8000) {
+        *ioTimer = 2001;
+        *swPressed = 1;
+    }
+}
+# 97 "161518_temp_main.c"
+uint8_t wTimer1IntCounter = 0;
 
-  ANSELA = 0x00;
-  TRISA = 0x00;
+int16_t wHumidity = 0;
+int16_t wTemperature = 0;
 
-  TRISC=0x00;
-  TRISC = 0xFF;
-  ANSELCbits.ANSC3 = 0;
-  ANSELCbits.ANSC4 = 0;
+int16_t wTempSet = 210;
+
+enum eMenu {
+    eShowTime = 0, eShowTemp, eShowMode, eSetTime = 128, eSetTemp = 129, eSetMode = 130
+};
+
+enum eMode {
+    eElectric = 0, eFuel, eThermopump, eCooling
+};
+
+void main(void) {
+
+    gErrorCode = 0;
+
+    char wReadout[20];
+    int16_t wHumidityPrev = 0;
+    int16_t wTemperaturePrev = 0;
+    memset(wInterruptText, 0, sizeof (wInterruptText));
+
+
+    OSCCONbits.IRCF = 0xf;
+    OSCCONbits.SCS = 0x0;
+    INTCONbits.GIE = 0;
+
+    uint8_t wUpBottonPressed = 0;
+    uint8_t wDownBottonPressed = 0;
+    uint8_t wEnterBottonPressed = 0;
+
+    uint8_t wEditingMode = 0;
+    uint8_t wMenu = 0;
+    uint8_t wUpdateMenu = 1;
+
+    uint16_t wIterationCounter = 0;
+    uint16_t wDebounceEnter = 0;
+    uint16_t wDebounceUp = 0;
+    uint16_t wDebounceDown = 0;
+
+    PORTA = 0x00;
 
 
 
+    T1CONbits.TMR1CS = 0x00;
+    T1CONbits.T1OSCEN = 0x0;
+    T1CONbits.T1CKPS = 0x3;
+    T1CONbits.nT1SYNC = 0;
+    T1CONbits.TMR1ON = 1;
+    PIE1bits.TMR1IE = 1;
 
-  SSPCON1bits.SSPM = 0x8;
-  SSPADD = 0x1F;
-  SSPCON1bits.SSPEN = 1;
-  SSPCON2bits.GCEN = 0;
-  SSPCON2bits.ACKEN = 1;
-  SSPCON3bits.PCIE = 1;
-  SSPCON3bits.SCIE = 1;
-  SSPCON3bits.SDAHT = 1;
-  SSPCON3bits.AHEN = 0 ;
-  SSPCON3bits.DHEN = 0;
-  SSPSTATbits.CKE = 0;
 
-  INTCONbits.PEIE = 1;
-  PIE1bits.SSPIE = 1;
-  PIE2bits.BCLIE = 1;
 
-  INTCONbits.GIE = 1;
+    OPTION_REGbits.PS = 0x2;
+    OPTION_REGbits.TMR0CS = 0;
+    OPTION_REGbits.PSA = 0;
+    INTCONbits.TMR0IE = 0;
 
-  initLCD();
+
+
+    PORTB = 0x00;
+    ANSELB = 0x00;
+    TRISB = 0x0F;
+    WPUB = 0x0F;
+    OPTION_REGbits.nWPUEN = 0;
+
+
+    TRISCbits.TRISC5 = 0;
+    ANSELCbits.ANSC5 = 1;
+    PORTCbits.RC5=0;
+# 179 "161518_temp_main.c"
+    initLCD();
     clearDisplay();
-  _delay((unsigned long)((100)*(16000000/4000.0)));
-  powerOnLcd();
-  _delay((unsigned long)((100)*(16000000/4000.0)));
-  setCursorOff();
-  _delay((unsigned long)((100)*(16000000/4000.0)));
-  moveCursorToHome();
-  _delay((unsigned long)((100)*(16000000/4000.0)));
-  setNotBlinkingCursor();
-  _delay((unsigned long)((100)*(16000000/4000.0)));
-
-  lcdWriteText("Temp Communication test :");
-
-  _delay((unsigned long)((1000)*(16000000/4000.0)));
-
-  int wCounter=0;
-  char wConv[8]={'/',0, '-',0, 0x6C,0, '|',0};
-  int wTemp=0;
-  while(1)
-  {
-    setCursorPosition(0x67);
-    _delay((unsigned long)((10)*(16000000/4000.0)));
-    lcdWriteText(&wConv[wCounter]);
+    _delay((unsigned long)((100)*(16000000/4000.0)));
+    powerOnLcd();
+    _delay((unsigned long)((100)*(16000000/4000.0)));
+    setCursorOff();
+    _delay((unsigned long)((100)*(16000000/4000.0)));
+    moveCursorToHome();
+    _delay((unsigned long)((100)*(16000000/4000.0)));
+    setNotBlinkingCursor();
+    _delay((unsigned long)((100)*(16000000/4000.0)));
 
 
-    WakeTemp();
+    int wCounter = 0;
+    char wConv[4] = {'+', 0, 'x', 0,};
+    int wTemp = 0;
+
+
+    clearDisplay();
+    moveCursorToHome();
+    _delay((unsigned long)((30)*(16000000/4000.0)));
 
 
 
 
-    wCounter = wCounter + 2;
-    if(wCounter == 8)
-    {
-        wCounter = 0;
-    }
-# 169 "161518_temp_main.c"
+
+
+
     _delay((unsigned long)((1000)*(16000000/4000.0)));
-  }
+
+
+
+
+
+    while (1) {
+
+        if (wUpdateMenu)
+        {
+            wUpdateMenu = 0;
+            switch (wMenu)
+            {
+                case eShowTime:
+                    setCursorPosition(0, 0);
+                    lcdWriteText("Time           ");
+                    break;
+                case eShowTemp:
+                    setCursorPosition(0, 0);
+                    lcdWriteText("Temp Setting:  \n");
+                    printEM1812(wTempSet, wReadout);
+                    lcdWriteText(wReadout);
+                    break;
+                case eShowMode:
+                    setCursorPosition(0, 0);
+                    lcdWriteText("Mode:          ");
+                    break;
+                case eSetTime:
+                    setCursorPosition(0, 0);
+                    lcdWriteText("-Set Time-     \n");
+                    break;
+                case eSetTemp:
+                    setCursorPosition(0, 0);
+                    lcdWriteText("-Set Temp-     \n");
+                    printEM1812(wTempSet, wReadout);
+                    lcdWriteText(wReadout);
+                    break;
+                case eSetMode:
+                    setCursorPosition(0, 0);
+                    lcdWriteText("-Set Mode-     \n");
+
+                    break;
+                default:
+                    setCursorPosition(0, 0);
+                    lcdWriteText("WTF            ");
+                    break;
+            }
+        }
+
+
+        if (EM1812EntryPoint(&wHumidity, &wTemperature) == 1) {
+
+            if (0 && ((wHumidityPrev != wHumidity) || (wTemperaturePrev != wTemperature))) {
+                wHumidityPrev = wHumidity;
+                wTemperaturePrev = wTemperature;
+                setCursorPosition(2, 0);
+                printEM1812(wHumidityPrev, wReadout);
+                AddTrace(wInterruptText, sizeof (wInterruptText), "Humidity : ");
+                AddTrace(wInterruptText, sizeof (wInterruptText), wReadout);
+                printEM1812(wTemperaturePrev, wReadout);
+                AddTrace(wInterruptText, sizeof (wInterruptText), "\nTemp : ");
+                AddTrace(wInterruptText, sizeof (wInterruptText), wReadout);
+                PrintLog(wInterruptText);
+            }
+        }
+        wIterationCounter++;
+
+
+        Debounce(PORTBbits.RB0, &wDebounceEnter, &wEnterBottonPressed);
+        Debounce(PORTBbits.RB1, &wDebounceUp, &wUpBottonPressed);
+        Debounce(PORTBbits.RB2, &wDebounceDown, &wDownBottonPressed);
+
+
+
+        if (wUpBottonPressed == 1) {
+            Esp8266OpenSocket();
+            wUpdateMenu = 1;
+            wUpBottonPressed = 0;
+            switch (wMenu) {
+                case eSetTime:
+
+                    break;
+                case eSetTemp:
+                    wTempSet = wTempSet + 1;
+                    break;
+                case eSetMode:
+                    break;
+                default:
+                    wMenu++;
+                    break;
+            }
+
+        }
+        if (wDownBottonPressed == 1) {
+            wUpdateMenu = 1;
+            wDownBottonPressed = 0;
+            clearDisplay();
+            moveCursorToHome();
+            switch (wMenu) {
+                case eSetTime:
+
+                    break;
+                case eSetTemp:
+                    wTempSet = wTempSet - 1;
+                    break;
+                case eSetMode:
+                    break;
+                default:
+                    wMenu--;
+                    break;
+            }
+        }
+        if (wEnterBottonPressed == 1) {
+            wUpdateMenu = 1;
+            wEnterBottonPressed = 0;
+
+            if (wEditingMode == 0) {
+                wEditingMode = 1;
+                wMenu = wMenu + 128;
+                Esp8266SetAccessPointMode();
+            } else {
+                Esp8266SetupWifi();
+                wEditingMode = 0;
+            }
+        }
+        if (wMenu == 255) {
+            wUpdateMenu = 1;
+            wMenu = 2;
+        }
+        if (wMenu == 3) {
+            wUpdateMenu = 1;
+            wMenu = 0;
+        }
+
+
+    }
     return;
 }
 
+char wCounter2 = 0;
 
-void __attribute__((picinterrupt(""))) myint(void)
-{
-    if(PIR1bits.SSPIF == 1)
-    {
-
-
-
-
-
-        PIR1bits.SSPIF = 0;
-        if(SSPSTATbits.P)
-        {
-
-          wI2CTxBufferSize=0;
-          wI2CTxSendPos=0;
-        }
-        if(SSPSTATbits.S && wI2CTxSendPos == 0)
-        {
-
-          if(wI2CTxBufferSize !=0)
-          {
-            SSPBUF = wI2CTxBuffer[wI2CTxSendPos];
-            wI2CTxSendPos++;
-          }
-          else
-          {
-
-          }
-        }
-        else
-        {
-            if(SSPCON2bits.ACKSTAT == 0 && wI2CTxSendPos != 0)
-            {
-
-              if(wI2CTxSendPos < wI2CTxBufferSize)
-              {
-                SSPBUF = wI2CTxBuffer[wI2CTxSendPos];
-                wI2CTxSendPos++;
-              }
-              else
-              {
-                SSPCON2bits.PEN = 1;
-              }
-            }
-            if(SSPCON2bits.ACKSTAT == 1)
-            {
-
-                SSPCON2bits.ACKSTAT = 0;
-                if(wI2CTxSendPos != 0)
-                {
-                  SSPCON2bits.RSEN = 1;
-                }
-                else
-                {
-                  SSPCON2bits.PEN = 1;
-                }
-            }
-        }
-
+void __attribute__((picinterrupt(""))) myint(void) {
+    int wI2CError = 0, wEUSARTError = 0;
+    wI2CError = I2C_Interrupt();
+    if (wI2CError != 0) {
+        char wText[3];
+        wText[0] = 'i';
+        wText[1] = '0' + wI2CError;
+        wText[2] = 0;
+        lcdWriteText(wText);
     }
-    if(PIR2bits.BCLIF == 1)
-    {
-        strcat(wInterruptText,",BCLIF");
+
+    wEUSARTError = EUSARTInterrupt();
+
+    if (PIR1bits.TMR1IF == 1) {
+        wTimer1IntCounter++;
+        PIR1bits.TMR1IF = 0;
+
+        if (wTimer1IntCounter == 7) {
+            TMR1H = 0x4C;
+            TMR1L = 0x83;
+        }
+        if (wTimer1IntCounter == 8) {
+            wTimer1IntCounter = 0;
+            TempUpdateRequest();
+        }
+    }
+    if (INTCONbits.TMR0IF == 1) {
+        INTCONbits.TMR0IF = 0;
+        wTimer0Counter++;
     }
 }

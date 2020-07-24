@@ -12,6 +12,85 @@
 # 1 "./LCD_hd44780u_qy_2004a.h" 1
 
 
+# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\stdint.h" 1 3
+
+
+
+# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\musl_xc8.h" 1 3
+# 4 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\stdint.h" 2 3
+# 22 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\stdint.h" 3
+# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\bits/alltypes.h" 1 3
+# 135 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef unsigned long uintptr_t;
+# 150 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef long intptr_t;
+# 166 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef signed char int8_t;
+
+
+
+
+typedef short int16_t;
+
+
+
+
+typedef long int32_t;
+# 189 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef int32_t intmax_t;
+
+
+
+
+
+
+
+typedef unsigned char uint8_t;
+
+
+
+
+typedef unsigned short uint16_t;
+
+
+
+
+typedef unsigned long uint32_t;
+# 225 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef uint32_t uintmax_t;
+# 22 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\stdint.h" 2 3
+
+
+typedef int8_t int_fast8_t;
+
+
+
+
+typedef int8_t int_least8_t;
+typedef int16_t int_least16_t;
+typedef int32_t int_least32_t;
+
+
+
+
+typedef uint8_t uint_fast8_t;
+
+
+
+
+typedef uint8_t uint_least8_t;
+typedef uint16_t uint_least16_t;
+typedef uint32_t uint_least32_t;
+# 131 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\stdint.h" 3
+# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\bits/stdint.h" 1 3
+typedef int32_t int_fast16_t;
+typedef int32_t int_fast32_t;
+typedef uint32_t uint_fast16_t;
+typedef uint32_t uint_fast32_t;
+# 131 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\stdint.h" 2 3
+# 3 "./LCD_hd44780u_qy_2004a.h" 2
+
+
 
 
 
@@ -31,6 +110,7 @@ void SetToSendDataToLCD(void);
 void lcdWriteText(char *iText);
 void lcdWriteAllText(char *iText);
 void lcdWriteRotText(char *iRotText, char ioRotReadPtr, char iWritePtr);
+void lcdWriteRotaryBuffer(char *iRotText, uint8_t iStarPosition, uint8_t iNumOfChar, uint8_t iBufferSize);
 void powerOffLcd();
 void powerOnLcd();
 void setBlinkingCursor();
@@ -56,17 +136,7 @@ char mWritingPosition;
 # 3 "LCD_hd44780u_qy_2004a.c" 2
 
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\stdlib.h" 1 3
-
-
-
-# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\musl_xc8.h" 1 3
-# 4 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\stdlib.h" 2 3
-
-
-
-
-
-
+# 10 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\stdlib.h" 3
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\features.h" 1 3
 # 10 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\stdlib.h" 2 3
 # 21 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\stdlib.h" 3
@@ -3147,34 +3217,34 @@ extern __bank0 __bit __timeout;
 void initLCD()
 {
 
+  ANSELAbits.ANSA0 = 0;
+  ANSELAbits.ANSA1 = 0;
+  ANSELAbits.ANSA2 = 0;
   ANSELAbits.ANSA3 = 0;
   ANSELCbits.ANSC2 = 0;
   ANSELCbits.ANSC1 = 0;
   ANSELCbits.ANSC0 = 0;
-  ANSELAbits.ANSA0 = 0;
-  ANSELAbits.ANSA1 = 0;
-  ANSELAbits.ANSA2 = 0;
-
-  PORTAbits.RA3 = 0;
-  PORTCbits.RC2 = 0;
-  PORTCbits.RC1 = 0;
-  PORTCbits.RC0 = 0;
-  PORTAbits.RA0=0;
-  PORTAbits.RA1=0;
-  PORTAbits.RA2=0;
-
-  TRISAbits.TRISA0 = 0;
-  TRISAbits.TRISA1 = 0;
-  TRISAbits.TRISA2 = 0;
-  TRISAbits.TRISA3 = 0;
-  TRISCbits.TRISC2 = 0;
-  TRISCbits.TRISC1 = 0;
-  TRISCbits.TRISC0 = 0;
-
 
   PORTAbits.RA0 = 0;
   PORTAbits.RA1 = 0;
   PORTAbits.RA2 = 0;
+  PORTAbits.RA3 = 0;
+  PORTCbits.RC2=0;
+  PORTCbits.RC1=0;
+  PORTCbits.RC0=0;
+
+  TRISCbits.TRISC2 = 0;
+  TRISCbits.TRISC1 = 0;
+  TRISCbits.TRISC0 = 0;
+  TRISAbits.TRISA0 = 0;
+  TRISAbits.TRISA1 = 0;
+  TRISAbits.TRISA2 = 0;
+  TRISAbits.TRISA3 = 0;
+
+
+  PORTCbits.RC2 = 0;
+  PORTCbits.RC1 = 0;
+  PORTCbits.RC0 = 0;
 
 
   _delay((unsigned long)((15)*(16000000/4000.0)));
@@ -3231,6 +3301,35 @@ void lcdWriteAllText(char *iText)
   }
 
 }
+void lcdWriteRotaryBuffer(char *iRotText, uint8_t iStarPosition, uint8_t iNumOfChar, uint8_t iBufferSize)
+ {
+    uint8_t wReadPosition = iStarPosition%iBufferSize;
+
+    for(uint8_t i=0; i<iNumOfChar ; i++)
+    {
+
+      switch(iRotText[wReadPosition])
+      {
+          case '\r':
+              writeTxtChk('/');
+              writeTxtChk('r');
+              break;
+          case '\n':
+              writeTxtChk('/');
+              writeTxtChk('n');
+              break;
+          default:
+              writeTxtChk(iRotText[wReadPosition]);
+              break;
+      }
+      wReadPosition++;
+      if(wReadPosition == iBufferSize)
+      {
+          iBufferSize = 0;
+      }
+    }
+
+}
 
 void lcdWriteRotText(char *iRotText, char ioRotReadPtr, char iWritePtr)
 {
@@ -3249,13 +3348,13 @@ void lcdWriteRotText(char *iRotText, char ioRotReadPtr, char iWritePtr)
 
 void setData(char iValue)
 {
-  PORTAbits.RA2 = 1;
-  PORTAbits.RA3 = (iValue & 0x8) >> 3;
-  PORTCbits.RC2 = (iValue & 0x4) >> 2;
-  PORTCbits.RC1 = (iValue & 0x2) >> 1;
-  PORTCbits.RC0 = (iValue & 0x1) ;
+  PORTCbits.RC0 = 1;
+  PORTAbits.RA0 = (iValue & 0x8) >> 3;
+  PORTAbits.RA1 = (iValue & 0x4) >> 2;
+  PORTAbits.RA2 = (iValue & 0x2) >> 1;
+  PORTAbits.RA3 = (iValue & 0x1) ;
   _delay((unsigned long)((1)*(16000000/4000000.0)));
-  PORTAbits.RA2 = 0;
+  PORTCbits.RC0 = 0;
   _delay((unsigned long)((1)*(16000000/4000000.0)));
 }
 
@@ -3266,8 +3365,8 @@ void writeTxtChk(char iOpCode)
       return;
     }
   SetToSendDataToLCD();
-  PORTAbits.RA0 = 1;
-  PORTAbits.RA1 = 0;
+  PORTCbits.RC2 = 1;
+  PORTCbits.RC1 = 0;
   if(iOpCode == '\n')
   {
    if(mWritingPosition < 20)
@@ -3308,8 +3407,8 @@ void writeTxtChk(char iOpCode)
   }
   waitLCDBusy();
   SetToSendDataToLCD();
-  PORTAbits.RA0 = 1;
-  PORTAbits.RA1 = 0;
+  PORTCbits.RC2 = 1;
+  PORTCbits.RC1 = 0;
   setData(iOpCode >> 4);
   setData(iOpCode);
   _delay((unsigned long)((1)*(16000000/4000000.0)));
@@ -3325,31 +3424,31 @@ void writeInsChk(char iOpCode)
 void writeInsNoChk(char iOpCode)
 {
   SetToSendDataToLCD();
-  PORTAbits.RA0 = 0;
-  PORTAbits.RA1 = 0;
+  PORTCbits.RC2 = 0;
+  PORTCbits.RC1 = 0;
   setData(iOpCode >> 4);
   setData(iOpCode);
 }
 
 void SetToReadDataFromLCD()
 {
+  TRISAbits.TRISA0 = 1;
+  TRISAbits.TRISA1 = 1;
+  TRISAbits.TRISA2 = 1;
   TRISAbits.TRISA3 = 1;
-  TRISCbits.TRISC2 = 1;
-  TRISCbits.TRISC1 = 1;
-  TRISCbits.TRISC0 = 1;
 }
 void SetToSendDataToLCD()
 {
+  TRISAbits.TRISA0 = 0;;
+  TRISAbits.TRISA1 = 0;;
+  TRISAbits.TRISA2 = 0;;
   TRISAbits.TRISA3 = 0;;
-  TRISCbits.TRISC2 = 0;;
-  TRISCbits.TRISC1 = 0;;
-  TRISCbits.TRISC0 = 0;;
 }
 
 void waitLCDBusy()
 {
-  PORTAbits.RA0 = 0;
-  PORTAbits.RA1 = 1;
+  PORTCbits.RC2 = 0;
+  PORTCbits.RC1 = 1;
 
   SetToReadDataFromLCD();
 
@@ -3357,13 +3456,13 @@ void waitLCDBusy()
   while(busyFlag == 1)
   {
 
-    PORTAbits.RA2 = 1;
+    PORTCbits.RC0 = 1;
     _delay((unsigned long)((1)*(16000000/4000000.0)));
-    busyFlag = PORTAbits.RA3;
-    PORTAbits.RA2 = 0;
+    busyFlag = PORTAbits.RA0;
+    PORTCbits.RC0 = 0;
     _delay((unsigned long)((2)*(16000000/4000000.0)));
 
-    PORTAbits.RA2 = 1;
+    PORTCbits.RC0 = 1;
     _delay((unsigned long)((1)*(16000000/4000000.0)));
   }
 }
@@ -3467,8 +3566,8 @@ void setCursorPosition(char iLine, char iPosition)
   waitLCDBusy();
 
   SetToSendDataToLCD();
-  PORTAbits.RA0 = 0;
-  PORTAbits.RA1 = 0;
+  PORTCbits.RC2 = 0;
+  PORTCbits.RC1 = 0;
   setData((wLCDIndex >> 4) | 0x8 );
   setData(wLCDIndex);
 

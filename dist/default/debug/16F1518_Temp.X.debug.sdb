@@ -3,14 +3,140 @@
 [d edition pro ]
 [d chip 16F1518 ]
 [d frameptr 6 ]
-"61 C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
-[v _WakeTemp WakeTemp `(v  1 e 1 0 ]
-"79
+"8 C:\Users\dell\MPLABXProjects\16F1518_Temp.X/EM1812.h
+[e E1713 EM1812StateMachine `uc
+eSetGetTemp 0
+eWaitSetGetTempProcessing 1
+eGetTemp 2
+eWaitGetTempProcessing 3
+eValueReception 4
+eIdle 5
+eError 6
+]
+"14 C:\Users\dell\MPLABXProjects\16F1518_Temp.X/I2C.h
+[e E1740 I2CSTATUS `uc
+CommandSent 0
+ProcessingCommand 1
+CommandWillComplet 2
+CommandCompleted 3
+CommandWillFail 4
+CommandFailed 5
+]
+"15 C:\Users\dell\MPLABXProjects\16F1518_Temp.X/ESP8266.h
+[e E2297 . `uc
+eSettingUpCommand 0
+eESPIdle 1
+eESPProcessCommand 2
+eESPCommandSent 3
+eESPWaitConfirmation 4
+eESPCommandReceived 5
+]
+"16
+[e E2304 . `uc
+eSettingRestore 0
+eSettingRestoreWaitReboot 1
+eSettingRestoreWaitReboot2 2
+eSettingAte 3
+eSettingAPMode 4
+eSettingWiFiMode 5
+eSendData 6
+eNothing 7
+eOpenUDPSocket 8
+]
+"253 C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+[e E2352 eMenu `uc
+eShowTime 0
+eShowTemp 1
+eShowMode 2
+eSetTime 128
+eSetTemp 129
+eSetMode 130
+]
+"14 C:\Users\dell\MPLABXProjects\16F1518_Temp.X/I2C.h
+[e E1833 I2CSTATUS `uc
+CommandSent 0
+ProcessingCommand 1
+CommandWillComplet 2
+CommandCompleted 3
+CommandWillFail 4
+CommandFailed 5
+]
+"8 C:\Users\dell\MPLABXProjects\16F1518_Temp.X/EM1812.h
+[e E1864 EM1812StateMachine `uc
+eSetGetTemp 0
+eWaitSetGetTempProcessing 1
+eGetTemp 2
+eWaitGetTempProcessing 3
+eValueReception 4
+eIdle 5
+eError 6
+]
+"14 C:\Users\dell\MPLABXProjects\16F1518_Temp.X/I2C.h
+[e E1666 I2CSTATUS `uc
+CommandSent 0
+ProcessingCommand 1
+CommandWillComplet 2
+CommandCompleted 3
+CommandWillFail 4
+CommandFailed 5
+]
+"15 C:\Users\dell\MPLABXProjects\16F1518_Temp.X/ESP8266.h
+[e E1669 . `uc
+eSettingUpCommand 0
+eESPIdle 1
+eESPProcessCommand 2
+eESPCommandSent 3
+eESPWaitConfirmation 4
+eESPCommandReceived 5
+]
+"16
+[e E1676 . `uc
+eSettingRestore 0
+eSettingRestoreWaitReboot 1
+eSettingRestoreWaitReboot2 2
+eSettingAte 3
+eSettingAPMode 4
+eSettingWiFiMode 5
+eSendData 6
+eNothing 7
+eOpenUDPSocket 8
+]
+"17 C:\Users\dell\MPLABXProjects\16F1518_Temp.X\ESP8266.c
+[e E1961 . `uc
+eSetReset 0
+eDisableEcho 1
+eSetAccessPoint 2
+eSetWifi 3
+eSetSocket 4
+eDone 5
+]
+"145
+[e E1666 . `uc
+eHideSSID 0
+eBroadcastSSID 1
+]
+"64 C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+[v _PrintLog PrintLog `(v  1 e 1 0 ]
+"73
+[v _Debounce Debounce `(v  1 e 1 0 ]
+"112
 [v _main main `(v  1 e 1 0 ]
-"175
+"348
 [v _myint myint `II(v  1 e 1 0 ]
+"5 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\awdiv.c
+[v ___awdiv __awdiv `(i  1 e 2 0 ]
+"5 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\awmod.c
+[v ___awmod __awmod `(i  1 e 2 0 ]
+"4 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\lbmod.c
+[v ___lbmod __lbmod `(uc  1 e 1 0 ]
+"5 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\lwdiv.c
+[v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
+"5 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\lwmod.c
+[v ___lwmod __lwmod `(ui  1 e 2 0 ]
+"4 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\memcpy.c
+[v _memcpy memcpy `(*.39v  1 e 1 0 ]
 "4 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\memset.c
-[v _memset memset `(*.39v  1 e 1 0 ]
+[v _memset memset `(*.5v  1 e 1 0 ]
 "10 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\sprcadd.c
 [v ___fladd __fladd `(d  1 e 4 0 ]
 "3 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\strcat.c
@@ -21,51 +147,168 @@
 [v _strlen strlen `(ui  1 e 2 0 ]
 "4 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\Umul8_16.c
 [v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
-"7 C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
-[v _initLCD initLCD `(v  1 e 1 0 ]
-"38
-[v _lcdWriteText lcdWriteText `(v  1 e 1 0 ]
-"63
-[v _setData setData `(v  1 e 1 0 ]
-"75
-[v _writeTxtChk writeTxtChk `(v  1 e 1 0 ]
-"107
-[v _writeInsChk writeInsChk `(v  1 e 1 0 ]
-"113
-[v _writeInsNoChk writeInsNoChk `(v  1 e 1 0 ]
-"122
-[v _SetToReadDataFromLCD SetToReadDataFromLCD `(v  1 e 1 0 ]
-"129
-[v _SetToSendDataToLCD SetToSendDataToLCD `(v  1 e 1 0 ]
-"137
-[v _waitLCDBusy waitLCDBusy `(v  1 e 1 0 ]
-"163
-[v _powerOnLcd powerOnLcd `(v  1 e 1 0 ]
-"173
-[v _setNotBlinkingCursor setNotBlinkingCursor `(v  1 e 1 0 ]
-"178
-[v _setCursorOff setCursorOff `(v  1 e 1 0 ]
-"220
-[v _clearDisplay clearDisplay `(v  1 e 1 0 ]
-"224
-[v _moveCursorToHome moveCursorToHome `(v  1 e 1 0 ]
-"229
-[v _setCursorPosition setCursorPosition `(v  1 e 1 0 ]
-"37 C:\Users\dell\MPLABXProjects\16F1518_Temp.X/LCD_hd44780u_qy_2004a.h
-[v _mDisplayOnOffReg mDisplayOnOffReg `uc  1 e 1 0 ]
-"38
-[v _mCursorDisplayShiftReg mCursorDisplayShiftReg `uc  1 e 1 0 ]
-"39
-[v _mWritingPosition mWritingPosition `uc  1 e 1 0 ]
-"40 C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
-[v _wInterruptText wInterruptText `[200]uc  1 e 200 @9000 ]
-"42
-[v _wI2CTxBuffer wI2CTxBuffer `[20]uc  1 e 20 0 ]
+"16 C:\Users\dell\MPLABXProjects\16F1518_Temp.X\EM1812.c
+[v _printEM1812 printEM1812 `(v  1 e 1 0 ]
+"80
+[v _TempUpdateRequest TempUpdateRequest `(i  1 e 2 0 ]
+"95
+[v _EM1812EntryPoint EM1812EntryPoint `(i  1 e 2 0 ]
+"67 C:\Users\dell\MPLABXProjects\16F1518_Temp.X\ESP8266.c
+[v _Esp8266OpenSocketCommand Esp8266OpenSocketCommand `(i  1 e 2 0 ]
+"89
+[v _Esp8266TurnOffEcho Esp8266TurnOffEcho `(v  1 e 1 0 ]
+"95
+[v _Esp8266SetRestore Esp8266SetRestore `(v  1 e 1 0 ]
+"100
+[v _Esp8266SetAccessPointMode Esp8266SetAccessPointMode `(v  1 e 1 0 ]
+"105
+[v _Esp8266SetupWifi Esp8266SetupWifi `(v  1 e 1 0 ]
+"110
+[v _Esp8266OpenSocket Esp8266OpenSocket `(v  1 e 1 0 ]
+"115
+[v _Esp8266SetNetworkParameters Esp8266SetNetworkParameters `(i  1 e 2 0 ]
+"158
+[v _Esp8266Entrypoint Esp8266Entrypoint `(v  1 e 1 0 ]
+"29 C:\Users\dell\MPLABXProjects\16F1518_Temp.X\EUSART.c
+[v _EusartGetRxBufferSize EusartGetRxBufferSize `(uc  1 e 1 0 ]
+"34
+[v _Send_UART_Data Send_UART_Data `(v  1 e 1 0 ]
+"48
+[v _EUSARTInterrupt EUSARTInterrupt `(i  1 e 2 0 ]
+"87
+[v _EusartGetNbByteReceived EusartGetNbByteReceived `(uc  1 e 1 0 ]
+"99
+[v _EusartGetRxBufferWritePtrPosition EusartGetRxBufferWritePtrPosition `(uc  1 e 1 0 ]
+"103
+[v _EusartGetRxBuffer EusartGetRxBuffer `(*.39uc  1 e 1 0 ]
+"12 C:\Users\dell\MPLABXProjects\16F1518_Temp.X\GeneralFunction.c
+[v _memcmprotbuffer memcmprotbuffer `(i  1 e 2 0 ]
+"32
+[v _moveToNextChar moveToNextChar `(uc  1 e 1 0 ]
+"51
+[v _AddTrace AddTrace `(v  1 e 1 0 ]
+"59
+[v _uint8_tToa uint8_tToa `(*.1uc  1 e 1 0 ]
+"99
+[v _uint16_tToa uint16_tToa `(*.1uc  1 e 1 0 ]
+"38 C:\Users\dell\MPLABXProjects\16F1518_Temp.X\I2C.c
+[v _GetI2CStatus GetI2CStatus `(i  1 e 2 0 ]
 "43
+[v _I2C_SendData I2C_SendData `(i  1 e 2 0 ]
+"66
+[v _I2C_GetData I2C_GetData `(i  1 e 2 0 ]
+"84
+[v _GetNewReceivedData GetNewReceivedData `(i  1 e 2 0 ]
+"95
+[v _I2C_Interrupt I2C_Interrupt `(i  1 e 2 0 ]
+"10 C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+[v _initLCD initLCD `(v  1 e 1 0 ]
+"63
+[v _lcdWriteText lcdWriteText `(v  1 e 1 0 ]
+[v i1_lcdWriteText lcdWriteText `(v  1 e 1 0 ]
+"74
+[v _lcdWriteAllText lcdWriteAllText `(v  1 e 1 0 ]
+"97
+[v _lcdWriteRotaryBuffer lcdWriteRotaryBuffer `(v  1 e 1 0 ]
+"142
+[v _setData setData `(v  1 e 1 0 ]
+[v i1_setData setData `(v  1 e 1 0 ]
+"154
+[v _writeTxtChk writeTxtChk `(v  1 e 1 0 ]
+[v i1_writeTxtChk writeTxtChk `(v  1 e 1 0 ]
+"211
+[v _writeInsChk writeInsChk `(v  1 e 1 0 ]
+"217
+[v _writeInsNoChk writeInsNoChk `(v  1 e 1 0 ]
+"226
+[v _SetToReadDataFromLCD SetToReadDataFromLCD `(v  1 e 1 0 ]
+[v i1_SetToReadDataFromLCD SetToReadDataFromLCD `(v  1 e 1 0 ]
+"233
+[v _SetToSendDataToLCD SetToSendDataToLCD `(v  1 e 1 0 ]
+[v i1_SetToSendDataToLCD SetToSendDataToLCD `(v  1 e 1 0 ]
+"241
+[v _waitLCDBusy waitLCDBusy `(v  1 e 1 0 ]
+[v i1_waitLCDBusy waitLCDBusy `(v  1 e 1 0 ]
+"267
+[v _powerOnLcd powerOnLcd `(v  1 e 1 0 ]
+"277
+[v _setNotBlinkingCursor setNotBlinkingCursor `(v  1 e 1 0 ]
+"282
+[v _setCursorOff setCursorOff `(v  1 e 1 0 ]
+"324
+[v _clearDisplay clearDisplay `(v  1 e 1 0 ]
+"328
+[v _moveCursorToHome moveCursorToHome `(v  1 e 1 0 ]
+"333
+[v _setCursorPosition setCursorPosition `(v  1 e 1 0 ]
+[v i1_setCursorPosition setCursorPosition `(v  1 e 1 0 ]
+"8 C:\Users\dell\MPLABXProjects\16F1518_Temp.X/EM1812.h
+[v _wTempState wTempState `uc  1 e 1 0 ]
+"9
+[v _wTimer0Counter wTimer0Counter `uc  1 e 1 0 ]
+"15 C:\Users\dell\MPLABXProjects\16F1518_Temp.X/ESP8266.h
+[v _gEsp8266State gEsp8266State `uc  1 e 1 0 ]
+"16
+[v _gESPCommand gESPCommand `uc  1 e 1 0 ]
+"17
+[v _gEsp8266Echo gEsp8266Echo `uc  1 e 1 0 ]
+"18
+[v _gEspRxBufferPtr gEspRxBufferPtr `*.39uc  1 e 2 0 ]
+"19
+[v _gEspRxBufferSize gEspRxBufferSize `uc  1 e 1 0 ]
+"20
+[v _gEspRxBufferReadingPosition gEspRxBufferReadingPosition `uc  1 e 1 0 ]
+"13 C:\Users\dell\MPLABXProjects\16F1518_Temp.X/EUSART.h
+[v _gEusartTXBuffer gEusartTXBuffer `[70]uc  1 e 70 0 ]
+"14
+[v _gEusartRXBuffer gEusartRXBuffer `[200]uc  1 e 200 @9000 ]
+"15
+[v _gEusartRXBufferWritePtr gEusartRXBufferWritePtr `uc  1 e 1 0 ]
+"16
+[v _gTxReadingPosition gTxReadingPosition `uc  1 e 1 0 ]
+"17
+[v _gEUSARTError gEUSARTError `uc  1 e 1 0 ]
+"19
+[v _gTxTransmitSize gTxTransmitSize `uc  1 e 1 0 ]
+"14 C:\Users\dell\MPLABXProjects\16F1518_Temp.X/I2C.h
+[v _wI2CCommandState wI2CCommandState `uc  1 e 1 0 ]
+"16
+[v _wReceptionBufferPosition wReceptionBufferPosition `uc  1 e 1 0 ]
+"20
+[v _wI2CTxBuffer wI2CTxBuffer `[20]uc  1 e 20 0 ]
+"21
+[v _wI2CRxBuffer wI2CRxBuffer `[20]uc  1 e 20 0 ]
+"23
 [v _wI2CTxBufferSize wI2CTxBufferSize `uc  1 e 1 0 ]
-"44
+"24
+[v _wI2CRxBufferSize wI2CRxBufferSize `uc  1 e 1 0 ]
+"26
+[v _wI2CTxNbOfByteToSend wI2CTxNbOfByteToSend `uc  1 e 1 0 ]
+"27
+[v _wI2CRxNbOfByteToReceived wI2CRxNbOfByteToReceived `uc  1 e 1 0 ]
+"29
+[v _wNewI2CReception wNewI2CReception `uc  1 e 1 0 ]
+"31
 [v _wI2CTxSendPos wI2CTxSendPos `uc  1 e 1 0 ]
-[s S99 . 1 `uc 1 IOCIF 1 0 :1:0 
+"44 C:\Users\dell\MPLABXProjects\16F1518_Temp.X/LCD_hd44780u_qy_2004a.h
+[v _mDisplayOnOffReg mDisplayOnOffReg `uc  1 e 1 0 ]
+"45
+[v _mCursorDisplayShiftReg mCursorDisplayShiftReg `uc  1 e 1 0 ]
+"46
+[v _mWritingPosition mWritingPosition `uc  1 e 1 0 ]
+"48 C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+[v _wInterruptText wInterruptText `[75]uc  1 e 75 0 ]
+"54
+[v _gErrorCode gErrorCode `uc  1 e 1 0 ]
+"97
+[v _wTimer1IntCounter wTimer1IntCounter `uc  1 e 1 0 ]
+"99
+[v _wHumidity wHumidity `s  1 e 2 0 ]
+"100
+[v _wTemperature wTemperature `s  1 e 2 0 ]
+"102
+[v _wTempSet wTempSet `s  1 e 2 0 ]
+[s S120 . 1 `uc 1 IOCIF 1 0 :1:0 
 `uc 1 INTF 1 0 :1:1 
 `uc 1 TMR0IF 1 0 :1:2 
 `uc 1 IOCIE 1 0 :1:3 
@@ -75,16 +318,16 @@
 `uc 1 GIE 1 0 :1:7 
 ]
 "374 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1518.h
-[s S108 . 1 `uc 1 . 1 0 :2:0 
+[s S129 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 T0IF 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 T0IE 1 0 :1:5 
 ]
-[u S113 . 1 `S99 1 . 1 0 `S108 1 . 1 0 ]
-[v _INTCONbits INTCONbits `VES113  1 e 1 @11 ]
+[u S134 . 1 `S120 1 . 1 0 `S129 1 . 1 0 ]
+[v _INTCONbits INTCONbits `VES134  1 e 1 @11 ]
 "429
 [v _PORTA PORTA `VEuc  1 e 1 @12 ]
-[s S446 . 1 `uc 1 RA0 1 0 :1:0 
+[s S605 . 1 `uc 1 RA0 1 0 :1:0 
 `uc 1 RA1 1 0 :1:1 
 `uc 1 RA2 1 0 :1:2 
 `uc 1 RA3 1 0 :1:3 
@@ -94,9 +337,35 @@
 `uc 1 RA7 1 0 :1:7 
 ]
 "446
-[u S455 . 1 `S446 1 . 1 0 ]
-[v _PORTAbits PORTAbits `VES455  1 e 1 @12 ]
-[s S280 . 1 `uc 1 TMR1IF 1 0 :1:0 
+[u S614 . 1 `S605 1 . 1 0 ]
+[v _PORTAbits PORTAbits `VES614  1 e 1 @12 ]
+"491
+[v _PORTB PORTB `VEuc  1 e 1 @13 ]
+[s S54 . 1 `uc 1 RB0 1 0 :1:0 
+`uc 1 RB1 1 0 :1:1 
+`uc 1 RB2 1 0 :1:2 
+`uc 1 RB3 1 0 :1:3 
+`uc 1 RB4 1 0 :1:4 
+`uc 1 RB5 1 0 :1:5 
+`uc 1 RB6 1 0 :1:6 
+`uc 1 RB7 1 0 :1:7 
+]
+"508
+[u S63 . 1 `S54 1 . 1 0 ]
+[v _PORTBbits PORTBbits `VES63  1 e 1 @13 ]
+[s S282 . 1 `uc 1 RC0 1 0 :1:0 
+`uc 1 RC1 1 0 :1:1 
+`uc 1 RC2 1 0 :1:2 
+`uc 1 RC3 1 0 :1:3 
+`uc 1 RC4 1 0 :1:4 
+`uc 1 RC5 1 0 :1:5 
+`uc 1 RC6 1 0 :1:6 
+`uc 1 RC7 1 0 :1:7 
+]
+"570
+[u S291 . 1 `S282 1 . 1 0 ]
+[v _PORTCbits PORTCbits `VES291  1 e 1 @14 ]
+[s S385 . 1 `uc 1 TMR1IF 1 0 :1:0 
 `uc 1 TMR2IF 1 0 :1:1 
 `uc 1 CCP1IF 1 0 :1:2 
 `uc 1 SSPIF 1 0 :1:3 
@@ -106,20 +375,40 @@
 `uc 1 TMR1GIF 1 0 :1:7 
 ]
 "653
-[u S289 . 1 `S280 1 . 1 0 ]
-[v _PIR1bits PIR1bits `VES289  1 e 1 @17 ]
-[s S302 . 1 `uc 1 CCP2IF 1 0 :1:0 
+[u S394 . 1 `S385 1 . 1 0 ]
+[v _PIR1bits PIR1bits `VES394  1 e 1 @17 ]
+[s S1098 . 1 `uc 1 CCP2IF 1 0 :1:0 
 `uc 1 . 1 0 :2:1 
 `uc 1 BCLIF 1 0 :1:3 
 `uc 1 . 1 0 :3:4 
 `uc 1 OSFIF 1 0 :1:7 
 ]
 "712
-[u S308 . 1 `S302 1 . 1 0 ]
-[v _PIR2bits PIR2bits `VES308  1 e 1 @18 ]
-"1052
-[v _TRISA TRISA `VEuc  1 e 1 @140 ]
-[s S425 . 1 `uc 1 TRISA0 1 0 :1:0 
+[u S1104 . 1 `S1098 1 . 1 0 ]
+[v _PIR2bits PIR2bits `VES1104  1 e 1 @18 ]
+"732
+[v _TMR0 TMR0 `VEuc  1 e 1 @21 ]
+"759
+[v _TMR1L TMR1L `VEuc  1 e 1 @22 ]
+"779
+[v _TMR1H TMR1H `VEuc  1 e 1 @23 ]
+[s S153 . 1 `uc 1 TMR1ON 1 0 :1:0 
+`uc 1 . 1 0 :1:1 
+`uc 1 nT1SYNC 1 0 :1:2 
+`uc 1 T1OSCEN 1 0 :1:3 
+`uc 1 T1CKPS 1 0 :2:4 
+`uc 1 TMR1CS 1 0 :2:6 
+]
+"821
+[s S160 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 T1CKPS0 1 0 :1:4 
+`uc 1 T1CKPS1 1 0 :1:5 
+`uc 1 TMR1CS0 1 0 :1:6 
+`uc 1 TMR1CS1 1 0 :1:7 
+]
+[u S166 . 1 `S153 1 . 1 0 `S160 1 . 1 0 ]
+[v _T1CONbits T1CONbits `VES166  1 e 1 @24 ]
+[s S650 . 1 `uc 1 TRISA0 1 0 :1:0 
 `uc 1 TRISA1 1 0 :1:1 
 `uc 1 TRISA2 1 0 :1:2 
 `uc 1 TRISA3 1 0 :1:3 
@@ -129,11 +418,23 @@
 `uc 1 TRISA7 1 0 :1:7 
 ]
 "1069
-[u S434 . 1 `S425 1 . 1 0 ]
-[v _TRISAbits TRISAbits `VES434  1 e 1 @140 ]
-"1176
-[v _TRISC TRISC `VEuc  1 e 1 @142 ]
-[s S204 . 1 `uc 1 TMR1IE 1 0 :1:0 
+[u S659 . 1 `S650 1 . 1 0 ]
+[v _TRISAbits TRISAbits `VES659  1 e 1 @140 ]
+"1114
+[v _TRISB TRISB `VEuc  1 e 1 @141 ]
+[s S240 . 1 `uc 1 TRISC0 1 0 :1:0 
+`uc 1 TRISC1 1 0 :1:1 
+`uc 1 TRISC2 1 0 :1:2 
+`uc 1 TRISC3 1 0 :1:3 
+`uc 1 TRISC4 1 0 :1:4 
+`uc 1 TRISC5 1 0 :1:5 
+`uc 1 TRISC6 1 0 :1:6 
+`uc 1 TRISC7 1 0 :1:7 
+]
+"1193
+[u S249 . 1 `S240 1 . 1 0 ]
+[v _TRISCbits TRISCbits `VES249  1 e 1 @142 ]
+[s S183 . 1 `uc 1 TMR1IE 1 0 :1:0 
 `uc 1 TMR2IE 1 0 :1:1 
 `uc 1 CCP1IE 1 0 :1:2 
 `uc 1 SSPIE 1 0 :1:3 
@@ -143,23 +444,40 @@
 `uc 1 TMR1GIE 1 0 :1:7 
 ]
 "1262
-[u S213 . 1 `S204 1 . 1 0 ]
-[v _PIE1bits PIE1bits `VES213  1 e 1 @145 ]
-[s S225 . 1 `uc 1 CCP2IE 1 0 :1:0 
+[u S192 . 1 `S183 1 . 1 0 ]
+[v _PIE1bits PIE1bits `VES192  1 e 1 @145 ]
+[s S1063 . 1 `uc 1 CCP2IE 1 0 :1:0 
 `uc 1 . 1 0 :2:1 
 `uc 1 BCLIE 1 0 :1:3 
 `uc 1 . 1 0 :3:4 
 `uc 1 OSFIE 1 0 :1:7 
 ]
 "1321
-[u S231 . 1 `S225 1 . 1 0 ]
-[v _PIE2bits PIE2bits `VES231  1 e 1 @146 ]
-[s S71 . 1 `uc 1 SCS 1 0 :2:0 
+[u S1069 . 1 `S1063 1 . 1 0 ]
+[v _PIE2bits PIE2bits `VES1069  1 e 1 @146 ]
+[s S204 . 1 `uc 1 PS 1 0 :3:0 
+`uc 1 PSA 1 0 :1:3 
+`uc 1 TMR0SE 1 0 :1:4 
+`uc 1 TMR0CS 1 0 :1:5 
+`uc 1 INTEDG 1 0 :1:6 
+`uc 1 nWPUEN 1 0 :1:7 
+]
+"1364
+[s S211 . 1 `uc 1 PS0 1 0 :1:0 
+`uc 1 PS1 1 0 :1:1 
+`uc 1 PS2 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 T0SE 1 0 :1:4 
+`uc 1 T0CS 1 0 :1:5 
+]
+[u S218 . 1 `S204 1 . 1 0 `S211 1 . 1 0 ]
+[v _OPTION_REGbits OPTION_REGbits `VES218  1 e 1 @149 ]
+[s S92 . 1 `uc 1 SCS 1 0 :2:0 
 `uc 1 . 1 0 :1:2 
 `uc 1 IRCF 1 0 :4:3 
 ]
 "1561
-[s S75 . 1 `uc 1 SCS0 1 0 :1:0 
+[s S96 . 1 `uc 1 SCS0 1 0 :1:0 
 `uc 1 SCS1 1 0 :1:1 
 `uc 1 . 1 0 :1:2 
 `uc 1 IRCF0 1 0 :1:3 
@@ -167,11 +485,23 @@
 `uc 1 IRCF2 1 0 :1:5 
 `uc 1 IRCF3 1 0 :1:6 
 ]
-[u S83 . 1 `S71 1 . 1 0 `S75 1 . 1 0 ]
-[v _OSCCONbits OSCCONbits `VES83  1 e 1 @153 ]
-"2158
-[v _ANSELA ANSELA `VEuc  1 e 1 @396 ]
-[s S135 . 1 `uc 1 ANSC0 1 0 :1:0 
+[u S104 . 1 `S92 1 . 1 0 `S96 1 . 1 0 ]
+[v _OSCCONbits OSCCONbits `VES104  1 e 1 @153 ]
+[s S571 . 1 `uc 1 ANSA0 1 0 :1:0 
+`uc 1 ANSA1 1 0 :1:1 
+`uc 1 ANSA2 1 0 :1:2 
+`uc 1 ANSA3 1 0 :1:3 
+`uc 1 . 1 0 :1:4 
+`uc 1 ANSA5 1 0 :1:5 
+]
+"2176
+[s S578 . 1 `uc 1 ANSELA 1 0 :6:0 
+]
+[u S580 . 1 `S571 1 . 1 0 `S578 1 . 1 0 ]
+[v _ANSELAbits ANSELAbits `VES580  1 e 1 @396 ]
+"2211
+[v _ANSELB ANSELB `VEuc  1 e 1 @397 ]
+[s S261 . 1 `uc 1 ANSC0 1 0 :1:0 
 `uc 1 ANSC1 1 0 :1:1 
 `uc 1 ANSC2 1 0 :1:2 
 `uc 1 ANSC3 1 0 :1:3 
@@ -181,13 +511,47 @@
 `uc 1 ANSC7 1 0 :1:7 
 ]
 "2286
-[u S144 . 1 `S135 1 . 1 0 ]
-[v _ANSELCbits ANSELCbits `VES144  1 e 1 @398 ]
+[u S270 . 1 `S261 1 . 1 0 ]
+[v _ANSELCbits ANSELCbits `VES270  1 e 1 @398 ]
+"2522
+[v _RCREG RCREG `VEuc  1 e 1 @409 ]
+"2542
+[v _TXREG TXREG `VEuc  1 e 1 @410 ]
+"2578
+[v _SPBRGL SPBRGL `VEuc  1 e 1 @411 ]
+"2628
+[v _SPBRGH SPBRGH `VEuc  1 e 1 @412 ]
+[s S1432 . 1 `uc 1 RX9D 1 0 :1:0 
+`uc 1 OERR 1 0 :1:1 
+`uc 1 FERR 1 0 :1:2 
+`uc 1 ADDEN 1 0 :1:3 
+`uc 1 CREN 1 0 :1:4 
+`uc 1 SREN 1 0 :1:5 
+`uc 1 RX9 1 0 :1:6 
+`uc 1 SPEN 1 0 :1:7 
+]
+"2678
+[u S1441 . 1 `S1432 1 . 1 0 ]
+[v _RCSTAbits RCSTAbits `VES1441  1 e 1 @413 ]
+[s S1411 . 1 `uc 1 TX9D 1 0 :1:0 
+`uc 1 TRMT 1 0 :1:1 
+`uc 1 BRGH 1 0 :1:2 
+`uc 1 SENDB 1 0 :1:3 
+`uc 1 SYNC 1 0 :1:4 
+`uc 1 TXEN 1 0 :1:5 
+`uc 1 TX9 1 0 :1:6 
+`uc 1 CSRC 1 0 :1:7 
+]
+"2740
+[u S1420 . 1 `S1411 1 . 1 0 ]
+[v _TXSTAbits TXSTAbits `VES1420  1 e 1 @414 ]
+"2837
+[v _WPUB WPUB `VEuc  1 e 1 @525 ]
 "2928
 [v _SSPBUF SSPBUF `VEuc  1 e 1 @529 ]
 "2966
 [v _SSPADD SSPADD `VEuc  1 e 1 @530 ]
-[s S183 . 1 `uc 1 BF 1 0 :1:0 
+[s S1012 . 1 `uc 1 BF 1 0 :1:0 
 `uc 1 UA 1 0 :1:1 
 `uc 1 R_nW 1 0 :1:2 
 `uc 1 S 1 0 :1:3 
@@ -197,23 +561,23 @@
 `uc 1 SMP 1 0 :1:7 
 ]
 "3064
-[u S192 . 1 `S183 1 . 1 0 ]
-[v _SSPSTATbits SSPSTATbits `VES192  1 e 1 @532 ]
-[s S156 . 1 `uc 1 SSPM 1 0 :4:0 
+[u S1021 . 1 `S1012 1 . 1 0 ]
+[v _SSPSTATbits SSPSTATbits `VES1021  1 e 1 @532 ]
+[s S952 . 1 `uc 1 SSPM 1 0 :4:0 
 `uc 1 CKP 1 0 :1:4 
 `uc 1 SSPEN 1 0 :1:5 
 `uc 1 SSPOV 1 0 :1:6 
 `uc 1 WCOL 1 0 :1:7 
 ]
 "3193
-[s S162 . 1 `uc 1 SSPM0 1 0 :1:0 
+[s S958 . 1 `uc 1 SSPM0 1 0 :1:0 
 `uc 1 SSPM1 1 0 :1:1 
 `uc 1 SSPM2 1 0 :1:2 
 `uc 1 SSPM3 1 0 :1:3 
 ]
-[u S167 . 1 `S156 1 . 1 0 `S162 1 . 1 0 ]
-[v _SSPCON1bits SSPCON1bits `VES167  1 e 1 @533 ]
-[s S43 . 1 `uc 1 SEN 1 0 :1:0 
+[u S963 . 1 `S952 1 . 1 0 `S958 1 . 1 0 ]
+[v _SSPCON1bits SSPCON1bits `VES963  1 e 1 @533 ]
+[s S979 . 1 `uc 1 SEN 1 0 :1:0 
 `uc 1 RSEN 1 0 :1:1 
 `uc 1 PEN 1 0 :1:2 
 `uc 1 RCEN 1 0 :1:3 
@@ -223,9 +587,9 @@
 `uc 1 GCEN 1 0 :1:7 
 ]
 "3390
-[u S52 . 1 `S43 1 . 1 0 ]
-[v _SSPCON2bits SSPCON2bits `VES52  1 e 1 @534 ]
-[s S22 . 1 `uc 1 DHEN 1 0 :1:0 
+[u S988 . 1 `S979 1 . 1 0 ]
+[v _SSPCON2bits SSPCON2bits `VES988  1 e 1 @534 ]
+[s S805 . 1 `uc 1 DHEN 1 0 :1:0 
 `uc 1 AHEN 1 0 :1:1 
 `uc 1 SBCDE 1 0 :1:2 
 `uc 1 SDAHT 1 0 :1:3 
@@ -235,170 +599,432 @@
 `uc 1 ACKTIM 1 0 :1:7 
 ]
 "3512
-[u S31 . 1 `S22 1 . 1 0 ]
-[v _SSPCON3bits SSPCON3bits `VES31  1 e 1 @535 ]
-"79 C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+[u S814 . 1 `S805 1 . 1 0 ]
+[v _SSPCON3bits SSPCON3bits `VES814  1 e 1 @535 ]
+"112 C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
 [v _main main `(v  1 e 1 0 ]
 {
-"138
-[v main@wConv wConv `[8]uc  1 a 8 0 ]
+"116
+[v main@wReadout wReadout `[20]uc  1 a 20 8 ]
+"193
+[v main@wConv wConv `[4]uc  1 a 4 0 ]
 "137
-[v main@wCounter wCounter `i  1 a 2 10 ]
-"139
-[v main@wTemp wTemp `i  1 a 2 8 ]
-"137
-[v main@F2177 F2177 `[8]uc  1 s 8 F2177 ]
-"172
+[v main@wDebounceDown wDebounceDown `us  1 a 2 40 ]
+"136
+[v main@wDebounceUp wDebounceUp `us  1 a 2 38 ]
+"135
+[v main@wDebounceEnter wDebounceEnter `us  1 a 2 36 ]
+"118
+[v main@wTemperaturePrev wTemperaturePrev `s  1 a 2 33 ]
+"117
+[v main@wHumidityPrev wHumidityPrev `s  1 a 2 31 ]
+"134
+[v main@wIterationCounter wIterationCounter `us  1 a 2 28 ]
+"194
+[v main@wTemp wTemp `i  1 a 2 6 ]
+"192
+[v main@wCounter wCounter `i  1 a 2 4 ]
+"131
+[v main@wMenu wMenu `uc  1 a 1 45 ]
+"128
+[v main@wEnterBottonPressed wEnterBottonPressed `uc  1 a 1 44 ]
+"127
+[v main@wDownBottonPressed wDownBottonPressed `uc  1 a 1 43 ]
+"126
+[v main@wUpBottonPressed wUpBottonPressed `uc  1 a 1 42 ]
+"132
+[v main@wUpdateMenu wUpdateMenu `uc  1 a 1 35 ]
+"130
+[v main@wEditingMode wEditingMode `uc  1 a 1 30 ]
+"192
+[v main@F2379 F2379 `[4]uc  1 s 4 F2379 ]
+"344
 } 0
-"173 C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+"277 C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
 [v _setNotBlinkingCursor setNotBlinkingCursor `(v  1 e 1 0 ]
 {
-"177
+"281
 } 0
-"178
+"282
 [v _setCursorOff setCursorOff `(v  1 e 1 0 ]
 {
-"182
+"286
 } 0
-"163
+"16 C:\Users\dell\MPLABXProjects\16F1518_Temp.X\EM1812.c
+[v _printEM1812 printEM1812 `(v  1 e 1 0 ]
+{
+"22
+[v printEM1812@wWritingPosition wWritingPosition `uc  1 a 1 30 ]
+"18
+[v printEM1812@wTen wTen `uc  1 a 1 29 ]
+"21
+[v printEM1812@wIsNegative wIsNegative `uc  1 a 1 28 ]
+"20
+[v printEM1812@wDecimal wDecimal `uc  1 a 1 27 ]
+"19
+[v printEM1812@wUnity wUnity `uc  1 a 1 26 ]
+"16
+[v printEM1812@wVariable wVariable `s  1 p 2 21 ]
+[v printEM1812@oTextOut oTextOut `*.6uc  1 p 1 23 ]
+"55
+} 0
+"5 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\awmod.c
+[v ___awmod __awmod `(i  1 e 2 0 ]
+{
+"10
+[v ___awmod@sign sign `uc  1 a 1 18 ]
+[v ___awmod@counter counter `uc  1 a 1 17 ]
+"5
+[v ___awmod@divisor divisor `i  1 p 2 12 ]
+[v ___awmod@dividend dividend `i  1 p 2 14 ]
+"34
+} 0
+"5 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\awdiv.c
+[v ___awdiv __awdiv `(i  1 e 2 0 ]
+{
+"10
+[v ___awdiv@quotient quotient `i  1 a 2 19 ]
+"11
+[v ___awdiv@sign sign `uc  1 a 1 18 ]
+[v ___awdiv@counter counter `uc  1 a 1 17 ]
+"5
+[v ___awdiv@divisor divisor `i  1 p 2 12 ]
+[v ___awdiv@dividend dividend `i  1 p 2 14 ]
+"41
+} 0
+"267 C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
 [v _powerOnLcd powerOnLcd `(v  1 e 1 0 ]
 {
-"167
+"271
 } 0
-"224
+"328
 [v _moveCursorToHome moveCursorToHome `(v  1 e 1 0 ]
 {
-"228
+"332
 } 0
-"4 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\memset.c
-[v _memset memset `(*.39v  1 e 1 0 ]
-{
-"6
-[v memset@s s `*.39uc  1 a 2 21 ]
-"7
-[v memset@k k `ui  1 a 2 19 ]
-"4
-[v memset@dest dest `*.39v  1 p 2 9 ]
-[v memset@c c `i  1 p 2 11 ]
-[v memset@n n `ui  1 p 2 13 ]
-"90
-} 0
-"38 C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
-[v _lcdWriteText lcdWriteText `(v  1 e 1 0 ]
-{
-"40
-[v lcdWriteText@wCharReadingPos wCharReadingPos `uc  1 a 1 24 ]
-"38
-[v lcdWriteText@iText iText `*.26uc  1 p 2 19 ]
-"46
-} 0
-"75
-[v _writeTxtChk writeTxtChk `(v  1 e 1 0 ]
-{
-[v writeTxtChk@iOpCode iOpCode `uc  1 a 1 wreg ]
-[v writeTxtChk@iOpCode iOpCode `uc  1 a 1 wreg ]
-"77
-[v writeTxtChk@iOpCode iOpCode `uc  1 a 1 18 ]
-"105
-} 0
-"229
-[v _setCursorPosition setCursorPosition `(v  1 e 1 0 ]
-{
-[v setCursorPosition@iPosition iPosition `uc  1 a 1 wreg ]
-[v setCursorPosition@iPosition iPosition `uc  1 a 1 wreg ]
-"231
-[v setCursorPosition@iPosition iPosition `uc  1 a 1 15 ]
-"239
-} 0
-"7
+"10
 [v _initLCD initLCD `(v  1 e 1 0 ]
 {
-"36
+"61
 } 0
-"220
+"324
 [v _clearDisplay clearDisplay `(v  1 e 1 0 ]
 {
-"223
+"327
 } 0
-"107
+"211
 [v _writeInsChk writeInsChk `(v  1 e 1 0 ]
 {
 [v writeInsChk@iOpCode iOpCode `uc  1 a 1 wreg ]
 [v writeInsChk@iOpCode iOpCode `uc  1 a 1 wreg ]
-"109
-[v writeInsChk@iOpCode iOpCode `uc  1 a 1 14 ]
-"111
+"213
+[v writeInsChk@iOpCode iOpCode `uc  1 a 1 17 ]
+"215
 } 0
-"113
+"217
 [v _writeInsNoChk writeInsNoChk `(v  1 e 1 0 ]
 {
 [v writeInsNoChk@iOpCode iOpCode `uc  1 a 1 wreg ]
 [v writeInsNoChk@iOpCode iOpCode `uc  1 a 1 wreg ]
-"115
-[v writeInsNoChk@iOpCode iOpCode `uc  1 a 1 13 ]
-"120
+"219
+[v writeInsNoChk@iOpCode iOpCode `uc  1 a 1 16 ]
+"224
 } 0
+"64 C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+[v _PrintLog PrintLog `(v  1 e 1 0 ]
+{
+[v PrintLog@iText iText `*.5uc  1 a 1 wreg ]
+"65
+[v PrintLog@wInterruptTextLen wInterruptTextLen `uc  1 a 1 32 ]
+"64
+[v PrintLog@iText iText `*.5uc  1 a 1 wreg ]
+[v PrintLog@iText iText `*.5uc  1 a 1 33 ]
+"71
+} 0
+"4 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\memset.c
+[v _memset memset `(*.5v  1 e 1 0 ]
+{
+[v memset@dest dest `*.5v  1 a 1 wreg ]
+"7
+[v memset@k k `ui  1 a 2 18 ]
+"6
+[v memset@s s `*.5uc  1 a 1 21 ]
+"4
+[v memset@dest dest `*.5v  1 a 1 wreg ]
+[v memset@c c `i  1 p 2 12 ]
+[v memset@n n `ui  1 p 2 14 ]
+"6
+[v memset@dest dest `*.5v  1 a 1 20 ]
+"90
+} 0
+"63 C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+[v _lcdWriteText lcdWriteText `(v  1 e 1 0 ]
+{
+"65
+[v lcdWriteText@wCharReadingPos wCharReadingPos `uc  1 a 1 29 ]
 "63
+[v lcdWriteText@iText iText `*.26uc  1 p 2 24 ]
+"72
+} 0
+"154
+[v _writeTxtChk writeTxtChk `(v  1 e 1 0 ]
+{
+[v writeTxtChk@iOpCode iOpCode `uc  1 a 1 wreg ]
+[v writeTxtChk@iOpCode iOpCode `uc  1 a 1 wreg ]
+"156
+[v writeTxtChk@iOpCode iOpCode `uc  1 a 1 23 ]
+"209
+} 0
+"333
+[v _setCursorPosition setCursorPosition `(v  1 e 1 0 ]
+{
+[v setCursorPosition@iLine iLine `uc  1 a 1 wreg ]
+"335
+[v setCursorPosition@wLCDIndex wLCDIndex `uc  1 a 1 20 ]
+"333
+[v setCursorPosition@iLine iLine `uc  1 a 1 wreg ]
+[v setCursorPosition@iPosition iPosition `uc  1 p 1 16 ]
+"335
+[v setCursorPosition@iLine iLine `uc  1 a 1 19 ]
+"367
+} 0
+"241
+[v _waitLCDBusy waitLCDBusy `(v  1 e 1 0 ]
+{
+"248
+[v waitLCDBusy@busyFlag busyFlag `i  1 a 2 14 ]
+"261
+} 0
+"226
+[v _SetToReadDataFromLCD SetToReadDataFromLCD `(v  1 e 1 0 ]
+{
+"232
+} 0
+"142
 [v _setData setData `(v  1 e 1 0 ]
 {
 [v setData@iValue iValue `uc  1 a 1 wreg ]
 [v setData@iValue iValue `uc  1 a 1 wreg ]
-"65
-[v setData@iValue iValue `uc  1 a 1 11 ]
-"73
+"144
+[v setData@iValue iValue `uc  1 a 1 14 ]
+"152
 } 0
-"129
+"233
 [v _SetToSendDataToLCD SetToSendDataToLCD `(v  1 e 1 0 ]
 {
-"135
-} 0
-"137
-[v _waitLCDBusy waitLCDBusy `(v  1 e 1 0 ]
-{
-"144
-[v waitLCDBusy@busyFlag busyFlag `i  1 a 2 12 ]
-"157
-} 0
-"122
-[v _SetToReadDataFromLCD SetToReadDataFromLCD `(v  1 e 1 0 ]
-{
-"128
-} 0
-"61 C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
-[v _WakeTemp WakeTemp `(v  1 e 1 0 ]
-{
-"77
-} 0
-"175
-[v _myint myint `II(v  1 e 1 0 ]
-{
 "239
+} 0
+"105 C:\Users\dell\MPLABXProjects\16F1518_Temp.X\ESP8266.c
+[v _Esp8266SetupWifi Esp8266SetupWifi `(v  1 e 1 0 ]
+{
+"109
+} 0
+"100
+[v _Esp8266SetAccessPointMode Esp8266SetAccessPointMode `(v  1 e 1 0 ]
+{
+"104
+} 0
+"110
+[v _Esp8266OpenSocket Esp8266OpenSocket `(v  1 e 1 0 ]
+{
+"114
+} 0
+"95 C:\Users\dell\MPLABXProjects\16F1518_Temp.X\EM1812.c
+[v _EM1812EntryPoint EM1812EntryPoint `(i  1 e 2 0 ]
+{
+[v EM1812EntryPoint@oHumidity oHumidity `*.4s  1 a 1 wreg ]
+"98
+[v EM1812EntryPoint@ReceptionBuffer ReceptionBuffer `[8]uc  1 a 8 4 ]
+"97
+[v EM1812EntryPoint@SetGetTempCommand SetGetTempCommand `[4]uc  1 a 4 0 ]
+"95
+[v EM1812EntryPoint@oHumidity oHumidity `*.4s  1 a 1 wreg ]
+[v EM1812EntryPoint@oTemperature oTemperature `*.4s  1 p 1 29 ]
+"96
+[v EM1812EntryPoint@F1960 F1960 `[4]uc  1 s 4 F1960 ]
+"97
+[v EM1812EntryPoint@F1962 F1962 `[8]uc  1 s 8 F1962 ]
+"99
+[v EM1812EntryPoint@wTry wTry `uc  1 s 1 wTry ]
+"97
+[v EM1812EntryPoint@oHumidity oHumidity `*.4s  1 a 1 12 ]
+"185
+} 0
+"43 C:\Users\dell\MPLABXProjects\16F1518_Temp.X\I2C.c
+[v _I2C_SendData I2C_SendData `(i  1 e 2 0 ]
+{
+[v I2C_SendData@iData iData `*.4uc  1 a 1 wreg ]
+[v I2C_SendData@iData iData `*.4uc  1 a 1 wreg ]
+[v I2C_SendData@iNumberofByte iNumberofByte `uc  1 p 1 24 ]
+"45
+[v I2C_SendData@iData iData `*.4uc  1 a 1 28 ]
+"64
+} 0
+"66
+[v _I2C_GetData I2C_GetData `(i  1 e 2 0 ]
+{
+[v I2C_GetData@iAdress iAdress `uc  1 a 1 wreg ]
+[v I2C_GetData@iAdress iAdress `uc  1 a 1 wreg ]
+[v I2C_GetData@iRxNumberOfByteExpected iRxNumberOfByteExpected `uc  1 p 1 12 ]
+"68
+[v I2C_GetData@iAdress iAdress `uc  1 a 1 15 ]
+"82
+} 0
+"84
+[v _GetNewReceivedData GetNewReceivedData `(i  1 e 2 0 ]
+{
+[v GetNewReceivedData@oData oData `*.4uc  1 a 1 wreg ]
+[v GetNewReceivedData@oData oData `*.4uc  1 a 1 wreg ]
+[v GetNewReceivedData@oDataSize oDataSize `uc  1 p 1 24 ]
+"86
+[v GetNewReceivedData@oData oData `*.4uc  1 a 1 27 ]
+"93
+} 0
+"4 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\memcpy.c
+[v _memcpy memcpy `(*.39v  1 e 1 0 ]
+{
+"8
+[v memcpy@s s `*.26DCuc  1 a 2 22 ]
+"7
+[v memcpy@d d `*.39uc  1 a 2 20 ]
+"9
+[v memcpy@tmp tmp `uc  1 a 1 19 ]
+"4
+[v memcpy@d1 d1 `*.39v  1 p 2 12 ]
+[v memcpy@s1 s1 `*.26DCv  1 p 2 14 ]
+[v memcpy@n n `ui  1 p 2 16 ]
+"18
+} 0
+"38 C:\Users\dell\MPLABXProjects\16F1518_Temp.X\I2C.c
+[v _GetI2CStatus GetI2CStatus `(i  1 e 2 0 ]
+{
+"41
+} 0
+"73 C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+[v _Debounce Debounce `(v  1 e 1 0 ]
+{
+[v Debounce@iSwitch iSwitch `uc  1 a 1 wreg ]
+[v Debounce@iSwitch iSwitch `uc  1 a 1 wreg ]
+[v Debounce@ioTimer ioTimer `*.6us  1 p 1 12 ]
+[v Debounce@swPressed swPressed `*.6uc  1 p 1 13 ]
+[v Debounce@iSwitch iSwitch `uc  1 a 1 16 ]
+"87
+} 0
+"51 C:\Users\dell\MPLABXProjects\16F1518_Temp.X\GeneralFunction.c
+[v _AddTrace AddTrace `(v  1 e 1 0 ]
+{
+[v AddTrace@oText oText `*.5uc  1 a 1 wreg ]
+[v AddTrace@oText oText `*.5uc  1 a 1 wreg ]
+[v AddTrace@iSizeOfoText iSizeOfoText `uc  1 p 1 34 ]
+[v AddTrace@iText iText `*.26uc  1 p 2 35 ]
+"53
+[v AddTrace@oText oText `*.5uc  1 a 1 6 ]
+"57
 } 0
 "3 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\strcat.c
 [v _strcat strcat `(*.39uc  1 e 1 0 ]
 {
-[v strcat@dest dest `*.39uc  1 p 2 4 ]
-[v strcat@src src `*.25DCuc  1 p 2 6 ]
+[v strcat@dest dest `*.39uc  1 p 2 30 ]
+[v strcat@src src `*.26DCuc  1 p 2 32 ]
 "7
 } 0
 "12 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\strlen.c
 [v _strlen strlen `(ui  1 e 2 0 ]
 {
 "14
-[v strlen@a a `*.39DCuc  1 a 2 4 ]
+[v strlen@a a `*.26DCuc  1 a 2 16 ]
 "12
-[v strlen@s s `*.39DCuc  1 p 2 0 ]
+[v strlen@s s `*.26DCuc  1 p 2 12 ]
 "26
 } 0
 "7 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\strcpy.c
 [v _strcpy strcpy `(*.39uc  1 e 1 0 ]
 {
 "14
-[v strcpy@d d `*.39uc  1 a 2 2 ]
+[v strcpy@d d `*.39uc  1 a 2 28 ]
 "13
-[v strcpy@s s `*.25DCuc  1 a 2 0 ]
+[v strcpy@s s `*.26DCuc  1 a 2 26 ]
 "7
-[v strcpy@dest dest `*.39uc  1 p 2 6 ]
-[v strcpy@src src `*.25DCuc  1 p 2 8 ]
+[v strcpy@dest dest `*.39uc  1 p 2 18 ]
+[v strcpy@src src `*.26DCuc  1 p 2 20 ]
 "18
+} 0
+"348 C:\Users\dell\MPLABXProjects\16F1518_Temp.X\161518_temp_main.c
+[v _myint myint `II(v  1 e 1 0 ]
+{
+"352
+[v myint@wText wText `[3]uc  1 a 3 7 ]
+"349
+[v myint@wI2CError wI2CError `i  1 a 2 10 ]
+[v myint@wEUSARTError wEUSARTError `i  1 a 2 5 ]
+"378
+} 0
+"63 C:\Users\dell\MPLABXProjects\16F1518_Temp.X\LCD_hd44780u_qy_2004a.c
+[v i1_lcdWriteText lcdWriteText `(v  1 e 1 0 ]
+{
+[v i1lcdWriteText@wCharReadingPos lcdWriteText `uc  1 a 1 3 ]
+[v i1lcdWriteText@iText iText `*.26uc  1 p 2 12 ]
+"72
+} 0
+"154
+[v i1_writeTxtChk writeTxtChk `(v  1 e 1 0 ]
+{
+[v i1writeTxtChk@iOpCode iOpCode `uc  1 a 1 wreg ]
+[v i1writeTxtChk@iOpCode iOpCode `uc  1 a 1 wreg ]
+"156
+[v i1writeTxtChk@iOpCode iOpCode `uc  1 a 1 11 ]
+"209
+} 0
+"333
+[v i1_setCursorPosition setCursorPosition `(v  1 e 1 0 ]
+{
+[v i1setCursorPosition@iLine iLine `uc  1 a 1 wreg ]
+[v i1setCursorPosition@wLCDIndex setCursorPosition `uc  1 a 1 8 ]
+[v i1setCursorPosition@iLine iLine `uc  1 a 1 wreg ]
+[v i1setCursorPosition@iPosition iPosition `uc  1 p 1 4 ]
+"335
+[v i1setCursorPosition@iLine iLine `uc  1 a 1 7 ]
+"367
+} 0
+"241
+[v i1_waitLCDBusy waitLCDBusy `(v  1 e 1 0 ]
+{
+[v i1waitLCDBusy@busyFlag waitLCDBusy `i  1 a 2 2 ]
+"261
+} 0
+"226
+[v i1_SetToReadDataFromLCD SetToReadDataFromLCD `(v  1 e 1 0 ]
+{
+"232
+} 0
+"142
+[v i1_setData setData `(v  1 e 1 0 ]
+{
+[v i1setData@iValue iValue `uc  1 a 1 wreg ]
+[v i1setData@iValue iValue `uc  1 a 1 wreg ]
+"144
+[v i1setData@iValue iValue `uc  1 a 1 2 ]
+"152
+} 0
+"233
+[v i1_SetToSendDataToLCD SetToSendDataToLCD `(v  1 e 1 0 ]
+{
+"239
+} 0
+"80 C:\Users\dell\MPLABXProjects\16F1518_Temp.X\EM1812.c
+[v _TempUpdateRequest TempUpdateRequest `(i  1 e 2 0 ]
+{
+"92
+} 0
+"95 C:\Users\dell\MPLABXProjects\16F1518_Temp.X\I2C.c
+[v _I2C_Interrupt I2C_Interrupt `(i  1 e 2 0 ]
+{
+"97
+[v I2C_Interrupt@oErrorCode oErrorCode `uc  1 a 1 4 ]
+"228
+} 0
+"48 C:\Users\dell\MPLABXProjects\16F1518_Temp.X\EUSART.c
+[v _EUSARTInterrupt EUSARTInterrupt `(i  1 e 2 0 ]
+{
+"86
 } 0

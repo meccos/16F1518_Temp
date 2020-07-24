@@ -26,7 +26,8 @@
 
 // CONFIG1
 //#pragma config FOSC = INTOSC    // Oscillator Selection (INTOSC oscillator: I/O function on CLKIN pin)
-#pragma config FOSC = 0x2       // Oscillator external high speed
+//#pragma config FOSC = 0x2       // Oscillator external high speed
+#pragma config FOSC = 0x2       // Oscillator external low power
 #pragma config WDTE = OFF       // Watchdog Timer Enable (WDT disabled)
 #pragma config PWRTE = ON       // Power-up Timer Enable (PWRT enabled)
 #pragma config MCLRE = OFF      // MCLR Pin Function Select (MCLR/VPP pin function is digital input)
@@ -48,52 +49,41 @@
 char wInterruptText[wInterruptTextSize];
 
 char wHexTemp[20];
-uint8_t wTrial=0;
+uint8_t wTrial = 0;
 
 
-uint8_t  gErrorCode;
+uint8_t gErrorCode;
 
-void ToggleBitRB5()
-{
-    if(PORTBbits.RB5 == 1)
-    {
+void ToggleBitRB5() {
+    if (PORTBbits.RB5 == 1) {
         PORTBbits.RB5 = 0;
-    }
-    else
-    {
+    } else {
         PORTBbits.RB5 = 1;
     }
 }
 
-void PrintLog(char* iText)
-{
+void PrintLog(char* iText) {
     char wInterruptTextLen = strlen(iText);
-    
-    if(wInterruptTextLen !=0)
-    {
+
+    if (wInterruptTextLen != 0) {
         lcdWriteText(iText);
-        memset(iText,0,wInterruptTextLen);
-    }   
+        memset(iText, 0, wInterruptTextLen);
+    }
 }
 
-void Debounce(uint8_t iSwitch,uint16_t* ioTimer, uint8_t* swPressed)
-{
-    if(iSwitch == 0) //Button pressed
+void Debounce(uint8_t iSwitch, uint16_t* ioTimer, uint8_t* swPressed) {
+    if (iSwitch == 0) //Button pressed
     {
-      (*ioTimer)++;
+        (*ioTimer)++;
+    } else {
+        *ioTimer = 0;
     }
-    else
-    {
-      *ioTimer = 0;   
+    if (*ioTimer == 2000) {
+        *swPressed = 1;
     }
-    if(*ioTimer == 2000)
-    {
-      *swPressed = 1;
-    }
-    if(*ioTimer == 8000)
-    {
-      *ioTimer = 2001;
-      *swPressed = 1;
+    if (*ioTimer == 8000) {
+        *ioTimer = 2001;
+        *swPressed = 1;
     }
 }
 
@@ -105,300 +95,297 @@ void Debounce(uint8_t iSwitch,uint16_t* ioTimer, uint8_t* swPressed)
 
 #define DISPTACHERSIGNAL T1CONbits.TMR1CS
 
-uint8_t wTimer1IntCounter=0;
+uint8_t wTimer1IntCounter = 0;
 
-int16_t wHumidity=0;
-int16_t wTemperature=0;
+int16_t wHumidity = 0;
+int16_t wTemperature = 0;
 
-int16_t wTempSet=210;
+int16_t wTempSet = 210;
 
-enum eMenu{eShowTime=0,eShowTemp,eShowMode,eSetTime=128,eSetTemp=129,eSetMode=130};
-enum eMode{eElectric=0,eFuel,eThermopump,eCooling};
+enum eMenu {
+    eShowTime = 0, eShowTemp, eShowMode, eSetTime = 128, eSetTemp = 129, eSetMode = 130
+};
 
-
-
-
+enum eMode {
+    eElectric = 0, eFuel, eThermopump, eCooling
+};
 
 void main(void) 
 {
+    INTCONbits.GIE = 0; //Disable interrupt
     
-  gErrorCode =0;
+    OSCCONbits.SCS = 0x0; // Clock determined by FOSC<2:0> in Configuration Word 1
+    OSCCONbits.IRCF = 0xf; // Set frequency to 16 mhz not used since using external clock
     
-  char wReadout[20];
-  int16_t wHumidityPrev=0;
-  int16_t wTemperaturePrev=0;
-  memset(wInterruptText,0,sizeof(wInterruptText));
-  //OSCCONbits.IRCF = 13; //4mhz
-  
-  OSCCONbits.IRCF = 0xf; // Set frequency to 16 mhz
-  OSCCONbits.SCS = 0x0; // IRCF bits for the osccon register
-  INTCONbits.GIE = 0; //Disable interrupt
-  
-  uint8_t wUpBottonPressed=0;
-  uint8_t wDownBottonPressed=0;
-  uint8_t wEnterBottonPressed=0;
-  
-  uint8_t wEditingMode=0;
-  uint8_t wMenu=0;
-  uint8_t wUpdateMenu=1;
-  
-  uint16_t wIterationCounter=0;
-  uint16_t wDebounceEnter=0;
-  uint16_t wDebounceUp=0;
-  uint16_t wDebounceDown=0;
-  
-  PORTA = 0x00;
-  
-  //Dispatcher parameter
-  
-  T1CONbits.TMR1CS = 0x00; // Using instruction clock Fosc devi 4
-  T1CONbits.T1OSCEN = 0x0; //Not used since we are using the internal oscillator
-  T1CONbits.T1CKPS = 0x3; // Setting no prescaler
-  T1CONbits.nT1SYNC = 0; // Maybe not used since we are using internal oscillation
-  T1CONbits.TMR1ON = 1; // Enabling the timer1
-  PIE1bits.TMR1IE =1; //Enabling the timer1 interrupt
-  //INTCONbits.PEIE = 1; // Is done later on
+    //OSCCONbits.IRCF = 13; //4mhz
 
-  //TempGetTimer
-  OPTION_REGbits.PS = 0x2;
-  OPTION_REGbits.TMR0CS = 0;
-  OPTION_REGbits.PSA = 0;
-  INTCONbits.TMR0IE = 0; //Enable Timer 0 Interrupt
-  
-  
-  //Button configuration
-  PORTB = 0x00;
-  ANSELB = 0x00; //Setting All to digital
-  TRISB = 0x0F; //Setting bit 0 1 2 3 to input
-  WPUB = 0x0F; // Activation of weak pull up
-  OPTION_REGbits.nWPUEN = 0; //Enable WeekPull up
-  
-  //SCREEN Configuration done int the initLCD function
- 
-  I2CInit();
-  EUSARTInit();
-
-
-
-  INTCONbits.GIE = 1; //Enable interrupt
-  
-  
-  initLCD();
-  clearDisplay();
-  __delay_ms(100);
-  powerOnLcd();
-  __delay_ms(100);
-  setCursorOff();
-  __delay_ms(100);
-  moveCursorToHome();
-  __delay_ms(100);
-  setNotBlinkingCursor();
-  __delay_ms(100);
- 
-  
-  int wCounter=0;
-  char wConv[4]={'+',0, 'x',0, };
-  int wTemp=0;
-
-  
-  clearDisplay();
-  moveCursorToHome();
-  __delay_ms(30);
-  
- 
-  RCSTAbits.SPEN = 1; //Enabling Serial Port
-  RCSTAbits.CREN = 1; //Enable Continuous Reception USART
-  RCSTAbits.ADDEN = 0; //Disables address detection, all bits are received.
-  RCSTAbits.RX9 = 0 ; // Reception in 8 bits mode.
-  
-  __delay_ms(1000);
-  while(1)
-  {
     
-    /*if( wUpdateMenu )
+    
+    gErrorCode = 0;
+
+    ESP8266EnableDirection = 0;
+    ESP8266Enable_AD = 1;
+    ESP8266Enable=1;
+    ESP8266Enable=0;
+    ESP8266Enable=OSCSTATbits.OSTS;
+    ESP8266Enable=0;
+    ESP8266Enable=1;
+    ESP8266Enable=0;
+    ESP8266Enable=1;
+    return;
+    char wReadout[20];
+    int16_t wHumidityPrev = 0;
+    int16_t wTemperaturePrev = 0;
+    memset(wInterruptText, 0, sizeof (wInterruptText));
+
+
+
+    uint8_t wUpBottonPressed = 0;
+    uint8_t wDownBottonPressed = 0;
+    uint8_t wEnterBottonPressed = 0;
+
+    uint8_t wEditingMode = 0;
+    uint8_t wMenu = 0;
+    uint8_t wUpdateMenu = 1;
+
+    uint16_t wIterationCounter = 0;
+    uint16_t wDebounceEnter = 0;
+    uint16_t wDebounceUp = 0;
+    uint16_t wDebounceDown = 0;
+
+    PORTA = 0x00;
+
+    //Dispatcher parameter
+
+    T1CONbits.TMR1CS = 0x00; // Using instruction clock Fosc devi 4
+    T1CONbits.T1OSCEN = 0x0; //Not used since we are using the internal oscillator
+    T1CONbits.T1CKPS = 0x3; // Setting no prescaler
+    T1CONbits.nT1SYNC = 0; // Maybe not used since we are using internal oscillation
+    T1CONbits.TMR1ON = 1; // Enabling the timer1
+    PIE1bits.TMR1IE = 1; //Enabling the timer1 interrupt
+    //INTCONbits.PEIE = 1; // Is done later on
+
+    //TempGetTimer
+    OPTION_REGbits.PS = 0x2;
+    OPTION_REGbits.TMR0CS = 0;
+    OPTION_REGbits.PSA = 0;
+    INTCONbits.TMR0IE = 0; //Enable Timer 0 Interrupt
+
+
+    //Button configuration
+    PORTB = 0x00;
+    ANSELB = 0x00; //Setting All to digital
+    TRISB = 0x0F; //Setting bit 0 1 2 3 to input
+    WPUB = 0x0F; // Activation of weak pull up
+    OPTION_REGbits.nWPUEN = 0; //Enable WeekPull up
+    
+    //SCREEN Configuration done int the initLCD function
+
+    //I2CInit();
+    //EUSARTInit();
+
+
+
+    //INTCONbits.GIE = 1; //Enable interrupt
+
+    initLCD();
+    clearDisplay();
+    __delay_ms(100);
+    powerOnLcd();
+    __delay_ms(100);
+    setCursorOff();
+    __delay_ms(100);
+    moveCursorToHome();
+    __delay_ms(100);
+    setNotBlinkingCursor();
+    __delay_ms(100);
+
+
+    int wCounter = 0;
+    char wConv[4] = {'+', 0, 'x', 0,};
+    int wTemp = 0;
+
+
+    clearDisplay();
+    moveCursorToHome();
+    __delay_ms(30);
+
+
+    //RCSTAbits.SPEN = 1; //Enabling Serial Port
+    //RCSTAbits.CREN = 1; //Enable Continuous Reception USART
+    //RCSTAbits.ADDEN = 0; //Disables address detection, all bits are received.
+    //RCSTAbits.RX9 = 0; // Reception in 8 bits mode.
+
+    __delay_ms(1000);
+
+    //Esp8266Init();
+
+while (1){};
+    
+
+    while (1)
     {
-      wUpdateMenu = 0;
-      switch(wMenu ) //{eShowTime=0,eShowTemp,eShowMode,eSetTime=128,eSetTemp=129,eSetMode=130};
-      {
-        case eShowTime:
-          setCursorPosition(0,0);
-          lcdWriteText("Time           ");
-          break;
-        case eShowTemp:
-          setCursorPosition(0,0);
-          lcdWriteText("Temp Setting:  \n");
-          printEM1812(wTempSet, wReadout);
-          lcdWriteText(wReadout);
-          break;
-        case eShowMode:
-          setCursorPosition(0,0);
-          lcdWriteText("Mode:          ");
-          break;
-        case eSetTime:
-          setCursorPosition(0,0);
-          lcdWriteText("-Set Time-     \n");
-          break;
-        case eSetTemp:
-          setCursorPosition(0,0);
-          lcdWriteText("-Set Temp-     \n");
-          printEM1812(wTempSet, wReadout);
-          lcdWriteText(wReadout);
-          break;
-        case eSetMode:
-          setCursorPosition(0,0);
-          lcdWriteText("-Set Mode-     \n");
 
-          break;
-        default:
-          setCursorPosition(0,0);
-          lcdWriteText("WTF            ");
-          break;
-      }
-    }*/
-    
-    Esp8266Entrypoint();
-    if( EM1812EntryPoint(&wHumidity, &wTemperature) == 1)
-    {
-        
-        if(0 && ((wHumidityPrev != wHumidity) || (wTemperaturePrev != wTemperature)))
+        if (wUpdateMenu) 
         {
-            wHumidityPrev = wHumidity;
-            wTemperaturePrev = wTemperature;
-            setCursorPosition(2,0);
-            printEM1812(wHumidityPrev,wReadout);
-            AddTrace(wInterruptText,sizeof(wInterruptText),"Humidity : ");
-            AddTrace(wInterruptText,sizeof(wInterruptText),wReadout);
-            printEM1812(wTemperaturePrev,wReadout);
-            AddTrace(wInterruptText,sizeof(wInterruptText),"\nTemp : ");
-            AddTrace(wInterruptText,sizeof(wInterruptText),wReadout);
-            PrintLog(wInterruptText);
+            wUpdateMenu = 0;
+            switch (wMenu) //{eShowTime=0,eShowTemp,eShowMode,eSetTime=128,eSetTemp=129,eSetMode=130};
+            {
+                case eShowTime:
+                    setCursorPosition(0, 0);
+                    lcdWriteText("Time           ");
+                    break;
+                case eShowTemp:
+                    setCursorPosition(0, 0);
+                    lcdWriteText("Temp Setting:  \n");
+                    printEM1812(wTempSet, wReadout);
+                    lcdWriteText(wReadout);
+                    break;
+                case eShowMode:
+                    setCursorPosition(0, 0);
+                    lcdWriteText("Mode:          ");
+                    break;
+                case eSetTime:
+                    setCursorPosition(0, 0);
+                    lcdWriteText("-Set Time-     \n");
+                    break;
+                case eSetTemp:
+                    setCursorPosition(0, 0);
+                    lcdWriteText("-Set Temp-     \n");
+                    printEM1812(wTempSet, wReadout);
+                    lcdWriteText(wReadout);
+                    break;
+                case eSetMode:
+                    setCursorPosition(0, 0);
+                    lcdWriteText("-Set Mode-     \n");
+
+                    break;
+                default:
+                    setCursorPosition(0, 0);
+                    lcdWriteText("WTF            ");
+                    break;
+            }
         }
+
+        //Esp8266Entrypoint();
+        if (EM1812EntryPoint(&wHumidity, &wTemperature) == 1) {
+
+            if (0 && ((wHumidityPrev != wHumidity) || (wTemperaturePrev != wTemperature))) {
+                wHumidityPrev = wHumidity;
+                wTemperaturePrev = wTemperature;
+                setCursorPosition(2, 0);
+                printEM1812(wHumidityPrev, wReadout);
+                AddTrace(wInterruptText, sizeof (wInterruptText), "Humidity : ");
+                AddTrace(wInterruptText, sizeof (wInterruptText), wReadout);
+                printEM1812(wTemperaturePrev, wReadout);
+                AddTrace(wInterruptText, sizeof (wInterruptText), "\nTemp : ");
+                AddTrace(wInterruptText, sizeof (wInterruptText), wReadout);
+                PrintLog(wInterruptText);
+            }
+        }
+        wIterationCounter++;
+
+
+        Debounce(ENTERBotton, &wDebounceEnter, &wEnterBottonPressed);
+        Debounce(UPBotton, &wDebounceUp, &wUpBottonPressed);
+        Debounce(DOWNBotton, &wDebounceDown, &wDownBottonPressed);
+
+        //{eShowTime=0,eShowTemp,eShowMode,eSetTime=128,eSetTemp=129,eSetMode=130};
+        //enum eMode{eElectric=0,eFuel,eThermopump,eCooling
+        if (wUpBottonPressed == 1) {
+            Esp8266OpenSocket();
+            wUpdateMenu = 1;
+            wUpBottonPressed = 0;
+            switch (wMenu) {
+                case eSetTime:
+
+                    break;
+                case eSetTemp:
+                    wTempSet = wTempSet + 1;
+                    break;
+                case eSetMode:
+                    break;
+                default:
+                    wMenu++;
+                    break;
+            }
+
+        }
+        if (wDownBottonPressed == 1) {
+            wUpdateMenu = 1;
+            wDownBottonPressed = 0;
+            clearDisplay();
+            moveCursorToHome();
+            switch (wMenu) {
+                case eSetTime:
+
+                    break;
+                case eSetTemp:
+                    wTempSet = wTempSet - 1;
+                    break;
+                case eSetMode:
+                    break;
+                default:
+                    wMenu--;
+                    break;
+            }
+        }
+        if (wEnterBottonPressed == 1) {
+            wUpdateMenu = 1;
+            wEnterBottonPressed = 0;
+
+            if (wEditingMode == 0) {
+                wEditingMode = 1;
+                wMenu = wMenu + 128;
+                Esp8266SetAccessPointMode();
+            } else {
+                Esp8266SetupWifi();
+                wEditingMode = 0;
+            }
+        }
+        if (wMenu == 255) {
+            wUpdateMenu = 1;
+            wMenu = 2;
+        }
+        if (wMenu == 3) {
+            wUpdateMenu = 1;
+            wMenu = 0;
+        }
+
+
     }
-    wIterationCounter++;
-
-
-   Debounce(ENTERBotton,&wDebounceEnter,&wEnterBottonPressed);
-   Debounce(UPBotton,&wDebounceUp,&wUpBottonPressed);
-   Debounce(DOWNBotton,&wDebounceDown,&wDownBottonPressed);
-
-//{eShowTime=0,eShowTemp,eShowMode,eSetTime=128,eSetTemp=129,eSetMode=130};
-   //enum eMode{eElectric=0,eFuel,eThermopump,eCooling
-   if(wUpBottonPressed == 1)
-   {
-       Esp8266OpenSocket();
-       wUpdateMenu=1;
-       wUpBottonPressed = 0;
-        switch(wMenu)
-        {
-            case eSetTime:
-
-                break;
-            case eSetTemp:
-                wTempSet = wTempSet+1;
-                break;
-            case eSetMode:
-                break;
-            default:
-                wMenu++;
-                break;
-        }
-
-   }
-   if(wDownBottonPressed == 1)
-   {
-       wUpdateMenu=1;
-       wDownBottonPressed = 0;
-         clearDisplay();
-         moveCursorToHome();
-        switch(wMenu)
-        {
-            case eSetTime:
-
-                break;
-            case eSetTemp:
-                wTempSet = wTempSet - 1;
-                break;
-            case eSetMode:
-                break;
-            default:
-                wMenu--;
-                break;
-        }
-   }
-   if(wEnterBottonPressed == 1)
-   {
-       wUpdateMenu=1;
-       wEnterBottonPressed = 0;
-
-       if(wEditingMode == 0)
-       {
-         wEditingMode = 1;
-         wMenu = wMenu+128;
-         Esp8266SetAccessPointMode();
-       }
-       else
-       {
-         Esp8266SetupWifi();
-         wEditingMode = 0;   
-       }
-   }   
-   if(wMenu == 255)
-   {
-       wUpdateMenu=1;
-       wMenu = 2;
-   }
-   if(wMenu == 3)
-   {
-       wUpdateMenu=1;
-       wMenu = 0;
-   }    
-  
-  
-  }
     return;
 }
 
-char wCounter2=0;
-void __interrupt() myint(void)
-{
-    int wI2CError=0,wEUSARTError=0;
+char wCounter2 = 0;
+
+void __interrupt() myint(void) {
+    int wI2CError = 0, wEUSARTError = 0;
     wI2CError = I2C_Interrupt();
-    if( wI2CError != 0 )
-    {
+    if (wI2CError != 0) {
         char wText[3];
         wText[0] = 'i';
         wText[1] = '0' + wI2CError;
         wText[2] = 0;
         lcdWriteText(wText);
     }
-    
+
     wEUSARTError = EUSARTInterrupt();
-    if( wEUSARTError != 0 )
-    {
-        char wText[3];
-        wText[0] = 'u';
-        wText[1] = '0' + wEUSARTError;
-        wText[2] = 0;
-        lcdWriteText(wText);
-    }
-    if(PIR1bits.TMR1IF == 1)
-    {
+
+    if (PIR1bits.TMR1IF == 1) {
         wTimer1IntCounter++;
         PIR1bits.TMR1IF = 0;
-        
-        if(wTimer1IntCounter == 7)
-        {
+
+        if (wTimer1IntCounter == 7) {
             TMR1H = 0x4C;
             TMR1L = 0x83;
         }
-        if(wTimer1IntCounter == 8)
-        {
+        if (wTimer1IntCounter == 8) {
             wTimer1IntCounter = 0;
             TempUpdateRequest();
         }
     }
-    if(INTCONbits.TMR0IF == 1)
-    {
+    if (INTCONbits.TMR0IF == 1) {
         INTCONbits.TMR0IF = 0;
         wTimer0Counter++;
     }

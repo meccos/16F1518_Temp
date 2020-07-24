@@ -94,6 +94,35 @@ void lcdWriteAllText(char *iText)
   }
     
 }
+void lcdWriteRotaryBuffer(char *iRotText, uint8_t iStarPosition, uint8_t iNumOfChar, uint8_t iBufferSize)
+ {
+    uint8_t wReadPosition = iStarPosition%iBufferSize;
+
+    for(uint8_t i=0; i<iNumOfChar ; i++)
+    {
+
+      switch(iRotText[wReadPosition])
+      {
+          case '\r':
+              writeTxtChk('/');
+              writeTxtChk('r');
+              break;
+          case '\n':
+              writeTxtChk('/');
+              writeTxtChk('n');
+              break;
+          default:
+              writeTxtChk(iRotText[wReadPosition]);
+              break;
+      }
+      wReadPosition++;
+      if(wReadPosition == iBufferSize)
+      {
+          iBufferSize = 0;
+      }
+    }
+    
+}
 
 void lcdWriteRotText(char *iRotText, char ioRotReadPtr, char iWritePtr)
 {
